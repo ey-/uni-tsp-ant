@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{A6F84DDA-04B6-4C30-BB33-5E65A6A22D3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{A745501B-BE61-4364-9845-D0777959A88F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A6F84DDA-04B6-4C30-BB33-5E65A6A22D3C}.Debug|x86.ActiveCfg = Debug|x86
-		{A6F84DDA-04B6-4C30-BB33-5E65A6A22D3C}.Debug|x86.Build.0 = Debug|x86
-		{A6F84DDA-04B6-4C30-BB33-5E65A6A22D3C}.Release|x86.ActiveCfg = Release|x86
-		{A6F84DDA-04B6-4C30-BB33-5E65A6A22D3C}.Release|x86.Build.0 = Release|x86
+		{A745501B-BE61-4364-9845-D0777959A88F}.Debug|x86.ActiveCfg = Debug|x86
+		{A745501B-BE61-4364-9845-D0777959A88F}.Debug|x86.Build.0 = Debug|x86
+		{A745501B-BE61-4364-9845-D0777959A88F}.Release|x86.ActiveCfg = Release|x86
+		{A745501B-BE61-4364-9845-D0777959A88F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
