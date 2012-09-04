@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
 
         public float length()
         {
-            return Math.Sqrt(x * x + y * y);
+            return (float)Math.Sqrt(x * x + y * y);
         }
     }
 }

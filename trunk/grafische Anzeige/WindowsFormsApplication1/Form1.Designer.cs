@@ -51,6 +51,8 @@ using System.Threading;
             this.mRenderWindow.Size = new System.Drawing.Size(306, 281);
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
+            this.mRenderWindow.Load += new System.EventHandler(this.mRenderWindow_Load);
+
             mRenderWindow.initViewPort();
             // 
             // Form1
