@@ -15,5 +15,10 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+
+        private void mRenderWindow_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
