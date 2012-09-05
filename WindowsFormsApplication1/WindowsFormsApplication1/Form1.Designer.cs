@@ -121,37 +121,37 @@
             this.speichernToolStripMenuItem,
             this.beendenToolStripMenuItem});
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
-            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.dateiToolStripMenuItem.Text = "Datei";
             // 
             // öffnenToolStripMenuItem
             // 
             this.öffnenToolStripMenuItem.Name = "öffnenToolStripMenuItem";
-            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.öffnenToolStripMenuItem.Text = "Öffnen";
             // 
             // speichernToolStripMenuItem
             // 
             this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
-            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.speichernToolStripMenuItem.Text = "Speichern";
             // 
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
             // hilfeToolStripMenuItem
             // 
             this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
-            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(707, 46);
+            this.button1.Location = new System.Drawing.Point(669, 27);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 32);
             this.button1.TabIndex = 3;
