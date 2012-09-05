@@ -41,7 +41,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -51,26 +50,11 @@
             this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
+            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mRenderWindow
-            // 
-            this.mRenderWindow.AccumBits = ((byte)(0));
-            this.mRenderWindow.AutoCheckErrors = false;
-            this.mRenderWindow.AutoFinish = false;
-            this.mRenderWindow.AutoMakeCurrent = true;
-            this.mRenderWindow.AutoSwapBuffers = true;
-            this.mRenderWindow.BackColor = System.Drawing.Color.Black;
-            this.mRenderWindow.ColorBits = ((byte)(32));
-            this.mRenderWindow.DepthBits = ((byte)(16));
-            this.mRenderWindow.Location = new System.Drawing.Point(9, 27);
-            this.mRenderWindow.Name = "mRenderWindow";
-            this.mRenderWindow.Size = new System.Drawing.Size(654, 311);
-            this.mRenderWindow.StencilBits = ((byte)(0));
-            this.mRenderWindow.TabIndex = 0;
             // 
             // tabControl1
             // 
@@ -106,6 +90,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startToolStripMenuItem,
             this.dateiToolStripMenuItem,
             this.hilfeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -149,21 +134,33 @@
             this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             // 
-            // button1
+            // mRenderWindow
             // 
-            this.button1.Location = new System.Drawing.Point(669, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 32);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
+            this.mRenderWindow.AccumBits = ((byte)(0));
+            this.mRenderWindow.AutoCheckErrors = false;
+            this.mRenderWindow.AutoFinish = false;
+            this.mRenderWindow.AutoMakeCurrent = true;
+            this.mRenderWindow.AutoSwapBuffers = true;
+            this.mRenderWindow.BackColor = System.Drawing.Color.Black;
+            this.mRenderWindow.ColorBits = ((byte)(32));
+            this.mRenderWindow.DepthBits = ((byte)(16));
+            this.mRenderWindow.Location = new System.Drawing.Point(9, 27);
+            this.mRenderWindow.Name = "mRenderWindow";
+            this.mRenderWindow.Size = new System.Drawing.Size(898, 311);
+            this.mRenderWindow.StencilBits = ((byte)(0));
+            this.mRenderWindow.TabIndex = 0;
+            // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.startToolStripMenuItem.Text = "Start";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(993, 571);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.mRenderWindow);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
@@ -188,7 +185,7 @@
         private System.Windows.Forms.ToolStripMenuItem speichernToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem beendenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hilfeToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
     }
 }
 
