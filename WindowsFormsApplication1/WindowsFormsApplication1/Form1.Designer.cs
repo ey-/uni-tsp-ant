@@ -51,9 +51,19 @@
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.uAntsQuantity = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.uCityQuantity = new System.Windows.Forms.NumericUpDown();
+            this.uQuantityIterations = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uCityQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -79,6 +89,12 @@
             // tabPage1
             // 
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tabPage1.Controls.Add(this.uQuantityIterations);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.uCityQuantity);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.uAntsQuantity);
+            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -140,6 +156,84 @@
             this.startToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.startToolStripMenuItem.Text = "Start";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Ameisen:";
+            // 
+            // uAntsQuantity
+            // 
+            this.uAntsQuantity.Location = new System.Drawing.Point(58, 9);
+            this.uAntsQuantity.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.uAntsQuantity.Name = "uAntsQuantity";
+            this.uAntsQuantity.Size = new System.Drawing.Size(54, 20);
+            this.uAntsQuantity.TabIndex = 2;
+            this.uAntsQuantity.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(118, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Städte:";
+            // 
+            // uCityQuantity
+            // 
+            this.uCityQuantity.Location = new System.Drawing.Point(163, 9);
+            this.uCityQuantity.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.uCityQuantity.Name = "uCityQuantity";
+            this.uCityQuantity.Size = new System.Drawing.Size(54, 20);
+            this.uCityQuantity.TabIndex = 4;
+            this.uCityQuantity.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // uQuantityIterations
+            // 
+            this.uQuantityIterations.Location = new System.Drawing.Point(290, 9);
+            this.uQuantityIterations.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.uQuantityIterations.Name = "uQuantityIterations";
+            this.uQuantityIterations.Size = new System.Drawing.Size(54, 20);
+            this.uQuantityIterations.TabIndex = 6;
+            this.uQuantityIterations.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(231, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Iterationen:";
+            // 
             // mRenderWindow
             // 
             this.mRenderWindow.AccumBits = ((byte)(0));
@@ -169,8 +263,13 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uCityQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,6 +285,12 @@
         private System.Windows.Forms.ToolStripMenuItem beendenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hilfeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown uAntsQuantity;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown uQuantityIterations;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown uCityQuantity;
+        private System.Windows.Forms.Label label2;
     }
 }
 
