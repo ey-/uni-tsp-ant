@@ -1,8 +1,10 @@
-﻿namespace WindowsFormsApplication1
+﻿using System.Collections.Generic;
+namespace WindowsFormsApplication1
 {
     partial class Form1
     {
         private RenderWindow mRenderWindow;
+        private List<CTSPPoint> mCityList;
 
         /// <summary>
         /// Erforderliche Designervariable.
@@ -41,6 +43,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            List < CTSPPoint > asd = new List<CTSPPoint>();
+            this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();

@@ -23,9 +23,12 @@ namespace WindowsFormsApplication1
 
         protected const int NUM_RANDOM_CITYS = 10;
 
-        //protected CVector2f[] mTestCitys;
+      //  protected CVector2f[] mTestCitys;
 
-        protected List<CVector2f> mCityList = new List<CVector2f>();
+        protected List<CTSPPoint> mCityList = null;
+        protected List<CTSPPoint> mBestLocalPath = null;
+        protected List<CTSPPoint> mBestGlobalPath = null;
+
         protected T_BOUNDS mBounds = new T_BOUNDS();
 
         public RenderWindow()
@@ -40,13 +43,29 @@ namespace WindowsFormsApplication1
         {
             Random rand = new Random();
 
-            //mTestCitys = new CVector2f[rand.Next(10)];
+            //mCityList = new CTSPPoint[rand.Next(10)];
+            mCityList = new List<CTSPPoint>();
 
             for (int cityIndex = 0; cityIndex < NUM_RANDOM_CITYS; cityIndex++)
             {
-                mCityList.Add(new CVector2f(rand.Next(1000), rand.Next(1000)));
+                mCityList.Add(new CTSPPoint(rand.Next(1000), rand.Next(1000), ""));
             }
-        }        
+        }
+
+        public void setCityList(List<CTSPPoint> cityList)
+        {
+            mCityList = cityList;
+        }
+
+        public void setBestLocalPath(List<CTSPPoint> bestLocalPath)
+        {
+            mBestLocalPath = bestLocalPath;
+        }
+
+        public void setBestGlobalPath(List<CTSPPoint> bestGlobalPath)
+        {
+            mBestGlobalPath = bestGlobalPath;
+        }
 
         public void render(object sender, EventArgs args)
         {
@@ -55,38 +74,47 @@ namespace WindowsFormsApplication1
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glLoadIdentity();
 
-            Gl.glColor3f(0.0f, 0.0f, 0.0f);
+            drawAllConnections();
 
-            Gl.glPointSize(5);
+            //drawBestPaths();
 
+            drawCitys();
+
+            Gl.glFlush();
+        }
+
+        private void drawAllConnections()
+        {
             Gl.glColor3f(0.8f, 0.8f, 0.8f);
-                       
+
 
             // Linien Zeichnen
             for (int cityIndex = 0; cityIndex < mCityList.Count; cityIndex++)
             {
-                CVector2f fromCity = mCityList[cityIndex];
+                CTSPPoint fromCity = mCityList[cityIndex];
                 for (int connectionToCityIndex = cityIndex + 1; connectionToCityIndex < mCityList.Count; connectionToCityIndex++)
                 {
-                    CVector2f toCity = mCityList[connectionToCityIndex];
+                    CTSPPoint toCity = mCityList[connectionToCityIndex];
                     Gl.glBegin(Gl.GL_LINES);
-                        Gl.glVertex3f(fromCity.x, fromCity.y, 0.0f);
-                        Gl.glVertex3f(toCity.x, toCity.y, 0.0f);
+                    Gl.glVertex3f(fromCity.x, fromCity.y, 0.0f);
+                    Gl.glVertex3f(toCity.x, toCity.y, 0.0f);
                     Gl.glEnd();
                 }
             }
+        }
 
+        private void drawCitys()
+        {
+            Gl.glPointSize(5);
             Gl.glColor3f(0.0f, 0.0f, 0.0f);
 
             // Städte Zeichnen
-            foreach (CVector2f city in mCityList)
+            foreach (CTSPPoint city in mCityList)
             {
                 Gl.glBegin(Gl.GL_POINTS);
-                    Gl.glVertex3f(city.x, city.y, 0.0f);
+                Gl.glVertex3f(city.x, city.y, 0.0f);
                 Gl.glEnd();
             }
-
-            Gl.glFlush();
         }
 
         public void initViewPort()
@@ -110,13 +138,13 @@ namespace WindowsFormsApplication1
             Gl.glOrtho(mBounds.left, mBounds.right, mBounds.bottom, mBounds.top, -100.0f, 100.0f);
         }
 
-        protected T_BOUNDS getBounds(List<CVector2f> citys)
+        protected T_BOUNDS getBounds(List<CTSPPoint> citys)
         {
             T_BOUNDS ret = new T_BOUNDS();
             ret.left = 0;
             ret.bottom = 0;
 
-            foreach (CVector2f city in citys)
+            foreach (CTSPPoint city in citys)
             {
                 if (city.x > ret.right)
                 {
@@ -151,10 +179,10 @@ namespace WindowsFormsApplication1
             // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
             // eingefügt werden kann
             CVector2f mouseClickPos = new CVector2f(mouseArgs.X, this.Height - mouseArgs.Y);
-            
-            CVector2f position = new CVector2f();
-            position.x = mouseClickPos.x / (float)this.Width * (mBounds.right - mBounds.left);
-            position.y = mouseClickPos.y / (float)this.Height * (mBounds.top - mBounds.bottom);
+
+            CTSPPoint position = new CTSPPoint("");
+            position.x = (int)(mouseClickPos.x / (float)this.Width * (mBounds.right - mBounds.left));
+            position.y = (int)(mouseClickPos.y / (float)this.Height * (mBounds.top - mBounds.bottom));
 
             mCityList.Add(position);
             this.Refresh();
