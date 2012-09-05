@@ -50,8 +50,8 @@
             this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabControl1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -90,9 +90,9 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem,
             this.dateiToolStripMenuItem,
-            this.hilfeToolStripMenuItem});
+            this.hilfeToolStripMenuItem,
+            this.startToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(993, 24);
@@ -134,6 +134,12 @@
             this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.startToolStripMenuItem.Text = "Start";
+            // 
             // mRenderWindow
             // 
             this.mRenderWindow.AccumBits = ((byte)(0));
@@ -149,12 +155,6 @@
             this.mRenderWindow.Size = new System.Drawing.Size(898, 311);
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
-            // 
-            // startToolStripMenuItem
-            // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.startToolStripMenuItem.Text = "Start";
             // 
             // Form1
             // 
