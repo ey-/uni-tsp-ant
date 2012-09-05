@@ -22,6 +22,17 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+
+            
+        }
+
+        /// <summary>
+        ///     Methode zum nachinitialisieren des Viewports. Damit wir
+        ///     in einem Fenster Render können
+        /// </summary>
+        protected void postInitialize()
+        {
+            mRenderWindow.initViewPort();
         }
 
         /// <summary>
