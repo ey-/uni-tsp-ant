@@ -6,3 +6,4 @@ Dazu im Projektmappen-Explorer auf den Eintrag "Verweise" rechtsklicken->"Verwei
 Mit dem Reiter "Durchsuchen" die folgenden DLLs hinzufügen:
 	Tao.OpenGl.dll
 	Tao.Plattform.Windows
+ 
