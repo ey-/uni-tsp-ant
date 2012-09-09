@@ -4,7 +4,6 @@ namespace WindowsFormsApplication1
     partial class Form1
     {
         private RenderWindow mRenderWindow;
-        private List<CTSPPoint> mCityList;
 
         /// <summary>
         /// Erforderliche Designervariable.
@@ -109,7 +108,7 @@ namespace WindowsFormsApplication1
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(965, 189);
+            this.tabPage2.Size = new System.Drawing.Size(965, 173);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Statistiken";
             this.tabPage2.UseVisualStyleBackColor = true;
