@@ -21,11 +21,8 @@ namespace WindowsFormsApplication1
             public float bottom;
         }
 
-        protected const int NUM_RANDOM_CITYS = 10;
+        protected const int NUM_RANDOM_CITYS = 3;
 
-      //  protected CVector2f[] mTestCitys;
-
-        protected List<CTSPPoint> mCityList = null;
         protected List<CTSPPoint> mBestLocalPath = null;
         protected List<CTSPPoint> mBestGlobalPath = null;
 
@@ -41,22 +38,20 @@ namespace WindowsFormsApplication1
 
         private void initTestData()
         {
+            // TEMPORÄR - muss woanders realisiert werden
+            /////////////////////////////////////////////
             Random rand = new Random();
-
-            //mCityList = new CTSPPoint[rand.Next(10)];
-            mCityList = new List<CTSPPoint>();
-
+            
             for (int cityIndex = 0; cityIndex < NUM_RANDOM_CITYS; cityIndex++)
             {
-                mCityList.Add(new CTSPPoint(rand.Next(1000), rand.Next(1000), ""));
+
+                CTSPPointList.getInstance().addPoint(new CTSPPoint(rand.Next(1000), rand.Next(1000), ""));
+                //mCityList.Add(new CTSPPoint(rand.Next(1000), rand.Next(1000), ""));
             }
-        }
 
-        public void setCityList(List<CTSPPoint> cityList)
-        {
-            mCityList = cityList;
+            CConnectionList.getInstance().generateFromPointList();
         }
-
+        
         public void setBestLocalPath(List<CTSPPoint> bestLocalPath)
         {
             mBestLocalPath = bestLocalPath;
@@ -67,7 +62,7 @@ namespace WindowsFormsApplication1
             mBestGlobalPath = bestGlobalPath;
         }
 
-        public void render(object sender, EventArgs args)
+        protected void render(object sender, EventArgs args)
         {
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
 
@@ -87,19 +82,23 @@ namespace WindowsFormsApplication1
         {
             Gl.glColor3f(0.8f, 0.8f, 0.8f);
 
+            CConnectionList connList = CConnectionList.getInstance();
 
-            // Linien Zeichnen
-            for (int cityIndex = 0; cityIndex < mCityList.Count; cityIndex++)
+            for (int connectionIndex = 0; connectionIndex < connList.length(); connectionIndex++)
             {
-                CTSPPoint fromCity = mCityList[cityIndex];
-                for (int connectionToCityIndex = cityIndex + 1; connectionToCityIndex < mCityList.Count; connectionToCityIndex++)
-                {
-                    CTSPPoint toCity = mCityList[connectionToCityIndex];
-                    Gl.glBegin(Gl.GL_LINES);
-                    Gl.glVertex3f(fromCity.x, fromCity.y, 0.0f);
-                    Gl.glVertex3f(toCity.x, toCity.y, 0.0f);
-                    Gl.glEnd();
-                }
+                // Verbindung holen
+                CConnection connection = connList.getConnection(connectionIndex);
+                
+                // Eckpunkte bestimmen
+                CTSPPoint sourcePoint = null;
+                CTSPPoint destinationPoint = null;
+                connection.getPoints(out sourcePoint, out destinationPoint);
+
+                // Linien Zeichnen
+                Gl.glBegin(Gl.GL_LINES);
+                Gl.glVertex3f(sourcePoint.x, sourcePoint.y, 0.0f);
+                Gl.glVertex3f(destinationPoint.x, destinationPoint.y, 0.0f);
+                Gl.glEnd();
             }
         }
 
@@ -109,10 +108,14 @@ namespace WindowsFormsApplication1
             Gl.glColor3f(0.0f, 0.0f, 0.0f);
 
             // Städte Zeichnen
-            foreach (CTSPPoint city in mCityList)
+            CTSPPointList pointList = CTSPPointList.getInstance();
+
+            for (int pointIndex = 0; pointIndex < pointList.length(); pointIndex++)
             {
+                CTSPPoint point = pointList.getPoint(pointIndex);
+
                 Gl.glBegin(Gl.GL_POINTS);
-                Gl.glVertex3f(city.x, city.y, 0.0f);
+                Gl.glVertex3f(point.x, point.y, 0.0f);
                 Gl.glEnd();
             }
         }
@@ -125,7 +128,7 @@ namespace WindowsFormsApplication1
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
 
-            mBounds = getBounds(mCityList);
+            mBounds = getBounds(CTSPPointList.getInstance());
 
             mBounds.left -= 5;
             mBounds.right += 5;
@@ -138,14 +141,16 @@ namespace WindowsFormsApplication1
             Gl.glOrtho(mBounds.left, mBounds.right, mBounds.bottom, mBounds.top, -100.0f, 100.0f);
         }
 
-        protected T_BOUNDS getBounds(List<CTSPPoint> citys)
+        protected T_BOUNDS getBounds(CTSPPointList citys)
         {
             T_BOUNDS ret = new T_BOUNDS();
             ret.left = 0;
             ret.bottom = 0;
 
-            foreach (CTSPPoint city in citys)
+            for (int cityIndex = 0; cityIndex < citys.length(); cityIndex++)
             {
+                CTSPPoint city = citys.getPoint(cityIndex);
+
                 if (city.x > ret.right)
                 {
                     ret.right = city.x;
@@ -174,18 +179,23 @@ namespace WindowsFormsApplication1
         {
             System.Windows.Forms.MouseEventArgs mouseArgs = (System.Windows.Forms.MouseEventArgs)args;
 
-            Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
-            // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
-            // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
-            // eingefügt werden kann
-            CVector2f mouseClickPos = new CVector2f(mouseArgs.X, this.Height - mouseArgs.Y);
+            if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
+                // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
+                // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
+                // eingefügt werden kann
+                CVector2f mouseClickPos = new CVector2f(mouseArgs.X, this.Height - mouseArgs.Y);
 
-            CTSPPoint position = new CTSPPoint("");
-            position.x = (int)(mouseClickPos.x / (float)this.Width * (mBounds.right - mBounds.left));
-            position.y = (int)(mouseClickPos.y / (float)this.Height * (mBounds.top - mBounds.bottom));
+                CTSPPoint position = new CTSPPoint("");
+                position.x = (int)(mouseClickPos.x / (float)this.Width * (mBounds.right - mBounds.left));
+                position.y = (int)(mouseClickPos.y / (float)this.Height * (mBounds.top - mBounds.bottom));
 
-            mCityList.Add(position);
-            this.Refresh();
+                CTSPPointList.getInstance().addPoint(position);
+                CConnectionList.getInstance().generateFromPointList();
+                this.Refresh();
+            }
+
         }
     }
 }

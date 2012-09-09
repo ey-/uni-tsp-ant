@@ -79,5 +79,6 @@ namespace WindowsFormsApplication1
             double heuristicPheromonUpdateValue = ((double)trackBarheuristicPheromonUpdate.Value / 1000);
             labelheuristicPheromonUpdate.Text = heuristicPheromonUpdateValue.ToString();
         }
+
     }
 }
