@@ -79,6 +79,7 @@ namespace WindowsFormsApplication1
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
+            this.openTspFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBoxAntsAlgorithym.SuspendLayout();
@@ -137,7 +138,7 @@ namespace WindowsFormsApplication1
             // 
             // tThreshold
             // 
-            this.tThreshold.Location = new System.Drawing.Point(698, 10);
+            this.tThreshold.Location = new System.Drawing.Point(838, 10);
             this.tThreshold.Name = "tThreshold";
             this.tThreshold.Size = new System.Drawing.Size(55, 20);
             this.tThreshold.TabIndex = 11;
@@ -147,7 +148,7 @@ namespace WindowsFormsApplication1
             // labelThreshold
             // 
             this.labelThreshold.AutoSize = true;
-            this.labelThreshold.Location = new System.Drawing.Point(614, 15);
+            this.labelThreshold.Location = new System.Drawing.Point(754, 15);
             this.labelThreshold.Name = "labelThreshold";
             this.labelThreshold.Size = new System.Drawing.Size(79, 13);
             this.labelThreshold.TabIndex = 10;
@@ -160,11 +161,11 @@ namespace WindowsFormsApplication1
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Anzahl Iterationen erreicht",
-            "Schwellenwert für Tourlänge",
-            "Lösung gefunden"});
+            "Schwellenwert für Tourlänge oder Anzahl Iterationen erreicht",
+            "Lösung gefunden oder Anzahl Iterationen erreicht"});
             this.comboBox1.Location = new System.Drawing.Point(450, 10);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 21);
+            this.comboBox1.Size = new System.Drawing.Size(269, 21);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.Text = "Anzahl Iterationen erreicht";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -462,6 +463,7 @@ namespace WindowsFormsApplication1
             this.öffnenToolStripMenuItem.Name = "öffnenToolStripMenuItem";
             this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.öffnenToolStripMenuItem.Text = "Öffnen";
+            this.öffnenToolStripMenuItem.Click += new System.EventHandler(this.öffnenToolStripMenuItem_Click);
             // 
             // speichernToolStripMenuItem
             // 
@@ -503,6 +505,10 @@ namespace WindowsFormsApplication1
             this.mRenderWindow.Size = new System.Drawing.Size(898, 311);
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
+            // 
+            // openTspFileDialog1
+            // 
+            this.openTspFileDialog1.Filter = "TSP-Dateien|*.tsp";
             // 
             // Form1
             // 
@@ -572,6 +578,7 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.Label labelheuristicPheromonUpdate;
         private System.Windows.Forms.TrackBar trackBarheuristicPheromonUpdate;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.OpenFileDialog openTspFileDialog1;
     }
 }
 
