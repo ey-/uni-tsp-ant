@@ -92,57 +92,10 @@ namespace WindowsFormsApplication1
             
             mFile = inputFile;
             mFileHeader = new T_TsPFileHeader();
-            mFileHeader.dimension = 0;
-            
-
-            /*
-            using (StreamReader reader = new System.IO.StreamReader(mFile))
-                {
-                    String actualLine=reader.ReadLine();
-                    CTSPPointList loadedCtsPointList = new CTSPPointList();
-                                               
-                    
-                    while (!(actualLine == "NODE_COORD_SECTION"))
-                    {
-                        actualLine = reader.ReadLine();
-
-                        if (actualLine.Split(new Char[] { ' ' })[0] == "EDGE_WEIGHT_TYPE")
-                        {
-                            string[] actualLineSplit = actualLine.Split(new Char[] { ' ' });
-                            switch (actualLineSplit[1])
-                            {
-                                case "":
-                            }
-                        }
-
-
-                    }
-
-                    
-                    while (!(reader.EndOfStream))
-                    {              
-                        actualLine = reader.ReadLine();
-                            
-                        if ((!(actualLine == "EOF")) || (!(actualLine== ""))) 
-                        {
-                            actualLine=actualLine.Trim();
-                            string[] actualLineSplit = actualLine.Split(new Char[] { ' ' });
-
-                          //  for (int i=0; i < actualLineSplit.Length; i++)
-                           // {
-                            double pointX = (double)double.Parse(actualLineSplit[1],System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
-                            double pointY = (double)double.Parse(actualLineSplit[2], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
-                            string index = actualLineSplit[0];
-                            MessageBox.Show("Punkt mit dem I4ndex" + index + "mit den Punkten X=" + pointX + " und Y=" + pointY);                             
-                           // loadedCtsPointList.addPoint(new CTSPPoint(pointX,pointY,index);
-                          //  }
-                        }
-                    }
-
-                }
-                myResult.Close();
-            */
-            
+            mFileHeader.dimension = 0; //default Dimension
+            mFileHeader.nodeCoordType = E_NodeCoordType.E_NO_COORDS; //default nodeCoordType
+            mFileHeader.displayDataType = E_DisplayDataType.E_NO_DISPLAY; //default displaydatatype
+                      
         }
 
         /// <summary>
@@ -271,9 +224,11 @@ namespace WindowsFormsApplication1
             {
                 case "TWOD_COORDS":
                     mFileHeader.nodeCoordType = E_NodeCoordType.E_2DCOORDS;
+                    mFileHeader.displayDataType = E_DisplayDataType.E_COORD_DISPLAY; //default displayDataType if noordCoords are specified, here it is
                     break;
                 case "THREED_COORDS":
                     mFileHeader.nodeCoordType = E_NodeCoordType.E_3DCOORDS;
+                    mFileHeader.displayDataType = E_DisplayDataType.E_COORD_DISPLAY; //default displayDataType if noordCoords are specified, here it is
                     break;
                 default:
                     mFileHeader.nodeCoordType = E_NodeCoordType.E_NO_COORDS;
