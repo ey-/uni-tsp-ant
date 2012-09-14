@@ -71,6 +71,17 @@ namespace WindowsFormsApplication1
             return null;
         }
 
+        public override string ToString()
+        {
+            String output = "";
+            for (int i = 0; i < length(); i++)
+            {
+                output += getPoint(i).ToString();
+                output += "\n";
+            }
+            return output;
+        }
+
         /// <summary>
         /// Löscht einen Punkt anhand des Index in der Liste
         /// </summary>

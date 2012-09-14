@@ -89,33 +89,12 @@ namespace WindowsFormsApplication1
                 // Open the selected file to read.
                 System.IO.Stream myResult = openTspFileDialog1.OpenFile();
 
-                using (System.IO.StreamReader reader = new System.IO.StreamReader(myResult))
-                {
-                    String actualLine;
-                    CTSPPointList loadedCtsPointList = new CTSPPointList();
-                    while (!(reader.ReadLine() == "NODE_COORD_SECTION"))
-                    { }
-                    while (!(reader.EndOfStream))
-                    {              
-                        actualLine = reader.ReadLine();
-    
-                        if (!(actualLine == "EOF"))
-                        {
-                            string[] actualLineSplit = actualLine.Split(new Char[] { ' ' });
-
-                          //  for (int i=0; i < actualLineSplit.Length; i++)
-                           // {
-                            double pointX = (double)double.Parse(actualLineSplit[1],System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
-                            double pointY = (double)double.Parse(actualLineSplit[2], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
-                            string index = actualLineSplit[0];
-                            MessageBox.Show("Punkt mit dem Index" + index + "mit den Punkten X=" + pointX + " und Y=" + pointY);                             
-                           // loadedCtsPointList.addPoint(new CTSPPoint(pointX,pointY,index);
-                          //  }
-                        }
-                    }
-
-                }
+                CTSPLibFileParser fileParser = new CTSPLibFileParser(myResult);
+                fileParser.fillTSPPointList();
+                //MessageBox.Show(CTSPPointList.getInstance().ToString());
                 myResult.Close();
+                mRenderWindow.initViewPort();
+                mRenderWindow.Refresh();
 
             }
         }
