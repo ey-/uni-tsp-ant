@@ -15,10 +15,10 @@ namespace WindowsFormsApplication1
     {
         protected struct T_BOUNDS
         {
-            public float left;
-            public float right;
-            public float top;
-            public float bottom;
+            public double left;
+            public double right;
+            public double top;
+            public double bottom;
         }
 
         protected const int NUM_RANDOM_CITYS = 3;
@@ -96,8 +96,8 @@ namespace WindowsFormsApplication1
 
                 // Linien Zeichnen
                 Gl.glBegin(Gl.GL_LINES);
-                Gl.glVertex3f(sourcePoint.x, sourcePoint.y, 0.0f);
-                Gl.glVertex3f(destinationPoint.x, destinationPoint.y, 0.0f);
+                Gl.glVertex3d(sourcePoint.x, sourcePoint.y, 0.0f);
+                Gl.glVertex3d(destinationPoint.x, destinationPoint.y, 0.0f);
                 Gl.glEnd();
             }
         }
@@ -115,7 +115,7 @@ namespace WindowsFormsApplication1
                 CTSPPoint point = pointList.getPoint(pointIndex);
 
                 Gl.glBegin(Gl.GL_POINTS);
-                Gl.glVertex3f(point.x, point.y, 0.0f);
+                Gl.glVertex3d(point.x, point.y, 0.0f);
                 Gl.glEnd();
             }
         }
