@@ -211,12 +211,22 @@ namespace WindowsFormsApplication1
             int i = 1;
             if (mFileHeader.dimension == 0)
             {
-                mFileHeader.dimension = Int16.MaxValue;
+                mFileHeader.dimension = Int32.MaxValue;
             }
             while ((!(actualLine == "EOF")) && (i<mFileHeader.dimension))
             {
                 actualLine = actualLine.Trim();
                 string[] actualLineSplit = actualLine.Split(new Char[] { ' ' });
+                int j=0;
+                while (j < 3)       //wir brauchen nur 3 Werte, Rest wird ignoriert
+                {
+                    if (actualLineSplit[j] == "")
+                    {
+                        moveStringArray(actualLineSplit, j); // verschiebe das Array um 1 nach Links wenn ein Leerzeichen enthalten ist.
+                    }
+                    j++;
+                }
+
                 double pointX = double.Parse(actualLineSplit[1], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
                 double pointY = double.Parse(actualLineSplit[2], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
                 string index = actualLineSplit[0];
@@ -227,6 +237,16 @@ namespace WindowsFormsApplication1
             }
             
         }
+
+        private void moveStringArray(string[] actualLineSplit, int j)
+        {
+            for (int i = j; i < actualLineSplit.Length-1; i++)
+            {
+                actualLineSplit[i] = actualLineSplit[i + 1];
+            }
+        }
+
+
 
         private void handleDisplayDataType(string displayDataType)
         {
