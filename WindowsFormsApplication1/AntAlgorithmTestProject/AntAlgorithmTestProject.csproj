@@ -48,6 +48,7 @@
     <Compile Include="CTestTSPPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CTestTSPPointList.cs" />
+    <Compile Include="CTestTSPLibFileParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WindowsFormsApplication1\WindowsFormsApplication1.csproj">
