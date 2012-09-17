@@ -90,7 +90,7 @@ namespace WindowsFormsApplication1
         public void delete(int index)
         {
             // out of Bounds?
-            if ((index >= 0) && (index >= mPointList.Count))
+            if ((index >= 0) && (index < mPointList.Count))
             {
                 mPointList.Remove(mPointList[index]);
             }
