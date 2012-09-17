@@ -25,11 +25,11 @@ namespace AntAlgorithmTestProject
 
         protected void testTSPFileParser(string fileAdress,int pointToCheck,double expectedX,double expectedY)
         {
-            Stream file =new FileStream(fileAdress, FileMode.Open);
+            Stream file = new FileStream(fileAdress, FileMode.Open);
             CTSPLibFileParser fileParser = new CTSPLibFileParser(file);
             fileParser.fillTSPPointList();
             file.Close();
-            CTSPPoint readPoint=CTSPPointList.getInstance().getPoint(pointToCheck);
+            CTSPPoint readPoint = CTSPPointList.getInstance().getPoint(pointToCheck);
 
             Assert.IsTrue(expectedX == readPoint.x, "X-Wert wurde falsch eingelesen");
             Assert.IsTrue(expectedY == readPoint.y, "Y-Wert wurde falsch eingelesen");

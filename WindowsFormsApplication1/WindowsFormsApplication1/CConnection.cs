@@ -75,6 +75,12 @@ namespace WindowsFormsApplication1
         public void addPheromone(double additionalPheromone)
         {
             mPheromone += additionalPheromone;
+
+            // keine negativen Pheromonwerte zulassen
+            if (mPheromone < 0)
+            {
+                mPheromone = 0;
+            }
         }
 
         public void getPoints(out CTSPPoint tspPoint1, out CTSPPoint tspPoint2)
