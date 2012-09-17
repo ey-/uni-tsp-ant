@@ -170,15 +170,7 @@ namespace WindowsFormsApplication1
             {
                 actualLine = actualLine.Trim();
                 string[] actualLineSplit = actualLine.Split(new Char[] { ' ' });
-                int j=0;
-                while (j < 3)       //wir brauchen nur 3 Werte, Rest wird ignoriert
-                {
-                    if (actualLineSplit[j] == "")
-                    {
-                        moveStringArray(actualLineSplit, j); // verschiebe das Array um 1 nach Links wenn ein Leerzeichen enthalten ist.
-                    }
-                    j++;
-                }
+                removeSpacesInString(actualLineSplit);
 
                 double pointX = double.Parse(actualLineSplit[1], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
                 double pointY = double.Parse(actualLineSplit[2], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
@@ -189,6 +181,19 @@ namespace WindowsFormsApplication1
                 i++;
             }
             
+        }
+
+        private void removeSpacesInString(string[] actualLineSplit)
+        {
+            int j = 0;
+            while (j < 3)       //wir brauchen nur 3 Werte, Rest wird ignoriert
+            {
+                if (actualLineSplit[j] == "")
+                {
+                    moveStringArray(actualLineSplit, j); // verschiebe das Array um 1 nach Links wenn ein Leerzeichen enthalten ist.
+                }
+                j++;
+            }
         }
 
         private void moveStringArray(string[] actualLineSplit, int j)
