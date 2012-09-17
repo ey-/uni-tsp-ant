@@ -47,7 +47,7 @@
   <ItemGroup>
     <Compile Include="CTestTSPPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="CTestTSPPointList.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WindowsFormsApplication1\WindowsFormsApplication1.csproj">

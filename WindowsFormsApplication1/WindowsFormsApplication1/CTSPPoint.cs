@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1
         /// Konstruktor
         /// </summary>
         /// <param name="label">Label des Punktes</param>
-        public CTSPPoint(string label)
+        public CTSPPoint(string label = "")
         {
             mLabel = label;
         }
@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
         /// <param name="inX">X-Koordinate des Punktes</param>
         /// <param name="inY">Y-Koordinate des Punktes</param>
         /// <param name="label">Labes des Punktes</param>
-        public CTSPPoint(double inX, double inY, string label)
+        public CTSPPoint(double inX, double inY, string label = ""  )
         {
             x = inX;
             y = inY;

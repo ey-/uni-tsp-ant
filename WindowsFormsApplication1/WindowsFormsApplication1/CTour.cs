@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-    class CTour
+    public class CTour
     {
 
         private CTSPPointList _points;

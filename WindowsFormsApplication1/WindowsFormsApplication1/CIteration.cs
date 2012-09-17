@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-    class CIteration
+    public class CIteration
     {
         private double _averageTourLength;
         private CTour _shortestTour;
