@@ -2,52 +2,65 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace WindowsFormsApplication1
 {
-    public class CIterationList
+    public class CIterationList : IEnumerable
     {
-        private List<CIteration> _iterationList =  new List<CIteration>();
+        private List<CIteration> mIterationList =  new List<CIteration>();
 
         public int Add(CIteration iteration)
         {
-            _iterationList.Add(iteration);
-            return _iterationList.Count();
+            mIterationList.Add(iteration);
+            return mIterationList.Count();
         }
 
         public void Clear()
         {
-            _iterationList.Clear();
+            mIterationList.Clear();
         }
 
         public List<CIteration> Instance()
         {
-            return _iterationList;
+            return mIterationList;
         }
 
         public CIteration Last()
         {
-            return _iterationList.Last();
+            return mIterationList.Last();
         }
 
         public double GlobalAverageTourLength()
         {
             var avg = 0.0;
-            for (var i = 0; i < _iterationList.Count; i++)
-                avg += (_iterationList[i].AverageTourLength / _iterationList.Count);
+            for (var i = 0; i < mIterationList.Count; i++)
+                avg += (mIterationList[i].AverageTourLength / mIterationList.Count);
             return avg;
         }
 
         public CTour GlobalBestTour()
         {
-            CTour bestTour = _iterationList[0].ShortestTour;
-            for (var i = 1; i < _iterationList.Count; i++)
+            CTour bestTour = mIterationList[0].ShortestTour;
+            for (var i = 1; i < mIterationList.Count; i++)
             {
-                var currentTour = _iterationList[i].ShortestTour;
+                var currentTour = mIterationList[i].ShortestTour;
                 if (currentTour.Length < bestTour.Length)
                     bestTour = currentTour;
             }
             return bestTour;
+        }
+
+        /// <summary>
+        /// Methode zum iterieren mit foreach
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            for (int index = 0; index < mIterationList.Count; index++)
+            {
+                yield return mIterationList[index];
+            }
         }
     }
 }

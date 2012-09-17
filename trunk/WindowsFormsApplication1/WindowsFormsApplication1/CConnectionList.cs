@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace WindowsFormsApplication1
 {
-    public class CConnectionList
+    public class CConnectionList : IEnumerable
     {
         // Instanz dieses Singleton
         protected static CConnectionList mInstance = new CConnectionList();
@@ -144,6 +145,18 @@ namespace WindowsFormsApplication1
 
             // die Liste der Verbindungen für den Punkt zurückgeben
             return ret;
+        }
+
+        /// <summary>
+        /// Methode zum iterieren mit foreach
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            for (int index = 0; index < length(); index++)
+            {
+                yield return mConnectionList[index];
+            }
         }
 
     }
