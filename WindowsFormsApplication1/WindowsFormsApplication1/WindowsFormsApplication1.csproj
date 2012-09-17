@@ -78,7 +78,6 @@
     <Compile Include="CTSPLibFileParser.cs" />
     <Compile Include="CTSPPointList.cs" />
     <Compile Include="CTSPPoint.cs" />
-    <Compile Include="CVector2f.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -185,11 +185,12 @@ namespace WindowsFormsApplication1
                 // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
                 // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
                 // eingefügt werden kann
-                CVector2f mouseClickPos = new CVector2f(mouseArgs.X, this.Height - mouseArgs.Y);
+                float mouseX = mouseArgs.X;
+                float mouseY = this.Height - mouseArgs.Y;
 
                 CTSPPoint position = new CTSPPoint("");
-                position.x = (int)(mouseClickPos.x / (float)this.Width * (mBounds.right - mBounds.left));
-                position.y = (int)(mouseClickPos.y / (float)this.Height * (mBounds.top - mBounds.bottom));
+                position.x = (int)(mouseX / (float)this.Width * (mBounds.right - mBounds.left));
+                position.y = (int)(mouseY / (float)this.Height * (mBounds.top - mBounds.bottom));
 
                 CTSPPointList.getInstance().addPoint(position);
                 CConnectionList.getInstance().generateFromPointList();
