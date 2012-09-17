@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-    class CIterationList
+    public class CIterationList
     {
         private List<CIteration> _iterationList =  new List<CIteration>();
 

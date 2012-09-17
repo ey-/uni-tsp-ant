@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-    class CConnectionList
+    public class CConnectionList
     {
         // Instanz dieses Singleton
         protected static CConnectionList mInstance = new CConnectionList();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-    class CConnection
+    public class CConnection
     {
         protected CTSPPoint mTSPPoint1;
         protected CTSPPoint mTSPPoint2;

@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace WindowsFormsApplication1
 {
-    class CTSPPointList :  IEnumerable
+    public class CTSPPointList :  IEnumerable
     {
         // Instanz des Singleton
         static CTSPPointList mInstance = new CTSPPointList();

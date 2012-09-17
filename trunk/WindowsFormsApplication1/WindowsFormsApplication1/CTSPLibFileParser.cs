@@ -6,7 +6,7 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-    class CTSPLibFileParser
+    public class CTSPLibFileParser
     {
         protected Stream mFile = null;
         protected T_TsPFileHeader mFileHeader;
