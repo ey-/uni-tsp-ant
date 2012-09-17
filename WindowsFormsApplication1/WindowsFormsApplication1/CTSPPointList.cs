@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace WindowsFormsApplication1
 {
-    class CTSPPointList
+    class CTSPPointList :  IEnumerable
     {
         // Instanz des Singleton
         static CTSPPointList mInstance = new CTSPPointList();
@@ -119,6 +120,18 @@ namespace WindowsFormsApplication1
         public int length()
         {
             return mPointList.Count();
+        }
+
+        /// <summary>
+        /// Methode zum iterieren mit foreach
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            for (int index = 0; index < length(); index++)
+            {
+                yield return mPointList[index];
+            }
         }
     }
 }
