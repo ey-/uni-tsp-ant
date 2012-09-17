@@ -84,11 +84,29 @@ namespace WindowsFormsApplication1
 
             CConnectionList connList = CConnectionList.getInstance();
 
-            for (int connectionIndex = 0; connectionIndex < connList.length(); connectionIndex++)
+            // zuerst bestimmen wie hoch der höchste Pheromonwert aller Verbindungen ist
+            // damit wir beim zeichnen der Verbindungen diese Abhängig von ihrem Wert, dunkler 
+            // oder heller zeichnen können
+            double highestPhermone = 0;
+            foreach (CConnection connection in connList)
             {
-                // Verbindung holen
-                CConnection connection = connList.getConnection(connectionIndex);
-                
+                if (connection.getPheromone() > highestPhermone)
+                {
+                    highestPhermone = connection.getPheromone();
+                }
+            }
+
+            // Verbindungen Zeichnen
+            foreach (CConnection connection in connList)
+            {                
+                // Farbe abhängig vom Pheromonwert der Verbindung setzen
+                // => hohe Werte werden dunkel dagestellt
+                // => niedrige hell
+                double color = connection.getPheromone() / highestPhermone;
+                // Die Verbindungen sollen immer sichtbar bleiben auch wenn sie sehr geringe Pheromonwerte haben
+                if (color < 0.1) color = 0.1;
+                Gl.glColor3d(color, color, color);
+
                 // Eckpunkte bestimmen
                 CTSPPoint sourcePoint = null;
                 CTSPPoint destinationPoint = null;

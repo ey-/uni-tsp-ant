@@ -25,7 +25,7 @@ namespace AntAlgorithmTestProject
         [TestMethod]
         public void insertTest()
         {
-            CTSPPointList pointlist = getCleanedPointList();
+            CTSPPointList pointlist = CTSPPointList.getInstance();
             pointlist.deleteAll();
             
             pointlist.addPoint(TEST_POINT_1);
@@ -48,7 +48,7 @@ namespace AntAlgorithmTestProject
         [TestMethod]
         public void deleteAllTest()
         {
-            CTSPPointList pointlist = getCleanedPointList();
+            CTSPPointList pointlist = CTSPPointList.getInstance();
 
             pointlist.addPoint(TEST_POINT_1);
             pointlist.addPoint(TEST_POINT_2);
@@ -66,7 +66,7 @@ namespace AntAlgorithmTestProject
         [TestMethod]
         public void testDeleteSingleEntry()
         {
-            CTSPPointList pointlist = getCleanedPointList();
+            CTSPPointList pointlist = CTSPPointList.getInstance();
 
             pointlist.addPoint(TEST_POINT_1);
             pointlist.addPoint(TEST_POINT_2);
@@ -87,7 +87,7 @@ namespace AntAlgorithmTestProject
         [TestMethod]
         public void testDeleteSpecificPoint()
         {
-            CTSPPointList pointlist = getCleanedPointList();
+            CTSPPointList pointlist = CTSPPointList.getInstance();
 
             pointlist.addPoint(TEST_POINT_1);
             pointlist.addPoint(TEST_POINT_2);
@@ -111,7 +111,7 @@ namespace AntAlgorithmTestProject
         [TestMethod]
         public void testDeletePointNotExistent()
         {
-            CTSPPointList pointlist = getCleanedPointList();
+            CTSPPointList pointlist = CTSPPointList.getInstance();
 
             pointlist.addPoint(TEST_POINT_1);
             pointlist.addPoint(TEST_POINT_2);
@@ -133,7 +133,7 @@ namespace AntAlgorithmTestProject
         [TestMethod]
         public void lengthTest()
         {
-            CTSPPointList pointlist = getCleanedPointList();
+            CTSPPointList pointlist = CTSPPointList.getInstance();
 
             for (int i = 0; i < 1000; i++)
             {
@@ -148,7 +148,7 @@ namespace AntAlgorithmTestProject
         [TestMethod]
         public void copyTest()
         {
-            CTSPPointList pointlist = getCleanedPointList();
+            CTSPPointList pointlist = CTSPPointList.getInstance();
 
             pointlist.addPoint(TEST_POINT_1);
             pointlist.addPoint(TEST_POINT_2);
@@ -161,10 +161,16 @@ namespace AntAlgorithmTestProject
             Assert.IsTrue(pointlist.length() == copy.length());
         }
 
-        protected CTSPPointList getCleanedPointList()
+        [TestInitialize]
+        public void initTest()
+        {
+            cleanTest();
+        }
+
+        [TestCleanup]
+        public void cleanTest()
         {
             CTSPPointList.getInstance().deleteAll();
-            return CTSPPointList.getInstance();
         }
     }
 }

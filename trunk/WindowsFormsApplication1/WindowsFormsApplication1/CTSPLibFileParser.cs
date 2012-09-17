@@ -115,7 +115,8 @@ namespace WindowsFormsApplication1
              String actualLine=reader.ReadLine();
              while (!(actualLine == "EOF"))
              {
-                 actualLine = reader.ReadLine().Trim().Replace(" ","");                 
+                 string readLine = reader.ReadLine();
+                 actualLine = readLine.Trim().Replace(" ","");                 
                  string[] actualLineSplit = actualLine.Split(new Char[] { ':' });
 
                  switch (actualLineSplit[0])
@@ -148,7 +149,7 @@ namespace WindowsFormsApplication1
                          handleDisplayDataType(actualLineSplit[1]);
                          break;
                      case "NODE_COORD_SECTION":
-                         handleNodeCoordSection(reader);
+                         actualLine = handleNodeCoordSection(reader);
                          break;
                          
                  }
@@ -158,7 +159,7 @@ namespace WindowsFormsApplication1
                 
         }
 
-        private void handleNodeCoordSection(StreamReader reader)
+        private string handleNodeCoordSection(StreamReader reader)
         {
             String actualLine=reader.ReadLine();
             int i = 1;
@@ -166,7 +167,7 @@ namespace WindowsFormsApplication1
             {
                 mFileHeader.dimension = Int32.MaxValue;
             }
-            while ((!(actualLine == "EOF")) && (i<mFileHeader.dimension))
+            while ((!(actualLine == "EOF")) && (i <= mFileHeader.dimension))
             {
                 actualLine = actualLine.Trim();
                 string[] actualLineSplit = actualLine.Split(new Char[] { ' ' });
@@ -180,7 +181,8 @@ namespace WindowsFormsApplication1
                 actualLine = reader.ReadLine();
                 i++;
             }
-            
+
+            return actualLine;
         }
 
         private void removeSpacesInString(string[] actualLineSplit)
