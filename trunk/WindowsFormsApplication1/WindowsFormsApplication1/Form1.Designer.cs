@@ -43,7 +43,6 @@ namespace WindowsFormsApplication1
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tThreshold = new System.Windows.Forms.TextBox();
             this.labelThreshold = new System.Windows.Forms.Label();
@@ -96,23 +95,12 @@ namespace WindowsFormsApplication1
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(9, 367);
+            this.tabControl1.Location = new System.Drawing.Point(7, 495);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(973, 199);
+            this.tabControl1.Size = new System.Drawing.Size(832, 199);
             this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(965, 173);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Statistiken";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -131,14 +119,14 @@ namespace WindowsFormsApplication1
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(965, 173);
+            this.tabPage1.Size = new System.Drawing.Size(824, 173);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Parameter";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tThreshold
             // 
-            this.tThreshold.Location = new System.Drawing.Point(838, 10);
+            this.tThreshold.Location = new System.Drawing.Point(758, 10);
             this.tThreshold.Name = "tThreshold";
             this.tThreshold.Size = new System.Drawing.Size(55, 20);
             this.tThreshold.TabIndex = 11;
@@ -148,7 +136,7 @@ namespace WindowsFormsApplication1
             // labelThreshold
             // 
             this.labelThreshold.AutoSize = true;
-            this.labelThreshold.Location = new System.Drawing.Point(754, 15);
+            this.labelThreshold.Location = new System.Drawing.Point(674, 15);
             this.labelThreshold.Name = "labelThreshold";
             this.labelThreshold.Size = new System.Drawing.Size(79, 13);
             this.labelThreshold.TabIndex = 10;
@@ -163,7 +151,7 @@ namespace WindowsFormsApplication1
             "Anzahl Iterationen erreicht",
             "Schwellenwert für Tourlänge oder Anzahl Iterationen erreicht",
             "Lösung gefunden oder Anzahl Iterationen erreicht"});
-            this.comboBox1.Location = new System.Drawing.Point(450, 10);
+            this.comboBox1.Location = new System.Drawing.Point(397, 10);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(269, 21);
             this.comboBox1.TabIndex = 9;
@@ -173,7 +161,7 @@ namespace WindowsFormsApplication1
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(375, 14);
+            this.label4.Location = new System.Drawing.Point(322, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 8;
@@ -198,7 +186,7 @@ namespace WindowsFormsApplication1
             this.groupBoxAntsAlgorithym.Controls.Add(this.label6);
             this.groupBoxAntsAlgorithym.Location = new System.Drawing.Point(9, 40);
             this.groupBoxAntsAlgorithym.Name = "groupBoxAntsAlgorithym";
-            this.groupBoxAntsAlgorithym.Size = new System.Drawing.Size(944, 126);
+            this.groupBoxAntsAlgorithym.Size = new System.Drawing.Size(804, 126);
             this.groupBoxAntsAlgorithym.TabIndex = 7;
             this.groupBoxAntsAlgorithym.TabStop = false;
             this.groupBoxAntsAlgorithym.Text = "Ameisenalgorithmus";
@@ -206,7 +194,7 @@ namespace WindowsFormsApplication1
             // labelheuristicPheromonUpdate
             // 
             this.labelheuristicPheromonUpdate.AutoSize = true;
-            this.labelheuristicPheromonUpdate.Location = new System.Drawing.Point(601, 60);
+            this.labelheuristicPheromonUpdate.Location = new System.Drawing.Point(566, 60);
             this.labelheuristicPheromonUpdate.Name = "labelheuristicPheromonUpdate";
             this.labelheuristicPheromonUpdate.Size = new System.Drawing.Size(34, 13);
             this.labelheuristicPheromonUpdate.TabIndex = 17;
@@ -215,7 +203,7 @@ namespace WindowsFormsApplication1
             // trackBarheuristicPheromonUpdate
             // 
             this.trackBarheuristicPheromonUpdate.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBarheuristicPheromonUpdate.Location = new System.Drawing.Point(634, 48);
+            this.trackBarheuristicPheromonUpdate.Location = new System.Drawing.Point(599, 48);
             this.trackBarheuristicPheromonUpdate.Maximum = 10000;
             this.trackBarheuristicPheromonUpdate.Minimum = 1;
             this.trackBarheuristicPheromonUpdate.Name = "trackBarheuristicPheromonUpdate";
@@ -228,7 +216,7 @@ namespace WindowsFormsApplication1
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(438, 55);
+            this.label10.Location = new System.Drawing.Point(403, 55);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(117, 26);
             this.label10.TabIndex = 15;
@@ -237,7 +225,7 @@ namespace WindowsFormsApplication1
             // labelinitialPheromon
             // 
             this.labelinitialPheromon.AutoSize = true;
-            this.labelinitialPheromon.Location = new System.Drawing.Point(601, 21);
+            this.labelinitialPheromon.Location = new System.Drawing.Point(566, 21);
             this.labelinitialPheromon.Name = "labelinitialPheromon";
             this.labelinitialPheromon.Size = new System.Drawing.Size(34, 13);
             this.labelinitialPheromon.TabIndex = 14;
@@ -246,7 +234,7 @@ namespace WindowsFormsApplication1
             // trackBarinitialPheromon
             // 
             this.trackBarinitialPheromon.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBarinitialPheromon.Location = new System.Drawing.Point(634, 9);
+            this.trackBarinitialPheromon.Location = new System.Drawing.Point(599, 9);
             this.trackBarinitialPheromon.Maximum = 10000;
             this.trackBarinitialPheromon.Minimum = 1;
             this.trackBarinitialPheromon.Name = "trackBarinitialPheromon";
@@ -259,7 +247,7 @@ namespace WindowsFormsApplication1
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(436, 21);
+            this.label9.Location = new System.Drawing.Point(401, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(119, 13);
             this.label9.TabIndex = 12;
@@ -360,14 +348,14 @@ namespace WindowsFormsApplication1
             // 
             // uQuantityIterations
             // 
-            this.uQuantityIterations.Location = new System.Drawing.Point(290, 9);
+            this.uQuantityIterations.Location = new System.Drawing.Point(269, 9);
             this.uQuantityIterations.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.uQuantityIterations.Name = "uQuantityIterations";
-            this.uQuantityIterations.Size = new System.Drawing.Size(54, 20);
+            this.uQuantityIterations.Size = new System.Drawing.Size(43, 20);
             this.uQuantityIterations.TabIndex = 6;
             this.uQuantityIterations.Value = new decimal(new int[] {
             100,
@@ -378,7 +366,7 @@ namespace WindowsFormsApplication1
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(231, 13);
+            this.label3.Location = new System.Drawing.Point(208, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 5;
@@ -386,14 +374,14 @@ namespace WindowsFormsApplication1
             // 
             // uCityQuantity
             // 
-            this.uCityQuantity.Location = new System.Drawing.Point(163, 9);
+            this.uCityQuantity.Location = new System.Drawing.Point(154, 10);
             this.uCityQuantity.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.uCityQuantity.Name = "uCityQuantity";
-            this.uCityQuantity.Size = new System.Drawing.Size(54, 20);
+            this.uCityQuantity.Size = new System.Drawing.Size(44, 20);
             this.uCityQuantity.TabIndex = 4;
             this.uCityQuantity.Value = new decimal(new int[] {
             100,
@@ -404,7 +392,7 @@ namespace WindowsFormsApplication1
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(118, 13);
+            this.label2.Location = new System.Drawing.Point(111, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 3;
@@ -419,7 +407,7 @@ namespace WindowsFormsApplication1
             0,
             0});
             this.uAntsQuantity.Name = "uAntsQuantity";
-            this.uAntsQuantity.Size = new System.Drawing.Size(54, 20);
+            this.uAntsQuantity.Size = new System.Drawing.Size(44, 20);
             this.uAntsQuantity.TabIndex = 2;
             this.uAntsQuantity.Value = new decimal(new int[] {
             100,
@@ -444,7 +432,7 @@ namespace WindowsFormsApplication1
             this.startToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(993, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1046, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -502,7 +490,7 @@ namespace WindowsFormsApplication1
             this.mRenderWindow.DepthBits = ((byte)(16));
             this.mRenderWindow.Location = new System.Drawing.Point(9, 27);
             this.mRenderWindow.Name = "mRenderWindow";
-            this.mRenderWindow.Size = new System.Drawing.Size(898, 311);
+            this.mRenderWindow.Size = new System.Drawing.Size(1025, 445);
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
             // 
@@ -514,7 +502,7 @@ namespace WindowsFormsApplication1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 571);
+            this.ClientSize = new System.Drawing.Size(1046, 702);
             this.Controls.Add(this.mRenderWindow);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
@@ -543,7 +531,6 @@ namespace WindowsFormsApplication1
         }
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
