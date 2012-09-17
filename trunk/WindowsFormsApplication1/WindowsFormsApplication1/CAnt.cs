@@ -48,7 +48,7 @@ namespace WindowsFormsApplication1
             double dAlpha = 0;
             double currentBestDistance = 0;
 
-            foreach (var p in _pointsToVisit)
+            /*foreach (var p in _pointsToVisit)
             {
                 var distance = CConnectionList.getInstance().getConnection(_currentPoint,p).getDistance();
                 dSumChanceValue = Math.Pow((1 / distance), dAlpha);
@@ -60,7 +60,7 @@ namespace WindowsFormsApplication1
                     _currentPoint = p;
                 }
 
-            }
+            }*/
 
 
         }
