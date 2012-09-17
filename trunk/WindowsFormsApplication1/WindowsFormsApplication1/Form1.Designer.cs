@@ -44,9 +44,10 @@ namespace WindowsFormsApplication1
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tThreshold = new System.Windows.Forms.TextBox();
             this.labelThreshold = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBoxAntsAlgorithym = new System.Windows.Forms.GroupBox();
             this.labelheuristicPheromonUpdate = new System.Windows.Forms.Label();
@@ -66,8 +67,6 @@ namespace WindowsFormsApplication1
             this.label6 = new System.Windows.Forms.Label();
             this.uQuantityIterations = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.uCityQuantity = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.uAntsQuantity = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -76,9 +75,9 @@ namespace WindowsFormsApplication1
             this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.openTspFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button_Start = new System.Windows.Forms.Button();
+            this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBoxAntsAlgorithym.SuspendLayout();
@@ -88,7 +87,6 @@ namespace WindowsFormsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.trackBarheuristic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPheromon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uCityQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -105,15 +103,14 @@ namespace WindowsFormsApplication1
             // tabPage1
             // 
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tabPage1.Controls.Add(this.checkBox3);
+            this.tabPage1.Controls.Add(this.checkBox2);
             this.tabPage1.Controls.Add(this.tThreshold);
             this.tabPage1.Controls.Add(this.labelThreshold);
-            this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.groupBoxAntsAlgorithym);
             this.tabPage1.Controls.Add(this.uQuantityIterations);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.uCityQuantity);
-            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.uAntsQuantity);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -124,9 +121,31 @@ namespace WindowsFormsApplication1
             this.tabPage1.Text = "Parameter";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Enabled = false;
+            this.checkBox3.Location = new System.Drawing.Point(309, 12);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(109, 17);
+            this.checkBox3.TabIndex = 16;
+            this.checkBox3.Text = "Lösung gefunden";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(419, 5);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(152, 30);
+            this.checkBox2.TabIndex = 15;
+            this.checkBox2.Text = "Schwellenwert für die\r\nLänge der Strecke erreicht";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // tThreshold
             // 
-            this.tThreshold.Location = new System.Drawing.Point(758, 10);
+            this.tThreshold.Location = new System.Drawing.Point(647, 12);
             this.tThreshold.Name = "tThreshold";
             this.tThreshold.Size = new System.Drawing.Size(55, 20);
             this.tThreshold.TabIndex = 11;
@@ -136,32 +155,17 @@ namespace WindowsFormsApplication1
             // labelThreshold
             // 
             this.labelThreshold.AutoSize = true;
-            this.labelThreshold.Location = new System.Drawing.Point(674, 15);
+            this.labelThreshold.Location = new System.Drawing.Point(568, 16);
             this.labelThreshold.Name = "labelThreshold";
             this.labelThreshold.Size = new System.Drawing.Size(79, 13);
             this.labelThreshold.TabIndex = 10;
             this.labelThreshold.Text = "Schwellenwert:";
             this.labelThreshold.Visible = false;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "Anzahl Iterationen erreicht";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Anzahl Iterationen erreicht",
-            "Schwellenwert für Tourlänge oder Anzahl Iterationen erreicht",
-            "Lösung gefunden oder Anzahl Iterationen erreicht"});
-            this.comboBox1.Location = new System.Drawing.Point(397, 10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(269, 21);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.Text = "Anzahl Iterationen erreicht";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(322, 14);
+            this.label4.Location = new System.Drawing.Point(232, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 8;
@@ -209,7 +213,7 @@ namespace WindowsFormsApplication1
             this.trackBarheuristicPheromonUpdate.Name = "trackBarheuristicPheromonUpdate";
             this.trackBarheuristicPheromonUpdate.Size = new System.Drawing.Size(171, 45);
             this.trackBarheuristicPheromonUpdate.TabIndex = 16;
-            this.trackBarheuristicPheromonUpdate.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBarheuristicPheromonUpdate.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarheuristicPheromonUpdate.Value = 1;
             this.trackBarheuristicPheromonUpdate.Scroll += new System.EventHandler(this.trackBarheuristicPheromonUpdate_Scroll);
             // 
@@ -240,7 +244,7 @@ namespace WindowsFormsApplication1
             this.trackBarinitialPheromon.Name = "trackBarinitialPheromon";
             this.trackBarinitialPheromon.Size = new System.Drawing.Size(171, 45);
             this.trackBarinitialPheromon.TabIndex = 13;
-            this.trackBarinitialPheromon.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBarinitialPheromon.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarinitialPheromon.Value = 1;
             this.trackBarinitialPheromon.Scroll += new System.EventHandler(this.trackBarinitialPheromon_Scroll);
             // 
@@ -271,7 +275,7 @@ namespace WindowsFormsApplication1
             this.trackBarHumidification.Name = "trackBarHumidification";
             this.trackBarHumidification.Size = new System.Drawing.Size(171, 45);
             this.trackBarHumidification.TabIndex = 10;
-            this.trackBarHumidification.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBarHumidification.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarHumidification.Value = 1;
             this.trackBarHumidification.Scroll += new System.EventHandler(this.trackBarHumidification_Scroll);
             // 
@@ -302,7 +306,7 @@ namespace WindowsFormsApplication1
             this.trackBarheuristic.Name = "trackBarheuristic";
             this.trackBarheuristic.Size = new System.Drawing.Size(171, 45);
             this.trackBarheuristic.TabIndex = 7;
-            this.trackBarheuristic.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBarheuristic.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarheuristic.Value = 1;
             this.trackBarheuristic.Scroll += new System.EventHandler(this.trackBarheuristic_Scroll);
             // 
@@ -333,7 +337,7 @@ namespace WindowsFormsApplication1
             this.trackBarPheromon.Name = "trackBarPheromon";
             this.trackBarPheromon.Size = new System.Drawing.Size(171, 45);
             this.trackBarPheromon.TabIndex = 4;
-            this.trackBarPheromon.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBarPheromon.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarPheromon.Value = 1;
             this.trackBarPheromon.Scroll += new System.EventHandler(this.trackBarPheremon_Scroll);
             // 
@@ -348,7 +352,7 @@ namespace WindowsFormsApplication1
             // 
             // uQuantityIterations
             // 
-            this.uQuantityIterations.Location = new System.Drawing.Point(269, 9);
+            this.uQuantityIterations.Location = new System.Drawing.Point(171, 9);
             this.uQuantityIterations.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -366,37 +370,11 @@ namespace WindowsFormsApplication1
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(208, 13);
+            this.label3.Location = new System.Drawing.Point(108, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Iterationen:";
-            // 
-            // uCityQuantity
-            // 
-            this.uCityQuantity.Location = new System.Drawing.Point(154, 10);
-            this.uCityQuantity.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.uCityQuantity.Name = "uCityQuantity";
-            this.uCityQuantity.Size = new System.Drawing.Size(44, 20);
-            this.uCityQuantity.TabIndex = 4;
-            this.uCityQuantity.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(111, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Städte:";
             // 
             // uAntsQuantity
             // 
@@ -428,8 +406,7 @@ namespace WindowsFormsApplication1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dateiToolStripMenuItem,
-            this.hilfeToolStripMenuItem,
-            this.startToolStripMenuItem});
+            this.hilfeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1046, 24);
@@ -472,11 +449,19 @@ namespace WindowsFormsApplication1
             this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             // 
-            // startToolStripMenuItem
+            // openTspFileDialog1
             // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.startToolStripMenuItem.Text = "Start";
+            this.openTspFileDialog1.Filter = "TSP-Dateien|*.tsp";
+            // 
+            // button_Start
+            // 
+            this.button_Start.Location = new System.Drawing.Point(892, 517);
+            this.button_Start.Name = "button_Start";
+            this.button_Start.Size = new System.Drawing.Size(75, 23);
+            this.button_Start.TabIndex = 3;
+            this.button_Start.Text = "gib ihm dirty";
+            this.button_Start.UseVisualStyleBackColor = true;
+            this.button_Start.Click += new System.EventHandler(this.button_Start_Click);
             // 
             // mRenderWindow
             // 
@@ -494,15 +479,12 @@ namespace WindowsFormsApplication1
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
             // 
-            // openTspFileDialog1
-            // 
-            this.openTspFileDialog1.Filter = "TSP-Dateien|*.tsp";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1046, 702);
+            this.Controls.Add(this.button_Start);
             this.Controls.Add(this.mRenderWindow);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
@@ -521,7 +503,6 @@ namespace WindowsFormsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.trackBarheuristic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPheromon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uCityQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -538,15 +519,11 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.ToolStripMenuItem speichernToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem beendenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hilfeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
         private System.Windows.Forms.NumericUpDown uAntsQuantity;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown uQuantityIterations;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown uCityQuantity;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBoxAntsAlgorithym;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tThreshold;
         private System.Windows.Forms.Label labelThreshold;
@@ -566,6 +543,9 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TrackBar trackBarheuristicPheromonUpdate;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.OpenFileDialog openTspFileDialog1;
+        private System.Windows.Forms.Button button_Start;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
