@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1
             { 
                 for (int destinationCityIndex = originCityIndex +1; destinationCityIndex < pointList.length(); destinationCityIndex++)
                 {
-                    addConnection(new CConnection(pointList.getPoint(originCityIndex), pointList.getPoint(destinationCityIndex)));
+                    addConnection(new CConnection(pointList.getPoint(originCityIndex), pointList.getPoint(destinationCityIndex), CTSPLibFileParser.E_EdgeWeightType.E_EUC_2D));
                 }
             }
         }
