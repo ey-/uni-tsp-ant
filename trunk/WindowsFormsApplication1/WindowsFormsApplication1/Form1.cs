@@ -96,7 +96,15 @@ namespace WindowsFormsApplication1
                 System.IO.Stream myResult = openTspFileDialog1.OpenFile();
 
                 CTSPLibFileParser fileParser = new CTSPLibFileParser(myResult);
-                fileParser.fillTSPPointList();
+                try
+                {
+                    fileParser.fillTSPPointList();
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message, "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 //MessageBox.Show(CTSPPointList.getInstance().ToString());
                 myResult.Close();
                 mRenderWindow.initViewPort();

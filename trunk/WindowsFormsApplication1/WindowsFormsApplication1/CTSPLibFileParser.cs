@@ -346,21 +346,23 @@ namespace WindowsFormsApplication1
                 case "TSP": 
                     mFileHeader.type = E_TspType.E_TSP;
                     break;
-                case "ATSP": 
-                    mFileHeader.type = E_TspType.E_ATSP;
-                    break;
-                case "SOP": 
-                    mFileHeader.type = E_TspType.E_SOP;
-                    break;
-                case "HCP": 
-                    mFileHeader.type = E_TspType.E_HCP;
-                    break;
-                case "CVRP": 
-                    mFileHeader.type = E_TspType.E_CVRP;
-                    break;
-                case "TOUR": 
+                case "TOUR":
                     mFileHeader.type = E_TspType.E_TOUR;
                     break;
+                case "ATSP": 
+                    mFileHeader.type = E_TspType.E_ATSP;
+                    throw new Exception("Es können keine ATSP-Dateien (asymmetric traveling salesman problem) gelesen werden.");
+                case "SOP": 
+                    mFileHeader.type = E_TspType.E_SOP;
+                    throw new Exception("Es können keine SOP-Dateien (sequential ordering problem) gelesen werden.");
+                case "HCP": 
+                    mFileHeader.type = E_TspType.E_HCP;
+                    throw new Exception("Es können keine HCP-Dateien (hamiltonian cycle problem) gelesen werden.");
+                case "CVRP": 
+                    mFileHeader.type = E_TspType.E_CVRP;
+                    throw new Exception("Es können keine CVRP-Dateien (capacitated vehicle routing problem) gelesen werden.");
+                default:
+                    throw new Exception("Datei mit unbekannten Typ kann nicht gelesen werden.");
             }
         }
 
