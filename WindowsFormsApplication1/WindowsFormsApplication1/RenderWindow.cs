@@ -94,6 +94,10 @@ namespace WindowsFormsApplication1
                 {
                     highestPhermone = connection.getPheromone();
                 }
+                if (highestPhermone == 0.0)
+                {
+                    highestPhermone = 1.0;
+                }
             }
 
             // Verbindungen Zeichnen
