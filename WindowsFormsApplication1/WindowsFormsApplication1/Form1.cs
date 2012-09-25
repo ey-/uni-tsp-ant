@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1
             
 
             // Set up the ToolTip text for the Button and Checkbox.
-            toolTip1.SetToolTip(this.checkBox3, "Diese Option ist nur verfügbar, wenn eine *.opt.tour-Datei für die *.tsp-Datei vorhanden ist. Diese Datei sollte sich in dem selben Ordner befinden.");
+            toolTip1.SetToolTip(this.cStoppLoesung, "Diese Option ist nur verfügbar, wenn eine *.opt.tour-Datei für die *.tsp-Datei vorhanden ist. Diese Datei sollte sich in dem selben Ordner befinden.");
             //toolTip1.SetToolTip(this.chec, "My checkBox1");
 
         }
@@ -128,7 +128,7 @@ namespace WindowsFormsApplication1
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
+            if (cStopSchwellenwert.Checked)
             {
                 tThreshold.Visible = true;
                 labelThreshold.Visible = true;
@@ -142,6 +142,16 @@ namespace WindowsFormsApplication1
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
         {
 
         }
