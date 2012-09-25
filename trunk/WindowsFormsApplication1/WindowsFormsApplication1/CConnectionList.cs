@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
         /// erstellt die Liste aller Verbindungen, anhand aller Einträge 
         /// in der CTSPPointList
         /// </summary>
-        public void generateFromPointList()
+        public void generateFromPointList(CTSPLibFileParser.E_EdgeWeightType edgeWeightType)
         {
             // zuerst altes Zeug aus der Liste raus
             removeAll();
@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1
             { 
                 for (int destinationCityIndex = originCityIndex +1; destinationCityIndex < pointList.length(); destinationCityIndex++)
                 {
-                    addConnection(new CConnection(pointList.getPoint(originCityIndex), pointList.getPoint(destinationCityIndex), CTSPLibFileParser.E_EdgeWeightType.E_EUC_2D));
+                    addConnection(new CConnection(pointList.getPoint(originCityIndex), pointList.getPoint(destinationCityIndex), edgeWeightType));
                 }
             }
         }

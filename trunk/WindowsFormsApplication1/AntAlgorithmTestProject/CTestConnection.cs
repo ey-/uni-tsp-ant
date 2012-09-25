@@ -58,7 +58,7 @@ namespace AntAlgorithmTestProject
             double q1 = Math.Cos(longititudePoint1 - longititudePoint2);
             double q2 = Math.Cos(latititudePoint1 - latititudePoint2);
             double q3 = Math.Cos(latititudePoint1 + latititudePoint2);
-            double TEST_CALCULATED_DISTANCE_GEO = (int)(6378.388 * Math.Acos(0.5 * ((1.0 + q1) * q2 - (1.0 - q1) * q3)) + 1.0);
+            TEST_CALCULATED_DISTANCE_GEO = (int)(6378.388 * Math.Acos(0.5 * ((1.0 + q1) * q2 - (1.0 - q1) * q3)) + 1.0);
 
             // Distanz berechnen für ATT
             //////////////////////////////////////////////

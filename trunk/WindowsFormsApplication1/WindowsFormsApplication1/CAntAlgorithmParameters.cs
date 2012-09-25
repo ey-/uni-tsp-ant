@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-    class CAntAlgorithmParameters
+    public class CAntAlgorithmParameters
     {
         public double initialPheromone;
         public double pheromoneUpdate;
@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
         public double localInformation;
         public int numberAnts;
         public int numberMaxIterations;
+        public CTour optTour;
 
         protected static CAntAlgorithmParameters mInstance = new CAntAlgorithmParameters();
 
