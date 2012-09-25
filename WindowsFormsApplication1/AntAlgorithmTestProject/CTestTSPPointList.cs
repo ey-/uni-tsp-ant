@@ -26,7 +26,7 @@ namespace AntAlgorithmTestProject
         public void insertTest()
         {
             CTSPPointList pointlist = CTSPPointList.getInstance();
-            pointlist.deleteAll();
+            pointlist.removeAll();
             
             pointlist.addPoint(TEST_POINT_1);
             Assert.IsTrue(pointlist.length() == 1);
@@ -42,7 +42,7 @@ namespace AntAlgorithmTestProject
             Assert.AreSame(pointlist.getPoint(2), TEST_POINT_3, "zuerste in die Liste eingefügter Punkt entsprecht nicht dem eingefügten Objekt");
 
             // Testdaten löschen
-            pointlist.deleteAll();
+            pointlist.removeAll();
         }
 
         [TestMethod]
@@ -55,12 +55,12 @@ namespace AntAlgorithmTestProject
             pointlist.addPoint(TEST_POINT_3);
             Assert.IsTrue(pointlist.length() == 3, "Fehler beim einfügen der Testdaten");
 
-            pointlist.deleteAll();
+            pointlist.removeAll();
 
             Assert.IsTrue(pointlist.length() == 0);
 
             // Testdaten löschen
-            pointlist.deleteAll();
+            pointlist.removeAll();
         }
 
         [TestMethod]
@@ -74,14 +74,14 @@ namespace AntAlgorithmTestProject
             Assert.IsTrue(pointlist.length() == 3, "Fehler beim einfügen der Testdaten");
 
             // ersten eintrag löschen, also ein Eintrag weniger
-            pointlist.delete(0);
+            pointlist.remove(0);
             Assert.IsTrue(pointlist.length() == 2);
 
             Assert.AreSame(pointlist.getPoint(0), TEST_POINT_2);
             Assert.AreSame(pointlist.getPoint(1), TEST_POINT_3);
 
             // Testdaten löschen
-            pointlist.deleteAll();
+            pointlist.removeAll();
         }
 
         [TestMethod]
@@ -95,7 +95,7 @@ namespace AntAlgorithmTestProject
             Assert.IsTrue(pointlist.length() == 3, "Fehler beim einfügen der Testdaten");
 
             // den Punkt2 aus der Liste löschen
-            pointlist.delete(TEST_POINT_2);
+            pointlist.remove(TEST_POINT_2);
             Assert.IsTrue(pointlist.length() == 2);
 
             // Der Punkt 2 darf nicht mehr vorhanden sein
@@ -105,7 +105,7 @@ namespace AntAlgorithmTestProject
             }
 
             // Testdaten löschen
-            pointlist.deleteAll();
+            pointlist.removeAll();
         }
 
         [TestMethod]
@@ -119,15 +119,15 @@ namespace AntAlgorithmTestProject
             Assert.IsTrue(pointlist.length() == 3, "Fehler beim einfügen der Testdaten");
 
             // dieser Index sollte nicht vorhanden sein, es darf also nichts gelöscht werden
-            pointlist.delete(100);
+            pointlist.remove(100);
             Assert.IsTrue(pointlist.length() == 3);
 
             // löschen eines Punktes der nicht in der Liste ist
-            pointlist.delete(new CTSPPoint());
+            pointlist.remove(new CTSPPoint());
             Assert.IsTrue(pointlist.length() == 3);
 
             // Testdaten löschen
-            pointlist.deleteAll();
+            pointlist.removeAll();
         }
 
         [TestMethod]
@@ -142,7 +142,7 @@ namespace AntAlgorithmTestProject
             }
 
             // Testdaten löschen
-            pointlist.deleteAll();
+            pointlist.removeAll();
         }
 
         [TestMethod]
@@ -170,7 +170,7 @@ namespace AntAlgorithmTestProject
         [TestCleanup]
         public void cleanTest()
         {
-            CTSPPointList.getInstance().deleteAll();
+            CTSPPointList.getInstance().removeAll();
         }
     }
 }

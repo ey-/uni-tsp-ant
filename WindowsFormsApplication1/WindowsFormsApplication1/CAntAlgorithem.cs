@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-    class CAntAlgorithem
+    public class CAntAlgorithem
     {
 
         public static CTSPPoint decisionNextPoint( CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)

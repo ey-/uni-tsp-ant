@@ -23,6 +23,20 @@ namespace AntAlgorithmTestProject
             
         }
 
+        [TestMethod]
+        public void testTourParsing()
+        {
+            string fileAdress = "../../../../ALL_tsp/berlin52.opt.tour/berlin52.opt.tour";
+            Stream file = new FileStream(fileAdress, FileMode.Open);
+
+            CTSPLibFileParser fileParser = new CTSPLibFileParser(file);
+            fileParser.getOptTour();
+
+            
+            Assert.IsTrue(CAntAlgorithmParameters.getInstance().optTour.GetPoint(0).getLabel() == "1");
+            Assert.IsTrue(CAntAlgorithmParameters.getInstance().optTour.GetPoint(0).getLabel() == "1");
+        }
+
         protected void testTSPFileParser(string fileAdress,int pointToCheck,double expectedX,double expectedY)
         {
             Stream file = new FileStream(fileAdress, FileMode.Open);
@@ -35,5 +49,7 @@ namespace AntAlgorithmTestProject
             Assert.IsTrue(expectedY == readPoint.y, "Y-Wert wurde falsch eingelesen");
                 
         }
+
+
     }
 }

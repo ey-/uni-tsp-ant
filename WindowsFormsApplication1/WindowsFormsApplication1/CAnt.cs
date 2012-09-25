@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-    class CAnt
+    public class CAnt
     {
         private CTSPPointList  pointsToVisit;
         private double antsPheromone;

@@ -104,7 +104,12 @@ namespace WindowsFormsApplication1
         public void fillTSPPointList()
         {
             // erstmal den aktuellen Stand an Punkten löschen
-            CTSPPointList.getInstance().deleteAll();
+            CTSPPointList.getInstance().removeAll();
+            readFile();
+        }
+
+        public void getOptTour()
+        {
             readFile();
         }
 
@@ -151,12 +156,47 @@ namespace WindowsFormsApplication1
                      case "NODE_COORD_SECTION":
                          actualLine = handleNodeCoordSection(reader);
                          break;
+                     case "TOUR_SECTION":
+                         actualLine = handleTourSection(reader);
+                         break;
                          
                  }
 
 
              }
                 
+        }
+
+        private string handleTourSection(StreamReader reader)
+        {
+            String actualLine = reader.ReadLine();
+            
+            if (mFileHeader.dimension == 0)
+            {
+                mFileHeader.dimension = Int32.MaxValue;
+            }
+
+            CTour optTour = new CTour();
+
+            int i = 1;
+            while ((!(actualLine == "-1")) && (i <= mFileHeader.dimension))
+            {
+                actualLine = actualLine.Trim();
+                
+                // Punkt suchen
+                CTSPPoint point = CTSPPointList.getInstance().getPoint(actualLine);
+
+                // Punkt in Tour einfügen
+                optTour.Add(point);
+
+                actualLine = reader.ReadLine();
+                i++;
+            }
+
+            // Tour abspeichern
+            CAntAlgorithmParameters.getInstance().optTour = optTour;
+
+            return actualLine;
         }
 
         private string handleNodeCoordSection(StreamReader reader)

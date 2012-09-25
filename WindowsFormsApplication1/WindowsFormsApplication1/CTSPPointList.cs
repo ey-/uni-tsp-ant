@@ -72,6 +72,23 @@ namespace WindowsFormsApplication1
             return null;
         }
 
+        /// <summary>
+        /// holt einen Punkt anhand des Labels aus der Liste
+        /// </summary>
+        /// <param name="label">Label des zu holenden Punktes</param>
+        /// <returns>TSPPoint-Objekt mit den gesuchten Label</returns>
+        public CTSPPoint getPoint(string label)
+        {
+            foreach (CTSPPoint point in mPointList)
+            {
+                if (point.getLabel() == label)
+                {
+                    return point;
+                }
+            }
+            return null;
+        }
+
         public override string ToString()
         {
             String output = "";
@@ -87,7 +104,7 @@ namespace WindowsFormsApplication1
         /// Löscht einen Punkt anhand des Index in der Liste
         /// </summary>
         /// <param name="index"></param>
-        public void delete(int index)
+        public void remove(int index)
         {
             // out of Bounds?
             if ((index >= 0) && (index < mPointList.Count))
@@ -100,7 +117,7 @@ namespace WindowsFormsApplication1
         /// Löscht einen bestimmten Punkt aus der Liste
         /// </summary>
         /// <param name="point"></param>
-        public void delete(CTSPPoint point)
+        public void remove(CTSPPoint point)
         {
             mPointList.Remove(point);
         }
@@ -108,7 +125,7 @@ namespace WindowsFormsApplication1
         /// <summary>
         /// Löscht alle Punkte aus der Liste
         /// </summary>
-        public void deleteAll()
+        public void removeAll()
         {
             mPointList.RemoveRange(0, mPointList.Count());
         }

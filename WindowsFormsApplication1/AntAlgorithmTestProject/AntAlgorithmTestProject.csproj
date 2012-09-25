@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CTestConnection.cs" />
+    <Compile Include="CTestConnectionList.cs" />
     <Compile Include="CTestTSPPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CTestTSPPointList.cs" />
