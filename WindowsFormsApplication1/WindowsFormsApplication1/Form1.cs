@@ -141,6 +141,18 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            mRenderWindow.initViewPort();
+            mRenderWindow.Refresh();
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            mRenderWindow.initViewPort();
+            mRenderWindow.Refresh();
+        }
+
 
 
     }

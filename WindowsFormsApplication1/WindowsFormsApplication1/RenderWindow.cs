@@ -64,7 +64,7 @@ namespace WindowsFormsApplication1
         protected void render(object sender, EventArgs args)
         {
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
-
+            
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glLoadIdentity();
 
@@ -72,7 +72,7 @@ namespace WindowsFormsApplication1
 
             //drawBestPaths();
 
-            drawCitys();
+            drawPoints();
 
             Gl.glFlush();
         }
@@ -123,10 +123,10 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void drawCitys()
+        private void drawPoints()
         {
             Gl.glPointSize(5);
-            Gl.glColor3f(0.0f, 0.0f, 0.0f);
+            Gl.glColor3f(1.0f, 0f, 0f);
 
             // Städte Zeichnen
             CTSPPointList pointList = CTSPPointList.getInstance();

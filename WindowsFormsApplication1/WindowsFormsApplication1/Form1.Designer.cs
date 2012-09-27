@@ -449,7 +449,6 @@ namespace WindowsFormsApplication1
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "Editieren";
             this.tabPage2.UseVisualStyleBackColor = true;
-            
             // 
             // groupBox2
             // 
@@ -696,7 +695,6 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(201, 125);
             this.tableLayoutPanel1.TabIndex = 4;
-            
             // 
             // tØIteration
             // 
@@ -849,10 +847,11 @@ namespace WindowsFormsApplication1
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1062, 738);
+            this.MinimumSize = new System.Drawing.Size(1062, 726);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
