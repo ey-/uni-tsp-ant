@@ -449,7 +449,7 @@ namespace WindowsFormsApplication1
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "Editieren";
             this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            
             // 
             // groupBox2
             // 
@@ -486,7 +486,6 @@ namespace WindowsFormsApplication1
             this.label17.Size = new System.Drawing.Size(174, 16);
             this.label17.TabIndex = 11;
             this.label17.Text = "Zufälliges TSP erstellen";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label16
             // 
