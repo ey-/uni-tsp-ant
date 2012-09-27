@@ -115,7 +115,7 @@ namespace AntAlgorithmTestProject
             // Wir verwenden hier der Einfachheit halber den Euklidischen 2D Algorithmus.
             // Die Berechnung selbst ist hier auch nicht relevant und wird in der CTestConnection
             // getestet. Hier wird nur überprüft ob überhaupt Verbindungen erzeugt und Werte ermittelt werden
-            connList.generateFromPointList(CTSPLibFileParser.E_EdgeWeightType.E_EUC_2D);
+            connList.generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
 
             Assert.IsTrue(connList.length() == 3);
             foreach (CConnection connection in connList)

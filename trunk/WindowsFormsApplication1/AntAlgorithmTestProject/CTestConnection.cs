@@ -82,10 +82,10 @@ namespace AntAlgorithmTestProject
         [TestMethod]
         public void testConstructor()
         {
-            CConnection constructor1 = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EdgeWeightType.E_EUC_2D);
+            CConnection constructor1 = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
             testConnectionData(constructor1, TEST_POINT_1, TEST_POINT_2, TEST_CALCULATED_DISTANCE_EUC_2D, 0);
 
-            CConnection constructor2 = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EdgeWeightType.E_EUC_2D, TEST_INITIAL_PHEROMON);
+            CConnection constructor2 = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D, TEST_INITIAL_PHEROMON);
             testConnectionData(constructor2, TEST_POINT_1, TEST_POINT_2, TEST_CALCULATED_DISTANCE_EUC_2D, TEST_INITIAL_PHEROMON);
 
             CConnection constructor3 = new CConnection(TEST_POINT_1, TEST_POINT_2, TEST_EXPLICIT_DISTANCE);
@@ -98,16 +98,16 @@ namespace AntAlgorithmTestProject
         [TestMethod]
         public void testLengthCalulation()
         {
-            CConnection lengthEUC2D = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EdgeWeightType.E_EUC_2D);
+            CConnection lengthEUC2D = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
             Assert.IsTrue(lengthEUC2D.getDistance() == TEST_CALCULATED_DISTANCE_EUC_2D);
 
-            CConnection lengthCEIL2D = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EdgeWeightType.E_CEIL_2D);
+            CConnection lengthCEIL2D = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_CEIL_2D);
             Assert.IsTrue(lengthCEIL2D.getDistance() == TEST_CALCULATED_DISTANCE_CEIL_2D);
 
-            CConnection lengthGEO = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EdgeWeightType.E_GEO);
+            CConnection lengthGEO = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_GEO);
             Assert.IsTrue(lengthGEO.getDistance() == TEST_CALCULATED_DISTANCE_GEO);
 
-            CConnection lengthATT = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EdgeWeightType.E_ATT);
+            CConnection lengthATT = new CConnection(TEST_POINT_1, TEST_POINT_2, CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_ATT);
             Assert.IsTrue(lengthATT.getDistance() == TEST_CALCULATED_DISTANCE_ATT);
         }
 
