@@ -42,6 +42,11 @@ namespace WindowsFormsApplication1
             return mLabel;
         }
 
+        public void setLabel(string label)
+        {
+            mLabel = label;
+        }
+
         public override string ToString()
         {
             return mLabel + " X=" + x + " Y=" + y;

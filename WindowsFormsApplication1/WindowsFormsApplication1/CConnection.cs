@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
         protected CTSPPoint mTSPPoint2;
         protected double mPheromone;
         protected double mDistance;
-        protected CTSPLibFileParser.E_EdgeWeightType mDistanceCalculation;
+        protected CTSPLibFileParser.E_EDGE_WEIGHT_TYPE mDistanceCalculation;
 
         /// <summary>
         /// Konstruktor
@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         /// <param name="tspPoint2">Punkt 2 der Verbindung</param>
         /// <param name="distanceCalculation">Gibt an auf welche Art die Entfernung zwischen den Punkten berechnet werden soll</param>
         /// <param name="initialPheromone">Pheromon das die Verbindung von Beginn an haben soll</param>
-        public CConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2, CTSPLibFileParser.E_EdgeWeightType distanceCalculation, double initialPheromone = 0)
+        public CConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2, CTSPLibFileParser.E_EDGE_WEIGHT_TYPE distanceCalculation, double initialPheromone = 0)
         {
             mTSPPoint1 = tspPoint1;
             mTSPPoint2 = tspPoint2;
@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1
 
         public CConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2, double distance, double initialPheromone = 0)
         {
-            mDistanceCalculation = CTSPLibFileParser.E_EdgeWeightType.E_EXPLICIT;
+            mDistanceCalculation = CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EXPLICIT;
 
             mTSPPoint1 = tspPoint1;
             mTSPPoint2 = tspPoint2;
@@ -78,14 +78,14 @@ namespace WindowsFormsApplication1
         {
             switch (mDistanceCalculation)
             {
-                case CTSPLibFileParser.E_EdgeWeightType.E_EUC_2D:
+                case CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D:
                     {
                         double deltaX = (mTSPPoint1.x - mTSPPoint2.x);
                         double deltaY = (mTSPPoint1.y - mTSPPoint2.y);
                         mDistance = Math.Sqrt((deltaX * deltaX) + (deltaY * deltaY));
                         break;
                     }
-                case CTSPLibFileParser.E_EdgeWeightType.E_CEIL_2D:
+                case CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_CEIL_2D:
                     {
                         double deltaX = (mTSPPoint1.x - mTSPPoint2.x);
                         double deltaY = (mTSPPoint1.y - mTSPPoint2.y);
@@ -93,7 +93,7 @@ namespace WindowsFormsApplication1
                         mDistance = Math.Round(mDistance, MidpointRounding.AwayFromZero);
                         break;
                     }
-                case CTSPLibFileParser.E_EdgeWeightType.E_GEO:
+                case CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_GEO:
                     {
                         double latititudePoint1 = calcualteDegree(mTSPPoint1.x);
                         double longititudePoint1 = calcualteDegree(mTSPPoint1.y);
@@ -106,7 +106,7 @@ namespace WindowsFormsApplication1
                         mDistance = (int)(6378.388 * Math.Acos(0.5 * ((1.0 + q1) * q2 - (1.0 - q1) * q3)) + 1.0);
                         break;
                     }
-                case CTSPLibFileParser.E_EdgeWeightType.E_ATT:
+                case CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_ATT:
                     {
                         double deltaX = (mTSPPoint1.x - mTSPPoint2.x);
                         double deltaY = (mTSPPoint1.y - mTSPPoint2.y);

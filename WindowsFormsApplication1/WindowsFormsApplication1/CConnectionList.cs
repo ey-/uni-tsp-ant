@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
         /// erstellt die Liste aller Verbindungen, anhand aller Einträge 
         /// in der CTSPPointList
         /// </summary>
-        public void generateFromPointList(CTSPLibFileParser.E_EdgeWeightType edgeWeightType)
+        public void generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE edgeWeightType)
         {
             // zuerst altes Zeug aus der Liste raus
             removeAll();
