@@ -48,7 +48,7 @@ namespace WindowsFormsApplication1
                 //mCityList.Add(new CTSPPoint(rand.Next(1000), rand.Next(1000), ""));
             }
 
-            CConnectionList.getInstance().generateFromPointList(CTSPLibFileParser.E_EdgeWeightType.E_EUC_2D);
+            CConnectionList.getInstance().generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
         }
         
         public void setBestLocalPath(List<CTSPPoint> bestLocalPath)
@@ -214,7 +214,7 @@ namespace WindowsFormsApplication1
                 position.y = (int)(mouseY / (float)this.Height * (mBounds.top - mBounds.bottom));
 
                 CTSPPointList.getInstance().addPoint(position);
-                CConnectionList.getInstance().generateFromPointList(CTSPLibFileParser.E_EdgeWeightType.E_EUC_2D);
+                CConnectionList.getInstance().generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
                 this.Refresh();
             }
 
