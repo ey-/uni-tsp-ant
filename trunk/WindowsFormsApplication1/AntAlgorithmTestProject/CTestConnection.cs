@@ -13,70 +13,70 @@ namespace AntAlgorithmTestProject
     [TestClass]
     public class CTestConnection
     {
-        const double POINT1_X = 5.5;
-        const double POINT1_Y = 5;
+        const float POINT1_X = 5.5f;
+        const float POINT1_Y = 5;
 
-        const double POINT2_X = 5.5;
-        const double POINT2_Y = 10.5;
+        const float POINT2_X = 5.5f;
+        const float POINT2_Y = 10.5f;
 
         CTSPPoint TEST_POINT_1 = new CTSPPoint(POINT1_X, POINT1_Y, "POINT 1");
         CTSPPoint TEST_POINT_2 = new CTSPPoint(POINT2_X, POINT2_Y, "POINT 2");
 
-        double TEST_CALCULATED_DISTANCE_EUC_2D;
-        double TEST_CALCULATED_DISTANCE_CEIL_2D;
-        double TEST_CALCULATED_DISTANCE_GEO;
-        double TEST_CALCULATED_DISTANCE_ATT;
-        const double TEST_EXPLICIT_DISTANCE = 10.5;
-        const double TEST_INITIAL_PHEROMON = 20.5;
-        const double TEST_ADDITIONAL_PHEROMON = 10;
-        const double TEST_SUBSTRACT_PHEROMON = -7.5;
+        float TEST_CALCULATED_DISTANCE_EUC_2D;
+        float TEST_CALCULATED_DISTANCE_CEIL_2D;
+        float TEST_CALCULATED_DISTANCE_GEO;
+        float TEST_CALCULATED_DISTANCE_ATT;
+        const float TEST_EXPLICIT_DISTANCE = 10.5f;
+        const float TEST_INITIAL_PHEROMON = 20.5f;
+        const float TEST_ADDITIONAL_PHEROMON = 10;
+        const float TEST_SUBSTRACT_PHEROMON = -7.5f;
 
         public CTestConnection()
         { 
             // Distanz berechnen für EUC_2D
             //////////////////////////////////////////////
 
-            double deltaX = (POINT1_X - POINT2_X);
-            double deltaY = (POINT1_Y - POINT2_Y);
-            TEST_CALCULATED_DISTANCE_EUC_2D = Math.Sqrt((deltaX * deltaX) + (deltaY * deltaY));
+            float deltaX = (POINT1_X - POINT2_X);
+            float deltaY = (POINT1_Y - POINT2_Y);
+            TEST_CALCULATED_DISTANCE_EUC_2D = (float)Math.Sqrt((deltaX * deltaX) + (deltaY * deltaY));
 
             // Distanz berechnen für CEIL_2D
             //////////////////////////////////////////////
 
             // einfach den Wert von EUC_2d aufrunden
-            TEST_CALCULATED_DISTANCE_CEIL_2D = Math.Round(TEST_CALCULATED_DISTANCE_EUC_2D, MidpointRounding.AwayFromZero);
+            TEST_CALCULATED_DISTANCE_CEIL_2D = (float)Math.Round(TEST_CALCULATED_DISTANCE_EUC_2D, MidpointRounding.AwayFromZero);
 
             // Distanz berechen für GEO
             //////////////////////////////////////////////
 
             // Zuerst Längen und Breitengrad der Punkte bestimmen
-            double latititudePoint1 = calcualteDegree(POINT1_X);
-            double longititudePoint1 = calcualteDegree(POINT1_Y);
-            double latititudePoint2 = calcualteDegree(POINT2_X);
-            double longititudePoint2 = calcualteDegree(POINT2_Y);
+            float latititudePoint1 = calcualteDegree(POINT1_X);
+            float longititudePoint1 = calcualteDegree(POINT1_Y);
+            float latititudePoint2 = calcualteDegree(POINT2_X);
+            float longititudePoint2 = calcualteDegree(POINT2_Y);
 
-            double q1 = Math.Cos(longititudePoint1 - longititudePoint2);
-            double q2 = Math.Cos(latititudePoint1 - latititudePoint2);
-            double q3 = Math.Cos(latititudePoint1 + latititudePoint2);
+            float q1 = (float)Math.Cos(longititudePoint1 - longititudePoint2);
+            float q2 = (float)Math.Cos(latititudePoint1 - latititudePoint2);
+            float q3 = (float)Math.Cos(latititudePoint1 + latititudePoint2);
             TEST_CALCULATED_DISTANCE_GEO = (int)(6378.388 * Math.Acos(0.5 * ((1.0 + q1) * q2 - (1.0 - q1) * q3)) + 1.0);
 
             // Distanz berechnen für ATT
             //////////////////////////////////////////////
 
-            double rij = Math.Sqrt((deltaX * deltaX + deltaY * deltaY) / 10.0);
-            double tij = Math.Abs(rij);
+            float rij = (float)Math.Sqrt((deltaX * deltaX + deltaY * deltaY) / 10.0);
+            float tij = (float)Math.Abs(rij);
 
             TEST_CALCULATED_DISTANCE_ATT = tij;
             if (tij < rij)
-                TEST_CALCULATED_DISTANCE_ATT = tij + 1.0;
+                TEST_CALCULATED_DISTANCE_ATT = tij + 1.0f;
         }
 
-        protected double calcualteDegree(double coordinate)
+        protected float calcualteDegree(float coordinate)
         {
-            double deg = Math.Abs(coordinate);
-            double min = coordinate - deg;
+            float deg = Math.Abs(coordinate);
+            float min = coordinate - deg;
 
-            return Math.PI * (deg + 5.0 * min / 3.0) / 180.0;
+            return (float)Math.PI * (deg + 5.0f * min / 3.0f) / 180.0f;
         }
         
         [TestMethod]
@@ -138,7 +138,7 @@ namespace AntAlgorithmTestProject
         /// <param name="expectedPoint2"></param>
         /// <param name="expectedDistance"></param>
         /// <param name="expectedPheromon"></param>
-        protected void testConnectionData(CConnection connection, CTSPPoint expectedPoint1, CTSPPoint expectedPoint2, double expectedDistance, double expectedPheromon)
+        protected void testConnectionData(CConnection connection, CTSPPoint expectedPoint1, CTSPPoint expectedPoint2, float expectedDistance, float expectedPheromon)
         { 
             CTSPPoint testPoint1;
             CTSPPoint testPoint2;

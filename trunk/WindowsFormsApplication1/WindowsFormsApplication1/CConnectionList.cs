@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Diagnostics;
 
 namespace WindowsFormsApplication1
 {
@@ -12,13 +13,16 @@ namespace WindowsFormsApplication1
         protected static CConnectionList mInstance = new CConnectionList();
 
         // Liste der Verbindungen
-        protected List<CConnection> mConnectionList = new List<CConnection>();
+        //protected List<CConnection> mConnectionList = new List<CConnection>();
+        protected CConnection[] mConnectionList = null;
+        long mConnectionsAdded = 0;
 
         /// <summary>
         /// Konstruktor
         /// </summary>
         protected CConnectionList()
-        { }
+        {
+        }
 
         /// <summary>
         /// gibt die Instanz der Singleton-Klasse zurück
@@ -35,54 +39,89 @@ namespace WindowsFormsApplication1
         /// </summary>
         public void generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE edgeWeightType)
         {
-            // zuerst altes Zeug aus der Liste raus
-            removeAll();
-
             // jetzt kann die Liste neu gefüllt werden
             CTSPPointList pointList = CTSPPointList.getInstance();
+
+            // die Liste neu initialiseren
+            initList(pointList.length());
 
             for (int originCityIndex = 0; originCityIndex < pointList.length(); originCityIndex++)
             { 
                 for (int destinationCityIndex = originCityIndex +1; destinationCityIndex < pointList.length(); destinationCityIndex++)
                 {
                     addConnection(new CConnection(pointList.getPoint(originCityIndex), pointList.getPoint(destinationCityIndex), edgeWeightType));
+
+                    Debug.WriteLineIf(length() % 100000 == 0, length());
                 }
+                // Zeit für die GC lassen
+                // Sonst gibt es Fehler, weil diese nicht genug Zeit bekommt ihr Ding zu machen
+                System.Threading.Thread.Sleep(1);
             }
+
+            Debug.WriteLine("Verbindungen erstellt: " + length());
+        }
+
+        /// <summary>
+        /// initialisiert die Liste und 
+        /// </summary>
+        /// <param name="numberPoints"></param>
+        public void initList(int numberPoints)
+        {
+            // Summenfunktion, zum Berechnen der Anzahl der Verbindungen
+            long numConnections = (numberPoints -1) * numberPoints /2;
+            mConnectionList = null;
+
+            // Der GarbageCollection bescheidgeben das jetzt ein großer Speicherbereich frei wurde
+            GC.Collect();
+
+            mConnectionList = new CConnection[numConnections];
+            mConnectionsAdded = 0;
         }
 
         /// <summary>
         /// fügt eine Verbindung in die Liste ein
         /// </summary>
         /// <param name="newConnection"></param>
-        public void addConnection(CConnection newConnection)
+        public bool addConnection(CConnection newConnection)
         {
-            mConnectionList.Add(newConnection);
+            if (mConnectionList != null)
+            {
+                if (mConnectionsAdded < mConnectionList.LongLength)
+                {
+                    mConnectionList[mConnectionsAdded] = newConnection;
+                    mConnectionsAdded++;
+
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
-        /// löscht eine bestimmt Verbindung
-        /// </summary>
-        /// <param name="connection">Verbindung die gelöscht werden soll</param>
-        public void removeConnection(CConnection connection)
-        {
-            mConnectionList.Remove(connection);
-        }
-
-        /// <summary>
-        /// löscht alle Verbindungen aus der Liste
+        /// gibt alle in die Liste eingefügten Objekte frei.
+        /// Dabei wird die interne Liste erhalten und muss nicht 
+        /// neu initialisiert werden
         /// </summary>
         public void removeAll()
         {
-            mConnectionList.RemoveRange(0, mConnectionList.Count());
+            for (long index = 0; index < length(); index++)
+            {
+                mConnectionList[index] = null;
+            }
+            mConnectionsAdded = 0;
         }
 
         /// <summary>
         /// gibt die Anzahl der Verbindungen in der Liste zurück
         /// </summary>
         /// <returns>Anzahl der Verbindungen</returns>
-        public int length()
+        public long length()
         {
-            return mConnectionList.Count();
+            if (mConnectionList != null)
+            {
+                return mConnectionsAdded;
+            }
+            return 0;
         }
 
         /// <summary>
@@ -90,11 +129,14 @@ namespace WindowsFormsApplication1
         /// </summary>
         /// <param name="index">Index der Verbindung die geholt werden soll</param>
         /// <returns>geholte Verbindung</returns>
-        public CConnection getConnection(int index)
+        public CConnection getConnection(long index)
         {
-            if ((index >= 0) && (index < mConnectionList.Count))
+            if (mConnectionList != null)
             {
-                return mConnectionList[index];
+                if ((index >= 0) && (index < length()))
+                {
+                    return mConnectionList[index];
+                }
             }
             return null;
         }
@@ -107,6 +149,11 @@ namespace WindowsFormsApplication1
         /// <returns>gefundene Verbindung oder null</returns>
         public CConnection getConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2)
         {
+            if (mConnectionList == null)
+            {
+                return null;
+            }
+
             // alle Verbindungen durchgehen
             foreach (CConnection connection in mConnectionList)
             {
@@ -133,13 +180,16 @@ namespace WindowsFormsApplication1
         {
             List<CConnection> ret = new List<CConnection>();
 
-            // alle Verbindungen durchgehen
-            foreach (CConnection connection in mConnectionList)
+            if (mConnectionList != null)
             {
-                // wenn die Verbindung den gesuchten Punkt enthält, diesen in die Liste aufnehmen
-                if (connection.containsPoint(tspPoint) == true)
+                // alle Verbindungen durchgehen
+                foreach (CConnection connection in mConnectionList)
                 {
-                    ret.Add(connection);
+                    // wenn die Verbindung den gesuchten Punkt enthält, diesen in die Liste aufnehmen
+                    if (connection.containsPoint(tspPoint) == true)
+                    {
+                        ret.Add(connection);
+                    }
                 }
             }
 
@@ -153,7 +203,7 @@ namespace WindowsFormsApplication1
         /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            for (int index = 0; index < length(); index++)
+            for (long index = 0; index < length(); index++)
             {
                 yield return mConnectionList[index];
             }

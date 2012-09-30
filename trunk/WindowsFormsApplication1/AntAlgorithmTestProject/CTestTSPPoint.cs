@@ -11,11 +11,11 @@ namespace AntAlgorithmTestProject
     [TestClass]
     public class CTestTSPPoint
     {
-        const double X_TEST_VALUE_1 = 25.03;
-        const double X_TEST_VALUE_2 = double.MaxValue;
+        const float X_TEST_VALUE_1 = 25.03f;
+        const float X_TEST_VALUE_2 = float.MaxValue;
 
-        const double Y_TEST_VALUE_1 = -400.903;
-        const double Y_TEST_VALUE_2 = double.MinValue;
+        const float Y_TEST_VALUE_1 = -400.903f;
+        const float Y_TEST_VALUE_2 = float.MinValue;
 
         const string TEST_LABEL = "LabelSet";
 
@@ -35,7 +35,7 @@ namespace AntAlgorithmTestProject
             testAPoint(specificConstrutor, X_TEST_VALUE_2, Y_TEST_VALUE_2, TEST_LABEL);
         }
 
-        protected void testAPoint(CTSPPoint point, double expectedX, double expectedY, string expectedLabel)
+        protected void testAPoint(CTSPPoint point, float expectedX, float expectedY, string expectedLabel)
         {
             Assert.IsTrue(point.x == expectedX, "X-Koordinate von CTSPPoint falsch");
             Assert.IsTrue(point.y == expectedY, "Y-Koordinate von CTSPPoint falsch");

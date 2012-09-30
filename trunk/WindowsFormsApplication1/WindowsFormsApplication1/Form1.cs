@@ -11,11 +11,11 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        private double heuristicPheromonUpdateValue =0.001;
-        private double pheromonValue=0.001;
-        private double initialPheromonValue=0.001;
-        private double humidificationValue=0.001;
-        private double heuristicValue=0.001;
+        private float heuristicPheromonUpdateValue = 0.001f;
+        private float pheromonValue = 0.001f;
+        private float initialPheromonValue = 0.001f;
+        private float humidificationValue = 0.001f;
+        private float heuristicValue = 0.001f;
         public Form1()
         {
             InitializeComponent();
@@ -58,31 +58,31 @@ namespace WindowsFormsApplication1
 
         private void trackBarPheremon_Scroll(object sender, EventArgs e)
         {
-            pheromonValue = ((double)trackBarPheromon.Value / 1000);
+            pheromonValue = ((float)trackBarPheromon.Value / 1000);
             labelPheremon.Text = pheromonValue.ToString();
         }
 
         private void trackBarheuristic_Scroll(object sender, EventArgs e)
         {
-            heuristicValue = ((double)trackBarheuristic.Value / 1000);
+            heuristicValue = ((float)trackBarheuristic.Value / 1000);
             labelHeuristic.Text = heuristicValue.ToString();
         }
 
         private void trackBarHumidification_Scroll(object sender, EventArgs e)
         {
-            humidificationValue = ((double)trackBarHumidification.Value / 1000);
+            humidificationValue = ((float)trackBarHumidification.Value / 1000);
             labelHumidification.Text = humidificationValue.ToString();
         }
 
         private void trackBarinitialPheromon_Scroll(object sender, EventArgs e)
         {
-            initialPheromonValue = ((double)trackBarinitialPheromon.Value / 1000);
+            initialPheromonValue = ((float)trackBarinitialPheromon.Value / 1000);
             labelinitialPheromon.Text = initialPheromonValue.ToString();
         }
 
         private void trackBarheuristicPheromonUpdate_Scroll(object sender, EventArgs e)
         {
-            heuristicPheromonUpdateValue = ((double)trackBarheuristicPheromonUpdate.Value / 1000);
+            heuristicPheromonUpdateValue = ((float)trackBarheuristicPheromonUpdate.Value / 1000);
             labelheuristicPheromonUpdate.Text = heuristicPheromonUpdateValue.ToString();
         }
 
