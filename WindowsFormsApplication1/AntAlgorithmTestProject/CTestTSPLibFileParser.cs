@@ -19,7 +19,7 @@ namespace AntAlgorithmTestProject
 
             fileAdress = "../../../../ALL_tsp/ALL_tsp_rest/d198.tsp";
             testTSPFileParser(fileAdress, 0, 0, 0);
-            testTSPFileParser(fileAdress, 11, 1.00840e+03, 1.35200e+03);
+            testTSPFileParser(fileAdress, 11, 1008.4f, 1352f);
         }
 
         [TestMethod]
@@ -83,13 +83,18 @@ namespace AntAlgorithmTestProject
             Assert.IsTrue(CAntAlgorithmParameters.getInstance().optTour.GetPoint(0).getLabel() == "1");
         }
 
-        protected void testTSPFileParser(string fileAdress, int pointToCheck, double expectedX, double expectedY)
+        protected void testTSPFileParser(string fileAdress, int pointToCheck, float expectedX, float expectedY)
         {
             Stream file = new FileStream(fileAdress, FileMode.Open);
             CTSPLibFileParser fileParser = new CTSPLibFileParser(file);
             fileParser.fillTSPPointList();
             file.Close();
             CTSPPoint readPoint = CTSPPointList.getInstance().getPoint(pointToCheck);
+
+            if (readPoint == null)
+            {
+                Assert.Fail("Zu prüfender Punkt konnte nicht geholt werden.");
+            }
 
             Assert.IsTrue(expectedX == readPoint.x, "X-Wert wurde falsch eingelesen");
             Assert.IsTrue(expectedY == readPoint.y, "Y-Wert wurde falsch eingelesen");

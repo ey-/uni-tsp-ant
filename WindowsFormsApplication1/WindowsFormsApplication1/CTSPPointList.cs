@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Diagnostics;
 
 namespace WindowsFormsApplication1
 {
@@ -19,6 +20,7 @@ namespace WindowsFormsApplication1
         /// </summary>
         public CTSPPointList()
         { 
+            
         }
 
         /// <summary>
@@ -28,6 +30,16 @@ namespace WindowsFormsApplication1
         public static CTSPPointList getInstance()
         {
             return mInstance;
+        }
+
+        /// <summary>
+        /// Methode zum Optimieren der Liste.
+        /// Da die Kapazität des List<T> Objektes stehts höher ist als die eigentliche Anzahl an Elementen
+        /// kann man hier Speicher sparen
+        /// </summary>
+        public void optimizeList()
+        {
+            mPointList.TrimExcess();
         }
 
         /// <summary>
@@ -45,6 +57,8 @@ namespace WindowsFormsApplication1
                 newList.addPoint(getPoint(pointIndex));
             }
 
+            newList.optimizeList();
+
             return newList;
         }
 
@@ -54,6 +68,17 @@ namespace WindowsFormsApplication1
         /// <param name="point">Punkt der eingefügt werden soll</param>
         public void addPoint(CTSPPoint point)
         {
+            // normal wird die Kapazität immer verdoppelt wenn ein Element
+            // zusätzlich eingefügt wird. Das kann aber einen enormen Overhead
+            // zur folge haben. Darum erhöhen wir Manuell um kleine Schritte
+            if (mPointList.Count + 1 >= mPointList.Capacity)
+            {
+                if (mPointList.Capacity > 128)
+                {
+                    mPointList.Capacity += 128;
+                }
+            }
+
             mPointList.Add(point);
         }
 

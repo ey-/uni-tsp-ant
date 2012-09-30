@@ -9,9 +9,9 @@ namespace WindowsFormsApplication1
     {
         protected CTSPPoint mTSPPoint1;
         protected CTSPPoint mTSPPoint2;
-        protected double mPheromone;
-        protected double mDistance;
-        protected CTSPLibFileParser.E_EDGE_WEIGHT_TYPE mDistanceCalculation;
+        protected float mPheromone;
+        protected float mDistance;
+        static protected CTSPLibFileParser.E_EDGE_WEIGHT_TYPE mDistanceCalculation;
 
         /// <summary>
         /// Konstruktor
@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         /// <param name="tspPoint2">Punkt 2 der Verbindung</param>
         /// <param name="distanceCalculation">Gibt an auf welche Art die Entfernung zwischen den Punkten berechnet werden soll</param>
         /// <param name="initialPheromone">Pheromon das die Verbindung von Beginn an haben soll</param>
-        public CConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2, CTSPLibFileParser.E_EDGE_WEIGHT_TYPE distanceCalculation, double initialPheromone = 0)
+        public CConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2, CTSPLibFileParser.E_EDGE_WEIGHT_TYPE distanceCalculation, float initialPheromone = 0)
         {
             mTSPPoint1 = tspPoint1;
             mTSPPoint2 = tspPoint2;
@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1
             calculateDistance();
         }
 
-        public CConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2, double distance, double initialPheromone = 0)
+        public CConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2, float distance, float initialPheromone = 0)
         {
             mDistanceCalculation = CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EXPLICIT;
 
@@ -66,7 +66,7 @@ namespace WindowsFormsApplication1
         /// gibt die Entfernung der Punkte zurück
         /// </summary>
         /// <returns></returns>
-        public double getDistance()
+        public float getDistance()
         {
             return mDistance;
         }
@@ -80,43 +80,43 @@ namespace WindowsFormsApplication1
             {
                 case CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D:
                     {
-                        double deltaX = (mTSPPoint1.x - mTSPPoint2.x);
-                        double deltaY = (mTSPPoint1.y - mTSPPoint2.y);
-                        mDistance = Math.Sqrt((deltaX * deltaX) + (deltaY * deltaY));
+                        float deltaX = (mTSPPoint1.x - mTSPPoint2.x);
+                        float deltaY = (mTSPPoint1.y - mTSPPoint2.y);
+                        mDistance = (float)Math.Sqrt((deltaX * deltaX) + (deltaY * deltaY));
                         break;
                     }
                 case CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_CEIL_2D:
                     {
-                        double deltaX = (mTSPPoint1.x - mTSPPoint2.x);
-                        double deltaY = (mTSPPoint1.y - mTSPPoint2.y);
-                        mDistance = Math.Sqrt((deltaX * deltaX) + (deltaY * deltaY));
-                        mDistance = Math.Round(mDistance, MidpointRounding.AwayFromZero);
+                        float deltaX = (mTSPPoint1.x - mTSPPoint2.x);
+                        float deltaY = (mTSPPoint1.y - mTSPPoint2.y);
+                        mDistance = (float)Math.Sqrt((deltaX * deltaX) + (deltaY * deltaY));
+                        mDistance = (float)Math.Round(mDistance, MidpointRounding.AwayFromZero);
                         break;
                     }
                 case CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_GEO:
                     {
-                        double latititudePoint1 = calcualteDegree(mTSPPoint1.x);
-                        double longititudePoint1 = calcualteDegree(mTSPPoint1.y);
-                        double latititudePoint2 = calcualteDegree(mTSPPoint2.x);
-                        double longititudePoint2 = calcualteDegree(mTSPPoint2.y);
+                        float latititudePoint1 = calcualteDegree(mTSPPoint1.x);
+                        float longititudePoint1 = calcualteDegree(mTSPPoint1.y);
+                        float latititudePoint2 = calcualteDegree(mTSPPoint2.x);
+                        float longititudePoint2 = calcualteDegree(mTSPPoint2.y);
 
-                        double q1 = Math.Cos(longititudePoint1 - longititudePoint2);
-                        double q2 = Math.Cos(latititudePoint1 - latititudePoint2);
-                        double q3 = Math.Cos(latititudePoint1 + latititudePoint2);
+                        float q1 = (float)Math.Cos(longititudePoint1 - longititudePoint2);
+                        float q2 = (float)Math.Cos(latititudePoint1 - latititudePoint2);
+                        float q3 = (float)Math.Cos(latititudePoint1 + latititudePoint2);
                         mDistance = (int)(6378.388 * Math.Acos(0.5 * ((1.0 + q1) * q2 - (1.0 - q1) * q3)) + 1.0);
                         break;
                     }
                 case CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_ATT:
                     {
-                        double deltaX = (mTSPPoint1.x - mTSPPoint2.x);
-                        double deltaY = (mTSPPoint1.y - mTSPPoint2.y);
+                        float deltaX = (mTSPPoint1.x - mTSPPoint2.x);
+                        float deltaY = (mTSPPoint1.y - mTSPPoint2.y);
 
-                        double rij = Math.Sqrt((deltaX * deltaX + deltaY * deltaY) / 10.0);
-                        double tij = Math.Abs(rij);
+                        float rij = (float)Math.Sqrt((deltaX * deltaX + deltaY * deltaY) / 10.0);
+                        float tij = (float)Math.Abs(rij);
 
                         mDistance = tij;
                         if (tij < rij)
-                            mDistance = tij + 1.0;
+                            mDistance = tij + 1.0f;
                         break;
                     }
                 default:
@@ -130,19 +130,19 @@ namespace WindowsFormsApplication1
         /// </summary>
         /// <param name="coordinate">Koordiante im Format 45.3 = 45°3'</param>
         /// <returns>Entsprechender Grad der Koorinate</returns>
-        protected double calcualteDegree(double coordinate)
+        protected float calcualteDegree(float coordinate)
         {
-            double deg = Math.Abs(coordinate);
-            double min = coordinate - deg;
+            float deg = Math.Abs(coordinate);
+            float min = coordinate - deg;
 
-            return Math.PI * (deg + 5.0 * min / 3.0) / 180.0;
+            return (float)Math.PI * (deg + 5.0f * min / 3.0f) / 180.0f;
         }
 
         /// <summary>
         /// holt den aktuellen Pheromon-Wert der Verbindung
         /// </summary>
         /// <returns>Pheromonwert</returns>
-        public double getPheromone()
+        public float getPheromone()
         {
             return mPheromone;
         }
@@ -151,7 +151,7 @@ namespace WindowsFormsApplication1
         /// addiert den angegeben Wert auf den aktuellen Pheromonwert rauf
         /// </summary>
         /// <param name="additionalPheromone">Wert der aufaddiert werden soll</param>
-        public void addPheromone(double additionalPheromone)
+        public void addPheromone(float additionalPheromone)
         {
             mPheromone += additionalPheromone;
 

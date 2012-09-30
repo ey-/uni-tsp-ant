@@ -7,8 +7,8 @@ namespace WindowsFormsApplication1
 {
     public class CTSPPoint
     {
-        public double x = 0;
-        public double y = 0;
+        public float x = 0;
+        public float y = 0;
         protected string mLabel;
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
         /// <param name="inX">X-Koordinate des Punktes</param>
         /// <param name="inY">Y-Koordinate des Punktes</param>
         /// <param name="label">Labes des Punktes</param>
-        public CTSPPoint(double inX, double inY, string label = ""  )
+        public CTSPPoint(float inX, float inY, string label = ""  )
         {
             x = inX;
             y = inY;

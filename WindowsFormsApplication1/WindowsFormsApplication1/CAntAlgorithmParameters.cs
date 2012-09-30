@@ -7,11 +7,11 @@ namespace WindowsFormsApplication1
 {
     public class CAntAlgorithmParameters
     {
-        public double initialPheromone;
-        public double pheromoneUpdate;
-        public double evaporationFactor;
-        public double pheromoneParameter;
-        public double localInformation;
+        public float initialPheromone;
+        public float pheromoneUpdate;
+        public float evaporationFactor;
+        public float pheromoneParameter;
+        public float localInformation;
         public int numberAnts;
         public int numberMaxIterations;
         public CTour optTour;

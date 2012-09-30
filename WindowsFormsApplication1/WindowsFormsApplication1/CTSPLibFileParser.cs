@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 namespace WindowsFormsApplication1
 {
@@ -108,6 +109,9 @@ namespace WindowsFormsApplication1
             // erstmal den aktuellen Stand an Punkten löschen
             CTSPPointList.getInstance().removeAll();
             CConnectionList.getInstance().removeAll();
+
+            Debug.WriteLine("Startspeicher: " + GC.GetTotalMemory(true));
+
             readFile();
         }
 
@@ -130,6 +134,13 @@ namespace WindowsFormsApplication1
                      readLine = reader.ReadLine();
                  }
 
+                 // wenn wir das Ende der Datei erreicht habe 
+                 if (readLine == null)
+                 {
+                     // brechen wir ab
+                     break;
+                 }
+
                  bLineAlreadyRead = false;
 
                  actualLine = readLine.Trim().Replace(" ","");                 
@@ -149,6 +160,7 @@ namespace WindowsFormsApplication1
                          break;
                      case "DIMENSION": 
                          mFileHeader.dimension = Int32.Parse(actualLineSplit[1]);
+                         CMemoryTester.fitMemory(mFileHeader.dimension);
                          break;
                      case "EDGE_WEIGHT_TYPE": 
                          handleEdgeWeightType(actualLineSplit[1]);
@@ -222,6 +234,10 @@ namespace WindowsFormsApplication1
                 actualLine = reader.ReadLine();
             }
 
+            // Nachdem alle Punkte eingefügt wurden noch die Liste optimieren, 
+            // da sich hier eigentlich nichts mehr ändern sollte
+            CTSPPointList.getInstance().optimizeList();
+
             return actualLine;
         }
 
@@ -244,7 +260,15 @@ namespace WindowsFormsApplication1
                 { 
                     CTSPPointList.getInstance().addPoint(new CTSPPoint(point.ToString()));
                 }
-            }            
+
+                // Nachdem alle Punkte eingefügt wurden noch die Liste optimieren, 
+                // da sich hier eigentlich nichts mehr ändern sollte
+                CTSPPointList.getInstance().optimizeList();
+            }
+
+            // Damit wir später die Verbindungen einfügen können, muss die Liste der Verbindungen 
+            // erstmal, für die Anzahl initialisert werden
+            CConnectionList.getInstance().initList(mFileHeader.dimension);
 
             int expectedWeightElements = getNumberElementsToRead();
             int weightElementsRead = 0;
@@ -277,7 +301,7 @@ namespace WindowsFormsApplication1
             CTSPPointList pointList = CTSPPointList.getInstance();
             CConnectionList connList = CConnectionList.getInstance();
 
-            double distance = double.Parse(element);
+            float distance = float.Parse(element);
 
             switch (mFileHeader.edgeWeightFormat)
             {
@@ -460,9 +484,17 @@ namespace WindowsFormsApplication1
                 i++;
             }
 
+            // Nachdem alle Punkte eingefügt wurden noch die Liste optimieren, 
+            // da sich hier eigentlich nichts mehr ändern sollte
+            CTSPPointList.getInstance().optimizeList();
+
             // Nachdem wir alle Punkte ausgelesen haben, können wir nun die Verbindungen nach 
             // im FileHeader angegebenen Algorithmus berechnen
             CConnectionList.getInstance().generateFromPointList(mFileHeader.edgeWeightType);
+
+            PerformanceCounter freeMemory = new PerformanceCounter("Memory", "Available Bytes");
+            Debug.WriteLine("Am Ende RAM frei: " + freeMemory.RawValue);
+            Debug.WriteLine("Endspeicher: " + GC.GetTotalMemory(true));
 
             return actualLine;
         }
@@ -479,8 +511,8 @@ namespace WindowsFormsApplication1
             string[] actualLineSplit = actualLine.Split(COORD_SPLIT_CHARACTERS);
             actualLineSplit = removeSpacesInString(actualLineSplit);
 
-            double pointX = double.Parse(actualLineSplit[1], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
-            double pointY = double.Parse(actualLineSplit[2], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
+            float pointX = float.Parse(actualLineSplit[1], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
+            float pointY = float.Parse(actualLineSplit[2], System.Globalization.CultureInfo.CreateSpecificCulture("en-us"));
             string index = actualLineSplit[0];
 
             return new CTSPPoint(pointX, pointY, index); ;
