@@ -31,25 +31,8 @@ namespace WindowsFormsApplication1
         {
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.render);
             this.Click += new EventHandler(this.click);
-            
-            initTestData();
         }
 
-        private void initTestData()
-        {
-            // TEMPORÄR - muss woanders realisiert werden
-            /////////////////////////////////////////////
-            Random rand = new Random();
-            
-            for (int cityIndex = 0; cityIndex < NUM_RANDOM_CITYS; cityIndex++)
-            {
-
-                CTSPPointList.getInstance().addPoint(new CTSPPoint(rand.Next(1000), rand.Next(1000), ""));
-                //mCityList.Add(new CTSPPoint(rand.Next(1000), rand.Next(1000), ""));
-            }
-
-            CConnectionList.getInstance().generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
-        }
         
         public void setBestLocalPath(List<CTSPPoint> bestLocalPath)
         {
@@ -172,6 +155,16 @@ namespace WindowsFormsApplication1
             {
                 CTSPPoint city = citys.getPoint(cityIndex);
 
+                if (city.x < ret.left)
+                {
+                    ret.left = city.x;
+                }
+
+                if (city.y < ret.bottom)
+                {
+                    ret.bottom = city.y;
+                }
+
                 if (city.x > ret.right)
                 {
                     ret.right = city.x;
@@ -202,7 +195,7 @@ namespace WindowsFormsApplication1
 
             if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
+                //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
                 // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
                 // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
                 // eingefügt werden kann
@@ -210,9 +203,10 @@ namespace WindowsFormsApplication1
                 float mouseY = this.Height - mouseArgs.Y;
 
                 CTSPPoint position = new CTSPPoint("");
-                position.x = (int)(mouseX / (float)this.Width * (mBounds.right - mBounds.left));
-                position.y = (int)(mouseY / (float)this.Height * (mBounds.top - mBounds.bottom));
+                position.x = (float) (mBounds.left + ((mouseX * (mBounds.right - mBounds.left))/ (float)this.Width)) ;
+                position.y = (float) (mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
 
+                //Debug.Write("pos - X: " + position.x + " Y: " + position.y + "\n");
                 CTSPPointList.getInstance().addPoint(position);
                 CConnectionList.getInstance().generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
                 this.Refresh();
