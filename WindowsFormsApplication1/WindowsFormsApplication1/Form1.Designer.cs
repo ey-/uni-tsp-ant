@@ -634,20 +634,20 @@ namespace WindowsFormsApplication1
             // öffnenToolStripMenuItem
             // 
             this.öffnenToolStripMenuItem.Name = "öffnenToolStripMenuItem";
-            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.öffnenToolStripMenuItem.Text = "Öffnen";
             this.öffnenToolStripMenuItem.Click += new System.EventHandler(this.öffnenToolStripMenuItem_Click);
             // 
             // speichernToolStripMenuItem
             // 
             this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
-            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.speichernToolStripMenuItem.Text = "Speichern";
             // 
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
@@ -851,6 +851,7 @@ namespace WindowsFormsApplication1
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ClientSizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
