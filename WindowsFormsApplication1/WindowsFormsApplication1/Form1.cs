@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!(('0' <= e.KeyValue && e.KeyValue <= '9') || e.KeyCode < Keys.Help))
+            if (!(('0' <= e.KeyValue && e.KeyValue <= '9') || e.KeyCode < Keys.Help) || e.KeyCode == Keys.Space)
             {
                 e.SuppressKeyPress = true;
             }
@@ -174,6 +174,55 @@ namespace WindowsFormsApplication1
             mRenderWindow.InitializeContexts();
             mRenderWindow.initViewPort();
             mRenderWindow.Refresh();                  
+        }
+
+        private void bRandomCreate_Click(object sender, EventArgs e)
+        {
+            if (!((tRandomKnoten.Text == null) || (tRandomKnoten.Text == "")))
+            {
+                CRandomPointGenerator.mNumPoints = Int32.Parse(tRandomKnoten.Text);
+            }
+
+            if (!((tRandomXKoordinate.Text == null) || (tRandomXKoordinate.Text == "")))
+            {
+                CRandomPointGenerator.mSizeX = Int32.Parse(tRandomXKoordinate.Text);
+            }
+
+            if (!((tRandomYKoordinate.Text == null) || (tRandomYKoordinate.Text == "")))
+            {
+                CRandomPointGenerator.mSizeY = Int32.Parse(tRandomYKoordinate.Text);
+            }
+
+            CRandomPointGenerator.generateTSP();
+            mRenderWindow.InitializeContexts();
+            mRenderWindow.initViewPort();
+            mRenderWindow.Refresh();  
+
+        }
+
+        private void tRandomKnoten_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!(('0' <= e.KeyValue && e.KeyValue <= '9') || e.KeyCode < Keys.Help) || e.KeyCode == Keys.Space)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void tRandomXKoordinate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!(('0' <= e.KeyValue && e.KeyValue <= '9') || e.KeyCode < Keys.Help) || e.KeyCode == Keys.Space)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void tRandomYKoordinate_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+            if (!(('0' <= e.KeyValue && e.KeyValue <= '9') || e.KeyCode < Keys.Help) || e.KeyCode == Keys.Space)
+            {                
+                e.SuppressKeyPress = true;
+            }
         }
 
 
