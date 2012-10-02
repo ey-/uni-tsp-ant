@@ -33,6 +33,7 @@ namespace WindowsFormsApplication1
         /// </summary>
         protected void postInitialize()
         {
+            mRenderWindow.InitializeContexts();
             mRenderWindow.initViewPort();
         }
 

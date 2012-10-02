@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
+using System.Diagnostics;
 
 namespace WindowsFormsApplication1
 {
@@ -25,6 +27,7 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // Create the ToolTip and associate with the Form container.
             ToolTip toolTip1 = new ToolTip();
 
@@ -90,40 +93,50 @@ namespace WindowsFormsApplication1
         {
             if (openTspFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                // Open the selected file to read.
-                System.IO.Stream myResult = openTspFileDialog1.OpenFile();
+                
+                Thread openFileThread = new Thread(new ThreadStart(this.openTSPFile));
+                openFileThread.Start();
+                
+            }
+        }
 
-                CTSPLibFileParser fileParser = new CTSPLibFileParser(myResult);
-                try
-                {
-                    fileParser.fillTSPPointList();
-                }
-                catch (CInsufficientMemoryException exception)
-                {
-                    if (exception.getType() == CInsufficientMemoryException.E_EXCEPTION_TYPE.E_32_BIT_ERROR)
-                    {
-                        MessageBox.Show("Um dieses Projekt laden zu können werden ca. " + exception.getMemoryNeeded()
-                            + " MByte benötigt. 32-Bit-Anwendungen können aber maximal " + exception.getMemoryAvailable() + " MByte verwalten. "
-                            + "Bitte verwenden sie die 64-Bit Version oder öffnen Sie ein kleineres Projekt.", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Auf ihrem System stehen noch " + exception.getMemoryAvailable() + " MByte zur Verfügung. Es werden aber ca. "
-                            + exception.getMemoryNeeded() + " MByte benötigt. "
-                            + "Wenn Sie dieses Projekt laden möchten stellen Sie Bitte mehr RAM zur Verfügung.", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message, "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+        private void openTSPFile()
+        {
+            // Open the selected file to read.
+            System.IO.Stream myResult = openTspFileDialog1.OpenFile();
 
-                //MessageBox.Show(CTSPPointList.getInstance().ToString());
-                myResult.Close();
+            CTSPLibFileParser fileParser = new CTSPLibFileParser(myResult);
+            try
+            {
+                fileParser.fillTSPPointList();
+            }
+            catch (CInsufficientMemoryException exception)
+            {
+                if (exception.getType() == CInsufficientMemoryException.E_EXCEPTION_TYPE.E_32_BIT_ERROR)
+                {
+                    MessageBox.Show("Um dieses Projekt laden zu können werden ca. " + exception.getMemoryNeeded()
+                        + " MByte benötigt. 32-Bit-Anwendungen können aber maximal " + exception.getMemoryAvailable() + " MByte verwalten. "
+                        + "Bitte verwenden sie die 64-Bit Version oder öffnen Sie ein kleineres Projekt.", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Auf ihrem System stehen noch " + exception.getMemoryAvailable() + " MByte zur Verfügung. Es werden aber ca. "
+                        + exception.getMemoryNeeded() + " MByte benötigt. "
+                        + "Wenn Sie dieses Projekt laden möchten stellen Sie Bitte mehr RAM zur Verfügung.", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //MessageBox.Show(CTSPPointList.getInstance().ToString());
+            myResult.Close();
+            mRenderWindow.Invoke(new Action(delegate()
+            {
                 mRenderWindow.initViewPort();
                 mRenderWindow.Refresh();
-
-            }
+            }));
         }
 
         private void button_Start_Click(object sender, EventArgs e)
@@ -158,6 +171,7 @@ namespace WindowsFormsApplication1
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
+            mRenderWindow.InitializeContexts();
             mRenderWindow.initViewPort();
             mRenderWindow.Refresh();                  
         }
