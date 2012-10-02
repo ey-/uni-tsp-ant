@@ -143,7 +143,7 @@ namespace WindowsFormsApplication1
 
         public void initViewPort()
         {
-            InitializeContexts();
+            //InitializeContexts();
 
             Gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
