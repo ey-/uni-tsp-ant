@@ -281,27 +281,29 @@ namespace WindowsFormsApplication1
 
         public void click(object sender, EventArgs args)
         {
-            System.Windows.Forms.MouseEventArgs mouseArgs = (System.Windows.Forms.MouseEventArgs)args;
-
-            if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
+            if (mCursorAction.change || mCursorAction.add || mCursorAction.del)
             {
-                //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
-                // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
-                // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
-                // eingefügt werden kann
-                float mouseX = mouseArgs.X;
-                float mouseY = this.Height - mouseArgs.Y;
+                System.Windows.Forms.MouseEventArgs mouseArgs = (System.Windows.Forms.MouseEventArgs)args;
 
-                CTSPPoint position = new CTSPPoint("");
-                position.x = (float) (mBounds.left + ((mouseX * (mBounds.right - mBounds.left))/ (float)this.Width)) ;
-                position.y = (float) (mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
+                if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
+                    // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
+                    // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
+                    // eingefügt werden kann
+                    float mouseX = mouseArgs.X;
+                    float mouseY = this.Height - mouseArgs.Y;
 
-                //Debug.Write("pos - X: " + position.x + " Y: " + position.y + "\n");
-                handleCursorAction(position);
-                CConnectionList.getInstance().generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
-                this.Refresh();
+                    CTSPPoint position = new CTSPPoint("");
+                    position.x = (float)(mBounds.left + ((mouseX * (mBounds.right - mBounds.left)) / (float)this.Width));
+                    position.y = (float)(mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
+
+                    //Debug.Write("pos - X: " + position.x + " Y: " + position.y + "\n");
+                    handleCursorAction(position);
+                    CConnectionList.getInstance().generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
+                    this.Refresh();
+                }
             }
-
         }
 
         private void handleCursorAction(CTSPPoint position)
