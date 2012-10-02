@@ -88,8 +88,6 @@ namespace WindowsFormsApplication1
 
         private void öffnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
             if (openTspFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 // Open the selected file to read.
@@ -99,6 +97,21 @@ namespace WindowsFormsApplication1
                 try
                 {
                     fileParser.fillTSPPointList();
+                }
+                catch (CInsufficientMemoryException exception)
+                {
+                    if (exception.getType() == CInsufficientMemoryException.E_EXCEPTION_TYPE.E_32_BIT_ERROR)
+                    {
+                        MessageBox.Show("Um dieses Projekt laden zu können werden ca. " + exception.getMemoryNeeded()
+                            + " MByte benötigt. 32-Bit-Anwendungen können aber maximal " + exception.getMemoryAvailable() + " MByte verwalten. "
+                            + "Bitte verwenden sie die 64-Bit Version oder öffnen Sie ein kleineres Projekt.", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Auf ihrem System stehen noch " + exception.getMemoryAvailable() + " MByte zur Verfügung. Es werden aber ca. "
+                            + exception.getMemoryNeeded() + " MByte benötigt. "
+                            + "Wenn Sie dieses Projekt laden möchten stellen Sie Bitte mehr RAM zur Verfügung.", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception exception)
                 {
