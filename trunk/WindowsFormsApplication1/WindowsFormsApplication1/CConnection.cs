@@ -167,5 +167,10 @@ namespace WindowsFormsApplication1
             tspPoint1 = mTSPPoint1;
             tspPoint2 = mTSPPoint2;
         }
+
+        public void SetPheromone(float pheromone)
+        {
+            mPheromone = pheromone;
+        }
     }
 }
