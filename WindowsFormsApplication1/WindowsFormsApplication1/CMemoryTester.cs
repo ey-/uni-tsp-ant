@@ -52,9 +52,10 @@ namespace WindowsFormsApplication1
             {
                 long freeMB = byteAvailable /1024 /1024;
                 long neededMB = bytesNeeded /1024 /1024;
-                throw new Exception("Um dieses Projekt laden zu können werden ca. " + neededMB 
+                throw new CInsufficientMemoryException(CInsufficientMemoryException.E_EXCEPTION_TYPE.E_32_BIT_ERROR, neededMB, (long)(1.4 * 1024));
+             /*   throw new Exception("Um dieses Projekt laden zu können werden ca. " + neededMB 
                     + " MByte benötigt. 32-Bit-Anwendungen können aber maximal " + 1.4 * 1024 + " MByte verwalten. "
-                    + "Bitte verwenden sie die 64-Bit Version oder öffnen sie ein kleineres Projekt.");
+                    + "Bitte verwenden sie die 64-Bit Version oder öffnen sie ein kleineres Projekt.");*/
             }
 #endif
             Debug.WriteLine("zusätzlicher Speicher: " + bytesNeeded);
@@ -62,9 +63,11 @@ namespace WindowsFormsApplication1
             {
                 long freeMB = byteAvailable /1024 /1024;
                 long neededMB = bytesNeeded /1024 /1024;
-                throw new Exception("Auf ihrem System stehen noch " + freeMB + " MByte zur Verfügung. Es werden aber ca. "
+
+                throw new CInsufficientMemoryException(CInsufficientMemoryException.E_EXCEPTION_TYPE.E_RAM_SIZE_ERROR, neededMB, freeMB);
+                /*throw new Exception("Auf ihrem System stehen noch " + freeMB + " MByte zur Verfügung. Es werden aber ca. "
                     + neededMB + " MByte benötigt. "
-                    + "Wenn Sie dieses Projekt laden möchten stellen Sie bitte mehr RAM zur Verfügung.");
+                    + "Wenn Sie dieses Projekt laden möchten stellen Sie bitte mehr RAM zur Verfügung.");*/
             }
         }
 

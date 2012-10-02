@@ -97,10 +97,12 @@
     <Compile Include="CAntAlgorithmParameters.cs" />
     <Compile Include="CConnection.cs" />
     <Compile Include="CConnectionList.cs" />
+    <Compile Include="CInsufficientMemoryException.cs" />
     <Compile Include="CIteration.cs" />
     <Compile Include="CIterationList.cs" />
     <Compile Include="CAntAlgorithem.cs" />
     <Compile Include="CMemoryTester.cs" />
+    <Compile Include="CRandomPointGenerator.cs" />
     <Compile Include="CTour.cs" />
     <Compile Include="CTSPLibFileParser.cs" />
     <Compile Include="CTSPPointList.cs" />
