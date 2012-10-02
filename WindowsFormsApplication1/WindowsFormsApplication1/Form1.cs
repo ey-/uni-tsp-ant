@@ -148,7 +148,9 @@ namespace WindowsFormsApplication1
             CAntAlgorithmParameters.getInstance().initialPheromone = initialPheromonValue;
             CAntAlgorithmParameters.getInstance().localInformation = heuristicValue;
             CAntAlgorithmParameters.getInstance().evaporationFactor = humidificationValue;
-            MessageBox.Show("Ants: " + CAntAlgorithmParameters.getInstance().numberAnts + "\n" + CAntAlgorithmParameters.getInstance().numberMaxIterations + "\n" + CAntAlgorithmParameters.getInstance().pheromoneParameter + " \n" + "usw usw");
+            //MessageBox.Show("Ants: " + CAntAlgorithmParameters.getInstance().numberAnts + "\n" + CAntAlgorithmParameters.getInstance().numberMaxIterations + "\n" + CAntAlgorithmParameters.getInstance().pheromoneParameter + " \n" + "usw usw");
+            var antAlgorithm = new CAntAlgorithm();
+            antAlgorithm.NewIteration();
         }
 
 

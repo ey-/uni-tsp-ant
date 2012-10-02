@@ -209,5 +209,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public void SetInitialPheromone(float initialPheromone)
+        {
+            foreach (CConnection connection in CConnectionList.mInstance)
+                connection.SetPheromone(initialPheromone);
+        }
+
     }
 }
