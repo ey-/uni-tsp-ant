@@ -114,6 +114,8 @@ namespace WindowsFormsApplication1
             return null;
         }
 
+
+
         public override string ToString()
         {
             String output = "";
@@ -174,6 +176,24 @@ namespace WindowsFormsApplication1
             {
                 yield return mPointList[index];
             }
+        }
+        /// <summary>
+        /// gibt aus, ob ein Punkt existiert
+        /// </summary>
+        /// <param name="x"> X-Wert als float</param>
+        /// <param name="y"> Y-Wert als float</param>
+        /// <returns>null wenn der Punkt nicht existiert, Point als Objekt wenn es existiert</returns>
+
+        internal CTSPPoint getPointsbyCoordinates(float x, float y)
+        {
+            foreach (CTSPPoint point in mPointList)
+            {
+                if (point.x == x && point.y==y)
+                {
+                    return point;
+                }
+            }
+            return null;            
         }
     }
 }

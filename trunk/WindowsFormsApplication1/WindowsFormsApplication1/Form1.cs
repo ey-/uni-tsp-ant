@@ -227,6 +227,22 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void rCursorNothing_CheckedChanged(object sender, EventArgs e)
+        {
+            mRenderWindow.setCursorAction(rCursorAdd.Checked, rCursorDelete.Checked, rCursorShift.Checked);
+        }
+
+        private void rCursorAdd_CheckedChanged(object sender, EventArgs e)
+        {
+            mRenderWindow.setCursorAction(rCursorAdd.Checked, rCursorDelete.Checked, rCursorShift.Checked);
+        }
+
+        private void rCursorDelete_CheckedChanged(object sender, EventArgs e)
+        {
+            mRenderWindow.setCursorAction(rCursorAdd.Checked, rCursorDelete.Checked, rCursorShift.Checked);
+        }
+
+
 
     }
 }

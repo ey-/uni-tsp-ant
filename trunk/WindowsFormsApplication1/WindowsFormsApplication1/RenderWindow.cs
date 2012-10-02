@@ -9,9 +9,27 @@ namespace WindowsFormsApplication1
     using Tao.OpenGl;
     using System.Threading;
     using System.Diagnostics;
+    using System.Windows.Forms;
 
     class RenderWindow : SimpleOpenGlControl
     {
+
+        protected struct T_CURSORACTION
+        {
+            public bool add;
+            public bool del;
+            public bool change;
+        }
+
+        protected struct T_POINTTOMOVE
+        {
+            public CTSPPoint pointToMove;
+            public float newX;
+            public float newY;
+            public bool movePoint;
+        }
+
+
         protected struct T_BOUNDS
         {
             public double left;
@@ -24,13 +42,17 @@ namespace WindowsFormsApplication1
 
         protected List<CTSPPoint> mBestLocalPath = null;
         protected List<CTSPPoint> mBestGlobalPath = null;
-
+        protected T_CURSORACTION mCursorAction = new T_CURSORACTION();
+        protected T_POINTTOMOVE pointToMove = new T_POINTTOMOVE();
         protected T_BOUNDS mBounds = new T_BOUNDS();
 
         public RenderWindow()
         {
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.render);
-            this.Click += new EventHandler(this.click);
+            this.MouseUp += new MouseEventHandler(this.click);
+            this.MouseDown += new MouseEventHandler(this.mMouseDown);
+            this.MouseMove += new MouseEventHandler(this.mMouseMove);
+
         }
 
         
@@ -42,6 +64,13 @@ namespace WindowsFormsApplication1
         public void setBestGlobalPath(List<CTSPPoint> bestGlobalPath)
         {
             mBestGlobalPath = bestGlobalPath;
+        }
+
+        public void setCursorAction(bool addP,bool deleteP,bool changeP)
+        {
+            mCursorAction.add = addP;
+            mCursorAction.del = deleteP;
+            mCursorAction.change = changeP;
         }
 
         protected void render(object sender, EventArgs args)
@@ -189,6 +218,67 @@ namespace WindowsFormsApplication1
             this.ResumeLayout(false);
         }
 
+        public void mMouseMove(object sender, EventArgs args)
+        {
+          if (mCursorAction.change)
+            {
+             if (pointToMove.movePoint)
+            {
+                
+                System.Windows.Forms.MouseEventArgs mouseArgs = (System.Windows.Forms.MouseEventArgs)args;
+
+                if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
+                    // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
+                    // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
+                    // eingefügt werden kann
+                    float mouseX = mouseArgs.X;
+                    float mouseY = this.Height - mouseArgs.Y;
+
+                    CTSPPoint position = new CTSPPoint("");
+                    position.x = (float)(mBounds.left + ((mouseX * (mBounds.right - mBounds.left)) / (float)this.Width));
+                    position.y = (float)(mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
+
+                    pointToMove.pointToMove.changeX(position.x);
+                    pointToMove.pointToMove.changeY(position.y);
+
+                }
+            }
+                     }
+          }
+
+        public void mMouseDown(object sender, EventArgs args)
+        {
+            if (mCursorAction.change)
+            {
+                System.Windows.Forms.MouseEventArgs mouseArgs = (System.Windows.Forms.MouseEventArgs)args;
+
+                if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
+                    // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
+                    // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
+                    // eingefügt werden kann
+                    float mouseX = mouseArgs.X;
+                    float mouseY = this.Height - mouseArgs.Y;
+
+                    CTSPPoint position = new CTSPPoint("");
+                    position.x = (float)(mBounds.left + ((mouseX * (mBounds.right - mBounds.left)) / (float)this.Width));
+                    position.y = (float)(mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
+
+
+                    CTSPPoint Point = CTSPPointList.getInstance().getPointsbyCoordinates(position.x, position.y);
+                    if (!(Point == null))
+                    {
+                        pointToMove.movePoint=true;
+                        pointToMove.pointToMove= Point;
+                    }
+                }
+            }
+
+        }
+
         public void click(object sender, EventArgs args)
         {
             System.Windows.Forms.MouseEventArgs mouseArgs = (System.Windows.Forms.MouseEventArgs)args;
@@ -207,9 +297,30 @@ namespace WindowsFormsApplication1
                 position.y = (float) (mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
 
                 //Debug.Write("pos - X: " + position.x + " Y: " + position.y + "\n");
-                CTSPPointList.getInstance().addPoint(position);
+                handleCursorAction(position);
                 CConnectionList.getInstance().generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EUC_2D);
                 this.Refresh();
+            }
+
+        }
+
+        private void handleCursorAction(CTSPPoint position)
+        {
+            
+            
+            if (mCursorAction.add)
+            {
+                CTSPPointList.getInstance().addPoint(position);
+            }
+            
+            if (mCursorAction.del)
+            {
+                Debug.Write("Löschen zurzeit nicht möglich");
+            }
+
+            if (mCursorAction.change)
+            {
+                pointToMove.movePoint=false;
             }
 
         }

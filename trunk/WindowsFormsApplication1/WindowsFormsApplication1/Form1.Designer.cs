@@ -571,6 +571,7 @@ namespace WindowsFormsApplication1
             this.rCursorDelete.TabIndex = 2;
             this.rCursorDelete.Text = "Knoten löschen";
             this.rCursorDelete.UseVisualStyleBackColor = true;
+            this.rCursorDelete.CheckedChanged += new System.EventHandler(this.rCursorDelete_CheckedChanged);
             // 
             // rCursorAdd
             // 
@@ -581,6 +582,7 @@ namespace WindowsFormsApplication1
             this.rCursorAdd.TabIndex = 1;
             this.rCursorAdd.Text = "Knoten hinzufügen";
             this.rCursorAdd.UseVisualStyleBackColor = true;
+            this.rCursorAdd.CheckedChanged += new System.EventHandler(this.rCursorAdd_CheckedChanged);
             // 
             // rCursorNothing
             // 
@@ -594,6 +596,7 @@ namespace WindowsFormsApplication1
             this.rCursorNothing.Text = "nichts";
             this.rCursorNothing.UseMnemonic = false;
             this.rCursorNothing.UseVisualStyleBackColor = true;
+            this.rCursorNothing.CheckedChanged += new System.EventHandler(this.rCursorNothing_CheckedChanged);
             // 
             // label13
             // 
@@ -935,9 +938,6 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TextBox tNumberOfIteration;
         private System.Windows.Forms.RadioButton rCursorNothing;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.RadioButton rCursorShift;
-        private System.Windows.Forms.RadioButton rCursorDelete;
-        private System.Windows.Forms.RadioButton rCursorAdd;
         private System.Windows.Forms.Button bRandomCreate;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
@@ -948,6 +948,9 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TextBox tRandomKnoten;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.RadioButton rCursorShift;
+        public System.Windows.Forms.RadioButton rCursorDelete;
+        public System.Windows.Forms.RadioButton rCursorAdd;
     }
 }
 
