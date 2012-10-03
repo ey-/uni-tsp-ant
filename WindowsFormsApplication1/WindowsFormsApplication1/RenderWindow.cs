@@ -315,7 +315,12 @@ namespace WindowsFormsApplication1
             
             if (mCursorAction.del)
             {
-                Debug.Write("Löschen zurzeit nicht möglich");
+                float precision = (float)((mBounds.right - mBounds.left) / 100);
+                CTSPPoint Point = CTSPPointList.getInstance().getPointsbyCoordinates(position.x, position.y, precision);
+                if (!(Point == null))
+                {
+                    CTSPPointList.getInstance().remove(Point);
+                }
             }
 
             if (mCursorAction.change)
