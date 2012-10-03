@@ -24,8 +24,6 @@ namespace WindowsFormsApplication1
         protected struct T_POINTTOMOVE
         {
             public CTSPPoint pointToMove;
-            public float newX;
-            public float newY;
             public bool movePoint;
         }
 
@@ -267,8 +265,8 @@ namespace WindowsFormsApplication1
                     position.x = (float)(mBounds.left + ((mouseX * (mBounds.right - mBounds.left)) / (float)this.Width));
                     position.y = (float)(mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
 
-
-                    CTSPPoint Point = CTSPPointList.getInstance().getPointsbyCoordinates(position.x, position.y);
+                    float precision = (float)((mBounds.right - mBounds.left)/100);
+                    CTSPPoint Point = CTSPPointList.getInstance().getPointsbyCoordinates(position.x, position.y,precision);
                     if (!(Point == null))
                     {
                         pointToMove.movePoint=true;
