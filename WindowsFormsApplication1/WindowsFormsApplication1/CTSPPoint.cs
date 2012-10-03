@@ -51,15 +51,5 @@ namespace WindowsFormsApplication1
         {
             return mLabel + " X=" + x + " Y=" + y;
         }
-
-        public void changeX(float toChangeX)
-        {
-            this.x = toChangeX;
-        }
-
-        public void changeY(float toChangeY)
-        {
-            this.y = toChangeY;
-        }
     }
 }
