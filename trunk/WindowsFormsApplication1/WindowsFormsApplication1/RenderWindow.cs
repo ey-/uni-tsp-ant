@@ -218,24 +218,23 @@ namespace WindowsFormsApplication1
 
         public void mMouseMove(object sender, EventArgs args)
         {
-          if (mCursorAction.change)
+            if (mCursorAction.change)
             {
-             if (pointToMove.movePoint)
-            {
-                
-                System.Windows.Forms.MouseEventArgs mouseArgs = (System.Windows.Forms.MouseEventArgs)args;
-
-                if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
+                if (pointToMove.movePoint)
                 {
-                    CTSPPoint position = getPositionFromMouseClick(mouseArgs);
+                
+                    System.Windows.Forms.MouseEventArgs mouseArgs = (System.Windows.Forms.MouseEventArgs)args;
 
-                    pointToMove.pointToMove.changeX(position.x);
-                    pointToMove.pointToMove.changeY(position.y);
+                    if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
+                    {
+                        CTSPPoint position = getPositionFromMouseClick(mouseArgs);
 
+                        pointToMove.pointToMove.x = position.x;
+                        pointToMove.pointToMove.y = position.y;
+                    }
                 }
             }
-                     }
-          }
+        }
 
         private CTSPPoint getPositionFromMouseClick(System.Windows.Forms.MouseEventArgs mouseArgs)
         {
@@ -294,8 +293,6 @@ namespace WindowsFormsApplication1
 
         private void handleCursorAction(CTSPPoint position)
         {
-            
-            
             if (mCursorAction.add)
             {
                 CTSPPointList.getInstance().addPoint(position);
@@ -317,5 +314,5 @@ namespace WindowsFormsApplication1
             }
 
         }
-    }
-}
+    }// class
+} // namespace
