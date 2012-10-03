@@ -182,14 +182,19 @@ namespace WindowsFormsApplication1
         /// </summary>
         /// <param name="x"> X-Wert als float</param>
         /// <param name="y"> Y-Wert als float</param>
+        /// <param name="precision">Wert zur Präzision des Treffers</param>
         /// <returns>null wenn der Punkt nicht existiert, Point als Objekt wenn es existiert</returns>
 
-        internal CTSPPoint getPointsbyCoordinates(float x, float y)
+        internal CTSPPoint getPointsbyCoordinates(float x, float y, float precision)
         {
             foreach (CTSPPoint point in mPointList)
             {
-                if (point.x == x && point.y==y)
+               
+                double abstand=Math.Sqrt(((point.x-x)*(point.x-x))+((point.y-y)*(point.y-y)));
+
+                if (precision>=abstand)
                 {
+
                     return point;
                 }
             }
