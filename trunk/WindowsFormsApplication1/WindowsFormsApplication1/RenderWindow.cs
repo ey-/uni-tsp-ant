@@ -227,16 +227,7 @@ namespace WindowsFormsApplication1
 
                 if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
                 {
-                    //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
-                    // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
-                    // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
-                    // eingefügt werden kann
-                    float mouseX = mouseArgs.X;
-                    float mouseY = this.Height - mouseArgs.Y;
-
-                    CTSPPoint position = new CTSPPoint("");
-                    position.x = (float)(mBounds.left + ((mouseX * (mBounds.right - mBounds.left)) / (float)this.Width));
-                    position.y = (float)(mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
+                    CTSPPoint position = getPositionFromMouseClick(mouseArgs);
 
                     pointToMove.pointToMove.changeX(position.x);
                     pointToMove.pointToMove.changeY(position.y);
@@ -246,6 +237,21 @@ namespace WindowsFormsApplication1
                      }
           }
 
+        private CTSPPoint getPositionFromMouseClick(System.Windows.Forms.MouseEventArgs mouseArgs)
+        {
+            //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
+            // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
+            // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
+            // eingefügt werden kann
+            float mouseX = mouseArgs.X;
+            float mouseY = this.Height - mouseArgs.Y;
+
+            CTSPPoint position = new CTSPPoint("");
+            position.x = (float)(mBounds.left + ((mouseX * (mBounds.right - mBounds.left)) / (float)this.Width));
+            position.y = (float)(mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
+            return position;
+        }
+
         public void mMouseDown(object sender, EventArgs args)
         {
             if (mCursorAction.change)
@@ -254,16 +260,7 @@ namespace WindowsFormsApplication1
 
                 if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
                 {
-                    //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
-                    // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
-                    // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
-                    // eingefügt werden kann
-                    float mouseX = mouseArgs.X;
-                    float mouseY = this.Height - mouseArgs.Y;
-
-                    CTSPPoint position = new CTSPPoint("");
-                    position.x = (float)(mBounds.left + ((mouseX * (mBounds.right - mBounds.left)) / (float)this.Width));
-                    position.y = (float)(mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
+                    CTSPPoint position = getPositionFromMouseClick(mouseArgs);
 
                     float precision = (float)((mBounds.right - mBounds.left)/100);
                     CTSPPoint Point = CTSPPointList.getInstance().getPointsbyCoordinates(position.x, position.y,precision);
@@ -285,16 +282,7 @@ namespace WindowsFormsApplication1
 
                 if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
                 {
-                    //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
-                    // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
-                    // die Y-Koordiante umgekehrt werden, damit die Stadt an der korrekten Position 
-                    // eingefügt werden kann
-                    float mouseX = mouseArgs.X;
-                    float mouseY = this.Height - mouseArgs.Y;
-
-                    CTSPPoint position = new CTSPPoint("");
-                    position.x = (float)(mBounds.left + ((mouseX * (mBounds.right - mBounds.left)) / (float)this.Width));
-                    position.y = (float)(mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
+                    CTSPPoint position = getPositionFromMouseClick(mouseArgs);
 
                     //Debug.Write("pos - X: " + position.x + " Y: " + position.y + "\n");
                     handleCursorAction(position);
