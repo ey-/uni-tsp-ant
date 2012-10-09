@@ -458,7 +458,7 @@ namespace WindowsFormsApplication1
             this.tabEditieren.TabIndex = 3;
             this.tabEditieren.Text = "Editieren";
             this.tabEditieren.UseVisualStyleBackColor = true;
-                       // 
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.bRandomCreate);
@@ -542,6 +542,7 @@ namespace WindowsFormsApplication1
             // tRandomKnoten
             // 
             this.tRandomKnoten.Location = new System.Drawing.Point(117, 49);
+            this.tRandomKnoten.MaxLength = 5;
             this.tRandomKnoten.Name = "tRandomKnoten";
             this.tRandomKnoten.Size = new System.Drawing.Size(122, 20);
             this.tRandomKnoten.TabIndex = 5;
@@ -924,7 +925,7 @@ namespace WindowsFormsApplication1
             this.Controls.Add(this.tabController);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1024, 738);
+            this.MinimumSize = new System.Drawing.Size(1024, 726);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
