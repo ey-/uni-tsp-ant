@@ -908,6 +908,8 @@ namespace WindowsFormsApplication1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 702);
+            this.ClientSizeChanged += new System.EventHandler(this.Form1_SizeChanged);
+            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.Controls.Add(this.tNumberOfIteration);
             this.Controls.Add(this.tTimeDisplay);
             this.Controls.Add(this.pIterationProgressBar);
