@@ -43,8 +43,8 @@ namespace WindowsFormsApplication1
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabController = new System.Windows.Forms.TabControl();
+            this.tabParameter = new System.Windows.Forms.TabPage();
             this.cStoppLoesung = new System.Windows.Forms.CheckBox();
             this.cStopSchwellenwert = new System.Windows.Forms.CheckBox();
             this.tThreshold = new System.Windows.Forms.TextBox();
@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1
             this.label3 = new System.Windows.Forms.Label();
             this.uAntsQuantity = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabEditieren = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.bRandomCreate = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -86,7 +86,13 @@ namespace WindowsFormsApplication1
             this.rCursorAdd = new System.Windows.Forms.RadioButton();
             this.rCursorNothing = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabStatistiken = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.labelStreckePheromon = new System.Windows.Forms.Label();
+            this.tStreckeLocalInfo = new System.Windows.Forms.TextBox();
+            this.tStreckePheromon = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.öffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,8 +114,8 @@ namespace WindowsFormsApplication1
             this.tTimeDisplay = new System.Windows.Forms.TextBox();
             this.tNumberOfIteration = new System.Windows.Forms.TextBox();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabController.SuspendLayout();
+            this.tabParameter.SuspendLayout();
             this.groupBoxAntsAlgorithym.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarheuristicPheromonUpdate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarinitialPheromon)).BeginInit();
@@ -118,45 +124,47 @@ namespace WindowsFormsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPheromon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabEditieren.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabStatistiken.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabController
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(7, 495);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(832, 199);
-            this.tabControl1.TabIndex = 1;
+            this.tabController.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabController.Controls.Add(this.tabParameter);
+            this.tabController.Controls.Add(this.tabEditieren);
+            this.tabController.Controls.Add(this.tabStatistiken);
+            this.tabController.Location = new System.Drawing.Point(7, 495);
+            this.tabController.Name = "tabController";
+            this.tabController.SelectedIndex = 0;
+            this.tabController.Size = new System.Drawing.Size(796, 199);
+            this.tabController.TabIndex = 1;
             // 
-            // tabPage1
+            // tabParameter
             // 
-            this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tabPage1.Controls.Add(this.cStoppLoesung);
-            this.tabPage1.Controls.Add(this.cStopSchwellenwert);
-            this.tabPage1.Controls.Add(this.tThreshold);
-            this.tabPage1.Controls.Add(this.labelThreshold);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.groupBoxAntsAlgorithym);
-            this.tabPage1.Controls.Add(this.uQuantityIterations);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.uAntsQuantity);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(824, 173);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Parameter";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabParameter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tabParameter.Controls.Add(this.cStoppLoesung);
+            this.tabParameter.Controls.Add(this.cStopSchwellenwert);
+            this.tabParameter.Controls.Add(this.tThreshold);
+            this.tabParameter.Controls.Add(this.labelThreshold);
+            this.tabParameter.Controls.Add(this.label4);
+            this.tabParameter.Controls.Add(this.groupBoxAntsAlgorithym);
+            this.tabParameter.Controls.Add(this.uQuantityIterations);
+            this.tabParameter.Controls.Add(this.label3);
+            this.tabParameter.Controls.Add(this.uAntsQuantity);
+            this.tabParameter.Controls.Add(this.label1);
+            this.tabParameter.Location = new System.Drawing.Point(4, 22);
+            this.tabParameter.Name = "tabParameter";
+            this.tabParameter.Padding = new System.Windows.Forms.Padding(3);
+            this.tabParameter.Size = new System.Drawing.Size(788, 173);
+            this.tabParameter.TabIndex = 2;
+            this.tabParameter.Text = "Parameter";
+            this.tabParameter.UseVisualStyleBackColor = true;
             // 
             // cStoppLoesung
             // 
@@ -227,7 +235,7 @@ namespace WindowsFormsApplication1
             this.groupBoxAntsAlgorithym.Controls.Add(this.label6);
             this.groupBoxAntsAlgorithym.Location = new System.Drawing.Point(9, 40);
             this.groupBoxAntsAlgorithym.Name = "groupBoxAntsAlgorithym";
-            this.groupBoxAntsAlgorithym.Size = new System.Drawing.Size(804, 126);
+            this.groupBoxAntsAlgorithym.Size = new System.Drawing.Size(771, 126);
             this.groupBoxAntsAlgorithym.TabIndex = 7;
             this.groupBoxAntsAlgorithym.TabStop = false;
             this.groupBoxAntsAlgorithym.Text = "Ameisenalgorithmus";
@@ -235,7 +243,7 @@ namespace WindowsFormsApplication1
             // labelheuristicPheromonUpdate
             // 
             this.labelheuristicPheromonUpdate.AutoSize = true;
-            this.labelheuristicPheromonUpdate.Location = new System.Drawing.Point(566, 60);
+            this.labelheuristicPheromonUpdate.Location = new System.Drawing.Point(562, 60);
             this.labelheuristicPheromonUpdate.Name = "labelheuristicPheromonUpdate";
             this.labelheuristicPheromonUpdate.Size = new System.Drawing.Size(34, 13);
             this.labelheuristicPheromonUpdate.TabIndex = 17;
@@ -244,7 +252,7 @@ namespace WindowsFormsApplication1
             // trackBarheuristicPheromonUpdate
             // 
             this.trackBarheuristicPheromonUpdate.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBarheuristicPheromonUpdate.Location = new System.Drawing.Point(599, 48);
+            this.trackBarheuristicPheromonUpdate.Location = new System.Drawing.Point(595, 48);
             this.trackBarheuristicPheromonUpdate.Maximum = 10000;
             this.trackBarheuristicPheromonUpdate.Minimum = 1;
             this.trackBarheuristicPheromonUpdate.Name = "trackBarheuristicPheromonUpdate";
@@ -257,7 +265,7 @@ namespace WindowsFormsApplication1
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(403, 55);
+            this.label10.Location = new System.Drawing.Point(399, 55);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(117, 26);
             this.label10.TabIndex = 15;
@@ -266,7 +274,7 @@ namespace WindowsFormsApplication1
             // labelinitialPheromon
             // 
             this.labelinitialPheromon.AutoSize = true;
-            this.labelinitialPheromon.Location = new System.Drawing.Point(566, 21);
+            this.labelinitialPheromon.Location = new System.Drawing.Point(562, 21);
             this.labelinitialPheromon.Name = "labelinitialPheromon";
             this.labelinitialPheromon.Size = new System.Drawing.Size(34, 13);
             this.labelinitialPheromon.TabIndex = 14;
@@ -275,7 +283,7 @@ namespace WindowsFormsApplication1
             // trackBarinitialPheromon
             // 
             this.trackBarinitialPheromon.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBarinitialPheromon.Location = new System.Drawing.Point(599, 9);
+            this.trackBarinitialPheromon.Location = new System.Drawing.Point(595, 9);
             this.trackBarinitialPheromon.Maximum = 10000;
             this.trackBarinitialPheromon.Minimum = 1;
             this.trackBarinitialPheromon.Name = "trackBarinitialPheromon";
@@ -288,7 +296,7 @@ namespace WindowsFormsApplication1
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(401, 21);
+            this.label9.Location = new System.Drawing.Point(397, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(119, 13);
             this.label9.TabIndex = 12;
@@ -439,17 +447,18 @@ namespace WindowsFormsApplication1
             this.label1.TabIndex = 1;
             this.label1.Text = "Ameisen:";
             // 
-            // tabPage2
+            // tabEditieren
             // 
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(824, 173);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "Editieren";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabEditieren.Controls.Add(this.groupBox2);
+            this.tabEditieren.Controls.Add(this.groupBox1);
+            this.tabEditieren.Location = new System.Drawing.Point(4, 22);
+            this.tabEditieren.Name = "tabEditieren";
+            this.tabEditieren.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEditieren.Size = new System.Drawing.Size(788, 173);
+            this.tabEditieren.TabIndex = 3;
+            this.tabEditieren.Text = "Editieren";
+            this.tabEditieren.UseVisualStyleBackColor = true;
+            this.tabEditieren.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // groupBox2
             // 
@@ -608,15 +617,78 @@ namespace WindowsFormsApplication1
             this.label13.TabIndex = 4;
             this.label13.Text = "Cursoraktion";
             // 
-            // tabPage3
+            // tabStatistiken
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(824, 173);
-            this.tabPage3.TabIndex = 4;
-            this.tabPage3.Text = "Statistiken";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabStatistiken.Controls.Add(this.listBox1);
+            this.tabStatistiken.Controls.Add(this.groupBox3);
+            this.tabStatistiken.Location = new System.Drawing.Point(4, 22);
+            this.tabStatistiken.Name = "tabStatistiken";
+            this.tabStatistiken.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStatistiken.Size = new System.Drawing.Size(788, 173);
+            this.tabStatistiken.TabIndex = 4;
+            this.tabStatistiken.Text = "Statistiken";
+            this.tabStatistiken.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(19, 32);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(559, 134);
+            this.listBox1.TabIndex = 5;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.labelStreckePheromon);
+            this.groupBox3.Controls.Add(this.tStreckeLocalInfo);
+            this.groupBox3.Controls.Add(this.tStreckePheromon);
+            this.groupBox3.Location = new System.Drawing.Point(595, 10);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(220, 155);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Referenzwerte";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(65, 92);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(94, 13);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Strecke Local Info";
+            // 
+            // labelStreckePheromon
+            // 
+            this.labelStreckePheromon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelStreckePheromon.AutoSize = true;
+            this.labelStreckePheromon.Location = new System.Drawing.Point(62, 35);
+            this.labelStreckePheromon.Name = "labelStreckePheromon";
+            this.labelStreckePheromon.Size = new System.Drawing.Size(95, 13);
+            this.labelStreckePheromon.TabIndex = 4;
+            this.labelStreckePheromon.Text = "Strecke Pheromon";
+            // 
+            // tStreckeLocalInfo
+            // 
+            this.tStreckeLocalInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tStreckeLocalInfo.Location = new System.Drawing.Point(28, 112);
+            this.tStreckeLocalInfo.Name = "tStreckeLocalInfo";
+            this.tStreckeLocalInfo.ReadOnly = true;
+            this.tStreckeLocalInfo.Size = new System.Drawing.Size(165, 20);
+            this.tStreckeLocalInfo.TabIndex = 3;
+            this.tStreckeLocalInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tStreckePheromon
+            // 
+            this.tStreckePheromon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tStreckePheromon.Location = new System.Drawing.Point(28, 55);
+            this.tStreckePheromon.Name = "tStreckePheromon";
+            this.tStreckePheromon.ReadOnly = true;
+            this.tStreckePheromon.Size = new System.Drawing.Size(165, 20);
+            this.tStreckePheromon.TabIndex = 1;
+            this.tStreckePheromon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // menuStrip1
             // 
@@ -625,7 +697,7 @@ namespace WindowsFormsApplication1
             this.hilfeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1046, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -672,7 +744,7 @@ namespace WindowsFormsApplication1
             // button_Start
             // 
             this.button_Start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Start.Location = new System.Drawing.Point(841, 517);
+            this.button_Start.Location = new System.Drawing.Point(803, 515);
             this.button_Start.Name = "button_Start";
             this.button_Start.Size = new System.Drawing.Size(200, 43);
             this.button_Start.TabIndex = 3;
@@ -695,7 +767,7 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(845, 565);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(807, 565);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -706,9 +778,7 @@ namespace WindowsFormsApplication1
             // 
             // tØIteration
             // 
-            this.tØIteration.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tØIteration.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tØIteration.Location = new System.Drawing.Point(50, 33);
             this.tØIteration.Multiline = true;
             this.tØIteration.Name = "tØIteration";
@@ -801,7 +871,7 @@ namespace WindowsFormsApplication1
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pIterationProgressBar.Location = new System.Drawing.Point(122, 472);
             this.pIterationProgressBar.Name = "pIterationProgressBar";
-            this.pIterationProgressBar.Size = new System.Drawing.Size(855, 20);
+            this.pIterationProgressBar.Size = new System.Drawing.Size(817, 20);
             this.pIterationProgressBar.TabIndex = 5;
             // 
             // tTimeDisplay
@@ -816,7 +886,7 @@ namespace WindowsFormsApplication1
             // tNumberOfIteration
             // 
             this.tNumberOfIteration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tNumberOfIteration.Location = new System.Drawing.Point(980, 472);
+            this.tNumberOfIteration.Location = new System.Drawing.Point(942, 472);
             this.tNumberOfIteration.Name = "tNumberOfIteration";
             this.tNumberOfIteration.ReadOnly = true;
             this.tNumberOfIteration.Size = new System.Drawing.Size(60, 20);
@@ -837,7 +907,7 @@ namespace WindowsFormsApplication1
             this.mRenderWindow.DepthBits = ((byte)(16));
             this.mRenderWindow.Location = new System.Drawing.Point(7, 27);
             this.mRenderWindow.Name = "mRenderWindow";
-            this.mRenderWindow.Size = new System.Drawing.Size(1025, 445);
+            this.mRenderWindow.Size = new System.Drawing.Size(986, 445);
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
             // 
@@ -845,25 +915,23 @@ namespace WindowsFormsApplication1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 702);
+            this.ClientSize = new System.Drawing.Size(1008, 702);
             this.Controls.Add(this.tNumberOfIteration);
             this.Controls.Add(this.tTimeDisplay);
             this.Controls.Add(this.pIterationProgressBar);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_Start);
             this.Controls.Add(this.mRenderWindow);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabController);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1062, 726);
+            this.MinimumSize = new System.Drawing.Size(1024, 738);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.ClientSizeChanged += new System.EventHandler(this.Form1_SizeChanged);
-            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabController.ResumeLayout(false);
+            this.tabParameter.ResumeLayout(false);
+            this.tabParameter.PerformLayout();
             this.groupBoxAntsAlgorithym.ResumeLayout(false);
             this.groupBoxAntsAlgorithym.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarheuristicPheromonUpdate)).EndInit();
@@ -873,11 +941,14 @@ namespace WindowsFormsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPheromon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.tabEditieren.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabStatistiken.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -887,8 +958,8 @@ namespace WindowsFormsApplication1
 
         }
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tabController;
+        private System.Windows.Forms.TabPage tabParameter;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem öffnenToolStripMenuItem;
@@ -922,8 +993,8 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.Button button_Start;
         private System.Windows.Forms.CheckBox cStoppLoesung;
         private System.Windows.Forms.CheckBox cStopSchwellenwert;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabEditieren;
+        private System.Windows.Forms.TabPage tabStatistiken;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox tØIteration;
         private System.Windows.Forms.TextBox tØGlobal;
@@ -948,9 +1019,12 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TextBox tRandomKnoten;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.RadioButton rCursorShift;
-        public System.Windows.Forms.RadioButton rCursorDelete;
-        public System.Windows.Forms.RadioButton rCursorAdd;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox tStreckeLocalInfo;
+        private System.Windows.Forms.TextBox tStreckePheromon;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label labelStreckePheromon;
     }
 }
 
