@@ -458,8 +458,7 @@ namespace WindowsFormsApplication1
             this.tabEditieren.TabIndex = 3;
             this.tabEditieren.Text = "Editieren";
             this.tabEditieren.UseVisualStyleBackColor = true;
-            this.tabEditieren.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
+                       // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.bRandomCreate);
@@ -1025,6 +1024,9 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label labelStreckePheromon;
+        public System.Windows.Forms.RadioButton rCursorShift;
+        public System.Windows.Forms.RadioButton rCursorDelete;
+        public System.Windows.Forms.RadioButton rCursorAdd;
     }
 }
 
