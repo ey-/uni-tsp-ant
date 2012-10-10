@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
             var pheromoneParam = CAntAlgorithmParameters.getInstance().pheromoneParameter;
             var phermomoneUpdate = CAntAlgorithmParameters.getInstance().pheromoneUpdate;
             var initialPheromone = CAntAlgorithmParameters.getInstance().initialPheromone;
+            var evaporationFactor = CAntAlgorithmParameters.getInstance().evaporationFactor;
+            var optTour = CAntAlgorithmParameters.getInstance().optTour;
 
             CConnectionList.getInstance().SetInitialPheromone(initialPheromone);
 
@@ -24,14 +26,14 @@ namespace WindowsFormsApplication1
             {
                 NewIteration();
 
-                // TODO
-                //if (abbruchkriterium)
-                //break;
+                
+                if (optTour != null && optTour.Length <= CIterationList.GlobalBestTour.Length)
+                break;
 
 
                 //Pheromone Evaporization
                 foreach (CConnection conn in CConnectionList.getInstance())
-                    conn.SetPheromone(conn.getPheromone() - phermomoneUpdate);
+                    conn.SetPheromone(conn.getPheromone() - (conn.getPheromone() * evaporationFactor));
             }
         }
 
@@ -76,6 +78,7 @@ namespace WindowsFormsApplication1
         {
             CreateNewAnts();
             for (var i = 0; i < CTSPPointList.getInstance().length(); i++)
+            {
                 foreach (CAnt ant in arrayOfAnts)
                 {
                     var nextPoint = decisionNextPoint(ant.CurrentPoint, ant.PointsToVisit);
@@ -83,6 +86,18 @@ namespace WindowsFormsApplication1
                         nextPoint = ant.GetTour().GetPoint(0);
                     ant.CurrentPoint = nextPoint;
                 }
+            }
+
+            CTour shortestTour = new CTour();
+            double averageTourLength = 0;
+            foreach (CAnt ant in arrayOfAnts)
+            {
+                averageTourLength += ant.GetTour().Length / arrayOfAnts.Length;  
+                if (shortestTour.Length > ant.GetTour().Length || shortestTour.Length == 0)
+                    shortestTour = ant.GetTour();
+
+            }
+            CIterationList.Add(new CIteration(shortestTour, averageTourLength));
         }
     }
 }

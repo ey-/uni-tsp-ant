@@ -8,25 +8,20 @@ namespace WindowsFormsApplication1
 {
     public class CIterationList : IEnumerable
     {
-        private List<CIteration> mIterationList =  new List<CIteration>();
-
-        public int Add(CIteration iteration)
+        private static List<CIteration> mIterationList =  new List<CIteration>();
+        private static CTour bestTour = new CTour();
+        public static int Add(CIteration iteration)
         {
             mIterationList.Add(iteration);
             return mIterationList.Count();
         }
 
-        public void Clear()
+        public static void Clear()
         {
             mIterationList.Clear();
         }
 
-        public List<CIteration> Instance()
-        {
-            return mIterationList;
-        }
-
-        public CIteration Last()
+        public static CIteration Last()
         {
             return mIterationList.Last();
         }
@@ -39,16 +34,19 @@ namespace WindowsFormsApplication1
             return avg;
         }
 
-        public CTour GlobalBestTour()
+        public static CTour GlobalBestTour
         {
-            CTour bestTour = mIterationList[0].ShortestTour;
-            for (var i = 1; i < mIterationList.Count; i++)
+            get
             {
-                var currentTour = mIterationList[i].ShortestTour;
-                if (currentTour.Length < bestTour.Length)
-                    bestTour = currentTour;
+                bestTour = mIterationList[0].ShortestTour;
+                for (var i = 1; i < mIterationList.Count; i++)
+                {
+                    var currentTour = mIterationList[i].ShortestTour;
+                    if (currentTour.Length < bestTour.Length)
+                        bestTour = currentTour;
+                }
+                return bestTour;
             }
-            return bestTour;
         }
 
         /// <summary>
@@ -57,9 +55,9 @@ namespace WindowsFormsApplication1
         /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            for (int index = 0; index < mIterationList.Count; index++)
+            for (var i = 0; i < mIterationList.Count ; i++)
             {
-                yield return mIterationList[index];
+                yield return mIterationList[i];
             }
         }
     }
