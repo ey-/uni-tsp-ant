@@ -32,6 +32,9 @@ namespace WindowsFormsApplication1
                 mPheromone = initialPheromone;
 
             calculateDistance();
+
+            // es wurde eine Verbindung erzeugt .. also ein Schritt erfolgreich abgearbeteitet
+            CProgressManager.stepDone();
         }
 
         public CConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2, float distance, float initialPheromone = 0)
@@ -47,6 +50,9 @@ namespace WindowsFormsApplication1
                 mPheromone = 0;
             else
                 mPheromone = initialPheromone;
+
+            // es wurde eine Verbindung erzeugt .. also ein Schritt erfolgreich abgearbeteitet
+            CProgressManager.stepDone();
         }
 
         /// <summary>

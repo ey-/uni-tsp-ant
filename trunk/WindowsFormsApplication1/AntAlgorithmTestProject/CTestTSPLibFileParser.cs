@@ -72,7 +72,7 @@ namespace AntAlgorithmTestProject
             tspFileParser.fillTSPPointList();
 
             // Jetzt kann die Tour erfolgreich ausgelesen werden
-            string fileAdress = "../../../../ALL_tsp/berlin52.opt.tour/berlin52.opt.tour";
+            string fileAdress = "../../../../ALL_tsp/berlin52.tsp/berlin52.opt.tour";
             Stream file = new FileStream(fileAdress, FileMode.Open);
 
             CTSPLibFileParser fileParser = new CTSPLibFileParser(file);

@@ -19,11 +19,15 @@ namespace WindowsFormsApplication1
         private float initialPheromonValue = 0.001f;
         private float humidificationValue = 0.001f;
         private float heuristicValue = 0.001f;
+
+        protected Thread mLastFileOpenerThread = null;
+
+
         public Form1()
         {
             InitializeComponent();
             postInitialize();
-
+            CProgressManager.setProgressBar(pIterationProgressBar);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -92,14 +96,19 @@ namespace WindowsFormsApplication1
 
         private void öffnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // wenn noch ein Fileopener Thred läuft dann beenden wir diesen zunächst
+            // damit wird verhindert das die Daten durcheinander gewürfelt werden
+            if ((mLastFileOpenerThread != null) && (mLastFileOpenerThread.IsAlive == true))
+            {
+                mLastFileOpenerThread.Abort();
+            }
+
             if (openTspFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                
-                Thread openFileThread = new Thread(new ThreadStart(this.openTSPFile));
-                openFileThread.Priority = ThreadPriority.Highest;
-                openFileThread.Name = "TSP-LoadingThread";
-                openFileThread.Start();
-                
+                mLastFileOpenerThread = new Thread(this.openTSPFile);
+                mLastFileOpenerThread.Priority = ThreadPriority.Highest;
+                mLastFileOpenerThread.Name = "TSP-LoadingThread";
+                mLastFileOpenerThread.Start();
             }
         }
 

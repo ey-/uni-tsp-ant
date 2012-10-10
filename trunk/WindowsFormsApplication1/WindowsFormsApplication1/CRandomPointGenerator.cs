@@ -20,11 +20,14 @@ namespace WindowsFormsApplication1
         {
             try
             {
+                CProgressManager.setStepsConnections(mNumPoints);
+
                 // erstmal alles altes löschen
                 CTSPPointList.getInstance().removeAll();
                 CConnectionList.getInstance().removeAll();
 
                 GC.Collect();
+                
                 
                 CMemoryTester.fitMemory(mNumPoints);
 

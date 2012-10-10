@@ -160,6 +160,7 @@ namespace WindowsFormsApplication1
                          break;
                      case "DIMENSION": 
                          mFileHeader.dimension = Int32.Parse(actualLineSplit[1]);
+                         CProgressManager.setStepsPointsAndConnections(mFileHeader.dimension);
                          CMemoryTester.fitMemory(mFileHeader.dimension);
                          break;
                      case "EDGE_WEIGHT_TYPE": 
