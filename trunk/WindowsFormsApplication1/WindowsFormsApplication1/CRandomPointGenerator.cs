@@ -53,6 +53,8 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show(exception.Message, "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            CProgressManager.setFinished();
         }
 
         private static void generatePoints()

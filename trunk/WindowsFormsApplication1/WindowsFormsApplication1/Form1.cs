@@ -138,9 +138,6 @@ namespace WindowsFormsApplication1
                 {
                     CAntAlgorithmParameters.getInstance().optTour = null;
                 }
-
-                // Schaltfläche der Stoppkriterien, Lösung gefunden, (de)aktivieren
-                this.Invoke(new Action(setStopCriteriaSolutionFound));
             }
             catch (CInsufficientMemoryException exception)
             {
@@ -160,9 +157,11 @@ namespace WindowsFormsApplication1
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CAntAlgorithmParameters.getInstance().optTour = null;
             }
 
-            
+            // Schaltfläche der Stoppkriterien, Lösung gefunden, (de)aktivieren
+            this.Invoke(new Action(setStopCriteriaSolutionFound));
 
             myResult.Close();
             mRenderWindow.Invoke(new Action(delegate()
@@ -170,6 +169,8 @@ namespace WindowsFormsApplication1
                 mRenderWindow.initViewPort();
                 mRenderWindow.Refresh();
             }));
+
+            CProgressManager.setFinished();
         }
 
         private void setStopCriteriaSolutionFound()
