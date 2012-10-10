@@ -73,6 +73,8 @@ namespace WindowsFormsApplication1
 
         protected void render(object sender, EventArgs args)
         {
+            DateTime start = DateTime.Now;
+
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
             
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
@@ -85,10 +87,14 @@ namespace WindowsFormsApplication1
             drawPoints();
 
             Gl.glFlush();
+
+            DateTime finished = DateTime.Now;
+            Debug.WriteLine("Render took: " + (finished - start).TotalSeconds + " sek.");
         }
 
         private void drawAllConnections()
         {
+            Debug.WriteLine("render");
             Gl.glColor3f(0.8f, 0.8f, 0.8f);
 
             CConnectionList connList = CConnectionList.getInstance();
@@ -127,8 +133,8 @@ namespace WindowsFormsApplication1
 
                 // Linien Zeichnen
                 Gl.glBegin(Gl.GL_LINES);
-                Gl.glVertex3d(sourcePoint.x, sourcePoint.y, 0.0f);
-                Gl.glVertex3d(destinationPoint.x, destinationPoint.y, 0.0f);
+                    Gl.glVertex3d(sourcePoint.x, sourcePoint.y, 0.0f);
+                    Gl.glVertex3d(destinationPoint.x, destinationPoint.y, 0.0f);
                 Gl.glEnd();
             }
         }
@@ -175,8 +181,8 @@ namespace WindowsFormsApplication1
         protected T_BOUNDS getBounds(CTSPPointList citys)
         {
             T_BOUNDS ret = new T_BOUNDS();
-            ret.left = 0;
-            ret.bottom = 0;
+            ret.left = double.MaxValue;
+            ret.bottom = double.MaxValue;
 
             for (int cityIndex = 0; cityIndex < citys.length(); cityIndex++)
             {

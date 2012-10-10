@@ -155,6 +155,8 @@ namespace WindowsFormsApplication1
         public void removeAll()
         {
             mPointList.RemoveRange(0, mPointList.Count());
+
+            GC.Collect();
         }
 
         /// <summary>
