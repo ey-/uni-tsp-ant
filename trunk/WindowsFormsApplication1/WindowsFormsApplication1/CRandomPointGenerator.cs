@@ -23,6 +23,8 @@ namespace WindowsFormsApplication1
                 // erstmal alles altes löschen
                 CTSPPointList.getInstance().removeAll();
                 CConnectionList.getInstance().removeAll();
+
+                GC.Collect();
                 
                 CMemoryTester.fitMemory(mNumPoints);
 

@@ -67,6 +67,9 @@ namespace WindowsFormsApplication1
         /// <param name="numberPoints"></param>
         public void initList(int numberPoints)
         {
+            // zu aller erst setzen das die Länge der Liste setzen
+            mConnectionsAdded = 0;
+
             // Summenfunktion, zum Berechnen der Anzahl der Verbindungen
             long numConnections = (numberPoints -1) * numberPoints /2;
             mConnectionList = null;
@@ -75,7 +78,6 @@ namespace WindowsFormsApplication1
             GC.Collect();
 
             mConnectionList = new CConnection[numConnections];
-            mConnectionsAdded = 0;
         }
 
         /// <summary>
@@ -104,11 +106,17 @@ namespace WindowsFormsApplication1
         /// </summary>
         public void removeAll()
         {
+            // zu aller erst setzen das die Länge der Liste setzen
+            mConnectionsAdded = 0;
+
+            // jetzt können wir die Objekte freigeben
             for (long index = 0; index < length(); index++)
             {
                 mConnectionList[index] = null;
             }
-            mConnectionsAdded = 0;
+            
+            // und zum schluss der GC bescheidgeben das viel speicher frei geworden ist
+            GC.Collect();
         }
 
         /// <summary>

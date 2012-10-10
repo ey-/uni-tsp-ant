@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
+using System.IO;
 
 namespace WindowsFormsApplication1
 {
@@ -95,6 +96,8 @@ namespace WindowsFormsApplication1
             {
                 
                 Thread openFileThread = new Thread(new ThreadStart(this.openTSPFile));
+                openFileThread.Priority = ThreadPriority.Highest;
+                openFileThread.Name = "TSP-LoadingThread";
                 openFileThread.Start();
                 
             }
@@ -105,10 +108,30 @@ namespace WindowsFormsApplication1
             // Open the selected file to read.
             System.IO.Stream myResult = openTspFileDialog1.OpenFile();
 
-            CTSPLibFileParser fileParser = new CTSPLibFileParser(myResult);
+            string tspFilePath = openTspFileDialog1.FileName;
+            string tourFilePath = tspFilePath.Substring(0, tspFilePath.LastIndexOf('.')) + ".opt.tour";
+           
             try
             {
-                fileParser.fillTSPPointList();
+                // zuerst mal das TSPfile parsen
+                CTSPLibFileParser tspParser = new CTSPLibFileParser(myResult);
+                tspParser.fillTSPPointList();
+
+                // prüfen ob eine Datei mit der optimalen Tour existiert
+                if (File.Exists(tourFilePath) == true)
+                {
+                    // Dann die Optimale Tour parsen
+                    FileStream optTourFile = File.Open(tourFilePath, FileMode.Open);
+                    CTSPLibFileParser tourParser = new CTSPLibFileParser(optTourFile);
+                    tourParser.getOptTour();
+                }
+                else
+                {
+                    CAntAlgorithmParameters.getInstance().optTour = null;
+                }
+
+                // Schaltfläche der Stoppkriterien, Lösung gefunden, (de)aktivieren
+                this.Invoke(new Action(setStopCriteriaSolutionFound));
             }
             catch (CInsufficientMemoryException exception)
             {
@@ -130,13 +153,27 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(exception.Message, "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            //MessageBox.Show(CTSPPointList.getInstance().ToString());
+            
+
             myResult.Close();
             mRenderWindow.Invoke(new Action(delegate()
             {
                 mRenderWindow.initViewPort();
                 mRenderWindow.Refresh();
             }));
+        }
+
+        private void setStopCriteriaSolutionFound()
+        {
+            if (CAntAlgorithmParameters.getInstance().optTour == null)
+            {
+                cStoppLoesung.Checked = false;
+                cStoppLoesung.Enabled = false;
+            }
+            else 
+            {
+                cStoppLoesung.Enabled = true;
+            }
         }
 
         private void button_Start_Click(object sender, EventArgs e)
