@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
                 mManagedProgressbar.Invoke(new Action(delegate()
                     {
                         mManagedProgressbar.Maximum = steps;
-                        mManagedProgressbar.Step = 0;
+                        mManagedProgressbar.Value = 0;
                     }));
             }
         }
@@ -46,7 +46,7 @@ namespace WindowsFormsApplication1
                 mManagedProgressbar.Invoke(new Action(delegate()
                 {
                     mManagedProgressbar.Maximum = numberPoints * (numberPoints - 1) / 2;
-                    mManagedProgressbar.Step = 0;
+                    mManagedProgressbar.Value = 0;
                 }));
             }
         }
@@ -61,7 +61,7 @@ namespace WindowsFormsApplication1
                 mManagedProgressbar.Invoke(new Action(delegate()
                 {
                     mManagedProgressbar.Maximum = numberIterations;
-                    mManagedProgressbar.Step = 0;
+                    mManagedProgressbar.Value = 0;
                 }));
             }
         }
@@ -89,6 +89,17 @@ namespace WindowsFormsApplication1
                 }
             }
             mStepsCounted++;
+        }
+
+        public static void setFinished()
+        {
+            if (mManagedProgressbar != null)
+            {
+                mManagedProgressbar.Invoke(new Action(delegate()
+                {
+                    mManagedProgressbar.Value = mManagedProgressbar.Maximum;
+                }));
+            }
         }
 
     }// class
