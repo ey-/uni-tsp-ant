@@ -10,6 +10,7 @@ namespace WindowsFormsApplication1
     using System.Threading;
     using System.Diagnostics;
     using System.Windows.Forms;
+    using System.Drawing;
 
     class RenderWindow : SimpleOpenGlControl
     {
@@ -95,7 +96,6 @@ namespace WindowsFormsApplication1
         private void drawAllConnections()
         {
             Debug.WriteLine("render");
-            Gl.glColor3f(0.8f, 0.8f, 0.8f);
 
             CConnectionList connList = CConnectionList.getInstance();
 
@@ -121,10 +121,13 @@ namespace WindowsFormsApplication1
                 // Farbe abhängig vom Pheromonwert der Verbindung setzen
                 // => hohe Werte werden dunkel dagestellt
                 // => niedrige hell
-                double color = connection.getPheromone() / highestPhermone;
+                double pheromonLevel = connection.getPheromone() / highestPhermone;
+                double color = 1 - pheromonLevel;
                 // Die Verbindungen sollen immer sichtbar bleiben auch wenn sie sehr geringe Pheromonwerte haben
-                if (color < 0.1) color = 0.1;
-                Gl.glColor3d(color, color, color);
+                if (color > 0.95) color = 0.95;
+
+                // 0.0 == schwarz // 1.0 == weiß
+                Gl.glColor3d(1.0 - color, 1.0 - color, 1.0 - color);
 
                 // Eckpunkte bestimmen
                 CTSPPoint sourcePoint = null;
@@ -226,7 +229,7 @@ namespace WindowsFormsApplication1
         {
             System.Windows.Forms.MouseEventArgs mouseArgs = (System.Windows.Forms.MouseEventArgs)args;
 
-            CTSPPoint position = getPositionFromMouseClick(mouseArgs);
+            CVector2f position = getPositionFromMouseClick(mouseArgs);
 
             if (!mCursorAction.change)
             {
@@ -244,7 +247,7 @@ namespace WindowsFormsApplication1
             
         }
 
-        private CTSPPoint getPositionFromMouseClick(System.Windows.Forms.MouseEventArgs mouseArgs)
+        private CVector2f getPositionFromMouseClick(System.Windows.Forms.MouseEventArgs mouseArgs)
         {
             //Debug.Write("Click - X: " + mouseArgs.X + " Y: " + mouseArgs.Y + "\n");
             // da die Y-Koordinate von Oben ausgeht aber unser ViewPort von unten ausgeht muss
@@ -253,7 +256,7 @@ namespace WindowsFormsApplication1
             float mouseX = mouseArgs.X;
             float mouseY = this.Height - mouseArgs.Y;
 
-            CTSPPoint position = new CTSPPoint("");
+            CVector2f position = new CVector2f();
             position.x = (float)(mBounds.left + ((mouseX * (mBounds.right - mBounds.left)) / (float)this.Width));
             position.y = (float)(mBounds.bottom + ((mouseY * (mBounds.top - mBounds.bottom)) / (float)this.Height));
             return position;
@@ -267,7 +270,7 @@ namespace WindowsFormsApplication1
 
                 if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
                 {
-                    CTSPPoint position = getPositionFromMouseClick(mouseArgs);
+                    CVector2f position = getPositionFromMouseClick(mouseArgs);
 
                     float precision = (float)((mBounds.right - mBounds.left)/100);
                     CTSPPoint Point = CTSPPointList.getInstance().getPointsbyCoordinates(position.x, position.y,precision);
@@ -289,7 +292,7 @@ namespace WindowsFormsApplication1
 
                 if (mouseArgs.Button == System.Windows.Forms.MouseButtons.Left)
                 {
-                    CTSPPoint position = getPositionFromMouseClick(mouseArgs);
+                    CVector2f position = getPositionFromMouseClick(mouseArgs);
 
                     //Debug.Write("pos - X: " + position.x + " Y: " + position.y + "\n");
                     handleCursorAction(position);
@@ -299,11 +302,11 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void handleCursorAction(CTSPPoint position)
+        private void handleCursorAction(CVector2f position)
         {
             if (mCursorAction.add)
             {
-                CTSPPointList.getInstance().addPoint(position);
+                CTSPPointList.getInstance().addPoint(new CTSPPoint(position.x, position.y));
             }
             
             if (mCursorAction.del)

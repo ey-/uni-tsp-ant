@@ -18,6 +18,9 @@ namespace WindowsFormsApplication1
         public CTSPPoint(string label = "")
         {
             mLabel = label;
+
+            // es wurde ein Punkt erzeugt .. also ein Schritt erfolgreich abgearbeteitet
+            CProgressManager.stepDone();
         }
 
         /// <summary>
@@ -31,6 +34,9 @@ namespace WindowsFormsApplication1
             x = inX;
             y = inY;
             mLabel = label;
+
+            // es wurde ein Punkt erzeugt .. also ein Schritt erfolgreich abgearbeteitet
+            CProgressManager.stepDone();
         }
 
         /// <summary>
