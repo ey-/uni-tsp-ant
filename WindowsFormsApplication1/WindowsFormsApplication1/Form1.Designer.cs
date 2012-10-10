@@ -266,9 +266,9 @@ namespace WindowsFormsApplication1
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(399, 55);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(117, 26);
+            this.label10.Size = new System.Drawing.Size(125, 26);
             this.label10.TabIndex = 15;
-            this.label10.Text = "heuristischer Parameter\r\nfür Pheremon-Update:";
+            this.label10.Text = "heuristischer Parameter\r\nfür Pheremon-Update Q :";
             // 
             // labelinitialPheromon
             // 
@@ -297,30 +297,28 @@ namespace WindowsFormsApplication1
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(397, 21);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(119, 13);
+            this.label9.Size = new System.Drawing.Size(134, 13);
             this.label9.TabIndex = 12;
-            this.label9.Text = "initiale Pheromon-Werte";
+            this.label9.Text = "initiale Pheromon-Werte τ :";
             // 
             // labelHumidification
             // 
             this.labelHumidification.AutoSize = true;
             this.labelHumidification.Location = new System.Drawing.Point(172, 101);
             this.labelHumidification.Name = "labelHumidification";
-            this.labelHumidification.Size = new System.Drawing.Size(34, 13);
+            this.labelHumidification.Size = new System.Drawing.Size(13, 13);
             this.labelHumidification.TabIndex = 11;
-            this.labelHumidification.Text = "0,001";
+            this.labelHumidification.Text = "0";
             // 
             // trackBarHumidification
             // 
             this.trackBarHumidification.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBarHumidification.Location = new System.Drawing.Point(205, 89);
             this.trackBarHumidification.Maximum = 1000;
-            this.trackBarHumidification.Minimum = 1;
             this.trackBarHumidification.Name = "trackBarHumidification";
             this.trackBarHumidification.Size = new System.Drawing.Size(171, 45);
             this.trackBarHumidification.TabIndex = 10;
             this.trackBarHumidification.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarHumidification.Value = 1;
             this.trackBarHumidification.Scroll += new System.EventHandler(this.trackBarHumidification_Scroll);
             // 
             // label8
@@ -328,30 +326,28 @@ namespace WindowsFormsApplication1
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(7, 101);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 13);
+            this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 9;
-            this.label8.Text = "Verdunstungsfaktor:";
+            this.label8.Text = "Verdunstungsfaktor ρ :";
             // 
             // labelHeuristic
             // 
             this.labelHeuristic.AutoSize = true;
             this.labelHeuristic.Location = new System.Drawing.Point(171, 60);
             this.labelHeuristic.Name = "labelHeuristic";
-            this.labelHeuristic.Size = new System.Drawing.Size(34, 13);
+            this.labelHeuristic.Size = new System.Drawing.Size(13, 13);
             this.labelHeuristic.TabIndex = 8;
-            this.labelHeuristic.Text = "0,001";
+            this.labelHeuristic.Text = "0";
             // 
             // trackBarheuristic
             // 
             this.trackBarheuristic.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBarheuristic.Location = new System.Drawing.Point(204, 48);
-            this.trackBarheuristic.Maximum = 10000;
-            this.trackBarheuristic.Minimum = 1;
+            this.trackBarheuristic.Maximum = 1000;
             this.trackBarheuristic.Name = "trackBarheuristic";
             this.trackBarheuristic.Size = new System.Drawing.Size(171, 45);
             this.trackBarheuristic.TabIndex = 7;
             this.trackBarheuristic.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarheuristic.Value = 1;
             this.trackBarheuristic.Scroll += new System.EventHandler(this.trackBarheuristic_Scroll);
             // 
             // label7
@@ -359,30 +355,28 @@ namespace WindowsFormsApplication1
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 55);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 26);
+            this.label7.Size = new System.Drawing.Size(137, 26);
             this.label7.TabIndex = 6;
-            this.label7.Text = "heuristischer Parameter\r\nfür die lokale Information:";
+            this.label7.Text = "heuristischer Parameter\r\nfür die lokale Information β :";
             // 
             // labelPheremon
             // 
             this.labelPheremon.AutoSize = true;
             this.labelPheremon.Location = new System.Drawing.Point(171, 21);
             this.labelPheremon.Name = "labelPheremon";
-            this.labelPheremon.Size = new System.Drawing.Size(34, 13);
+            this.labelPheremon.Size = new System.Drawing.Size(13, 13);
             this.labelPheremon.TabIndex = 5;
-            this.labelPheremon.Text = "0,001";
+            this.labelPheremon.Text = "0";
             // 
             // trackBarPheromon
             // 
             this.trackBarPheromon.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBarPheromon.Location = new System.Drawing.Point(204, 9);
-            this.trackBarPheromon.Maximum = 10000;
-            this.trackBarPheromon.Minimum = 1;
+            this.trackBarPheromon.Maximum = 1000;
             this.trackBarPheromon.Name = "trackBarPheromon";
             this.trackBarPheromon.Size = new System.Drawing.Size(171, 45);
             this.trackBarPheromon.TabIndex = 4;
             this.trackBarPheromon.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPheromon.Value = 1;
             this.trackBarPheromon.Scroll += new System.EventHandler(this.trackBarPheremon_Scroll);
             // 
             // label6
@@ -390,9 +384,9 @@ namespace WindowsFormsApplication1
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 21);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 13);
+            this.label6.Size = new System.Drawing.Size(122, 13);
             this.label6.TabIndex = 3;
-            this.label6.Text = "Pheromon Parameter:";
+            this.label6.Text = "Pheromon Parameter α :";
             // 
             // uQuantityIterations
             // 
@@ -712,14 +706,14 @@ namespace WindowsFormsApplication1
             // öffnenToolStripMenuItem
             // 
             this.öffnenToolStripMenuItem.Name = "öffnenToolStripMenuItem";
-            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.öffnenToolStripMenuItem.Text = "Öffnen";
             this.öffnenToolStripMenuItem.Click += new System.EventHandler(this.öffnenToolStripMenuItem_Click);
             // 
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
@@ -908,8 +902,6 @@ namespace WindowsFormsApplication1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 702);
-            this.ClientSizeChanged += new System.EventHandler(this.Form1_SizeChanged);
-            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.Controls.Add(this.tNumberOfIteration);
             this.Controls.Add(this.tTimeDisplay);
             this.Controls.Add(this.pIterationProgressBar);
@@ -923,6 +915,8 @@ namespace WindowsFormsApplication1
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ClientSizeChanged += new System.EventHandler(this.Form1_SizeChanged);
+            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabController.ResumeLayout(false);
             this.tabParameter.ResumeLayout(false);
             this.tabParameter.PerformLayout();
