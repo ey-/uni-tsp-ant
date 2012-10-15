@@ -8,22 +8,34 @@ namespace WindowsFormsApplication1
 {
     public class CIterationList : IEnumerable
     {
-        private static List<CIteration> mIterationList =  new List<CIteration>();
-        private static CTour bestTour = new CTour();
-        public static int Add(CIteration iteration)
+        protected static CIterationList mInstance = new CIterationList();
+
+        private List<CIteration> mIterationList =  new List<CIteration>();
+        private CTour bestTour = new CTour();
+
+        public static CIterationList getInstance()
+        {
+            return mInstance;
+        }
+
+        public int Add(CIteration iteration)
         {
             mIterationList.Add(iteration);
             return mIterationList.Count();
         }
 
-        public static void Clear()
+        public void Clear()
         {
             mIterationList.Clear();
         }
 
-        public static CIteration Last()
+        public CIteration Last()
         {
-            return mIterationList.Last();
+            if (mIterationList.Count > 0)
+            {
+                return mIterationList.Last();
+            }
+            return null;
         }
 
         public double GlobalAverageTourLength()
@@ -34,19 +46,29 @@ namespace WindowsFormsApplication1
             return avg;
         }
 
-        public static CTour GlobalBestTour
+        public CTour getBestGlobalTour()
         {
-            get
+            if (mIterationList.Count > 0)
             {
                 bestTour = mIterationList[0].ShortestTour;
                 for (var i = 1; i < mIterationList.Count; i++)
                 {
                     var currentTour = mIterationList[i].ShortestTour;
-                    if (currentTour.Length < bestTour.Length)
+                    if (currentTour.getTourLength() < bestTour.getTourLength())
                         bestTour = currentTour;
                 }
                 return bestTour;
             }
+            return null;
+        }
+
+        public CTour getBestLastIterationTour()
+        {
+            if (mIterationList.Count > 0)
+            {
+                return mIterationList.Last().ShortestTour;
+            }
+            return null;
         }
 
         /// <summary>

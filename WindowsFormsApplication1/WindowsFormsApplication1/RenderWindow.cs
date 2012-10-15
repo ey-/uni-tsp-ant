@@ -14,7 +14,11 @@ namespace WindowsFormsApplication1
 
     class RenderWindow : SimpleOpenGlControl
     {
-
+        // je höher desto eher wir sie gesehen
+        protected const float CONNECTION_DRAW_LAYER = 0f;
+        protected const float TOUR_DRAW_LAYER = 1f;
+        protected const float POINT_DRAW_LAYER = 2f;
+        
         protected struct T_CURSORACTION
         {
             public bool add;
@@ -39,8 +43,6 @@ namespace WindowsFormsApplication1
 
         protected const int NUM_RANDOM_CITYS = 3;
 
-        protected List<CTSPPoint> mBestLocalPath = null;
-        protected List<CTSPPoint> mBestGlobalPath = null;
         protected T_CURSORACTION mCursorAction = new T_CURSORACTION();
         protected T_POINTTOMOVE pointToMove = new T_POINTTOMOVE();
         protected T_BOUNDS mBounds = new T_BOUNDS();
@@ -52,17 +54,6 @@ namespace WindowsFormsApplication1
             this.MouseDown += new MouseEventHandler(this.mMouseDown);
             this.MouseMove += new MouseEventHandler(this.mMouseMove);
 
-        }
-
-        
-        public void setBestLocalPath(List<CTSPPoint> bestLocalPath)
-        {
-            mBestLocalPath = bestLocalPath;
-        }
-
-        public void setBestGlobalPath(List<CTSPPoint> bestGlobalPath)
-        {
-            mBestGlobalPath = bestGlobalPath;
         }
 
         public void setCursorAction(bool addP,bool deleteP,bool changeP)
@@ -83,7 +74,7 @@ namespace WindowsFormsApplication1
 
             drawAllConnections();
 
-            //drawBestPaths();
+            drawBestPaths();
 
             drawPoints();
 
@@ -91,6 +82,43 @@ namespace WindowsFormsApplication1
 
             DateTime finished = DateTime.Now;
             Debug.WriteLine("Render took: " + (finished - start).TotalSeconds + " sek.");
+        }
+
+        private void drawBestPaths()
+        {
+            CIterationList iterationList = CIterationList.getInstance();
+
+            CTour bestGlobalTour = iterationList.getBestGlobalTour();
+            drawTour(bestGlobalTour, 1f, 0f, 0f);
+
+            CTour bestIterationTour = iterationList.getBestLastIterationTour();
+            drawTour(bestIterationTour, 0f, 1f, 0f);
+
+            CTour optimumTour = CAntAlgorithmParameters.getInstance().optTour;
+            drawTour(optimumTour, 0f, 0f, 1f);
+        }
+
+        private void drawTour(CTour tour, float red, float green, float blue)
+        {
+            if (tour == null)
+            {
+                return;
+            }
+
+            Gl.glLineWidth(3f);
+            Gl.glColor3f(red, green, blue);
+
+            // wir verwenden einen GL_LINE_LOOP. Dieser zeichnet von punkt 1 zu 2 zu 3 und 
+            // zum Schluss wieder zu 1. Es ist also ein Kreis.
+            Gl.glBegin(Gl.GL_LINE_LOOP);
+
+            for (int pointIndex = 0; pointIndex < tour.getListLength(); pointIndex++)
+            {
+                CTSPPoint point = tour.GetPoint(pointIndex);
+                Gl.glVertex3f(point.x, point.y, TOUR_DRAW_LAYER);
+            }
+
+            Gl.glEnd();
         }
 
         private void drawAllConnections()
@@ -115,6 +143,8 @@ namespace WindowsFormsApplication1
                 }
             }
 
+            Gl.glLineWidth(1f);
+
             // Verbindungen Zeichnen
             foreach (CConnection connection in connList)
             {                
@@ -136,8 +166,8 @@ namespace WindowsFormsApplication1
 
                 // Linien Zeichnen
                 Gl.glBegin(Gl.GL_LINES);
-                    Gl.glVertex3d(sourcePoint.x, sourcePoint.y, 0.0f);
-                    Gl.glVertex3d(destinationPoint.x, destinationPoint.y, 0.0f);
+                    Gl.glVertex3d(sourcePoint.x, sourcePoint.y, CONNECTION_DRAW_LAYER);
+                    Gl.glVertex3d(destinationPoint.x, destinationPoint.y, CONNECTION_DRAW_LAYER);
                 Gl.glEnd();
             }
         }
@@ -155,7 +185,7 @@ namespace WindowsFormsApplication1
                 CTSPPoint point = pointList.getPoint(pointIndex);
 
                 Gl.glBegin(Gl.GL_POINTS);
-                Gl.glVertex3d(point.x, point.y, 0.0f);
+                  Gl.glVertex3d(point.x, point.y, POINT_DRAW_LAYER);
                 Gl.glEnd();
             }
         }

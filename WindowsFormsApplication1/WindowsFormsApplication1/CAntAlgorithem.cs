@@ -26,9 +26,19 @@ namespace WindowsFormsApplication1
             {
                 NewIteration();
 
-                
-                if (optTour != null && optTour.Length <= CIterationList.GlobalBestTour.Length)
-                break;
+                // haben wir eine bessere Lösung als die Optimale Lösung gefunden?
+                // dann können wir abbrechen
+                if (optTour != null) 
+                {
+                    CTour bestGlobalTour = CIterationList.getInstance().getBestGlobalTour();
+                    if (bestGlobalTour != null)
+                    {
+                        if ((optTour.getTourLength() <= bestGlobalTour.getTourLength()))
+                        {
+                            break;
+                        }
+                    }
+                }
 
 
                 //Pheromone Evaporization
@@ -92,12 +102,12 @@ namespace WindowsFormsApplication1
             double averageTourLength = 0;
             foreach (CAnt ant in arrayOfAnts)
             {
-                averageTourLength += ant.GetTour().Length / arrayOfAnts.Length;  
-                if (shortestTour.Length > ant.GetTour().Length || shortestTour.Length == 0)
+                averageTourLength += ant.GetTour().getTourLength() / arrayOfAnts.Length;  
+                if (shortestTour.getTourLength() > ant.GetTour().getTourLength() || shortestTour.getTourLength() == 0)
                     shortestTour = ant.GetTour();
 
             }
-            CIterationList.Add(new CIteration(shortestTour, averageTourLength));
+            CIterationList.getInstance().Add(new CIteration(shortestTour, averageTourLength));
         }
     }
 }
