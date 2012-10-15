@@ -33,12 +33,14 @@ namespace WindowsFormsApplication1
             return mPoints.getPoint(index);
         }
 
-        public double Length
+        public int getListLength()
         {
-            get
-            {
-                return mTourLength;
-            }
+            return mPoints.length();
+        }
+
+        public double getTourLength()
+        {
+            return mTourLength;
         }
 
 
