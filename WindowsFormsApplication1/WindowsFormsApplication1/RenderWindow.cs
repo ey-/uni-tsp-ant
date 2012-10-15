@@ -214,32 +214,43 @@ namespace WindowsFormsApplication1
         protected T_BOUNDS getBounds(CTSPPointList citys)
         {
             T_BOUNDS ret = new T_BOUNDS();
-            ret.left = double.MaxValue;
-            ret.bottom = double.MaxValue;
 
-            for (int cityIndex = 0; cityIndex < citys.length(); cityIndex++)
+            if (citys.length() > 0)
             {
-                CTSPPoint city = citys.getPoint(cityIndex);
+                ret.left = double.MaxValue;
+                ret.bottom = double.MaxValue;
 
-                if (city.x < ret.left)
+                for (int cityIndex = 0; cityIndex < citys.length(); cityIndex++)
                 {
-                    ret.left = city.x;
-                }
+                    CTSPPoint city = citys.getPoint(cityIndex);
 
-                if (city.y < ret.bottom)
-                {
-                    ret.bottom = city.y;
-                }
+                    if (city.x < ret.left)
+                    {
+                        ret.left = city.x;
+                    }
 
-                if (city.x > ret.right)
-                {
-                    ret.right = city.x;
-                }
+                    if (city.y < ret.bottom)
+                    {
+                        ret.bottom = city.y;
+                    }
 
-                if (city.y > ret.top)
-                {
-                    ret.top = city.y;
+                    if (city.x > ret.right)
+                    {
+                        ret.right = city.x;
+                    }
+
+                    if (city.y > ret.top)
+                    {
+                        ret.top = city.y;
+                    }
                 }
+            }
+            else
+            {
+                ret.left = 0;
+                ret.bottom = 0;
+                ret.right = this.Width;
+                ret.top = this.Height;
             }
 
             return ret;
@@ -336,6 +347,26 @@ namespace WindowsFormsApplication1
         {
             if (mCursorAction.add)
             {
+                try
+                {
+                    CMemoryTester.fitMemory(CTSPPointList.getInstance().length() + 1);
+                }
+                catch (CInsufficientMemoryException memoryException)
+                {
+                    if (memoryException.getType() == CInsufficientMemoryException.E_EXCEPTION_TYPE.E_32_BIT_ERROR)
+                    {
+                        MessageBox.Show("Um ein Projekt mit einem Knoten mehr erzeugen zu können, benötigen Sie ca. " + memoryException.getMemoryNeeded()
+                            + " MByte. 32-Bit-Anwendungen können aber maximal " + memoryException.getMemoryAvailable() + " MByte verwalten. "
+                            + "Bitte verwenden sie die 64-Bit Version oder verwenden Sie ein geringe Anzahl an Punkten.", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Auf ihrem System stehen noch " + memoryException.getMemoryAvailable() + " MByte zur Verfügung. Es werden aber ca. "
+                            + memoryException.getMemoryNeeded() + " MByte benötigt. "
+                            + "Wenn Sie ein Projekt mit einer höheren Anzahl von Punkten verwenden möchten stellen Sie Bitte mehr RAM zur Verfügung.", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
                 CTSPPointList.getInstance().addPoint(new CTSPPoint(position.x, position.y));
             }
             
