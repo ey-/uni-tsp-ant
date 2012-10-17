@@ -188,6 +188,7 @@ namespace WindowsFormsApplication1
 
         private void button_Start_Click(object sender, EventArgs e)
         {
+            button_Start.Enabled = false;
             CAntAlgorithmParameters.getInstance().numberAnts = Convert.ToInt32(uAntsQuantity.Value);
             CAntAlgorithmParameters.getInstance().numberMaxIterations = Convert.ToInt32(uQuantityIterations.Value);
             CAntAlgorithmParameters.getInstance().pheromoneParameter = pheromonValue;
@@ -196,8 +197,10 @@ namespace WindowsFormsApplication1
             CAntAlgorithmParameters.getInstance().localInformation = heuristicValue;
             CAntAlgorithmParameters.getInstance().evaporationFactor = humidificationValue;
             //MessageBox.Show("Ants: " + CAntAlgorithmParameters.getInstance().numberAnts + "\n" + CAntAlgorithmParameters.getInstance().numberMaxIterations + "\n" + CAntAlgorithmParameters.getInstance().pheromoneParameter + " \n" + "usw usw");
-            var antAlgorithm = new CAntAlgorithm();
-            antAlgorithm.NewIteration();
+            var antAlgorithm = new CAntAlgorithm(mRenderWindow);
+            
+            button_Start.Enabled = true;
+
         }
 
 

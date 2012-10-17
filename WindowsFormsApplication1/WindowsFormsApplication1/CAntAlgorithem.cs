@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 namespace WindowsFormsApplication1
 {
@@ -9,11 +10,12 @@ namespace WindowsFormsApplication1
     {
 
         private CAnt[] arrayOfAnts = new CAnt[CAntAlgorithmParameters.getInstance().numberAnts];
+        private RenderWindow mRenderWindow;
 
-        public CAntAlgorithm()
+        public CAntAlgorithm(RenderWindow renderWindow)
         {
             var maxIteration = CAntAlgorithmParameters.getInstance().numberMaxIterations;
-
+            mRenderWindow = renderWindow;
             var pheromoneParam = CAntAlgorithmParameters.getInstance().pheromoneParameter;
             var phermomoneUpdate = CAntAlgorithmParameters.getInstance().pheromoneUpdate;
             var initialPheromone = CAntAlgorithmParameters.getInstance().initialPheromone;
@@ -28,7 +30,7 @@ namespace WindowsFormsApplication1
 
                 // haben wir eine bessere Lösung als die Optimale Lösung gefunden?
                 // dann können wir abbrechen
-                if (optTour != null) 
+                /*if (optTour != null) 
                 {
                     CTour bestGlobalTour = CIterationList.getInstance().getBestGlobalTour();
                     if (bestGlobalTour != null)
@@ -38,13 +40,32 @@ namespace WindowsFormsApplication1
                             break;
                         }
                     }
-                }
+                }*/
 
 
                 //Pheromone Evaporization
                 foreach (CConnection conn in CConnectionList.getInstance())
+                {
                     conn.SetPheromone(conn.getPheromone() - (conn.getPheromone() * evaporationFactor));
+                   // Debug.WriteLine(conn.getPheromone());
+                }
+
+                foreach (CAnt ant in arrayOfAnts)
+                {
+                    for (int j = 0; j < ant.GetTour().getListLength()-1; j++)
+                    {
+
+                        CConnection currentConnection = CConnectionList.getInstance().getConnection(ant.GetTour().GetPoint(j), ant.GetTour().GetPoint(j + 1));
+                        
+                        currentConnection.SetPheromone(currentConnection.getPheromone() + 1);
+                    }
+                }
+                //renderWindow.InitializeContexts();
+                //renderWindow.Refresh();
+                //Debug.Write("refreshed iteration=" + i);
             }
+            
+            //Debug.Write("refreshed iteration=" + i);
         }
 
         public static CTSPPoint decisionNextPoint(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
@@ -77,7 +98,7 @@ namespace WindowsFormsApplication1
         public void CreateNewAnts()
         {
             for (int i = 0; i < arrayOfAnts.Length; i++)
-                arrayOfAnts[i] = new CAnt(CTSPPointList.getInstance(),
+                arrayOfAnts[i] = new CAnt(CTSPPointList.getInstance().copy(),
                                             CTSPPointList.getInstance().getPoint(
                                                 (new Random()).Next(CTSPPointList.getInstance().length())
                                             )
@@ -107,6 +128,7 @@ namespace WindowsFormsApplication1
                     shortestTour = ant.GetTour();
 
             }
+            Debug.WriteLine(shortestTour.getTourLength());
             CIterationList.getInstance().Add(new CIteration(shortestTour, averageTourLength));
         }
     }

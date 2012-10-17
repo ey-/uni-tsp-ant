@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
     using System.Windows.Forms;
     using System.Drawing;
 
-    class RenderWindow : SimpleOpenGlControl
+    public class RenderWindow : SimpleOpenGlControl
     {
         // je höher desto eher wir sie gesehen
         protected const float CONNECTION_DRAW_LAYER = 0f;
@@ -88,14 +88,16 @@ namespace WindowsFormsApplication1
         {
             CIterationList iterationList = CIterationList.getInstance();
 
-            CTour bestGlobalTour = iterationList.getBestGlobalTour();
-            drawTour(bestGlobalTour, 1f, 0f, 0f);
+            
 
             CTour bestIterationTour = iterationList.getBestLastIterationTour();
             drawTour(bestIterationTour, 0f, 1f, 0f);
 
             CTour optimumTour = CAntAlgorithmParameters.getInstance().optTour;
             drawTour(optimumTour, 0f, 0f, 1f);
+
+            CTour bestGlobalTour = iterationList.getBestGlobalTour();
+            drawTour(bestGlobalTour, 1f, 0f, 0f);
         }
 
         private void drawTour(CTour tour, float red, float green, float blue)
@@ -192,7 +194,7 @@ namespace WindowsFormsApplication1
 
         public void initViewPort()
         {
-            //InitializeContexts();
+            InitializeContexts();
 
             Gl.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
