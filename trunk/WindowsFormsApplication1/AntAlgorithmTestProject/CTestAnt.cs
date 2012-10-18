@@ -35,19 +35,18 @@ namespace AntAlgorithmTestProject
 
         public void TourTest()
         {
-             CTSPPointList Testlist =  CTSPPointList.getInstance().copy();
-             CAnt Tourtestant = new CAnt(Testlist, TEST_POINT_1);
-             Assert.AreSame(TEST_POINT_1 , Tourtestant.GetTour().GetPoint(0));
+             CAnt Tourtestant = new CAnt(TEST_POINT_1);
+             Assert.AreSame(TEST_POINT_1, Tourtestant.GetTour().getPoint(0));
              Tourtestant.CurrentPoint = TEST_POINT_2;
-             Assert.AreSame(TEST_POINT_2, Tourtestant.GetTour().GetPoint(1));
+             Assert.AreSame(TEST_POINT_2, Tourtestant.GetTour().getPoint(1));
              Tourtestant.CurrentPoint = TEST_POINT_3;
-             Assert.AreSame(TEST_POINT_3, Tourtestant.GetTour().GetPoint(2));
+             Assert.AreSame(TEST_POINT_3, Tourtestant.GetTour().getPoint(2));
         }
 
         [TestMethod]
         public void construtorTest()
         {
-            CAnt testAnt = new CAnt(CTSPPointList.getInstance().copy(), TEST_POINT_1);
+            CAnt testAnt = new CAnt(TEST_POINT_1);
 
             Assert.AreSame(testAnt.CurrentPoint, TEST_POINT_1);
 

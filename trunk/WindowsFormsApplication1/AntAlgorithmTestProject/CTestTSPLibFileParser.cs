@@ -79,8 +79,8 @@ namespace AntAlgorithmTestProject
             fileParser.getOptTour();
 
             
-            Assert.IsTrue(CAntAlgorithmParameters.getInstance().optTour.GetPoint(0).getLabel() == "1");
-            Assert.IsTrue(CAntAlgorithmParameters.getInstance().optTour.GetPoint(0).getLabel() == "1");
+            Assert.IsTrue(CAntAlgorithmParameters.getInstance().optTour.getPoint(0).getLabel() == "1");
+            Assert.IsTrue(CAntAlgorithmParameters.getInstance().optTour.getPoint(0).getLabel() == "1");
         }
 
         protected void testTSPFileParser(string fileAdress, int pointToCheck, float expectedX, float expectedY)

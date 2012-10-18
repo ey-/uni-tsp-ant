@@ -7,14 +7,14 @@ namespace WindowsFormsApplication1
 {
     public class CAnt
     {
-        private CTSPPointList  pointsToVisit;
+        private CTSPPointList pointsToVisit;
         private CTour tour;
         private CTSPPoint currentPoint;
 
-        public CAnt(CTSPPointList _pointsToVisit, CTSPPoint startPoint)
+        public CAnt(CTSPPoint startPoint)
         {
             tour = new CTour();
-            PointsToVisit = _pointsToVisit;
+            PointsToVisit = CTSPPointList.getInstance().copy();
             CurrentPoint = startPoint;
         }
 
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
             get { return currentPoint; }
             set
             {
-                tour.Add(value);
+                tour.addPoint(value);
                 pointsToVisit.remove(value);
                 currentPoint = value;
             }

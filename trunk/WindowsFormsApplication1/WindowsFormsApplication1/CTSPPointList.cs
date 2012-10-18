@@ -144,9 +144,9 @@ namespace WindowsFormsApplication1
         /// Löscht einen bestimmten Punkt aus der Liste
         /// </summary>
         /// <param name="point"></param>
-        public void remove(CTSPPoint point)
+        public bool remove(CTSPPoint point)
         {
-            mPointList.Remove(point);
+            return mPointList.Remove(point);
         }
 
         /// <summary>

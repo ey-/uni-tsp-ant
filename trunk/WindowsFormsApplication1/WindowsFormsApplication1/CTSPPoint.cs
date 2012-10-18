@@ -55,7 +55,7 @@ namespace WindowsFormsApplication1
 
         public override string ToString()
         {
-            return mLabel + " X=" + x + " Y=" + y;
+            return mLabel + " X=" + x + " Y=" + y + " ";
         }
     }
 }
