@@ -175,7 +175,8 @@ namespace WindowsFormsApplication1
         
         public void addPheromone(float pheromoneUpdateFactor)
         {
-            mPheromone += pheromoneUpdateFactor;// / mDistance;
+            //mPheromone += pheromoneUpdateFactor;//
+            mPheromone += pheromoneUpdateFactor / mDistance;
         }
 
         public void evaporate(float evaporationFactor)

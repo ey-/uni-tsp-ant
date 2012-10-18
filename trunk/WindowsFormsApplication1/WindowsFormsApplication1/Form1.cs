@@ -218,7 +218,7 @@ namespace WindowsFormsApplication1
             //MessageBox.Show("Ants: " + CAntAlgorithmParameters.getInstance().numberAnts + "\n" + CAntAlgorithmParameters.getInstance().numberMaxIterations + "\n" + CAntAlgorithmParameters.getInstance().pheromoneParameter + " \n" + "usw usw");
             CAntAlgorithm antAlgorithm = new CAntAlgorithm(mRenderWindow);
 
-            if ((mAntAlgorithmThread != null) || (mAntAlgorithmThread.IsAlive == false))
+            if ((mAntAlgorithmThread == null) || (mAntAlgorithmThread.IsAlive == false))
             {
                 mAntAlgorithmThread = new Thread(antAlgorithm.startAlgorithm);
                 mAntAlgorithmThread.Name = "AntAlgorithmThread";
