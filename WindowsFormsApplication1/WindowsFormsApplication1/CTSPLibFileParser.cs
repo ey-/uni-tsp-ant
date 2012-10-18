@@ -451,7 +451,7 @@ namespace WindowsFormsApplication1
                 if (point != null)
                 {
                     // Punkt in Tour einfügen
-                    optTour.Add(point);
+                    optTour.addPoint(point);
                 }
                 else 
                 {
@@ -649,40 +649,40 @@ namespace WindowsFormsApplication1
                 case "EXPLICIT":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_EXPLICIT;
                     break;
-                case "EUC_2D":
+                case "EUC_2D":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_EUC_2D;
                     break;
-                case "EUC_3D":
+                case "EUC_3D":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_EUC_3D;
                     break;
-                case "MAX_2D":
+                case "MAX_2D":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_MAX_2D;
                     break;
-                case "MAX_3D":
+                case "MAX_3D":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_MAX_3D;
                     break;
-                case "MAN_2D":
+                case "MAN_2D":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_MAN_2D;
                     break;
-                case "MAN_3D":
+                case "MAN_3D":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_MAN_3D;
                     break;
-                case "CEIL_2D":
+                case "CEIL_2D":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_CEIL_2D;
                     break;
-                case "GEO":
+                case "GEO":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_GEO;
                     break;
-                case "ATT":
+                case "ATT":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_ATT;
                     break;
-                case "XRAY1":
+                case "XRAY1":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_XRAY1;
                     break;
-                case "XRAY2":
+                case "XRAY2":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_XRAY2;
                     break;
-                case "SPECIAL":
+                case "SPECIAL":
                     mFileHeader.edgeWeightType = E_EDGE_WEIGHT_TYPE.E_SPECIAL;
                     break;  
             }

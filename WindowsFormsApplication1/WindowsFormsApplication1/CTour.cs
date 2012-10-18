@@ -9,10 +9,10 @@ namespace WindowsFormsApplication1
     {
 
         private CTSPPointList mPoints = new CTSPPointList();
-        private double mTourLength = 0;
+        private float mTourLength = 0;
 
      
-        public void Add(CTSPPoint point)
+        public void addPoint(CTSPPoint point)
         {
             if (mPoints.length() == 0)
             {
@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
             mPoints.addPoint(point);
         }
 
-        public CTSPPoint GetPoint(int index)
+        public CTSPPoint getPoint(int index)
         {
             return mPoints.getPoint(index);
         }
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
             return mPoints.length();
         }
 
-        public double getTourLength()
+        public float getTourLength()
         {
             return mTourLength;
         }

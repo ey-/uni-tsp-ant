@@ -68,6 +68,26 @@ namespace WindowsFormsApplication1
             return false;
         }
 
+        public bool containsPoint(CTSPPoint tspPoint1, CTSPPoint tspPoint2)
+        {
+            if (mTSPPoint1 == tspPoint1)
+            { 
+                if (mTSPPoint2 == tspPoint2)
+                {
+                    return true;
+                }
+            }
+            else if (mTSPPoint1 == tspPoint2)
+            {
+                if (mTSPPoint2 == tspPoint1)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// gibt die Entfernung der Punkte zurück
         /// </summary>
@@ -152,20 +172,20 @@ namespace WindowsFormsApplication1
         {
             return mPheromone;
         }
-
-        /// <summary>
-        /// addiert den angegeben Wert auf den aktuellen Pheromonwert rauf
-        /// </summary>
-        /// <param name="additionalPheromone">Wert der aufaddiert werden soll</param>
-        public void addPheromone(float additionalPheromone)
+        
+        public void addPheromone(float pheromoneUpdateFactor)
         {
-            mPheromone += additionalPheromone;
+            mPheromone += pheromoneUpdateFactor;// / mDistance;
+        }
 
-            // keine negativen Pheromonwerte zulassen
-            if (mPheromone < 0)
-            {
-                mPheromone = 0;
-            }
+        public void evaporate(float evaporationFactor)
+        {
+            // Evaporation (verdunstung)
+            //--------------------------------
+            // Dazu iterieren wir durch alle Verbindungen und berechnen den neuen Pheromonwert.
+            // Formel: (t ij)neu = (t ij)alt * p
+            // p = Verdunstungsfaktor
+            mPheromone *= evaporationFactor;
         }
 
         public void getPoints(out CTSPPoint tspPoint1, out CTSPPoint tspPoint2)

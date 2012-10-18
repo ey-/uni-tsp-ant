@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
         private float heuristicValue = 0.001f;
 
         protected Thread mLastFileOpenerThread = null;
+        protected Thread mAntAlgorithmThread = null;
 
 
         public Form1()
@@ -52,6 +53,20 @@ namespace WindowsFormsApplication1
 
         private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // wenn das Programm beendet werden soll müssen wir noch eventuell 
+            // laufenden Thread beenden.
+            if ((mAntAlgorithmThread != null) && (mAntAlgorithmThread.IsAlive == true))
+            {
+                //mAntAlgorithmThread.Suspend();
+                mAntAlgorithmThread.Abort();
+            }
+
+            if ((mLastFileOpenerThread != null) && (mLastFileOpenerThread.IsAlive == true))
+            {
+                //mLastFileOpenerThread.Suspend();
+                mLastFileOpenerThread.Abort();
+            }
+
             Application.Exit();
         }
 
@@ -119,7 +134,7 @@ namespace WindowsFormsApplication1
 
             string tspFilePath = openTspFileDialog1.FileName;
             string tourFilePath = tspFilePath.Substring(0, tspFilePath.LastIndexOf('.')) + ".opt.tour";
-           
+
             try
             {
                 // zuerst mal das TSPfile parsen
@@ -138,6 +153,10 @@ namespace WindowsFormsApplication1
                 {
                     CAntAlgorithmParameters.getInstance().optTour = null;
                 }
+            }
+            catch (ThreadAbortException )
+            { 
+                // wir machen nichts .. das ist nur zum verhindern das eine Meldung angezeigt wird
             }
             catch (CInsufficientMemoryException exception)
             {
@@ -197,7 +216,15 @@ namespace WindowsFormsApplication1
             CAntAlgorithmParameters.getInstance().localInformation = heuristicValue;
             CAntAlgorithmParameters.getInstance().evaporationFactor = humidificationValue;
             //MessageBox.Show("Ants: " + CAntAlgorithmParameters.getInstance().numberAnts + "\n" + CAntAlgorithmParameters.getInstance().numberMaxIterations + "\n" + CAntAlgorithmParameters.getInstance().pheromoneParameter + " \n" + "usw usw");
-            var antAlgorithm = new CAntAlgorithm(mRenderWindow);
+            CAntAlgorithm antAlgorithm = new CAntAlgorithm(mRenderWindow);
+
+            if ((mAntAlgorithmThread != null) || (mAntAlgorithmThread.IsAlive == false))
+            {
+                mAntAlgorithmThread = new Thread(antAlgorithm.startAlgorithm);
+                mAntAlgorithmThread.Name = "AntAlgorithmThread";
+                mAntAlgorithmThread.Priority = ThreadPriority.Highest;
+                mAntAlgorithmThread.Start();
+            }
             
             button_Start.Enabled = true;
 
@@ -291,6 +318,7 @@ namespace WindowsFormsApplication1
         {
             mRenderWindow.setCursorAction(rCursorAdd.Checked, rCursorDelete.Checked, rCursorShift.Checked);
         }
+
 
 
 

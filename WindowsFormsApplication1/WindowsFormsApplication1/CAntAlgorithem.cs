@@ -12,19 +12,35 @@ namespace WindowsFormsApplication1
         private CAnt[] arrayOfAnts = new CAnt[CAntAlgorithmParameters.getInstance().numberAnts];
         private RenderWindow mRenderWindow;
 
+        private CConnectionList mConnectionList = CConnectionList.getInstance();
+        private CAntAlgorithmParameters mAlgorithmParam = CAntAlgorithmParameters.getInstance();
+
+        private int mMaxIterations = 0;
+        private float mPheromoneParam = 0f;
+        private float mPhermomoneUpdate = 0f;
+        private float mInitialPheromone = 0f;
+        private float mEvaporationFactor = 0f;
+        private CTour mOptTour = null;
+        
         public CAntAlgorithm(RenderWindow renderWindow)
         {
-            var maxIteration = CAntAlgorithmParameters.getInstance().numberMaxIterations;
             mRenderWindow = renderWindow;
-            var pheromoneParam = CAntAlgorithmParameters.getInstance().pheromoneParameter;
-            var phermomoneUpdate = CAntAlgorithmParameters.getInstance().pheromoneUpdate;
-            var initialPheromone = CAntAlgorithmParameters.getInstance().initialPheromone;
-            var evaporationFactor = CAntAlgorithmParameters.getInstance().evaporationFactor;
-            var optTour = CAntAlgorithmParameters.getInstance().optTour;
 
-            CConnectionList.getInstance().SetInitialPheromone(initialPheromone);
+            mMaxIterations = mAlgorithmParam.numberMaxIterations;
+            mPheromoneParam = mAlgorithmParam.pheromoneParameter;
+            mPhermomoneUpdate = mAlgorithmParam.pheromoneUpdate;
+            mInitialPheromone = mAlgorithmParam.initialPheromone;
+            mEvaporationFactor = mAlgorithmParam.evaporationFactor;
+            mOptTour = mAlgorithmParam.optTour;
+        }
 
-            for (var i = maxIteration; i >= 0; i--)
+        public void startAlgorithm()
+        {
+            CProgressManager.setStepsIteration(mMaxIterations);
+
+            mConnectionList.SetInitialPheromone(mInitialPheromone);
+
+            for (var iteration = 0; iteration < mMaxIterations; iteration++)
             {
                 NewIteration();
 
@@ -42,83 +58,154 @@ namespace WindowsFormsApplication1
                     }
                 }*/
 
-
-                //Pheromone Evaporization
-                foreach (CConnection conn in CConnectionList.getInstance())
-                {
-                    conn.SetPheromone(conn.getPheromone() - (conn.getPheromone() * evaporationFactor));
-                   // Debug.WriteLine(conn.getPheromone());
-                }
-
+                // Pheromon-Update
+                //--------------------------------
+                // Dazu durch alle Touren von allen Ameisen nachgehen und für jede Verbindung die 
+                // Pheromonwerte neu berechnen
+                // Formel: delta(t ij) = Q / (distance ij)
                 foreach (CAnt ant in arrayOfAnts)
                 {
-                    for (int j = 0; j < ant.GetTour().getListLength()-1; j++)
-                    {
+                    CTour antTour = ant.GetTour();
 
-                        CConnection currentConnection = CConnectionList.getInstance().getConnection(ant.GetTour().GetPoint(j), ant.GetTour().GetPoint(j + 1));
-                        
-                        currentConnection.SetPheromone(currentConnection.getPheromone() + 1);
+                    // wir fangen mit Index 1 an! Damit die Punkte der Verbindungen mit den Indizies 
+                    // index -1 und index geholt werden können
+                    for (int pointIndex = 1; pointIndex < antTour.getListLength(); pointIndex++)
+                    {
+                        CTSPPoint fromPoint = antTour.getPoint(pointIndex - 1);
+                        CTSPPoint toPoint = antTour.getPoint(pointIndex);
+
+                        CConnection tourConnection = mConnectionList.getConnection(fromPoint, toPoint);
+                        tourConnection.addPheromone(mPhermomoneUpdate);
+
+                        if (tourConnection.getPheromone() > 50)
+                        {
+                            int i = 0;
+                            i++;
+                        }
                     }
                 }
-                //renderWindow.InitializeContexts();
-                //renderWindow.Refresh();
-                //Debug.Write("refreshed iteration=" + i);
+
+                // Evaporation (verdunstung)
+                //--------------------------------
+                // Dazu iterieren wir durch alle Verbindungen und lassen das Pheromon verdunsten
+                foreach (CConnection connection in mConnectionList)
+                {
+                    connection.evaporate(mEvaporationFactor);
+                }
+
+                mRenderWindow.Invoke(mRenderWindow.refreshDelegate);
+                CProgressManager.stepDone();
+
+                Debug.WriteLine("Iteration done: " + (iteration + 1));
             }
-            
-            //Debug.Write("refreshed iteration=" + i);
         }
 
-        public static CTSPPoint decisionNextPoint(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
+        public CTSPPoint decisionNextPoint(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
         {
-            CTSPPoint nextPointToTravel = currentPoint;
-            float dSumChanceValue = 0;
-            float dChanceValue = 0;
-            float currentBestConnectionRatio = 0;
-            CAntAlgorithmParameters parameters = CAntAlgorithmParameters.getInstance();
+            // Formel:
+            //          (t ij) ^ alpha * (n ij) ^ beta
+            // p ij = ----------------------------------
+            //        Sum k( (t ik) ^ alpha * (n ik) ^ beta )
+            //
+            // i = Startpunkt
+            // j = Zielpunkt
+            // k = ein Punkt von allen noch nicht besuchten
 
-            foreach (CTSPPoint i in listOfPointsToTravel)
+            // zuerst berechnen wir mal den Divisor der Formel, da dieser einmal pro Bewegung berechnet werden muss
+            float sumFactorOfPossibleConnections = calculateSumFactorOfPossibleConnections(currentPoint, listOfPointsToTravel);
+            
+            // jetzt berechnen wir die probability p von allen Verbindungen und bestimmen die beste
+            float bestProbability = 0;
+            CTSPPoint bestTarget = null;
+
+            foreach (CTSPPoint possibleTarget in listOfPointsToTravel)
             {
-                dSumChanceValue = (float)Math.Pow((1 / CConnectionList.getInstance().getConnection(currentPoint, i).getDistance()), parameters.pheromoneParameter);
-            }
+                CConnection connection = mConnectionList.getConnection(currentPoint, possibleTarget);
 
+                // von diesem Punkt erstmal die Werte für (t ij) ^ alpha und (n ij) ^ beta berechnen.
+                // Damit haben wir dann die Werte für den Dividenten
+                float t_ij = calculatePheromoneTrail(connection);
+                float n_ij = calculateLocalInformation(connection);
 
-            foreach (CTSPPoint point in listOfPointsToTravel)
-            {
-                dChanceValue = (float)((Math.Pow(CConnectionList.getInstance().getConnection(currentPoint, point).getPheromone(), parameters.pheromoneParameter)) * (Math.Pow((1 / CConnectionList.getInstance().getConnection(currentPoint, point).getDistance()), parameters.localInformation)));
-                if (((dChanceValue / dSumChanceValue) > currentBestConnectionRatio))
+                // die probability berechnen
+                float probability = (t_ij * n_ij) / sumFactorOfPossibleConnections;
+
+                // die der probability-Wert höher besser?
+                if (probability > bestProbability)
                 {
-                    currentBestConnectionRatio = CConnectionList.getInstance().getConnection(currentPoint, point).getDistance();
-                    nextPointToTravel = point;
+                    // dann merken wir uns diesen Punkt
+                    bestProbability = probability;
+                    bestTarget = possibleTarget;
                 }
             }
 
-            return nextPointToTravel;
+            //return nextPointToTravel;
+            return bestTarget;
+        }
+
+        // Entspricht in der Formel:
+        // Sum k( (t ik) ^ alpha * (n ik) ^ beta )
+        private float calculateSumFactorOfPossibleConnections(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
+        {
+            float sumFactorOfPossibleConnections = 0;
+            foreach (CTSPPoint possiblePoint in listOfPointsToTravel)
+            {
+                CConnection connection = mConnectionList.getConnection(currentPoint, possiblePoint);
+
+                float n_ik = calculateLocalInformation(connection);
+                float t_ik = calculatePheromoneTrail(connection);
+
+                sumFactorOfPossibleConnections += n_ik * t_ik;
+            }
+            return sumFactorOfPossibleConnections;
+        }
+
+        // entspricht in der Formel
+        // (n ij) ^ beta
+        public float calculateLocalInformation(CConnection connection)
+        {
+            float connectionDistance = connection.getDistance();
+            return (float)Math.Pow((1 / connectionDistance), mAlgorithmParam.localInformation);
+        }
+
+        // entspricht in der Formel
+        // (t ij) ^ alpha
+        public float calculatePheromoneTrail(CConnection connection)
+        {
+            float connectionPheromone = connection.getPheromone();
+            return (float)Math.Pow(connectionPheromone, mAlgorithmParam.pheromoneParameter);
         }
 
         public void CreateNewAnts()
         {
+            Random random = new Random();
+            int numPoints = CTSPPointList.getInstance().length();
+
             for (int i = 0; i < arrayOfAnts.Length; i++)
-                arrayOfAnts[i] = new CAnt(CTSPPointList.getInstance().copy(),
-                                            CTSPPointList.getInstance().getPoint(
-                                                (new Random()).Next(CTSPPointList.getInstance().length())
-                                            )
-                                          );
+            {
+                int randomPointIndex = random.Next(numPoints);
+                CTSPPoint randomPoint = CTSPPointList.getInstance().getPoint(randomPointIndex);
+                arrayOfAnts[i] = new CAnt(randomPoint);
+            }
         }
 
         public void NewIteration()
         {
             CreateNewAnts();
+
+            // Ameisen laufen lassen
             for (var i = 0; i < CTSPPointList.getInstance().length(); i++)
             {
                 foreach (CAnt ant in arrayOfAnts)
                 {
                     var nextPoint = decisionNextPoint(ant.CurrentPoint, ant.PointsToVisit);
                     if (nextPoint == null)
-                        nextPoint = ant.GetTour().GetPoint(0);
+                        nextPoint = ant.GetTour().getPoint(0);
                     ant.CurrentPoint = nextPoint;
                 }
             }
 
+            // kürzeste Tour ermitteln und die durchschnittliche Länge 
             CTour shortestTour = new CTour();
             double averageTourLength = 0;
             foreach (CAnt ant in arrayOfAnts)
@@ -128,7 +215,10 @@ namespace WindowsFormsApplication1
                     shortestTour = ant.GetTour();
 
             }
+            
             Debug.WriteLine(shortestTour.getTourLength());
+
+            // Iteration in die Liste zurückspeichern
             CIterationList.getInstance().Add(new CIteration(shortestTour, averageTourLength));
         }
     }

@@ -39,6 +39,11 @@ namespace WindowsFormsApplication1
         /// </summary>
         public void generateFromPointList(CTSPLibFileParser.E_EDGE_WEIGHT_TYPE edgeWeightType)
         {
+            if (edgeWeightType == CTSPLibFileParser.E_EDGE_WEIGHT_TYPE.E_EXPLICIT)
+            {
+                throw new Exception("Unbekannter Fehler in der Verarbeitung.");
+            }
+
             // jetzt kann die Liste neu gefüllt werden
             CTSPPointList pointList = CTSPPointList.getInstance();
 
@@ -157,7 +162,7 @@ namespace WindowsFormsApplication1
         /// <returns>gefundene Verbindung oder null</returns>
         public CConnection getConnection(CTSPPoint tspPoint1, CTSPPoint tspPoint2)
         {
-            if (mConnectionList == null)
+            if ((mConnectionList == null) || (mConnectionsAdded == 0))
             {
                 return null;
             }
@@ -166,12 +171,9 @@ namespace WindowsFormsApplication1
             foreach (CConnection connection in mConnectionList)
             {
                 // wenn die Verbindung beide Punkte enthält ist das die gesuchte Verbindung
-                if (connection.containsPoint(tspPoint1) == true)
+                if (connection.containsPoint(tspPoint1, tspPoint2) == true)
                 {
-                    if (connection.containsPoint(tspPoint2) == true)
-                    {
-                        return connection;
-                    }
+                    return connection;
                 }
             }
 
@@ -221,6 +223,27 @@ namespace WindowsFormsApplication1
         {
             foreach (CConnection connection in CConnectionList.mInstance)
                 connection.SetPheromone(initialPheromone);
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            if (mConnectionList != null)
+            {
+                foreach (CConnection connection in mConnectionList)
+                {
+                    if (connection != null)
+                    {
+                        CTSPPoint point1;
+                        CTSPPoint point2;
+                        connection.getPoints(out point1, out point2);
+
+                        output += point1.getLabel() + point2.getLabel() + " " + connection.getPheromone().ToString("#.000") + " | ";
+                    }
+                }
+            }
+
+            return output;
         }
 
     }

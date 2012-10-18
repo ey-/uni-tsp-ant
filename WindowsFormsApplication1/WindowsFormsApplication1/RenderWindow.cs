@@ -14,10 +14,16 @@ namespace WindowsFormsApplication1
 
     public class RenderWindow : SimpleOpenGlControl
     {
+        // Delegate zum Anstoßen des Renderns aus einem anderen Thread
+        public delegate void delegateRefresh();
+        public delegateRefresh refreshDelegate;
+
         // je höher desto eher wir sie gesehen
         protected const float CONNECTION_DRAW_LAYER = 0f;
-        protected const float TOUR_DRAW_LAYER = 1f;
-        protected const float POINT_DRAW_LAYER = 2f;
+        protected const float OPT_TOUR_DRAW_LAYER = 1f;
+        protected const float BEST_GLOBAL_TOUR_DRAW_LAYER = 2f;
+        protected const float BEST_ITERATION_TOUR_DRAW_LAYER = 3f;
+        protected const float POINT_DRAW_LAYER = 4f;
         
         protected struct T_CURSORACTION
         {
@@ -54,6 +60,7 @@ namespace WindowsFormsApplication1
             this.MouseDown += new MouseEventHandler(this.mMouseDown);
             this.MouseMove += new MouseEventHandler(this.mMouseMove);
 
+            refreshDelegate = new delegateRefresh(Refresh);
         }
 
         public void setCursorAction(bool addP,bool deleteP,bool changeP)
@@ -65,9 +72,10 @@ namespace WindowsFormsApplication1
 
         protected void render(object sender, EventArgs args)
         {
+            Debug.WriteLine("render");
             DateTime start = DateTime.Now;
 
-            Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
+            Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
             
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glLoadIdentity();
@@ -88,19 +96,17 @@ namespace WindowsFormsApplication1
         {
             CIterationList iterationList = CIterationList.getInstance();
 
-            
+            CTour optimumTour = CAntAlgorithmParameters.getInstance().optTour;
+            drawTour(optimumTour, OPT_TOUR_DRAW_LAYER, 0f, 0f, 1f);
 
             CTour bestIterationTour = iterationList.getBestLastIterationTour();
-            drawTour(bestIterationTour, 0f, 1f, 0f);
-
-            CTour optimumTour = CAntAlgorithmParameters.getInstance().optTour;
-            drawTour(optimumTour, 0f, 0f, 1f);
+            drawTour(bestIterationTour, BEST_GLOBAL_TOUR_DRAW_LAYER, 0f, 1f, 0f);
 
             CTour bestGlobalTour = iterationList.getBestGlobalTour();
-            drawTour(bestGlobalTour, 1f, 0f, 0f);
+            drawTour(bestGlobalTour, BEST_ITERATION_TOUR_DRAW_LAYER, 1f, 0f, 0f);
         }
 
-        private void drawTour(CTour tour, float red, float green, float blue)
+        private void drawTour(CTour tour, float depth, float red, float green, float blue)
         {
             if (tour == null)
             {
@@ -110,39 +116,30 @@ namespace WindowsFormsApplication1
             Gl.glLineWidth(3f);
             Gl.glColor3f(red, green, blue);
 
-            // wir verwenden einen GL_LINE_LOOP. Dieser zeichnet von punkt 1 zu 2 zu 3 und 
-            // zum Schluss wieder zu 1. Es ist also ein Kreis.
-            Gl.glBegin(Gl.GL_LINE_LOOP);
-
-            for (int pointIndex = 0; pointIndex < tour.getListLength(); pointIndex++)
-            {
-                CTSPPoint point = tour.GetPoint(pointIndex);
-                Gl.glVertex3f(point.x, point.y, TOUR_DRAW_LAYER);
-            }
-
+            Gl.glBegin(Gl.GL_LINE_STRIP);
+                for (int pointIndex = 0; pointIndex < tour.getListLength(); pointIndex++)
+                {
+                    CTSPPoint point = tour.getPoint(pointIndex);
+                    Gl.glVertex3f(point.x, point.y, depth);
+                }
             Gl.glEnd();
         }
 
         private void drawAllConnections()
         {
-            Debug.WriteLine("render");
-
             CConnectionList connList = CConnectionList.getInstance();
 
             // zuerst bestimmen wie hoch der höchste Pheromonwert aller Verbindungen ist
             // damit wir beim zeichnen der Verbindungen diese Abhängig von ihrem Wert, dunkler 
             // oder heller zeichnen können
-            double highestPhermone = 0;
+            float highestPhermone = 0;
             foreach (CConnection connection in connList)
             {
                 if (connection.getPheromone() > highestPhermone)
                 {
                     highestPhermone = connection.getPheromone();
                 }
-                if (highestPhermone == 0.0)
-                {
-                    highestPhermone = 1.0;
-                }
+                
             }
 
             Gl.glLineWidth(1f);
@@ -153,24 +150,31 @@ namespace WindowsFormsApplication1
                 // Farbe abhängig vom Pheromonwert der Verbindung setzen
                 // => hohe Werte werden dunkel dagestellt
                 // => niedrige hell
-                double pheromonLevel = connection.getPheromone() / highestPhermone;
-                double color = 1 - pheromonLevel;
-                // Die Verbindungen sollen immer sichtbar bleiben auch wenn sie sehr geringe Pheromonwerte haben
-                if (color > 0.95) color = 0.95;
+                float pheromonLevel = 1;
+                if (highestPhermone != 0f)
+                {
+                    pheromonLevel = connection.getPheromone() / highestPhermone;
+                }
+                
+                // Die Verbindungen die einen geringen Pheromonwert haben sollen nicht angezeigt werden
+                if (pheromonLevel > 0.1)
+                {
+                    // 0.0 == schwarz // 1.0 == weiß
+                    float color = 1 - pheromonLevel;                    
+                    Gl.glColor3f(color, color, color);
 
-                // 0.0 == schwarz // 1.0 == weiß
-                Gl.glColor3d(1.0 - color, 1.0 - color, 1.0 - color);
+                    // Eckpunkte bestimmen
+                    CTSPPoint sourcePoint = null;
+                    CTSPPoint destinationPoint = null;
+                    connection.getPoints(out sourcePoint, out destinationPoint);
 
-                // Eckpunkte bestimmen
-                CTSPPoint sourcePoint = null;
-                CTSPPoint destinationPoint = null;
-                connection.getPoints(out sourcePoint, out destinationPoint);
-
-                // Linien Zeichnen
-                Gl.glBegin(Gl.GL_LINES);
-                    Gl.glVertex3d(sourcePoint.x, sourcePoint.y, CONNECTION_DRAW_LAYER);
-                    Gl.glVertex3d(destinationPoint.x, destinationPoint.y, CONNECTION_DRAW_LAYER);
-                Gl.glEnd();
+                    float depth = CONNECTION_DRAW_LAYER - (color *100f);
+                    // Linien Zeichnen
+                    Gl.glBegin(Gl.GL_LINES);
+                    Gl.glVertex3d(sourcePoint.x, sourcePoint.y, depth);
+                    Gl.glVertex3d(destinationPoint.x, destinationPoint.y, depth);
+                    Gl.glEnd();
+                }
             }
         }
 
@@ -211,6 +215,8 @@ namespace WindowsFormsApplication1
             // wenn z.b. die äußerste Stadt bei 345, 239 liegt, sollte der 
             // Viewport ein wenig größer sein
             Gl.glOrtho(mBounds.left, mBounds.right, mBounds.bottom, mBounds.top, -100.0f, 100.0f);
+
+            Gl.glEnable(Gl.GL_DEPTH_TEST);
         }
 
         protected T_BOUNDS getBounds(CTSPPointList citys)
