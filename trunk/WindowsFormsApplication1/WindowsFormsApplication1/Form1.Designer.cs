@@ -112,7 +112,9 @@ namespace WindowsFormsApplication1
             this.pIterationProgressBar = new System.Windows.Forms.ProgressBar();
             this.tTimeDisplay = new System.Windows.Forms.TextBox();
             this.tNumberOfIteration = new System.Windows.Forms.TextBox();
+            this.HelpButton = new System.Windows.Forms.HelpProvider();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
+            this.f1ManualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabController.SuspendLayout();
             this.tabParameter.SuspendLayout();
             this.groupBoxAntsAlgorithym.SuspendLayout();
@@ -706,20 +708,24 @@ namespace WindowsFormsApplication1
             // öffnenToolStripMenuItem
             // 
             this.öffnenToolStripMenuItem.Name = "öffnenToolStripMenuItem";
-            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.öffnenToolStripMenuItem.Text = "Öffnen";
             this.öffnenToolStripMenuItem.Click += new System.EventHandler(this.öffnenToolStripMenuItem_Click);
             // 
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
             // hilfeToolStripMenuItem
             // 
+            this.hilfeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.f1ManualToolStripMenuItem});
             this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
+            this.hilfeToolStripMenuItem.ShortcutKeyDisplayString = "Manual";
+            this.hilfeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             // 
@@ -878,6 +884,11 @@ namespace WindowsFormsApplication1
             this.tNumberOfIteration.Size = new System.Drawing.Size(60, 20);
             this.tNumberOfIteration.TabIndex = 7;
             // 
+            // HelpButton
+            // 
+            this.HelpButton.HelpNamespace = "D:\\ANL201_Bogenschiessen_RECURVE_BOGENSPORTWELT.DE.pdf";
+            this.HelpButton.Tag = "";
+            // 
             // mRenderWindow
             // 
             this.mRenderWindow.AccumBits = ((byte)(0));
@@ -896,6 +907,12 @@ namespace WindowsFormsApplication1
             this.mRenderWindow.Size = new System.Drawing.Size(986, 445);
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
+            // 
+            // f1ManualToolStripMenuItem
+            // 
+            this.f1ManualToolStripMenuItem.Name = "f1ManualToolStripMenuItem";
+            this.f1ManualToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.f1ManualToolStripMenuItem.Text = "F1 Manual";
             // 
             // Form1
             // 
@@ -1016,6 +1033,8 @@ namespace WindowsFormsApplication1
         public System.Windows.Forms.RadioButton rCursorShift;
         public System.Windows.Forms.RadioButton rCursorDelete;
         public System.Windows.Forms.RadioButton rCursorAdd;
+        public System.Windows.Forms.HelpProvider HelpButton;
+        private System.Windows.Forms.ToolStripMenuItem f1ManualToolStripMenuItem;
     }
 }
 
