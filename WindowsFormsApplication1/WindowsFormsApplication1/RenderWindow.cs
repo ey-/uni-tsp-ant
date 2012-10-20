@@ -52,6 +52,8 @@ namespace WindowsFormsApplication1
         protected T_CURSORACTION mCursorAction = new T_CURSORACTION();
         protected T_POINTTOMOVE pointToMove = new T_POINTTOMOVE();
         protected T_BOUNDS mBounds = new T_BOUNDS();
+        protected Thread mloadingRender = null;
+        private FormWhileRendering window =null;
 
         public RenderWindow()
         {
@@ -70,10 +72,30 @@ namespace WindowsFormsApplication1
             mCursorAction.change = changeP;
         }
 
+        protected void showLoadingWindow()
+        {
+            if (window == null)
+            {
+                window = new FormWhileRendering();
+            }
+            if (!window.Visible)
+            {
+                window.ShowDialog();
+            }
+            else
+            {
+                window.Dispose();
+            }
+        }
+
         protected void render(object sender, EventArgs args)
         {
             Debug.WriteLine("render");
             DateTime start = DateTime.Now;
+            showLoadingWindow();
+           // mloadingRender = new Thread(this.showLoadingWindow);
+           // mloadingRender.Name = "loadingRenderThread";
+           // mloadingRender.Start();
 
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
             
@@ -85,11 +107,13 @@ namespace WindowsFormsApplication1
             drawBestPaths();
 
             drawPoints();
-
-            Gl.glFlush();
-
+            
+            Gl.glFlush();                       
             DateTime finished = DateTime.Now;
             Debug.WriteLine("Render took: " + (finished - start).TotalSeconds + " sek.");
+            showLoadingWindow();
+           // mloadingRender.Abort();
+            //mloadingRender
         }
 
         private void drawBestPaths()

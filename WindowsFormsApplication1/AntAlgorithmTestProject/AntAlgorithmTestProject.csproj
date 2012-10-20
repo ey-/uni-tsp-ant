@@ -63,7 +63,6 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CTestAnt.cs" />
     <Compile Include="CTestConnection.cs" />
     <Compile Include="CTestConnectionList.cs" />
     <Compile Include="CTestIteration.cs" />
