@@ -98,6 +98,7 @@ namespace WindowsFormsApplication1
             this.öffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.f1ManualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openTspFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button_Start = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -113,8 +114,10 @@ namespace WindowsFormsApplication1
             this.tTimeDisplay = new System.Windows.Forms.TextBox();
             this.tNumberOfIteration = new System.Windows.Forms.TextBox();
             this.HelpButton = new System.Windows.Forms.HelpProvider();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
-            this.f1ManualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tabController.SuspendLayout();
             this.tabParameter.SuspendLayout();
             this.groupBoxAntsAlgorithym.SuspendLayout();
@@ -132,6 +135,8 @@ namespace WindowsFormsApplication1
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabController
@@ -140,6 +145,7 @@ namespace WindowsFormsApplication1
             this.tabController.Controls.Add(this.tabParameter);
             this.tabController.Controls.Add(this.tabEditieren);
             this.tabController.Controls.Add(this.tabStatistiken);
+            this.tabController.Controls.Add(this.tabPage1);
             this.tabController.Location = new System.Drawing.Point(7, 495);
             this.tabController.Name = "tabController";
             this.tabController.SelectedIndex = 0;
@@ -384,8 +390,11 @@ namespace WindowsFormsApplication1
             // label6
             // 
             this.label6.AutoSize = true;
+            this.HelpButton.SetHelpNavigator(this.label6, System.Windows.Forms.HelpNavigator.Topic);
+            this.HelpButton.SetHelpString(this.label6, "Phermon Parameter");
             this.label6.Location = new System.Drawing.Point(6, 21);
             this.label6.Name = "label6";
+            this.HelpButton.SetShowHelp(this.label6, true);
             this.label6.Size = new System.Drawing.Size(122, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "Pheromon Parameter α :";
@@ -708,14 +717,14 @@ namespace WindowsFormsApplication1
             // öffnenToolStripMenuItem
             // 
             this.öffnenToolStripMenuItem.Name = "öffnenToolStripMenuItem";
-            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.öffnenToolStripMenuItem.Text = "Öffnen";
             this.öffnenToolStripMenuItem.Click += new System.EventHandler(this.öffnenToolStripMenuItem_Click);
             // 
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
@@ -728,6 +737,12 @@ namespace WindowsFormsApplication1
             this.hilfeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
+            // 
+            // f1ManualToolStripMenuItem
+            // 
+            this.f1ManualToolStripMenuItem.Name = "f1ManualToolStripMenuItem";
+            this.f1ManualToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.f1ManualToolStripMenuItem.Text = "F1 Manual";
             // 
             // openTspFileDialog1
             // 
@@ -807,9 +822,9 @@ namespace WindowsFormsApplication1
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(50, 0);
             this.label2.Name = "label2";
@@ -820,9 +835,9 @@ namespace WindowsFormsApplication1
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(126, 0);
             this.label5.Name = "label5";
@@ -833,9 +848,9 @@ namespace WindowsFormsApplication1
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 30);
             this.label11.Name = "label11";
@@ -846,9 +861,9 @@ namespace WindowsFormsApplication1
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 76);
             this.label12.Name = "label12";
@@ -859,8 +874,8 @@ namespace WindowsFormsApplication1
             // 
             // pIterationProgressBar
             // 
-            this.pIterationProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pIterationProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pIterationProgressBar.Location = new System.Drawing.Point(122, 472);
             this.pIterationProgressBar.Name = "pIterationProgressBar";
             this.pIterationProgressBar.Size = new System.Drawing.Size(817, 20);
@@ -889,12 +904,22 @@ namespace WindowsFormsApplication1
             this.HelpButton.HelpNamespace = "D:\\ANL201_Bogenschiessen_RECURVE_BOGENSPORTWELT.DE.pdf";
             this.HelpButton.Tag = "";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(788, 173);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "Anzeige";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // mRenderWindow
             // 
             this.mRenderWindow.AccumBits = ((byte)(0));
-            this.mRenderWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mRenderWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.mRenderWindow.AutoCheckErrors = false;
             this.mRenderWindow.AutoFinish = false;
             this.mRenderWindow.AutoMakeCurrent = true;
@@ -908,11 +933,30 @@ namespace WindowsFormsApplication1
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
             // 
-            // f1ManualToolStripMenuItem
+            // checkedListBox1
             // 
-            this.f1ManualToolStripMenuItem.Name = "f1ManualToolStripMenuItem";
-            this.f1ManualToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.f1ManualToolStripMenuItem.Text = "F1 Manual";
+            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Verbindung zwischen den Punkten",
+            "Optimaler Pfad ",
+            "Bester Pfad der Iteration",
+            "Bester Pfad aus allen Iterationen"});
+            this.checkedListBox1.Location = new System.Drawing.Point(14, 56);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(198, 64);
+            this.checkedListBox1.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.checkedListBox1);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(23, 25);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(234, 144);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Anzeigeoptionen";
             // 
             // Form1
             // 
@@ -959,6 +1003,8 @@ namespace WindowsFormsApplication1
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1035,6 +1081,9 @@ namespace WindowsFormsApplication1
         public System.Windows.Forms.RadioButton rCursorAdd;
         public System.Windows.Forms.HelpProvider HelpButton;
         private System.Windows.Forms.ToolStripMenuItem f1ManualToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
 
