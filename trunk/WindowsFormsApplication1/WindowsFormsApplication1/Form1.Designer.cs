@@ -43,6 +43,7 @@ namespace WindowsFormsApplication1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabController = new System.Windows.Forms.TabControl();
             this.tabParameter = new System.Windows.Forms.TabPage();
             this.cStoppLoesung = new System.Windows.Forms.CheckBox();
@@ -93,6 +94,9 @@ namespace WindowsFormsApplication1
             this.labelStreckePheromon = new System.Windows.Forms.Label();
             this.tStreckeLocalInfo = new System.Windows.Forms.TextBox();
             this.tStreckePheromon = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.öffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,10 +118,8 @@ namespace WindowsFormsApplication1
             this.tTimeDisplay = new System.Windows.Forms.TextBox();
             this.tNumberOfIteration = new System.Windows.Forms.TextBox();
             this.HelpButton = new System.Windows.Forms.HelpProvider();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tabController.SuspendLayout();
             this.tabParameter.SuspendLayout();
             this.groupBoxAntsAlgorithym.SuspendLayout();
@@ -133,10 +135,10 @@ namespace WindowsFormsApplication1
             this.groupBox1.SuspendLayout();
             this.tabStatistiken.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabController
@@ -272,11 +274,14 @@ namespace WindowsFormsApplication1
             // label10
             // 
             this.label10.AutoSize = true;
+            this.HelpButton.SetHelpKeyword(this.label10, "Pheromon-Update Q");
+            this.HelpButton.SetHelpNavigator(this.label10, System.Windows.Forms.HelpNavigator.KeywordIndex);
             this.label10.Location = new System.Drawing.Point(399, 55);
             this.label10.Name = "label10";
+            this.HelpButton.SetShowHelp(this.label10, true);
             this.label10.Size = new System.Drawing.Size(125, 26);
             this.label10.TabIndex = 15;
-            this.label10.Text = "heuristischer Parameter\r\nfür Pheremon-Update Q :";
+            this.label10.Text = "heuristischer Parameter\r\nfür Pheromon-Update Q :";
             // 
             // labelinitialPheromon
             // 
@@ -303,8 +308,11 @@ namespace WindowsFormsApplication1
             // label9
             // 
             this.label9.AutoSize = true;
+            this.HelpButton.SetHelpKeyword(this.label9, "initiale Pheromon-Werte τ ");
+            this.HelpButton.SetHelpNavigator(this.label9, System.Windows.Forms.HelpNavigator.KeywordIndex);
             this.label9.Location = new System.Drawing.Point(397, 21);
             this.label9.Name = "label9";
+            this.HelpButton.SetShowHelp(this.label9, true);
             this.label9.Size = new System.Drawing.Size(134, 13);
             this.label9.TabIndex = 12;
             this.label9.Text = "initiale Pheromon-Werte τ :";
@@ -332,8 +340,11 @@ namespace WindowsFormsApplication1
             // label8
             // 
             this.label8.AutoSize = true;
+            this.HelpButton.SetHelpKeyword(this.label8, "Verdunstungsfaktor ρ");
+            this.HelpButton.SetHelpNavigator(this.label8, System.Windows.Forms.HelpNavigator.KeywordIndex);
             this.label8.Location = new System.Drawing.Point(7, 101);
             this.label8.Name = "label8";
+            this.HelpButton.SetShowHelp(this.label8, true);
             this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "Verdunstungsfaktor ρ :";
@@ -361,8 +372,12 @@ namespace WindowsFormsApplication1
             // label7
             // 
             this.label7.AutoSize = true;
+            this.HelpButton.SetHelpKeyword(this.label7, "lokale Information β");
+            this.HelpButton.SetHelpNavigator(this.label7, System.Windows.Forms.HelpNavigator.KeywordIndex);
+            this.HelpButton.SetHelpString(this.label7, "");
             this.label7.Location = new System.Drawing.Point(6, 55);
             this.label7.Name = "label7";
+            this.HelpButton.SetShowHelp(this.label7, true);
             this.label7.Size = new System.Drawing.Size(137, 26);
             this.label7.TabIndex = 6;
             this.label7.Text = "heuristischer Parameter\r\nfür die lokale Information β :";
@@ -390,7 +405,10 @@ namespace WindowsFormsApplication1
             // label6
             // 
             this.label6.AutoSize = true;
-            this.HelpButton.SetHelpNavigator(this.label6, System.Windows.Forms.HelpNavigator.Topic);
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.HelpButton.SetHelpKeyword(this.label6, "Pheromon Parameter α :");
+            this.HelpButton.SetHelpNavigator(this.label6, System.Windows.Forms.HelpNavigator.KeywordIndex);
             this.HelpButton.SetHelpString(this.label6, "Phermon Parameter");
             this.label6.Location = new System.Drawing.Point(6, 21);
             this.label6.Name = "label6";
@@ -398,6 +416,7 @@ namespace WindowsFormsApplication1
             this.label6.Size = new System.Drawing.Size(122, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "Pheromon Parameter α :";
+            this.toolTip1.SetToolTip(this.label6, "Parameter sind doll und ich brauch noch mehr zeichen");
             // 
             // uQuantityIterations
             // 
@@ -694,6 +713,41 @@ namespace WindowsFormsApplication1
             this.tStreckePheromon.TabIndex = 1;
             this.tStreckePheromon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(788, 173);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "Anzeige";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.checkedListBox1);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(23, 25);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(234, 144);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Anzeigeoptionen";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Verbindung zwischen den Punkten",
+            "Optimaler Pfad ",
+            "Bester Pfad der Iteration",
+            "Bester Pfad aus allen Iterationen"});
+            this.checkedListBox1.Location = new System.Drawing.Point(14, 56);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(198, 64);
+            this.checkedListBox1.TabIndex = 0;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -740,9 +794,13 @@ namespace WindowsFormsApplication1
             // 
             // f1ManualToolStripMenuItem
             // 
+            this.f1ManualToolStripMenuItem.AutoToolTip = true;
             this.f1ManualToolStripMenuItem.Name = "f1ManualToolStripMenuItem";
-            this.f1ManualToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.f1ManualToolStripMenuItem.Text = "F1 Manual";
+            this.f1ManualToolStripMenuItem.ShortcutKeyDisplayString = "F1";
+            this.f1ManualToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.f1ManualToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.f1ManualToolStripMenuItem.Text = "Manual";
+            this.f1ManualToolStripMenuItem.ToolTipText = "HelpFile";
             // 
             // openTspFileDialog1
             // 
@@ -901,18 +959,13 @@ namespace WindowsFormsApplication1
             // 
             // HelpButton
             // 
-            this.HelpButton.HelpNamespace = "D:\\ANL201_Bogenschiessen_RECURVE_BOGENSPORTWELT.DE.pdf";
+            this.HelpButton.HelpNamespace = "";
             this.HelpButton.Tag = "";
             // 
-            // tabPage1
+            // toolTip1
             // 
-            this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(788, 173);
-            this.tabPage1.TabIndex = 5;
-            this.tabPage1.Text = "Anzeige";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.toolTip1.OwnerDraw = true;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // mRenderWindow
             // 
@@ -932,31 +985,6 @@ namespace WindowsFormsApplication1
             this.mRenderWindow.Size = new System.Drawing.Size(986, 445);
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Verbindung zwischen den Punkten",
-            "Optimaler Pfad ",
-            "Bester Pfad der Iteration",
-            "Bester Pfad aus allen Iterationen"});
-            this.checkedListBox1.Location = new System.Drawing.Point(14, 56);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(198, 64);
-            this.checkedListBox1.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.checkedListBox1);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(23, 25);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(234, 144);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Anzeigeoptionen";
             // 
             // Form1
             // 
@@ -999,12 +1027,12 @@ namespace WindowsFormsApplication1
             this.tabStatistiken.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1084,6 +1112,7 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        public System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
