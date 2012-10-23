@@ -96,7 +96,7 @@ namespace WindowsFormsApplication1
             this.tStreckePheromon = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.cBoxAnzeigeoptionen = new System.Windows.Forms.CheckedListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.öffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,9 +117,12 @@ namespace WindowsFormsApplication1
             this.pIterationProgressBar = new System.Windows.Forms.ProgressBar();
             this.tTimeDisplay = new System.Windows.Forms.TextBox();
             this.tNumberOfIteration = new System.Windows.Forms.TextBox();
-            this.HelpButton = new System.Windows.Forms.HelpProvider();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tabController.SuspendLayout();
             this.tabParameter.SuspendLayout();
             this.groupBoxAntsAlgorithym.SuspendLayout();
@@ -139,6 +142,10 @@ namespace WindowsFormsApplication1
             this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabController
@@ -184,6 +191,8 @@ namespace WindowsFormsApplication1
             this.cStoppLoesung.Size = new System.Drawing.Size(109, 17);
             this.cStoppLoesung.TabIndex = 16;
             this.cStoppLoesung.Text = "Lösung gefunden";
+            this.toolTip1.SetToolTip(this.cStoppLoesung, "Bei setzen des Hakens\r\nin das Kontrollkästchen stoppt der\r\nAlgorithmus sobald die" +
+                    " optimale Lösung \r\ngefunden wurde");
             this.cStoppLoesung.UseVisualStyleBackColor = true;
             // 
             // cStopSchwellenwert
@@ -194,6 +203,8 @@ namespace WindowsFormsApplication1
             this.cStopSchwellenwert.Size = new System.Drawing.Size(152, 30);
             this.cStopSchwellenwert.TabIndex = 15;
             this.cStopSchwellenwert.Text = "Schwellenwert für die\r\nLänge der Strecke erreicht";
+            this.toolTip1.SetToolTip(this.cStopSchwellenwert, "Mit diesem Stoppkriterium kann man\r\neinen Schwellenwert definieren bei dem\r\nder A" +
+                    "lgorithmus aufhört zu laufen sobald\r\ndieser Wert unterschritten wurde");
             this.cStopSchwellenwert.UseVisualStyleBackColor = true;
             this.cStopSchwellenwert.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
@@ -224,6 +235,8 @@ namespace WindowsFormsApplication1
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Stopkriterium:";
+            this.toolTip1.SetToolTip(this.label4, "Alle Stoppkriterien sind logisch ODER verknüpft,\r\ndas bedeutet sobald einer der\r\n" +
+                    "Kriterien erreicht wurde wird das\r\nProgramm gestoppt");
             // 
             // groupBoxAntsAlgorithym
             // 
@@ -274,14 +287,13 @@ namespace WindowsFormsApplication1
             // label10
             // 
             this.label10.AutoSize = true;
-            this.HelpButton.SetHelpKeyword(this.label10, "Pheromon-Update Q");
-            this.HelpButton.SetHelpNavigator(this.label10, System.Windows.Forms.HelpNavigator.KeywordIndex);
             this.label10.Location = new System.Drawing.Point(399, 55);
             this.label10.Name = "label10";
-            this.HelpButton.SetShowHelp(this.label10, true);
             this.label10.Size = new System.Drawing.Size(125, 26);
             this.label10.TabIndex = 15;
             this.label10.Text = "heuristischer Parameter\r\nfür Pheromon-Update Q :";
+            this.toolTip1.SetToolTip(this.label10, "Gibt an wie viel Pheromon von der\r\nAmeisen hinterlassen wird wenn sie eine\r\nStrec" +
+                    "ke abgelaufen ist, Werte sind\r\nAbsolut min. 0 max. 10");
             // 
             // labelinitialPheromon
             // 
@@ -308,14 +320,13 @@ namespace WindowsFormsApplication1
             // label9
             // 
             this.label9.AutoSize = true;
-            this.HelpButton.SetHelpKeyword(this.label9, "initiale Pheromon-Werte τ ");
-            this.HelpButton.SetHelpNavigator(this.label9, System.Windows.Forms.HelpNavigator.KeywordIndex);
             this.label9.Location = new System.Drawing.Point(397, 21);
             this.label9.Name = "label9";
-            this.HelpButton.SetShowHelp(this.label9, true);
             this.label9.Size = new System.Drawing.Size(134, 13);
             this.label9.TabIndex = 12;
             this.label9.Text = "initiale Pheromon-Werte τ :";
+            this.toolTip1.SetToolTip(this.label9, "Gibt an wie viel Pheromon initial pro\r\nStrecke verteilt wird, initial bedeutet hi" +
+                    "er\r\nvor der ersten Iteration");
             // 
             // labelHumidification
             // 
@@ -340,14 +351,13 @@ namespace WindowsFormsApplication1
             // label8
             // 
             this.label8.AutoSize = true;
-            this.HelpButton.SetHelpKeyword(this.label8, "Verdunstungsfaktor ρ");
-            this.HelpButton.SetHelpNavigator(this.label8, System.Windows.Forms.HelpNavigator.KeywordIndex);
             this.label8.Location = new System.Drawing.Point(7, 101);
             this.label8.Name = "label8";
-            this.HelpButton.SetShowHelp(this.label8, true);
             this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "Verdunstungsfaktor ρ :";
+            this.toolTip1.SetToolTip(this.label8, "Gibt an in Prozent wie viel Pheromon auf\r\njeder Strecke nach einer Iteration\r\nver" +
+                    "dunstes, z.B. 0,005 bedeutet 0,5%");
             // 
             // labelHeuristic
             // 
@@ -372,15 +382,13 @@ namespace WindowsFormsApplication1
             // label7
             // 
             this.label7.AutoSize = true;
-            this.HelpButton.SetHelpKeyword(this.label7, "lokale Information β");
-            this.HelpButton.SetHelpNavigator(this.label7, System.Windows.Forms.HelpNavigator.KeywordIndex);
-            this.HelpButton.SetHelpString(this.label7, "");
             this.label7.Location = new System.Drawing.Point(6, 55);
             this.label7.Name = "label7";
-            this.HelpButton.SetShowHelp(this.label7, true);
             this.label7.Size = new System.Drawing.Size(137, 26);
             this.label7.TabIndex = 6;
             this.label7.Text = "heuristischer Parameter\r\nfür die lokale Information β :";
+            this.toolTip1.SetToolTip(this.label7, "Gibt an zu wie vielen Teilen die Ameise\r\nbeim Entscheidungsprozess die\r\nStreckenl" +
+                    "änge für alle möglichen\r\nStrecken berücksichtigt");
             // 
             // labelPheremon
             // 
@@ -407,16 +415,13 @@ namespace WindowsFormsApplication1
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.HelpButton.SetHelpKeyword(this.label6, "Pheromon Parameter α :");
-            this.HelpButton.SetHelpNavigator(this.label6, System.Windows.Forms.HelpNavigator.KeywordIndex);
-            this.HelpButton.SetHelpString(this.label6, "Phermon Parameter");
             this.label6.Location = new System.Drawing.Point(6, 21);
             this.label6.Name = "label6";
-            this.HelpButton.SetShowHelp(this.label6, true);
             this.label6.Size = new System.Drawing.Size(122, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "Pheromon Parameter α :";
-            this.toolTip1.SetToolTip(this.label6, "Parameter sind doll und ich brauch noch mehr zeichen");
+            this.toolTip1.SetToolTip(this.label6, "Gibt an zu wie vielen Teilen die Ameise\r\nbeim Entscheidungsprozess die\r\nPheromon " +
+                    "Werte auf den möglichen\r\nStrecken berücksichtigt");
             // 
             // uQuantityIterations
             // 
@@ -443,6 +448,8 @@ namespace WindowsFormsApplication1
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Iterationen:";
+            this.toolTip1.SetToolTip(this.label3, "Wenn die angegebene Anzahl von Iterationen\r\ndurchgelaufen ist, wird der Algorithm" +
+                    "us gestoppt");
             // 
             // uAntsQuantity
             // 
@@ -469,6 +476,7 @@ namespace WindowsFormsApplication1
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Ameisen:";
+            this.toolTip1.SetToolTip(this.label1, "Anzahl der Ameisen die pro Iteration über das TSP-Problem laufen");
             // 
             // tabEditieren
             // 
@@ -725,28 +733,38 @@ namespace WindowsFormsApplication1
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.checkedListBox1);
+            this.groupBox4.Controls.Add(this.pictureBox4);
+            this.groupBox4.Controls.Add(this.pictureBox3);
+            this.groupBox4.Controls.Add(this.pictureBox2);
+            this.groupBox4.Controls.Add(this.pictureBox1);
+            this.groupBox4.Controls.Add(this.cBoxAnzeigeoptionen);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(23, 25);
+            this.groupBox4.Location = new System.Drawing.Point(31, 20);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(234, 144);
+            this.groupBox4.Size = new System.Drawing.Size(273, 144);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Anzeigeoptionen";
             // 
-            // checkedListBox1
+            // cBoxAnzeigeoptionen
             // 
-            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.cBoxAnzeigeoptionen.BackColor = System.Drawing.SystemColors.Window;
+            this.cBoxAnzeigeoptionen.CheckOnClick = true;
+            this.cBoxAnzeigeoptionen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxAnzeigeoptionen.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.cBoxAnzeigeoptionen.FormattingEnabled = true;
+            this.cBoxAnzeigeoptionen.Items.AddRange(new object[] {
             "Verbindung zwischen den Punkten",
             "Optimaler Pfad ",
             "Bester Pfad der Iteration",
             "Bester Pfad aus allen Iterationen"});
-            this.checkedListBox1.Location = new System.Drawing.Point(14, 56);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(198, 64);
-            this.checkedListBox1.TabIndex = 0;
+            this.cBoxAnzeigeoptionen.Location = new System.Drawing.Point(26, 56);
+            this.cBoxAnzeigeoptionen.Margin = new System.Windows.Forms.Padding(5);
+            this.cBoxAnzeigeoptionen.Name = "cBoxAnzeigeoptionen";
+            this.cBoxAnzeigeoptionen.Size = new System.Drawing.Size(198, 64);
+            this.cBoxAnzeigeoptionen.TabIndex = 0;
+            this.cBoxAnzeigeoptionen.ThreeDCheckBoxes = true;
+            this.toolTip1.SetToolTip(this.cBoxAnzeigeoptionen, "Bei setzen des Hakens wird der entsprechende Pfad farblich angezeigt");
             // 
             // menuStrip1
             // 
@@ -957,14 +975,12 @@ namespace WindowsFormsApplication1
             this.tNumberOfIteration.Size = new System.Drawing.Size(60, 20);
             this.tNumberOfIteration.TabIndex = 7;
             // 
-            // HelpButton
-            // 
-            this.HelpButton.HelpNamespace = "";
-            this.HelpButton.Tag = "";
-            // 
             // toolTip1
             // 
+            this.toolTip1.AutoPopDelay = 10000;
+            this.toolTip1.InitialDelay = 500;
             this.toolTip1.OwnerDraw = true;
+            this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // mRenderWindow
@@ -985,6 +1001,46 @@ namespace WindowsFormsApplication1
             this.mRenderWindow.Size = new System.Drawing.Size(986, 445);
             this.mRenderWindow.StencilBits = ((byte)(0));
             this.mRenderWindow.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Red;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 59);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(12, 12);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Green;
+            this.pictureBox2.Location = new System.Drawing.Point(7, 75);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(12, 12);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Blue;
+            this.pictureBox3.Location = new System.Drawing.Point(7, 91);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(12, 12);
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Yellow;
+            this.pictureBox4.Location = new System.Drawing.Point(7, 107);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(12, 12);
+            this.pictureBox4.TabIndex = 4;
+            this.pictureBox4.TabStop = false;
             // 
             // Form1
             // 
@@ -1033,6 +1089,10 @@ namespace WindowsFormsApplication1
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1107,12 +1167,15 @@ namespace WindowsFormsApplication1
         public System.Windows.Forms.RadioButton rCursorShift;
         public System.Windows.Forms.RadioButton rCursorDelete;
         public System.Windows.Forms.RadioButton rCursorAdd;
-        public System.Windows.Forms.HelpProvider HelpButton;
         private System.Windows.Forms.ToolStripMenuItem f1ManualToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox cBoxAnzeigeoptionen;
         public System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
