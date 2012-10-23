@@ -74,7 +74,7 @@ namespace WindowsFormsApplication1
             this.uAntsQuantity = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.tabEditieren = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gBRandomTSP = new System.Windows.Forms.GroupBox();
             this.bRandomCreate = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@ namespace WindowsFormsApplication1
             this.tRandomYKoordinate = new System.Windows.Forms.TextBox();
             this.tRandomXKoordinate = new System.Windows.Forms.TextBox();
             this.tRandomKnoten = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gBCursorAction = new System.Windows.Forms.GroupBox();
             this.rCursorShift = new System.Windows.Forms.RadioButton();
             this.rCursorDelete = new System.Windows.Forms.RadioButton();
             this.rCursorAdd = new System.Windows.Forms.RadioButton();
@@ -136,8 +136,8 @@ namespace WindowsFormsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).BeginInit();
             this.tabEditieren.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gBRandomTSP.SuspendLayout();
+            this.gBCursorAction.SuspendLayout();
             this.tabStatistiken.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -482,8 +482,8 @@ namespace WindowsFormsApplication1
             // 
             // tabEditieren
             // 
-            this.tabEditieren.Controls.Add(this.groupBox2);
-            this.tabEditieren.Controls.Add(this.groupBox1);
+            this.tabEditieren.Controls.Add(this.gBRandomTSP);
+            this.tabEditieren.Controls.Add(this.gBCursorAction);
             this.tabEditieren.Location = new System.Drawing.Point(4, 22);
             this.tabEditieren.Name = "tabEditieren";
             this.tabEditieren.Padding = new System.Windows.Forms.Padding(3);
@@ -492,21 +492,21 @@ namespace WindowsFormsApplication1
             this.tabEditieren.Text = "Editieren";
             this.tabEditieren.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // gBRandomTSP
             // 
-            this.groupBox2.Controls.Add(this.bRandomCreate);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.tRandomYKoordinate);
-            this.groupBox2.Controls.Add(this.tRandomXKoordinate);
-            this.groupBox2.Controls.Add(this.tRandomKnoten);
-            this.groupBox2.Location = new System.Drawing.Point(200, 15);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(264, 152);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
+            this.gBRandomTSP.Controls.Add(this.bRandomCreate);
+            this.gBRandomTSP.Controls.Add(this.label17);
+            this.gBRandomTSP.Controls.Add(this.label16);
+            this.gBRandomTSP.Controls.Add(this.label15);
+            this.gBRandomTSP.Controls.Add(this.label14);
+            this.gBRandomTSP.Controls.Add(this.tRandomYKoordinate);
+            this.gBRandomTSP.Controls.Add(this.tRandomXKoordinate);
+            this.gBRandomTSP.Controls.Add(this.tRandomKnoten);
+            this.gBRandomTSP.Location = new System.Drawing.Point(200, 15);
+            this.gBRandomTSP.Name = "gBRandomTSP";
+            this.gBRandomTSP.Size = new System.Drawing.Size(264, 152);
+            this.gBRandomTSP.TabIndex = 14;
+            this.gBRandomTSP.TabStop = false;
             // 
             // bRandomCreate
             // 
@@ -584,18 +584,18 @@ namespace WindowsFormsApplication1
             this.tRandomKnoten.TabIndex = 5;
             this.tRandomKnoten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tRandomKnoten_KeyDown);
             // 
-            // groupBox1
+            // gBCursorAction
             // 
-            this.groupBox1.Controls.Add(this.rCursorShift);
-            this.groupBox1.Controls.Add(this.rCursorDelete);
-            this.groupBox1.Controls.Add(this.rCursorAdd);
-            this.groupBox1.Controls.Add(this.rCursorNothing);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Location = new System.Drawing.Point(15, 15);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(173, 152);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
+            this.gBCursorAction.Controls.Add(this.rCursorShift);
+            this.gBCursorAction.Controls.Add(this.rCursorDelete);
+            this.gBCursorAction.Controls.Add(this.rCursorAdd);
+            this.gBCursorAction.Controls.Add(this.rCursorNothing);
+            this.gBCursorAction.Controls.Add(this.label13);
+            this.gBCursorAction.Location = new System.Drawing.Point(15, 15);
+            this.gBCursorAction.Name = "gBCursorAction";
+            this.gBCursorAction.Size = new System.Drawing.Size(173, 152);
+            this.gBCursorAction.TabIndex = 13;
+            this.gBCursorAction.TabStop = false;
             // 
             // rCursorShift
             // 
@@ -1029,7 +1029,6 @@ namespace WindowsFormsApplication1
             this.toolTip1.AutoPopDelay = 10000;
             this.toolTip1.BackColor = System.Drawing.Color.Khaki;
             this.toolTip1.InitialDelay = 500;
-            this.toolTip1.OwnerDraw = false;
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
@@ -1086,10 +1085,10 @@ namespace WindowsFormsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).EndInit();
             this.tabEditieren.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gBRandomTSP.ResumeLayout(false);
+            this.gBRandomTSP.PerformLayout();
+            this.gBCursorAction.ResumeLayout(false);
+            this.gBCursorAction.PerformLayout();
             this.tabStatistiken.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -1166,8 +1165,8 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TextBox tRandomYKoordinate;
         private System.Windows.Forms.TextBox tRandomXKoordinate;
         private System.Windows.Forms.TextBox tRandomKnoten;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gBCursorAction;
+        private System.Windows.Forms.GroupBox gBRandomTSP;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tStreckeLocalInfo;
         private System.Windows.Forms.TextBox tStreckePheromon;
