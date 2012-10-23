@@ -292,8 +292,8 @@ namespace WindowsFormsApplication1
             this.label10.Size = new System.Drawing.Size(125, 26);
             this.label10.TabIndex = 15;
             this.label10.Text = "heuristischer Parameter\r\nfür Pheromon-Update Q :";
-            this.toolTip1.SetToolTip(this.label10, "Gibt an wie viel Pheromon von der\r\nAmeisen hinterlassen wird wenn sie eine\r\nStrec" +
-                    "ke abgelaufen ist, Werte sind\r\nAbsolut min. 0 max. 10");
+            this.toolTip1.SetToolTip(this.label10, "Gibt an wie viel Pheromon von der Ameisen hinterlassen wird wenn sie eine\r\nStreck" +
+                    "e abgelaufen ist, Werte sind absolut min. 0 max. 10");
             // 
             // labelinitialPheromon
             // 
@@ -325,8 +325,8 @@ namespace WindowsFormsApplication1
             this.label9.Size = new System.Drawing.Size(134, 13);
             this.label9.TabIndex = 12;
             this.label9.Text = "initiale Pheromon-Werte τ :";
-            this.toolTip1.SetToolTip(this.label9, "Gibt an wie viel Pheromon initial pro\r\nStrecke verteilt wird, initial bedeutet hi" +
-                    "er\r\nvor der ersten Iteration");
+            this.toolTip1.SetToolTip(this.label9, "Gibt an wie viel Pheromon initial pro Strecke verteilt wird,\r\n initial bedeutet h" +
+                    "ier vor der ersten Iteration");
             // 
             // labelHumidification
             // 
@@ -356,7 +356,7 @@ namespace WindowsFormsApplication1
             this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "Verdunstungsfaktor ρ :";
-            this.toolTip1.SetToolTip(this.label8, "Gibt an in Prozent wie viel Pheromon auf\r\njeder Strecke nach einer Iteration\r\nver" +
+            this.toolTip1.SetToolTip(this.label8, "Gibt an in Prozent wie viel Pheromon auf jeder Strecke nach \r\neiner Iteration ver" +
                     "dunstes, z.B. 0,005 bedeutet 0,5%");
             // 
             // labelHeuristic
@@ -387,8 +387,8 @@ namespace WindowsFormsApplication1
             this.label7.Size = new System.Drawing.Size(137, 26);
             this.label7.TabIndex = 6;
             this.label7.Text = "heuristischer Parameter\r\nfür die lokale Information β :";
-            this.toolTip1.SetToolTip(this.label7, "Gibt an zu wie vielen Teilen die Ameise\r\nbeim Entscheidungsprozess die\r\nStreckenl" +
-                    "änge für alle möglichen\r\nStrecken berücksichtigt");
+            this.toolTip1.SetToolTip(this.label7, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nStreckenlä" +
+                    "nge für alle möglichen Strecken berücksichtigt");
             // 
             // labelPheremon
             // 
@@ -420,8 +420,8 @@ namespace WindowsFormsApplication1
             this.label6.Size = new System.Drawing.Size(122, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "Pheromon Parameter α :";
-            this.toolTip1.SetToolTip(this.label6, "Gibt an zu wie vielen Teilen die Ameise\r\nbeim Entscheidungsprozess die\r\nPheromon " +
-                    "Werte auf den möglichen\r\nStrecken berücksichtigt");
+            this.toolTip1.SetToolTip(this.label6, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nPheromon W" +
+                    "erte auf den möglichen Strecken berücksichtigt");
             // 
             // uQuantityIterations
             // 
@@ -535,6 +535,7 @@ namespace WindowsFormsApplication1
             this.label16.Size = new System.Drawing.Size(94, 13);
             this.label16.TabIndex = 10;
             this.label16.Text = "Max. Y Koordinate";
+            this.toolTip1.SetToolTip(this.label16, "Gibt die Längeneinheiten der vertikalen Achse an");
             // 
             // label15
             // 
@@ -544,6 +545,7 @@ namespace WindowsFormsApplication1
             this.label15.Size = new System.Drawing.Size(94, 13);
             this.label15.TabIndex = 9;
             this.label15.Text = "Max. X Koordinate";
+            this.toolTip1.SetToolTip(this.label15, "Gibt die Längeneinheiten der horizontalen Achse an");
             // 
             // label14
             // 
@@ -553,6 +555,7 @@ namespace WindowsFormsApplication1
             this.label14.Size = new System.Drawing.Size(94, 13);
             this.label14.TabIndex = 8;
             this.label14.Text = "Anzahl der Knoten";
+            this.toolTip1.SetToolTip(this.label14, "Anzahl der Städte die das neue TSP haben soll");
             // 
             // tRandomYKoordinate
             // 
@@ -676,7 +679,7 @@ namespace WindowsFormsApplication1
             this.groupBox3.Controls.Add(this.tStreckePheromon);
             this.groupBox3.Location = new System.Drawing.Point(595, 10);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(220, 155);
+            this.groupBox3.Size = new System.Drawing.Size(187, 155);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Referenzwerte";
@@ -685,26 +688,30 @@ namespace WindowsFormsApplication1
             // 
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(65, 92);
+            this.label18.Location = new System.Drawing.Point(48, 92);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(94, 13);
             this.label18.TabIndex = 5;
             this.label18.Text = "Strecke Local Info";
+            this.toolTip1.SetToolTip(this.label18, "Zeigt die Länge an für einen Durchlauf des TSP bei sehr \r\nstarker Berücksichtigun" +
+                    "g der lokalen Information\r\n");
             // 
             // labelStreckePheromon
             // 
             this.labelStreckePheromon.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelStreckePheromon.AutoSize = true;
-            this.labelStreckePheromon.Location = new System.Drawing.Point(62, 35);
+            this.labelStreckePheromon.Location = new System.Drawing.Point(45, 35);
             this.labelStreckePheromon.Name = "labelStreckePheromon";
             this.labelStreckePheromon.Size = new System.Drawing.Size(95, 13);
             this.labelStreckePheromon.TabIndex = 4;
             this.labelStreckePheromon.Text = "Strecke Pheromon";
+            this.toolTip1.SetToolTip(this.labelStreckePheromon, "Zeigt die Länge an für einen Durchlauf des TSP bei \r\nsehr starker Pheromon Berück" +
+                    "sichtigung");
             // 
             // tStreckeLocalInfo
             // 
             this.tStreckeLocalInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tStreckeLocalInfo.Location = new System.Drawing.Point(28, 112);
+            this.tStreckeLocalInfo.Location = new System.Drawing.Point(11, 112);
             this.tStreckeLocalInfo.Name = "tStreckeLocalInfo";
             this.tStreckeLocalInfo.ReadOnly = true;
             this.tStreckeLocalInfo.Size = new System.Drawing.Size(165, 20);
@@ -714,7 +721,7 @@ namespace WindowsFormsApplication1
             // tStreckePheromon
             // 
             this.tStreckePheromon.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tStreckePheromon.Location = new System.Drawing.Point(28, 55);
+            this.tStreckePheromon.Location = new System.Drawing.Point(11, 55);
             this.tStreckePheromon.Name = "tStreckePheromon";
             this.tStreckePheromon.ReadOnly = true;
             this.tStreckePheromon.Size = new System.Drawing.Size(165, 20);
@@ -1059,7 +1066,7 @@ namespace WindowsFormsApplication1
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1024, 726);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "TSPD";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.beendenToolStripMenuItem_Click);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ClientSizeChanged += new System.EventHandler(this.Form1_SizeChanged);
