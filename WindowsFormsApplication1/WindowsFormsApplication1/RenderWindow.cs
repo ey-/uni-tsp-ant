@@ -101,7 +101,7 @@ namespace WindowsFormsApplication1
             drawTour(optimumTour, OPT_TOUR_DRAW_LAYER, 0f, 0f, 1f);
 
             CTour bestIterationTour = iterationList.getBestLastIterationTour();
-            drawTour(bestIterationTour, BEST_GLOBAL_TOUR_DRAW_LAYER, 0f, 1f, 0f);
+            //drawTour(bestIterationTour, BEST_GLOBAL_TOUR_DRAW_LAYER, 0f, 1f, 0f);
 
             CTour bestGlobalTour = iterationList.getBestGlobalTour();
             drawTour(bestGlobalTour, BEST_ITERATION_TOUR_DRAW_LAYER, 1f, 0f, 0f);

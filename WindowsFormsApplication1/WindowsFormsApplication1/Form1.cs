@@ -129,6 +129,8 @@ namespace WindowsFormsApplication1
 
         private void openTSPFile()
         {
+            CIterationList.getInstance().Clear();
+
             // Open the selected file to read.
             System.IO.Stream myResult = openTspFileDialog1.OpenFile();
 
