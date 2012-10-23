@@ -112,10 +112,10 @@ namespace WindowsFormsApplication1
             // k = ein Punkt von allen noch nicht besuchten
 
             // zuerst berechnen wir mal den Divisor der Formel, da dieser einmal pro Bewegung berechnet werden muss
-            float sumFactorOfPossibleConnections = calculateSumFactorOfPossibleConnections(currentPoint, listOfPointsToTravel);
+            double sumFactorOfPossibleConnections = calculateSumFactorOfPossibleConnections(currentPoint, listOfPointsToTravel);
             
             // jetzt berechnen wir die probability p von allen Verbindungen und bestimmen die beste
-            float bestProbability = 0;
+            double bestProbability = 0;
             CTSPPoint bestTarget = null;
 
             foreach (CTSPPoint possibleTarget in listOfPointsToTravel)
@@ -124,11 +124,11 @@ namespace WindowsFormsApplication1
 
                 // von diesem Punkt erstmal die Werte für (t ij) ^ alpha und (n ij) ^ beta berechnen.
                 // Damit haben wir dann die Werte für den Dividenten
-                float t_ij = calculatePheromoneTrail(connection);
-                float n_ij = calculateLocalInformation(connection);
+                double t_ij = calculatePheromoneTrail(connection);
+                double n_ij = calculateLocalInformation(connection);
 
                 // die probability berechnen
-                float probability = (t_ij * n_ij) / sumFactorOfPossibleConnections;
+                double probability = (t_ij * n_ij) / sumFactorOfPossibleConnections;
 
                 // die der probability-Wert höher besser?
                 if (probability > bestProbability)
@@ -145,15 +145,15 @@ namespace WindowsFormsApplication1
 
         // Entspricht in der Formel:
         // Sum k( (t ik) ^ alpha * (n ik) ^ beta )
-        private float calculateSumFactorOfPossibleConnections(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
+        private double calculateSumFactorOfPossibleConnections(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
         {
-            float sumFactorOfPossibleConnections = 0;
+            double sumFactorOfPossibleConnections = 0;
             foreach (CTSPPoint possiblePoint in listOfPointsToTravel)
             {
                 CConnection connection = mConnectionList.getConnection(currentPoint, possiblePoint);
 
-                float n_ik = calculateLocalInformation(connection);
-                float t_ik = calculatePheromoneTrail(connection);
+                double n_ik = calculateLocalInformation(connection);
+                double t_ik = calculatePheromoneTrail(connection);
 
                 sumFactorOfPossibleConnections += n_ik * t_ik;
             }
@@ -162,10 +162,10 @@ namespace WindowsFormsApplication1
 
         // entspricht in der Formel
         // (n ij) ^ beta
-        public float calculateLocalInformation(CConnection connection)
+        public double calculateLocalInformation(CConnection connection)
         {
             float connectionDistance = connection.getDistance();
-            return (float)Math.Pow((1 / connectionDistance), mAlgorithmParam.localInformation);
+            return Math.Pow((1 / connectionDistance), mAlgorithmParam.localInformation);
         }
 
         // entspricht in der Formel

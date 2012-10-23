@@ -13,6 +13,8 @@ namespace WindowsFormsApplication1
         protected float mDistance;
         static protected CTSPLibFileParser.E_EDGE_WEIGHT_TYPE mDistanceCalculation;
 
+        const float MIN_PHEROMONE = 0.0000001f;
+
         /// <summary>
         /// Konstruktor
         /// </summary>
@@ -26,8 +28,8 @@ namespace WindowsFormsApplication1
             mTSPPoint2 = tspPoint2;
             mDistanceCalculation = distanceCalculation;
 
-            if (initialPheromone < 0)
-                mPheromone = 0;
+            if (initialPheromone <= 0)
+                mPheromone = MIN_PHEROMONE;
             else
                 mPheromone = initialPheromone;
 
@@ -46,8 +48,8 @@ namespace WindowsFormsApplication1
 
             mDistance = distance;
 
-            if (initialPheromone < 0)
-                mPheromone = 0;
+            if (initialPheromone <= 0)
+                mPheromone = MIN_PHEROMONE;
             else
                 mPheromone = initialPheromone;
 
@@ -177,6 +179,11 @@ namespace WindowsFormsApplication1
         {
             //mPheromone += pheromoneUpdateFactor;//
             mPheromone += pheromoneUpdateFactor / mDistance;
+
+            if (mPheromone <= 0)
+            {
+                mPheromone = MIN_PHEROMONE;
+            }
         }
 
         public void evaporate(float evaporationFactor)
@@ -187,6 +194,11 @@ namespace WindowsFormsApplication1
             // Formel: (t ij)neu = (t ij)alt * p
             // p = Verdunstungsfaktor
             mPheromone *= evaporationFactor;
+
+            if (mPheromone <= 0)
+            {
+                mPheromone = MIN_PHEROMONE;
+            }
         }
 
         public void getPoints(out CTSPPoint tspPoint1, out CTSPPoint tspPoint2)
@@ -195,9 +207,14 @@ namespace WindowsFormsApplication1
             tspPoint2 = mTSPPoint2;
         }
 
-        public void SetPheromone(float pheromone)
+        public void setPheromone(float pheromone)
         {
             mPheromone = pheromone;
+
+            if (mPheromone <= 0)
+            {
+                mPheromone = MIN_PHEROMONE;
+            }
         }
     }
 }
