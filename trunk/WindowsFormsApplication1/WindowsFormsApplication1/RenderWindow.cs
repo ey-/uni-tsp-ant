@@ -33,6 +33,14 @@ namespace WindowsFormsApplication1
             public bool change;
         }
 
+        protected struct T_DRAW
+        {
+            public bool allConnection;
+            public bool optPath;
+            public bool bestPathOfIteration;
+            public bool bestPathOfAllIterations;
+        }
+
         protected struct T_POINTTOMOVE
         {
             public CTSPPoint pointToMove;
@@ -53,6 +61,7 @@ namespace WindowsFormsApplication1
         protected T_CURSORACTION mCursorAction = new T_CURSORACTION();
         protected T_POINTTOMOVE pointToMove = new T_POINTTOMOVE();
         protected T_BOUNDS mBounds = new T_BOUNDS();
+        protected T_DRAW mDraw = new T_DRAW();
 
         public RenderWindow()
         {
@@ -60,7 +69,7 @@ namespace WindowsFormsApplication1
             this.MouseUp += new MouseEventHandler(this.click);
             this.MouseDown += new MouseEventHandler(this.mMouseDown);
             this.MouseMove += new MouseEventHandler(this.mMouseMove);
-
+            setDrawSettings(true, true, true, true);
             refreshDelegate = new delegateRefresh(Refresh);
         }
 
@@ -71,6 +80,13 @@ namespace WindowsFormsApplication1
             mCursorAction.change = changeP;
         }
 
+        public void setDrawSettings(bool allConnection, bool optPath, bool bestPathOfIteration,bool bestPathOfAllIterations)
+        {
+            mDraw.allConnection = allConnection;
+            mDraw.optPath = optPath;
+            mDraw.bestPathOfIteration = bestPathOfIteration;
+            mDraw.bestPathOfAllIterations = bestPathOfAllIterations;
+        }
 
         protected void render(object sender, EventArgs args)
         {
@@ -81,10 +97,10 @@ namespace WindowsFormsApplication1
             
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glLoadIdentity();
-
-            drawAllConnections();
-
-            drawBestPaths();
+            if (mDraw.allConnection)
+                drawAllConnections();
+            if (mDraw.bestPathOfIteration || mDraw.bestPathOfAllIterations || mDraw.optPath)
+                drawBestPaths();
 
             drawPoints();
             
@@ -97,14 +113,23 @@ namespace WindowsFormsApplication1
         {
             CIterationList iterationList = CIterationList.getInstance();
 
-            CTour optimumTour = CAntAlgorithmParameters.getInstance().optTour;
-            drawTour(optimumTour, OPT_TOUR_DRAW_LAYER, 0f, 0f, 1f);
+            if (mDraw.optPath)
+            {
+                CTour optimumTour = CAntAlgorithmParameters.getInstance().optTour;
+                drawTour(optimumTour, OPT_TOUR_DRAW_LAYER, 0f, 0f, 1f);
+            }
 
-            CTour bestIterationTour = iterationList.getBestLastIterationTour();
-            //drawTour(bestIterationTour, BEST_GLOBAL_TOUR_DRAW_LAYER, 0f, 1f, 0f);
+            if (mDraw.bestPathOfIteration)
+            {
+                CTour bestIterationTour = iterationList.getBestLastIterationTour();
+                //drawTour(bestIterationTour, BEST_GLOBAL_TOUR_DRAW_LAYER, 0f, 1f, 0f);
+            }
 
-            CTour bestGlobalTour = iterationList.getBestGlobalTour();
-            drawTour(bestGlobalTour, BEST_ITERATION_TOUR_DRAW_LAYER, 1f, 0f, 0f);
+            if (mDraw.bestPathOfAllIterations)
+            {
+                CTour bestGlobalTour = iterationList.getBestGlobalTour();
+                drawTour(bestGlobalTour, BEST_ITERATION_TOUR_DRAW_LAYER, 1f, 0f, 0f);
+            }
         }
 
         private void drawTour(CTour tour, float depth, float red, float green, float blue)
