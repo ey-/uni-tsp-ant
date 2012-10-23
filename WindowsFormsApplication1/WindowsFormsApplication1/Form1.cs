@@ -348,20 +348,18 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void rCursorNothing_CheckedChanged(object sender, EventArgs e)
+        private void rCursor_CheckedChanged(object sender, EventArgs e)
         {
             mRenderWindow.setCursorAction(rCursorAdd.Checked, rCursorDelete.Checked, rCursorShift.Checked);
         }
 
-        private void rCursorAdd_CheckedChanged(object sender, EventArgs e)
+        private void drawSettings_CheckedChanged(object sender, EventArgs e)
         {
-            mRenderWindow.setCursorAction(rCursorAdd.Checked, rCursorDelete.Checked, rCursorShift.Checked);
+            mRenderWindow.setDrawSettings(cBallConnection.Checked, cBoptPath.Checked, cBbestPathOfIteration.Checked, cBbestPathOfAllIteration.Checked);
         }
 
-        private void rCursorDelete_CheckedChanged(object sender, EventArgs e)
-        {
-            mRenderWindow.setCursorAction(rCursorAdd.Checked, rCursorDelete.Checked, rCursorShift.Checked);
-        }
+
+
 
 
 

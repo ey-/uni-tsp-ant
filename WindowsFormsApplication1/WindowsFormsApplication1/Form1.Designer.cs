@@ -97,12 +97,15 @@ namespace WindowsFormsApplication1
             this.tStreckeLocalInfo = new System.Windows.Forms.TextBox();
             this.tStreckePheromon = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.drawingOptions = new System.Windows.Forms.GroupBox();
+            this.cBbestPathOfAllIteration = new System.Windows.Forms.CheckBox();
+            this.cBbestPathOfIteration = new System.Windows.Forms.CheckBox();
+            this.cBoptPath = new System.Windows.Forms.CheckBox();
+            this.cBallConnection = new System.Windows.Forms.CheckBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cBoxAnzeigeoptionen = new System.Windows.Forms.CheckedListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.öffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -141,7 +144,7 @@ namespace WindowsFormsApplication1
             this.tabStatistiken.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.drawingOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -606,6 +609,7 @@ namespace WindowsFormsApplication1
             this.rCursorShift.TabIndex = 3;
             this.rCursorShift.Text = "Knoten verschieben";
             this.rCursorShift.UseVisualStyleBackColor = true;
+            this.rCursorShift.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
             // 
             // rCursorDelete
             // 
@@ -616,7 +620,7 @@ namespace WindowsFormsApplication1
             this.rCursorDelete.TabIndex = 2;
             this.rCursorDelete.Text = "Knoten löschen";
             this.rCursorDelete.UseVisualStyleBackColor = true;
-            this.rCursorDelete.CheckedChanged += new System.EventHandler(this.rCursorDelete_CheckedChanged);
+            this.rCursorDelete.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
             // 
             // rCursorAdd
             // 
@@ -627,7 +631,7 @@ namespace WindowsFormsApplication1
             this.rCursorAdd.TabIndex = 1;
             this.rCursorAdd.Text = "Knoten hinzufügen";
             this.rCursorAdd.UseVisualStyleBackColor = true;
-            this.rCursorAdd.CheckedChanged += new System.EventHandler(this.rCursorAdd_CheckedChanged);
+            this.rCursorAdd.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
             // 
             // rCursorNothing
             // 
@@ -641,7 +645,7 @@ namespace WindowsFormsApplication1
             this.rCursorNothing.Text = "nichts";
             this.rCursorNothing.UseMnemonic = false;
             this.rCursorNothing.UseVisualStyleBackColor = true;
-            this.rCursorNothing.CheckedChanged += new System.EventHandler(this.rCursorNothing_CheckedChanged);
+            this.rCursorNothing.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
             // 
             // label13
             // 
@@ -732,7 +736,7 @@ namespace WindowsFormsApplication1
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Controls.Add(this.drawingOptions);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(788, 173);
@@ -740,24 +744,83 @@ namespace WindowsFormsApplication1
             this.tabPage1.Text = "Anzeige";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // drawingOptions
             // 
-            this.groupBox4.Controls.Add(this.pictureBox4);
-            this.groupBox4.Controls.Add(this.pictureBox3);
-            this.groupBox4.Controls.Add(this.pictureBox2);
-            this.groupBox4.Controls.Add(this.pictureBox1);
-            this.groupBox4.Controls.Add(this.cBoxAnzeigeoptionen);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(31, 20);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(273, 144);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Anzeigeoptionen";
+            this.drawingOptions.Controls.Add(this.cBbestPathOfAllIteration);
+            this.drawingOptions.Controls.Add(this.cBbestPathOfIteration);
+            this.drawingOptions.Controls.Add(this.cBoptPath);
+            this.drawingOptions.Controls.Add(this.cBallConnection);
+            this.drawingOptions.Controls.Add(this.pictureBox4);
+            this.drawingOptions.Controls.Add(this.pictureBox3);
+            this.drawingOptions.Controls.Add(this.pictureBox2);
+            this.drawingOptions.Controls.Add(this.pictureBox1);
+            this.drawingOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.drawingOptions.Location = new System.Drawing.Point(31, 20);
+            this.drawingOptions.Name = "drawingOptions";
+            this.drawingOptions.Size = new System.Drawing.Size(273, 144);
+            this.drawingOptions.TabIndex = 1;
+            this.drawingOptions.TabStop = false;
+            this.drawingOptions.Text = "Anzeigeoptionen";
+            // 
+            // cBbestPathOfAllIteration
+            // 
+            this.cBbestPathOfAllIteration.AutoSize = true;
+            this.cBbestPathOfAllIteration.Checked = true;
+            this.cBbestPathOfAllIteration.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBbestPathOfAllIteration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBbestPathOfAllIteration.Location = new System.Drawing.Point(24, 105);
+            this.cBbestPathOfAllIteration.Name = "cBbestPathOfAllIteration";
+            this.cBbestPathOfAllIteration.Size = new System.Drawing.Size(178, 17);
+            this.cBbestPathOfAllIteration.TabIndex = 8;
+            this.cBbestPathOfAllIteration.Text = "Bester Pfad aus alles Iterationen";
+            this.cBbestPathOfAllIteration.UseVisualStyleBackColor = true;
+            this.cBbestPathOfAllIteration.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
+            // 
+            // cBbestPathOfIteration
+            // 
+            this.cBbestPathOfIteration.AutoSize = true;
+            this.cBbestPathOfIteration.Checked = true;
+            this.cBbestPathOfIteration.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBbestPathOfIteration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBbestPathOfIteration.Location = new System.Drawing.Point(24, 88);
+            this.cBbestPathOfIteration.Name = "cBbestPathOfIteration";
+            this.cBbestPathOfIteration.Size = new System.Drawing.Size(140, 17);
+            this.cBbestPathOfIteration.TabIndex = 7;
+            this.cBbestPathOfIteration.Text = "Bester Pfad der Iteration";
+            this.cBbestPathOfIteration.UseVisualStyleBackColor = true;
+            this.cBbestPathOfIteration.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
+            // 
+            // cBoptPath
+            // 
+            this.cBoptPath.AutoSize = true;
+            this.cBoptPath.Checked = true;
+            this.cBoptPath.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBoptPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoptPath.Location = new System.Drawing.Point(24, 73);
+            this.cBoptPath.Name = "cBoptPath";
+            this.cBoptPath.Size = new System.Drawing.Size(95, 17);
+            this.cBoptPath.TabIndex = 6;
+            this.cBoptPath.Text = "Optimaler Pfad";
+            this.cBoptPath.UseVisualStyleBackColor = true;
+            this.cBoptPath.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
+            // 
+            // cBallConnection
+            // 
+            this.cBallConnection.AutoSize = true;
+            this.cBallConnection.Checked = true;
+            this.cBallConnection.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBallConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBallConnection.Location = new System.Drawing.Point(24, 56);
+            this.cBallConnection.Name = "cBallConnection";
+            this.cBallConnection.Size = new System.Drawing.Size(191, 17);
+            this.cBallConnection.TabIndex = 5;
+            this.cBallConnection.Text = "Verbindung zwischen den Punkten";
+            this.cBallConnection.UseVisualStyleBackColor = true;
+            this.cBallConnection.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Yellow;
+            this.pictureBox4.BackColor = System.Drawing.Color.Red;
             this.pictureBox4.Location = new System.Drawing.Point(7, 107);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
@@ -767,7 +830,7 @@ namespace WindowsFormsApplication1
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Blue;
+            this.pictureBox3.BackColor = System.Drawing.Color.LightSlateGray;
             this.pictureBox3.Location = new System.Drawing.Point(7, 91);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
@@ -777,7 +840,7 @@ namespace WindowsFormsApplication1
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Green;
+            this.pictureBox2.BackColor = System.Drawing.Color.Blue;
             this.pictureBox2.Location = new System.Drawing.Point(7, 75);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
@@ -787,33 +850,13 @@ namespace WindowsFormsApplication1
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Red;
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
             this.pictureBox1.Location = new System.Drawing.Point(7, 59);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(12, 12);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // cBoxAnzeigeoptionen
-            // 
-            this.cBoxAnzeigeoptionen.BackColor = System.Drawing.SystemColors.Window;
-            this.cBoxAnzeigeoptionen.CheckOnClick = true;
-            this.cBoxAnzeigeoptionen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxAnzeigeoptionen.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.cBoxAnzeigeoptionen.FormattingEnabled = true;
-            this.cBoxAnzeigeoptionen.Items.AddRange(new object[] {
-            "Verbindung zwischen den Punkten",
-            "Optimaler Pfad ",
-            "Bester Pfad der Iteration",
-            "Bester Pfad aus allen Iterationen"});
-            this.cBoxAnzeigeoptionen.Location = new System.Drawing.Point(26, 56);
-            this.cBoxAnzeigeoptionen.Margin = new System.Windows.Forms.Padding(5);
-            this.cBoxAnzeigeoptionen.Name = "cBoxAnzeigeoptionen";
-            this.cBoxAnzeigeoptionen.Size = new System.Drawing.Size(198, 64);
-            this.cBoxAnzeigeoptionen.TabIndex = 0;
-            this.cBoxAnzeigeoptionen.ThreeDCheckBoxes = true;
-            this.toolTip1.SetToolTip(this.cBoxAnzeigeoptionen, "Bei setzen des Hakens wird der entsprechende Pfad farblich angezeigt");
             // 
             // menuStrip1
             // 
@@ -1093,7 +1136,8 @@ namespace WindowsFormsApplication1
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabPage1.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
+            this.drawingOptions.ResumeLayout(false);
+            this.drawingOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1178,13 +1222,16 @@ namespace WindowsFormsApplication1
         public System.Windows.Forms.RadioButton rCursorAdd;
         private System.Windows.Forms.ToolStripMenuItem f1ManualToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckedListBox cBoxAnzeigeoptionen;
+        private System.Windows.Forms.GroupBox drawingOptions;
         public System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox cBbestPathOfAllIteration;
+        private System.Windows.Forms.CheckBox cBbestPathOfIteration;
+        private System.Windows.Forms.CheckBox cBoptPath;
+        private System.Windows.Forms.CheckBox cBallConnection;
     }
 }
 
