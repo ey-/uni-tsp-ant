@@ -41,13 +41,20 @@ namespace WindowsFormsApplication1
             if (!(mAntAlgorithmThread == null) && (mAntAlgorithmThread.IsAlive))
             {
                 button_Start.Text = BUTTON_START_TEXT_STOP;
-                //groupBoxAntsAlgorithym.Enabled = false;
-                //uAntsQuantity.Enabled = false;
+                groupBoxAntsAlgorithym.Enabled = false;
+                uAntsQuantity.Enabled = false;
+                uQuantityIterations.Enabled = false;
+                gBCursorAction.Enabled = false;
+                gBRandomTSP.Enabled = false;
             }
             else
             {
                 button_Start.Text = BUTTON_START_TEXT_START;
-                //groupBoxAntsAlgorithym.Enabled = true;
+                groupBoxAntsAlgorithym.Enabled = true;
+                uAntsQuantity.Enabled = true;
+                uQuantityIterations.Enabled = true;
+                gBCursorAction.Enabled = true;
+                gBRandomTSP.Enabled = true;
             }
            
 
