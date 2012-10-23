@@ -35,6 +35,8 @@ namespace WindowsFormsApplication1
         {
             mRenderWindow.InitializeContexts();
             mRenderWindow.initViewPort();
+            button_Start.Text = BUTTON_START_TEXT_START;
+            
         }
 
         /// <summary>

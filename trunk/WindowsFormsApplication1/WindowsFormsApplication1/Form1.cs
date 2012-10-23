@@ -14,6 +14,9 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        private const string BUTTON_START_TEXT_START = "Starten";
+        private const string BUTTON_START_TEXT_STOP = "STOP";
+
         private float heuristicPheromonUpdateValue = 0.001f;
         private float pheromonValue = 0.001f;
         private float initialPheromonValue = 0.001f;
@@ -22,13 +25,32 @@ namespace WindowsFormsApplication1
 
         protected Thread mLastFileOpenerThread = null;
         protected Thread mAntAlgorithmThread = null;
-
+        
 
         public Form1()
         {
             InitializeComponent();
             postInitialize();
+            Application.Idle += new EventHandler(Application_Idle);
             CProgressManager.setProgressBar(pIterationProgressBar);
+        }
+
+
+        private void Application_Idle(Object sender, EventArgs e)
+        {
+            if (!(mAntAlgorithmThread == null) && (mAntAlgorithmThread.IsAlive))
+            {
+                button_Start.Text = BUTTON_START_TEXT_STOP;
+                //groupBoxAntsAlgorithym.Enabled = false;
+                //uAntsQuantity.Enabled = false;
+            }
+            else
+            {
+                button_Start.Text = BUTTON_START_TEXT_START;
+                //groupBoxAntsAlgorithym.Enabled = true;
+            }
+           
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -209,7 +231,7 @@ namespace WindowsFormsApplication1
 
         private void button_Start_Click(object sender, EventArgs e)
         {
-            button_Start.Enabled = false;
+            
             CAntAlgorithmParameters.getInstance().numberAnts = Convert.ToInt32(uAntsQuantity.Value);
             CAntAlgorithmParameters.getInstance().numberMaxIterations = Convert.ToInt32(uQuantityIterations.Value);
             CAntAlgorithmParameters.getInstance().pheromoneParameter = pheromonValue;
@@ -218,17 +240,30 @@ namespace WindowsFormsApplication1
             CAntAlgorithmParameters.getInstance().localInformation = heuristicValue;
             CAntAlgorithmParameters.getInstance().evaporationFactor = humidificationValue;
             //MessageBox.Show("Ants: " + CAntAlgorithmParameters.getInstance().numberAnts + "\n" + CAntAlgorithmParameters.getInstance().numberMaxIterations + "\n" + CAntAlgorithmParameters.getInstance().pheromoneParameter + " \n" + "usw usw");
-            CAntAlgorithm antAlgorithm = new CAntAlgorithm(mRenderWindow);
 
-            if ((mAntAlgorithmThread == null) || (mAntAlgorithmThread.IsAlive == false))
+            if (!(mAntAlgorithmThread == null) && (mAntAlgorithmThread.IsAlive == true) && (button_Start.Text == BUTTON_START_TEXT_STOP))
             {
+                mAntAlgorithmThread.Abort();
+                GC.Collect();
+            }
+
+            if (((mAntAlgorithmThread == null) || (mAntAlgorithmThread.IsAlive == false)) && (button_Start.Text == BUTTON_START_TEXT_START))
+            {
+                CAntAlgorithm antAlgorithm = new CAntAlgorithm(mRenderWindow);
                 mAntAlgorithmThread = new Thread(antAlgorithm.startAlgorithm);
                 mAntAlgorithmThread.Name = "AntAlgorithmThread";
                 mAntAlgorithmThread.Priority = ThreadPriority.Highest;
                 mAntAlgorithmThread.Start();
             }
             
-            button_Start.Enabled = true;
+            if (button_Start.Text == BUTTON_START_TEXT_START)
+            {
+                button_Start.Text = BUTTON_START_TEXT_STOP;
+            }
+            else
+            {
+                button_Start.Text = BUTTON_START_TEXT_START;
+            }
 
         }
 
