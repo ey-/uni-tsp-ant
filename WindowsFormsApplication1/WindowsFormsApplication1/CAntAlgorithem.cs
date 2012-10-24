@@ -76,14 +76,10 @@ namespace WindowsFormsApplication1
 
                         CConnection tourConnection = mConnectionList.getConnection(fromPoint, toPoint);
                         tourConnection.addPheromone(mPhermomoneUpdate);
-
-                        if (tourConnection.getPheromone() > 50)
-                        {
-                            int i = 0;
-                            i++;
-                        }
                     }
                 }
+
+                mRenderWindow.debugTour = arrayOfAnts[0].GetTour();
 
                 // Evaporation (verdunstung)
                 //--------------------------------
@@ -99,6 +95,7 @@ namespace WindowsFormsApplication1
                 CProgressManager.stepDone();
 
                 Debug.WriteLine("Iteration done: " + (iteration + 1));
+                Debug.WriteLine(mConnectionList.ToString());
             }
         }
 
@@ -107,11 +104,11 @@ namespace WindowsFormsApplication1
             // Formel:
             //          (t ij) ^ alpha * (n ij) ^ beta
             // p ij = ----------------------------------
-            //        Sum k( (t ik) ^ alpha * (n ik) ^ beta )
+            //        Sum l( (t il) ^ alpha * (n il) ^ beta )
             //
             // i = Startpunkt
             // j = Zielpunkt
-            // k = ein Punkt von allen noch nicht besuchten
+            // l = ein Punkt von den noch zu Besuchenden Punkten
 
             // zuerst berechnen wir mal den Divisor der Formel, da dieser einmal pro Bewegung berechnet werden muss
             double sumFactorOfPossibleConnections = calculateSumFactorOfPossibleConnections(currentPoint, listOfPointsToTravel);
@@ -141,12 +138,11 @@ namespace WindowsFormsApplication1
                 }
             }
 
-            //return nextPointToTravel;
             return bestTarget;
         }
 
         // Entspricht in der Formel:
-        // Sum k( (t ik) ^ alpha * (n ik) ^ beta )
+        // Sum l( (t il) ^ alpha * (n il) ^ beta )
         private double calculateSumFactorOfPossibleConnections(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
         {
             double sumFactorOfPossibleConnections = 0;
@@ -154,10 +150,10 @@ namespace WindowsFormsApplication1
             {
                 CConnection connection = mConnectionList.getConnection(currentPoint, possiblePoint);
 
-                double n_ik = calculateLocalInformation(connection);
-                double t_ik = calculatePheromoneTrail(connection);
+                double n_il = calculateLocalInformation(connection);
+                double t_il = calculatePheromoneTrail(connection);
 
-                sumFactorOfPossibleConnections += n_ik * t_ik;
+                sumFactorOfPossibleConnections += n_il * t_il;
             }
             return sumFactorOfPossibleConnections;
         }
@@ -172,10 +168,10 @@ namespace WindowsFormsApplication1
 
         // entspricht in der Formel
         // (t ij) ^ alpha
-        public float calculatePheromoneTrail(CConnection connection)
+        public double calculatePheromoneTrail(CConnection connection)
         {
             float connectionPheromone = connection.getPheromone();
-            return (float)Math.Pow(connectionPheromone, mAlgorithmParam.pheromoneParameter);
+            return Math.Pow(connectionPheromone, mAlgorithmParam.pheromoneParameter);
         }
 
         public void CreateNewAnts()
@@ -200,9 +196,11 @@ namespace WindowsFormsApplication1
             {
                 foreach (CAnt ant in arrayOfAnts)
                 {
-                    var nextPoint = decisionNextPoint(ant.CurrentPoint, ant.PointsToVisit);
+                    CTSPPoint nextPoint = decisionNextPoint(ant.CurrentPoint, ant.PointsToVisit);
+
                     if (nextPoint == null)
                         nextPoint = ant.GetTour().getPoint(0);
+
                     ant.CurrentPoint = nextPoint;
                 }
             }
@@ -213,7 +211,7 @@ namespace WindowsFormsApplication1
             foreach (CAnt ant in arrayOfAnts)
             {
                 averageTourLength += ant.GetTour().getTourLength() / arrayOfAnts.Length;  
-                if (shortestTour.getTourLength() > ant.GetTour().getTourLength() || shortestTour.getTourLength() == 0)
+                if ((ant.GetTour().getTourLength() < shortestTour.getTourLength()) || (shortestTour.getTourLength() == 0))
                     shortestTour = ant.GetTour();
 
             }
