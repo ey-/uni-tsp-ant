@@ -93,6 +93,8 @@ namespace WindowsFormsApplication1
                     connection.evaporate(mEvaporationFactor);
                 }
 
+
+                CIterationList.getInstance().refreshStatisticNumbers();
                 mRenderWindow.Invoke(mRenderWindow.refreshDelegate);
                 CProgressManager.stepDone();
 

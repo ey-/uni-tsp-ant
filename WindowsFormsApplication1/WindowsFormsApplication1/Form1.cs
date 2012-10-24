@@ -14,6 +14,9 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        public delegate void delegateRefreshStatistic();
+        public delegateRefreshStatistic refreshDelegateStatistic;
+
         private const string BUTTON_START_TEXT_START = "Starten";
         private const string BUTTON_START_TEXT_STOP = "STOP";
 
@@ -33,8 +36,24 @@ namespace WindowsFormsApplication1
             postInitialize();
             Application.Idle += new EventHandler(Application_Idle);
             CProgressManager.setProgressBar(pIterationProgressBar);
+            CIterationList.setForm(this);
+            refreshDelegateStatistic = new delegateRefreshStatistic(refreshStatisticNumbers);
         }
 
+
+        public void refreshStatisticNumbers()
+        {
+            CIterationList iterationList = CIterationList.getInstance();
+            if (iterationList.Last() != null)
+                tØIteration.Text = String.Format("{0:f}", iterationList.Last().AverageTourLength);
+            if (iterationList.GlobalAverageTourLength() != 0)
+                tØGlobal.Text = String.Format("{0:f}", iterationList.GlobalAverageTourLength());
+            if (iterationList.getBestLastIterationTour() != null)
+                tBestIteration.Text = String.Format("{0:f}", iterationList.getBestLastIterationTour().getTourLength());
+            if (iterationList.getBestGlobalTour() != null)
+                tBestGlobal.Text = String.Format("{0:f}", iterationList.getBestGlobalTour().getTourLength());
+
+        }
 
         private void Application_Idle(Object sender, EventArgs e)
         {
@@ -56,16 +75,6 @@ namespace WindowsFormsApplication1
                 gBCursorAction.Enabled = true;
                 gBRandomTSP.Enabled = true;
             }
-
-            CIterationList iterationList = CIterationList.getInstance();
-            if (iterationList.Last() != null)
-                tØIteration.Text = String.Format("{0:f}", iterationList.Last().AverageTourLength);
-            if (iterationList.GlobalAverageTourLength() != 0)
-                tØGlobal.Text= String.Format("{0:f}",iterationList.GlobalAverageTourLength());
-            if (iterationList.getBestLastIterationTour() != null)
-                tBestIteration.Text=  String.Format("{0:f}",iterationList.getBestLastIterationTour().getTourLength());
-            if (iterationList.getBestGlobalTour() != null)
-                tBestGlobal.Text = String.Format("{0:f}", iterationList.getBestGlobalTour().getTourLength());
 
                        
         }

@@ -1187,10 +1187,10 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TabPage tabEditieren;
         private System.Windows.Forms.TabPage tabStatistiken;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox tØIteration;
-        private System.Windows.Forms.TextBox tØGlobal;
-        private System.Windows.Forms.TextBox tBestIteration;
-        private System.Windows.Forms.TextBox tBestGlobal;
+        public System.Windows.Forms.TextBox tØIteration;
+        public System.Windows.Forms.TextBox tØGlobal;
+        public System.Windows.Forms.TextBox tBestIteration;
+        public System.Windows.Forms.TextBox tBestGlobal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label11;
