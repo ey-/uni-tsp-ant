@@ -254,6 +254,11 @@ namespace WindowsFormsApplication1
                 mAntAlgorithmThread.Abort();
                 GC.Collect();
             }
+            if (CTSPPointList.getInstance().length() < 2)
+            {
+                MessageBox.Show("Anzahl der Städte beträgt weniger als 2.");
+                return;
+            }
 
             if (((mAntAlgorithmThread == null) || (mAntAlgorithmThread.IsAlive == false)) && (button_Start.Text == BUTTON_START_TEXT_START))
             {
