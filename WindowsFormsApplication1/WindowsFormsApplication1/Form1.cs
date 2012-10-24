@@ -65,6 +65,7 @@ namespace WindowsFormsApplication1
             else
             {
                 setEditFunctions(true);
+                button_Start.Text = BUTTON_START_TEXT_START;
             }
 
                        
@@ -254,6 +255,7 @@ namespace WindowsFormsApplication1
             if (!(mAntAlgorithmThread == null) && (mAntAlgorithmThread.IsAlive == true) && (button_Start.Text == BUTTON_START_TEXT_STOP))
             {
                 mAntAlgorithmThread.Abort();
+                CIterationList.getInstance().Clear();
                 GC.Collect();
             }
             if (CTSPPointList.getInstance().length() < 2)
