@@ -25,6 +25,8 @@ namespace WindowsFormsApplication1
         protected const float BEST_GLOBAL_TOUR_DRAW_LAYER = 2f;
         protected const float BEST_ITERATION_TOUR_DRAW_LAYER = 3f;
         protected const float POINT_DRAW_LAYER = 4f;
+
+        public CTour debugTour = null;
         
         protected struct T_CURSORACTION
         {
@@ -99,7 +101,7 @@ namespace WindowsFormsApplication1
             Gl.glLoadIdentity();
             if (mDraw.allConnection)
                 drawAllConnections();
-            if (mDraw.bestPathOfIteration || mDraw.bestPathOfAllIterations || mDraw.optPath)
+          //  if (mDraw.bestPathOfIteration || mDraw.bestPathOfAllIterations || mDraw.optPath)
                 drawBestPaths();
 
             drawPoints();
@@ -130,9 +132,16 @@ namespace WindowsFormsApplication1
                 CTour bestGlobalTour = iterationList.getBestGlobalTour();
                 drawTour(bestGlobalTour, BEST_ITERATION_TOUR_DRAW_LAYER, 1f, 0f, 0f);
             }
+
+#if DEBUG
+            if (debugTour != null)
+            {
+                drawTour(debugTour, OPT_TOUR_DRAW_LAYER - 0.5f, 1f, 1f, 0f, true);
+            }
+#endif
         }
 
-        private void drawTour(CTour tour, float depth, float red, float green, float blue)
+        private void drawTour(CTour tour, float depth, float red, float green, float blue, bool specialColor = false)
         {
             if (tour == null)
             {
@@ -143,8 +152,17 @@ namespace WindowsFormsApplication1
             Gl.glColor3f(red, green, blue);
 
             Gl.glBegin(Gl.GL_LINE_STRIP);
+
+            
+
                 for (int pointIndex = 0; pointIndex < tour.getListLength(); pointIndex++)
                 {
+                    if (specialColor == true)
+                    {
+                        float color = (float)pointIndex / (float)tour.getListLength();
+                        Gl.glColor3f(color, color, 0.5f);
+                    }
+
                     CTSPPoint point = tour.getPoint(pointIndex);
                     Gl.glVertex3f(point.x, point.y, depth);
                 }
@@ -183,7 +201,7 @@ namespace WindowsFormsApplication1
                 }
                 
                 // Die Verbindungen die einen geringen Pheromonwert haben sollen nicht angezeigt werden
-                if (pheromonLevel > 0.1)
+                //if (pheromonLevel > 0.1)
                 {
                     // 0.0 == schwarz // 1.0 == weiß
                     float color = 1 - pheromonLevel;                    
