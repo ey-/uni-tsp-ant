@@ -57,28 +57,30 @@ namespace WindowsFormsApplication1
 
         private void Application_Idle(Object sender, EventArgs e)
         {
-            if (!(mAntAlgorithmThread == null) && (mAntAlgorithmThread.IsAlive))
+
+            if (((mLastFileOpenerThread != null) && (mLastFileOpenerThread.IsAlive)) || ((mAntAlgorithmThread != null) && (mAntAlgorithmThread.IsAlive)))
             {
-                button_Start.Text = BUTTON_START_TEXT_STOP;
-                groupBoxAntsAlgorithym.Enabled = false;
-                uAntsQuantity.Enabled = false;
-                uQuantityIterations.Enabled = false;
-                gBCursorAction.Enabled = false;
-                gBRandomTSP.Enabled = false;
+                setEditFunctions(false);
             }
             else
             {
-                button_Start.Text = BUTTON_START_TEXT_START;
-                groupBoxAntsAlgorithym.Enabled = true;
-                uAntsQuantity.Enabled = true;
-                uQuantityIterations.Enabled = true;
-                gBCursorAction.Enabled = true;
-                gBRandomTSP.Enabled = true;
+                setEditFunctions(true);
             }
 
                        
         }
 
+        private void setEditFunctions(bool all)
+        {
+            if (button_Start.Text==BUTTON_START_TEXT_START)
+                button_Start.Enabled = all;
+            groupBoxAntsAlgorithym.Enabled = all;
+            uAntsQuantity.Enabled = all;
+            uQuantityIterations.Enabled = all;
+            gBCursorAction.Enabled = all;
+            gBRandomTSP.Enabled = all;
+            öffnenToolStripMenuItem.Enabled = all;
+        }
 
 
         private void beendenToolStripMenuItem_Click(object sender, EventArgs e)

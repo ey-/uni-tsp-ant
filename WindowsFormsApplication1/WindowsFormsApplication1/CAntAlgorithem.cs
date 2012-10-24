@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
             CProgressManager.setStepsIteration(mMaxIterations);
 
             mConnectionList.SetInitialPheromone(mInitialPheromone);
-
+            
             for (var iteration = 0; iteration < mMaxIterations; iteration++)
             {
                 NewIteration();
