@@ -8,6 +8,7 @@ namespace WindowsFormsApplication1
 {
     public class CIterationList : IEnumerable
     {
+        protected static Form1 mform1 = null;
         protected static CIterationList mInstance = new CIterationList();
 
         private List<CIteration> mIterationList =  new List<CIteration>();
@@ -16,6 +17,16 @@ namespace WindowsFormsApplication1
         public static CIterationList getInstance()
         {
             return mInstance;
+        }
+
+        public static void setForm(Form1 form1)
+        {
+            mform1 = form1;            
+        }
+
+        public void refreshStatisticNumbers()
+        {
+            mform1.Invoke(mform1.refreshDelegateStatistic);
         }
 
         public int Add(CIteration iteration)
