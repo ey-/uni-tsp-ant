@@ -122,7 +122,7 @@ namespace WindowsFormsApplication1
             if (mDraw.bestPathOfIteration)
             {
                 CTour bestIterationTour = iterationList.getBestLastIterationTour();
-                //drawTour(bestIterationTour, BEST_GLOBAL_TOUR_DRAW_LAYER, 0f, 1f, 0f);
+                drawTour(bestIterationTour, BEST_GLOBAL_TOUR_DRAW_LAYER, 0f, 1f, 0f);
             }
 
             if (mDraw.bestPathOfAllIterations)

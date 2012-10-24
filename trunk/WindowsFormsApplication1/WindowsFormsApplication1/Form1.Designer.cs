@@ -830,7 +830,7 @@ namespace WindowsFormsApplication1
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.LightSlateGray;
+            this.pictureBox3.BackColor = System.Drawing.Color.Lime;
             this.pictureBox3.Location = new System.Drawing.Point(7, 91);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
@@ -1112,7 +1112,6 @@ namespace WindowsFormsApplication1
             this.Name = "Form1";
             this.Text = "TSPD";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.beendenToolStripMenuItem_Click);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ClientSizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabController.ResumeLayout(false);
