@@ -38,6 +38,7 @@ namespace WindowsFormsApplication1
         public void Clear()
         {
             mIterationList.Clear();
+            mInstance.bestTour = null;
         }
 
         public CIteration Last()
