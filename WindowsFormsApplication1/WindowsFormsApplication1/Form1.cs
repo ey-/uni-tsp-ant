@@ -56,8 +56,18 @@ namespace WindowsFormsApplication1
                 gBCursorAction.Enabled = true;
                 gBRandomTSP.Enabled = true;
             }
-           
 
+            CIterationList iterationList = CIterationList.getInstance();
+            if (iterationList.Last() != null)
+                tØIteration.Text = String.Format("{0:f}", iterationList.Last().AverageTourLength);
+            if (iterationList.GlobalAverageTourLength() != 0)
+                tØGlobal.Text= String.Format("{0:f}",iterationList.GlobalAverageTourLength());
+            if (iterationList.getBestLastIterationTour() != null)
+                tBestIteration.Text=  String.Format("{0:f}",iterationList.getBestLastIterationTour().getTourLength());
+            if (iterationList.getBestGlobalTour() != null)
+                tBestGlobal.Text = String.Format("{0:f}", iterationList.getBestGlobalTour().getTourLength());
+
+                       
         }
 
 
