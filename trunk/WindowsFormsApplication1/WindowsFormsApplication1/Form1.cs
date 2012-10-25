@@ -266,7 +266,7 @@ namespace WindowsFormsApplication1
                 CAntAlgorithm antAlgorithm = new CAntAlgorithm(mRenderWindow);
                 mAntAlgorithmThread = new Thread(antAlgorithm.startAlgorithm);
                 mAntAlgorithmThread.Name = "AntAlgorithmThread";
-                mAntAlgorithmThread.Priority = ThreadPriority.Highest;
+                mAntAlgorithmThread.Priority = ThreadPriority.Normal;
                 mAntAlgorithmThread.Start();
             }
             
