@@ -929,6 +929,7 @@ namespace WindowsFormsApplication1
             this.f1ManualToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.f1ManualToolStripMenuItem.Text = "Manual";
             this.f1ManualToolStripMenuItem.ToolTipText = "HelpFile";
+            this.f1ManualToolStripMenuItem.Click += new System.EventHandler(this.openManual);
             // 
             // openTspFileDialog1
             // 

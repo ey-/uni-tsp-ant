@@ -371,11 +371,14 @@ namespace WindowsFormsApplication1
 
         }
 
-
-
-
-
-
+        private void openManual(object sender, EventArgs e)
+        {
+#if DEBUG
+            System.Diagnostics.Process.Start(@"../../../../Manual.pdf");
+#else
+            System.Diagnostics.Process.Start(@"Manual.pdf");
+#endif
+        }
 
     }
 }
