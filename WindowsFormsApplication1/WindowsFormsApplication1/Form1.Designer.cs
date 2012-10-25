@@ -127,6 +127,9 @@ namespace WindowsFormsApplication1
             this.tTimeDisplay = new System.Windows.Forms.TextBox();
             this.tNumberOfIteration = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tOptimalerPfad = new System.Windows.Forms.TextBox();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabController.SuspendLayout();
             this.tabParameter.SuspendLayout();
@@ -151,6 +154,7 @@ namespace WindowsFormsApplication1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabController
@@ -935,58 +939,62 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel1.Controls.Add(this.tØIteration, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tØGlobal, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tBestIteration, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.tBestGlobal, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(807, 565);
+            this.tableLayoutPanel1.Controls.Add(this.tØGlobal, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tBestIteration, 1, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(804, 610);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(201, 125);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(201, 85);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // tØIteration
             // 
             this.tØIteration.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tØIteration.Location = new System.Drawing.Point(50, 33);
-            this.tØIteration.Multiline = true;
             this.tØIteration.Name = "tØIteration";
             this.tØIteration.ReadOnly = true;
-            this.tØIteration.Size = new System.Drawing.Size(70, 40);
+            this.tØIteration.Size = new System.Drawing.Size(70, 20);
             this.tØIteration.TabIndex = 0;
+            this.tØIteration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tØGlobal
             // 
+            this.tØGlobal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tØGlobal.Location = new System.Drawing.Point(126, 33);
-            this.tØGlobal.Multiline = true;
             this.tØGlobal.Name = "tØGlobal";
             this.tØGlobal.ReadOnly = true;
-            this.tØGlobal.Size = new System.Drawing.Size(72, 40);
+            this.tØGlobal.Size = new System.Drawing.Size(72, 20);
             this.tØGlobal.TabIndex = 1;
+            this.tØGlobal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tBestIteration
             // 
-            this.tBestIteration.Location = new System.Drawing.Point(50, 79);
-            this.tBestIteration.Multiline = true;
+            this.tBestIteration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tBestIteration.Location = new System.Drawing.Point(50, 59);
             this.tBestIteration.Name = "tBestIteration";
             this.tBestIteration.ReadOnly = true;
-            this.tBestIteration.Size = new System.Drawing.Size(70, 43);
+            this.tBestIteration.Size = new System.Drawing.Size(70, 20);
             this.tBestIteration.TabIndex = 2;
+            this.tBestIteration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tBestGlobal
             // 
-            this.tBestGlobal.Location = new System.Drawing.Point(126, 79);
-            this.tBestGlobal.Multiline = true;
+            this.tBestGlobal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tBestGlobal.Location = new System.Drawing.Point(126, 59);
             this.tBestGlobal.Name = "tBestGlobal";
             this.tBestGlobal.ReadOnly = true;
-            this.tBestGlobal.Size = new System.Drawing.Size(72, 43);
+            this.tBestGlobal.Size = new System.Drawing.Size(72, 20);
             this.tBestGlobal.TabIndex = 3;
+            this.tBestGlobal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -1022,7 +1030,7 @@ namespace WindowsFormsApplication1
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 30);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 46);
+            this.label11.Size = new System.Drawing.Size(41, 24);
             this.label11.TabIndex = 6;
             this.label11.Text = "Ø-Wert";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1033,9 +1041,9 @@ namespace WindowsFormsApplication1
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 76);
+            this.label12.Location = new System.Drawing.Point(3, 54);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 49);
+            this.label12.Size = new System.Drawing.Size(41, 31);
             this.label12.TabIndex = 7;
             this.label12.Text = "Beste";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1075,6 +1083,44 @@ namespace WindowsFormsApplication1
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.tOptimalerPfad, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label19, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(848, 560);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(157, 48);
+            this.tableLayoutPanel2.TabIndex = 8;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(40, 5);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(76, 13);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Optimaler Pfad";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tOptimalerPfad
+            // 
+            this.tOptimalerPfad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tOptimalerPfad.Location = new System.Drawing.Point(4, 27);
+            this.tOptimalerPfad.Name = "tOptimalerPfad";
+            this.tOptimalerPfad.ReadOnly = true;
+            this.tOptimalerPfad.Size = new System.Drawing.Size(148, 20);
+            this.tOptimalerPfad.TabIndex = 8;
+            this.tOptimalerPfad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // mRenderWindow
             // 
             this.mRenderWindow.AccumBits = ((byte)(0));
@@ -1107,10 +1153,11 @@ namespace WindowsFormsApplication1
             this.Controls.Add(this.mRenderWindow);
             this.Controls.Add(this.tabController);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.tableLayoutPanel2);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1024, 726);
             this.Name = "Form1";
-            this.Text = "TSPD";
+            this.Text = "TSP SAD";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.beendenToolStripMenuItem_Click);
             this.ClientSizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
@@ -1145,6 +1192,8 @@ namespace WindowsFormsApplication1
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1231,6 +1280,9 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.CheckBox cBbestPathOfIteration;
         private System.Windows.Forms.CheckBox cBoptPath;
         private System.Windows.Forms.CheckBox cBallConnection;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        public System.Windows.Forms.TextBox tOptimalerPfad;
+        private System.Windows.Forms.Label label19;
     }
 }
 
