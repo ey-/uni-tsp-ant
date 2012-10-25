@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.Threading;
 
 namespace WindowsFormsApplication1
 {
@@ -39,7 +40,9 @@ namespace WindowsFormsApplication1
             CProgressManager.setStepsIteration(mMaxIterations);
 
             mConnectionList.SetInitialPheromone(mInitialPheromone);
-            
+
+            DateTime startTime = DateTime.Now;
+
             for (var iteration = 0; iteration < mMaxIterations; iteration++)
             {
                 NewIteration();
@@ -79,8 +82,6 @@ namespace WindowsFormsApplication1
                     }
                 }
 
-                mRenderWindow.debugTour = arrayOfAnts[0].GetTour();
-
                 // Evaporation (verdunstung)
                 //--------------------------------
                 // Dazu iterieren wir durch alle Verbindungen und lassen das Pheromon verdunsten
@@ -95,8 +96,9 @@ namespace WindowsFormsApplication1
                 CProgressManager.stepDone();
 
                 Debug.WriteLine("Iteration done: " + (iteration + 1));
-                Debug.WriteLine(mConnectionList.ToString());
             }
+
+            Debug.WriteLine("Dauer: " + (DateTime.Now - startTime).TotalSeconds + " sek");
         }
 
         public CTSPPoint decisionNextPoint(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
@@ -187,21 +189,53 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public void NewIteration()
+        public void handleAnt(object antObject)
         {
-            CreateNewAnts();
+            CAnt ant = (CAnt)antObject;
 
             // Ameisen laufen lassen
             for (var i = 0; i < CTSPPointList.getInstance().length(); i++)
             {
-                foreach (CAnt ant in arrayOfAnts)
+                CTSPPoint nextPoint = decisionNextPoint(ant.CurrentPoint, ant.PointsToVisit);
+
+                if (nextPoint == null)
+                    nextPoint = ant.GetTour().getPoint(0);
+
+                ant.CurrentPoint = nextPoint;
+            }
+        }
+
+        public void NewIteration()
+        {
+            CreateNewAnts();
+
+            List<Thread> antThreadList = new List<Thread>();
+
+            // Ameisen laufen lassen
+            foreach (CAnt ant in arrayOfAnts)
+            {
+                Thread antThread = new Thread(new ParameterizedThreadStart(this.handleAnt));
+                antThreadList.Add(antThread);
+
+                antThread.Name = "AntThread" + antThreadList.Count.ToString();
+                antThread.Priority = ThreadPriority.Highest;
+
+                antThread.Start(ant);
+            }
+
+            // Prüfen ob alle Threads fertig sind
+            bool bAllThreadsFinished = false;
+            while (bAllThreadsFinished == false)
+            {
+                Thread.Sleep(1);
+                bAllThreadsFinished = true;
+
+                foreach (Thread antThread in antThreadList)
                 {
-                    CTSPPoint nextPoint = decisionNextPoint(ant.CurrentPoint, ant.PointsToVisit);
-
-                    if (nextPoint == null)
-                        nextPoint = ant.GetTour().getPoint(0);
-
-                    ant.CurrentPoint = nextPoint;
+                    if (antThread.ThreadState == System.Threading.ThreadState.Running)
+                    {
+                        bAllThreadsFinished = false;
+                    }
                 }
             }
 

@@ -138,6 +138,7 @@ namespace WindowsFormsApplication1
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tOptimalerPfad = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.lOptimalerPfad = new System.Windows.Forms.Label();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabController.SuspendLayout();
@@ -1119,6 +1120,17 @@ namespace WindowsFormsApplication1
             this.tOptimalerPfad.Size = new System.Drawing.Size(148, 20);
             this.tOptimalerPfad.TabIndex = 8;
             this.tOptimalerPfad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(40, 5);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(76, 13);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Optimaler Pfad";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lOptimalerPfad
             // 
