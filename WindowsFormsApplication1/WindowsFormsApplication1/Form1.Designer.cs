@@ -101,8 +101,8 @@ namespace WindowsFormsApplication1
             this.tabStatistiken = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.labelStreckePheromon = new System.Windows.Forms.Label();
+            this.lStreckeLocalInfo = new System.Windows.Forms.Label();
+            this.lStreckePheromon = new System.Windows.Forms.Label();
             this.tStreckeLocalInfo = new System.Windows.Forms.TextBox();
             this.tStreckePheromon = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -210,7 +210,7 @@ namespace WindowsFormsApplication1
             this.cStoppLoesung.TabIndex = 16;
             this.cStoppLoesung.Text = "Lösung gefunden";
             this.toolTip1.SetToolTip(this.cStoppLoesung, "Bei setzen des Hakens\r\nin das Kontrollkästchen stoppt der\r\nAlgorithmus sobald die" +
-        " optimale Lösung \r\ngefunden wurde");
+                    " optimale Lösung \r\ngefunden wurde");
             this.cStoppLoesung.UseVisualStyleBackColor = true;
             // 
             // cStopSchwellenwert
@@ -222,7 +222,7 @@ namespace WindowsFormsApplication1
             this.cStopSchwellenwert.TabIndex = 15;
             this.cStopSchwellenwert.Text = "Schwellenwert für die\r\nLänge der Strecke erreicht";
             this.toolTip1.SetToolTip(this.cStopSchwellenwert, "Mit diesem Stoppkriterium kann man\r\neinen Schwellenwert definieren bei dem\r\nder A" +
-        "lgorithmus aufhört zu laufen sobald\r\ndieser Wert unterschritten wurde");
+                    "lgorithmus aufhört zu laufen sobald\r\ndieser Wert unterschritten wurde");
             this.cStopSchwellenwert.UseVisualStyleBackColor = true;
             this.cStopSchwellenwert.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
@@ -254,7 +254,7 @@ namespace WindowsFormsApplication1
             this.label4.TabIndex = 8;
             this.label4.Text = "Stopkriterium:";
             this.toolTip1.SetToolTip(this.label4, "Alle Stoppkriterien sind logisch ODER verknüpft,\r\ndas bedeutet sobald einer der\r\n" +
-        "Kriterien erreicht wurde wird das\r\nProgramm gestoppt");
+                    "Kriterien erreicht wurde wird das\r\nProgramm gestoppt");
             // 
             // groupBoxAntsAlgorithym
             // 
@@ -334,7 +334,7 @@ namespace WindowsFormsApplication1
             this.label10.TabIndex = 15;
             this.label10.Text = "heuristischer Parameter\r\nfür Pheromon-Update Q :";
             this.toolTip1.SetToolTip(this.label10, "Gibt an wie viel Pheromon von der Ameisen hinterlassen wird wenn sie eine\r\nStreck" +
-        "e abgelaufen ist, Werte sind absolut min. 0 max. 10");
+                    "e abgelaufen ist, Werte sind absolut min. 0 max. 100");
             // 
             // label9
             // 
@@ -345,7 +345,7 @@ namespace WindowsFormsApplication1
             this.label9.TabIndex = 12;
             this.label9.Text = "initiale Pheromon-Werte τ :";
             this.toolTip1.SetToolTip(this.label9, "Gibt an wie viel Pheromon initial pro Strecke verteilt wird,\r\n initial bedeutet h" +
-        "ier vor der ersten Iteration");
+                    "ier vor der ersten Iteration");
             // 
             // labelEvaporation
             // 
@@ -376,7 +376,7 @@ namespace WindowsFormsApplication1
             this.label8.TabIndex = 9;
             this.label8.Text = "Verdunstungsfaktor ρ :";
             this.toolTip1.SetToolTip(this.label8, "Gibt an wie viel Prozent Pheromon auf jeder Strecke nach \r\neiner Iteration verdun" +
-        "stet, z.B. 0,005 bedeutet 0,5%");
+                    "stet, z.B. 0,005 bedeutet 0,5%");
             // 
             // labelHeuristic
             // 
@@ -407,7 +407,7 @@ namespace WindowsFormsApplication1
             this.label7.TabIndex = 6;
             this.label7.Text = "heuristischer Parameter\r\nfür die lokale Information β :";
             this.toolTip1.SetToolTip(this.label7, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nStreckenlä" +
-        "nge für alle möglichen Strecken berücksichtigt");
+                    "nge für alle möglichen Strecken berücksichtigt");
             // 
             // labelPheremon
             // 
@@ -440,7 +440,7 @@ namespace WindowsFormsApplication1
             this.label6.TabIndex = 3;
             this.label6.Text = "Pheromon Parameter α :";
             this.toolTip1.SetToolTip(this.label6, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nPheromon W" +
-        "erte auf den möglichen Strecken berücksichtigt");
+                    "erte auf den möglichen Strecken berücksichtigt");
             // 
             // uQuantityIterations
             // 
@@ -468,7 +468,7 @@ namespace WindowsFormsApplication1
             this.label3.TabIndex = 5;
             this.label3.Text = "Iterationen:";
             this.toolTip1.SetToolTip(this.label3, "Wenn die angegebene Anzahl von Iterationen\r\ndurchgelaufen ist, wird der Algorithm" +
-        "us gestoppt");
+                    "us gestoppt");
             // 
             // uAntsQuantity
             // 
@@ -693,8 +693,8 @@ namespace WindowsFormsApplication1
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.labelStreckePheromon);
+            this.groupBox3.Controls.Add(this.lStreckeLocalInfo);
+            this.groupBox3.Controls.Add(this.lStreckePheromon);
             this.groupBox3.Controls.Add(this.tStreckeLocalInfo);
             this.groupBox3.Controls.Add(this.tStreckePheromon);
             this.groupBox3.Location = new System.Drawing.Point(595, 10);
@@ -704,29 +704,29 @@ namespace WindowsFormsApplication1
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Referenzwerte";
             // 
-            // label18
+            // lStreckeLocalInfo
             // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(48, 92);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(94, 13);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "Strecke Local Info";
-            this.toolTip1.SetToolTip(this.label18, "Zeigt die Länge an für einen Durchlauf des TSP bei sehr \r\nstarker Berücksichtigun" +
-        "g der lokalen Information\r\n");
+            this.lStreckeLocalInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lStreckeLocalInfo.AutoSize = true;
+            this.lStreckeLocalInfo.Location = new System.Drawing.Point(48, 92);
+            this.lStreckeLocalInfo.Name = "lStreckeLocalInfo";
+            this.lStreckeLocalInfo.Size = new System.Drawing.Size(94, 13);
+            this.lStreckeLocalInfo.TabIndex = 5;
+            this.lStreckeLocalInfo.Text = "Strecke Local Info";
+            this.toolTip1.SetToolTip(this.lStreckeLocalInfo, "Zeigt die Länge an für einen Durchlauf des TSP bei sehr \r\nstarker Berücksichtigun" +
+                    "g der lokalen Information\r\n");
             // 
-            // labelStreckePheromon
+            // lStreckePheromon
             // 
-            this.labelStreckePheromon.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelStreckePheromon.AutoSize = true;
-            this.labelStreckePheromon.Location = new System.Drawing.Point(45, 35);
-            this.labelStreckePheromon.Name = "labelStreckePheromon";
-            this.labelStreckePheromon.Size = new System.Drawing.Size(95, 13);
-            this.labelStreckePheromon.TabIndex = 4;
-            this.labelStreckePheromon.Text = "Strecke Pheromon";
-            this.toolTip1.SetToolTip(this.labelStreckePheromon, "Zeigt die Länge an für einen Durchlauf des TSP bei \r\nsehr starker Pheromon Berück" +
-        "sichtigung");
+            this.lStreckePheromon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lStreckePheromon.AutoSize = true;
+            this.lStreckePheromon.Location = new System.Drawing.Point(45, 35);
+            this.lStreckePheromon.Name = "lStreckePheromon";
+            this.lStreckePheromon.Size = new System.Drawing.Size(95, 13);
+            this.lStreckePheromon.TabIndex = 4;
+            this.lStreckePheromon.Text = "Strecke Pheromon";
+            this.toolTip1.SetToolTip(this.lStreckePheromon, "Zeigt die Länge an für einen Durchlauf des TSP bei \r\nsehr starker Pheromon Berück" +
+                    "sichtigung");
             // 
             // tStreckeLocalInfo
             // 
@@ -787,6 +787,7 @@ namespace WindowsFormsApplication1
             this.cBbestPathOfAllIteration.Size = new System.Drawing.Size(178, 17);
             this.cBbestPathOfAllIteration.TabIndex = 8;
             this.cBbestPathOfAllIteration.Text = "Bester Pfad aus alles Iterationen";
+            this.toolTip1.SetToolTip(this.cBbestPathOfAllIteration, "Zeigt den bis jetzt besten gefundenen Pfad an");
             this.cBbestPathOfAllIteration.UseVisualStyleBackColor = true;
             this.cBbestPathOfAllIteration.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
             // 
@@ -801,6 +802,7 @@ namespace WindowsFormsApplication1
             this.cBbestPathOfIteration.Size = new System.Drawing.Size(140, 17);
             this.cBbestPathOfIteration.TabIndex = 7;
             this.cBbestPathOfIteration.Text = "Bester Pfad der Iteration";
+            this.toolTip1.SetToolTip(this.cBbestPathOfIteration, "Zeigt den besten Pfad der momentanen Iteration an");
             this.cBbestPathOfIteration.UseVisualStyleBackColor = true;
             this.cBbestPathOfIteration.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
             // 
@@ -815,6 +817,7 @@ namespace WindowsFormsApplication1
             this.cBoptPath.Size = new System.Drawing.Size(95, 17);
             this.cBoptPath.TabIndex = 6;
             this.cBoptPath.Text = "Optimaler Pfad";
+            this.toolTip1.SetToolTip(this.cBoptPath, "Zeigt den optimalen Pfad an, falls dieser vorhanden ist");
             this.cBoptPath.UseVisualStyleBackColor = true;
             this.cBoptPath.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
             // 
@@ -829,6 +832,7 @@ namespace WindowsFormsApplication1
             this.cBallConnection.Size = new System.Drawing.Size(191, 17);
             this.cBallConnection.TabIndex = 5;
             this.cBallConnection.Text = "Verbindung zwischen den Punkten";
+            this.toolTip1.SetToolTip(this.cBallConnection, "Zeigt in Abhänigkeit der Menge an Pheromon die Strecken zwischen den Knoten");
             this.cBallConnection.UseVisualStyleBackColor = true;
             this.cBallConnection.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
             // 
@@ -889,20 +893,20 @@ namespace WindowsFormsApplication1
             this.öffnenToolStripMenuItem,
             this.beendenToolStripMenuItem});
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
-            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.dateiToolStripMenuItem.Text = "Datei";
             // 
             // öffnenToolStripMenuItem
             // 
             this.öffnenToolStripMenuItem.Name = "öffnenToolStripMenuItem";
-            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.öffnenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.öffnenToolStripMenuItem.Text = "Öffnen";
             this.öffnenToolStripMenuItem.Click += new System.EventHandler(this.öffnenToolStripMenuItem_Click);
             // 
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
@@ -913,7 +917,7 @@ namespace WindowsFormsApplication1
             this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
             this.hilfeToolStripMenuItem.ShortcutKeyDisplayString = "Manual";
             this.hilfeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             // 
             // f1ManualToolStripMenuItem
@@ -922,7 +926,7 @@ namespace WindowsFormsApplication1
             this.f1ManualToolStripMenuItem.Name = "f1ManualToolStripMenuItem";
             this.f1ManualToolStripMenuItem.ShortcutKeyDisplayString = "F1";
             this.f1ManualToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.f1ManualToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.f1ManualToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.f1ManualToolStripMenuItem.Text = "Manual";
             this.f1ManualToolStripMenuItem.ToolTipText = "HelpFile";
             // 
@@ -988,9 +992,9 @@ namespace WindowsFormsApplication1
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(50, 0);
             this.label2.Name = "label2";
@@ -998,12 +1002,13 @@ namespace WindowsFormsApplication1
             this.label2.TabIndex = 4;
             this.label2.Text = "Iteration";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label2, "Wenn einmal alle Ameisen das TSP abgelaufen sind");
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(126, 0);
             this.label5.Name = "label5";
@@ -1011,12 +1016,13 @@ namespace WindowsFormsApplication1
             this.label5.TabIndex = 5;
             this.label5.Text = "Global";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label5, "Übergreifend über alle Iterationen");
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 30);
             this.label11.Name = "label11";
@@ -1024,12 +1030,13 @@ namespace WindowsFormsApplication1
             this.label11.TabIndex = 6;
             this.label11.Text = "Ø-Wert";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label11, "Durchschnittliche Streckenlänge");
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 54);
             this.label12.Name = "label12";
@@ -1037,6 +1044,7 @@ namespace WindowsFormsApplication1
             this.label12.TabIndex = 7;
             this.label12.Text = "Beste";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label12, "Kürzeste gefundene Strecke");
             // 
             // tØGlobal
             // 
@@ -1060,8 +1068,8 @@ namespace WindowsFormsApplication1
             // 
             // pIterationProgressBar
             // 
-            this.pIterationProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pIterationProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pIterationProgressBar.Location = new System.Drawing.Point(122, 472);
             this.pIterationProgressBar.Name = "pIterationProgressBar";
             this.pIterationProgressBar.Size = new System.Drawing.Size(817, 20);
@@ -1135,9 +1143,9 @@ namespace WindowsFormsApplication1
             // mRenderWindow
             // 
             this.mRenderWindow.AccumBits = ((byte)(0));
-            this.mRenderWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mRenderWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.mRenderWindow.AutoCheckErrors = false;
             this.mRenderWindow.AutoFinish = false;
             this.mRenderWindow.AutoMakeCurrent = true;
@@ -1270,8 +1278,8 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TextBox tStreckeLocalInfo;
         private System.Windows.Forms.TextBox tStreckePheromon;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label labelStreckePheromon;
+        private System.Windows.Forms.Label lStreckeLocalInfo;
+        private System.Windows.Forms.Label lStreckePheromon;
         public System.Windows.Forms.RadioButton rCursorShift;
         public System.Windows.Forms.RadioButton rCursorDelete;
         public System.Windows.Forms.RadioButton rCursorAdd;
