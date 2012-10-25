@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
         private float heuristicPheromonUpdateValue = 0.001f;
         private float pheromonValue = 0.001f;
         private float initialPheromonValue = 0.001f;
-        private float humidificationValue = 0.001f;
+        private float evaporationValue = 0.001f;
         private float heuristicValue = 0.001f;
 
         protected Thread mLastFileOpenerThread = null;
@@ -112,34 +112,31 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void trackBarPheremon_Scroll(object sender, EventArgs e)
+        private void algorithmParameterChanged(object sender ,EventArgs e)
         {
-            pheromonValue = ((float)trackBarPheromon.Value / 1000);
-            labelPheremon.Text = pheromonValue.ToString();
-        }
-
-        private void trackBarheuristic_Scroll(object sender, EventArgs e)
-        {
-            heuristicValue = ((float)trackBarheuristic.Value / 1000);
-            labelHeuristic.Text = heuristicValue.ToString();
-        }
-
-        private void trackBarHumidification_Scroll(object sender, EventArgs e)
-        {
-            humidificationValue = ((float)trackBarHumidification.Value / 1000);
-            labelHumidification.Text = humidificationValue.ToString();
-        }
-
-        private void trackBarinitialPheromon_Scroll(object sender, EventArgs e)
-        {
-            initialPheromonValue = ((float)trackBarinitialPheromon.Value / 1000);
-            labelinitialPheromon.Text = initialPheromonValue.ToString();
-        }
-
-        private void trackBarheuristicPheromonUpdate_Scroll(object sender, EventArgs e)
-        {
-            heuristicPheromonUpdateValue = ((float)trackBarheuristicPheromonUpdate.Value / 1000);
-            labelheuristicPheromonUpdate.Text = heuristicPheromonUpdateValue.ToString();
+            if (sender == numericUpDownInitialPheromone)
+            {
+                initialPheromonValue = (float)numericUpDownInitialPheromone.Value;
+            }
+            else if (sender == numericUpDownPheromoneUpdate)
+            {
+                heuristicPheromonUpdateValue = (float)numericUpDownPheromoneUpdate.Value;
+            }
+            else if (sender == trackBarPheromon)
+            {
+                pheromonValue = ((float)trackBarPheromon.Value / 1000);
+                labelPheremon.Text = pheromonValue.ToString();
+            }
+            else if (sender == trackBarheuristic)
+            {
+                heuristicValue = ((float)trackBarheuristic.Value / 1000);
+                labelHeuristic.Text = heuristicValue.ToString();
+            }
+            else if (sender == trackBarEvaporation)
+            {
+                evaporationValue = ((float)trackBarEvaporation.Value / 1000);
+                labelEvaporation.Text = evaporationValue.ToString();
+            }
         }
 
         private void öffnenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -249,7 +246,7 @@ namespace WindowsFormsApplication1
             CAntAlgorithmParameters.getInstance().pheromoneUpdate = heuristicPheromonUpdateValue;
             CAntAlgorithmParameters.getInstance().initialPheromone = initialPheromonValue;
             CAntAlgorithmParameters.getInstance().localInformation = heuristicValue;
-            CAntAlgorithmParameters.getInstance().evaporationFactor = humidificationValue;
+            CAntAlgorithmParameters.getInstance().evaporationFactor = evaporationValue;
             //MessageBox.Show("Ants: " + CAntAlgorithmParameters.getInstance().numberAnts + "\n" + CAntAlgorithmParameters.getInstance().numberMaxIterations + "\n" + CAntAlgorithmParameters.getInstance().pheromoneParameter + " \n" + "usw usw");
 
             if (!(mAntAlgorithmThread == null) && (mAntAlgorithmThread.IsAlive == true) && (button_Start.Text == BUTTON_START_TEXT_STOP))
