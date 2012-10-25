@@ -125,20 +125,20 @@ namespace WindowsFormsApplication1
             this.button_Start = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tØIteration = new System.Windows.Forms.TextBox();
-            this.tØGlobal = new System.Windows.Forms.TextBox();
-            this.tBestIteration = new System.Windows.Forms.TextBox();
             this.tBestGlobal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.tØGlobal = new System.Windows.Forms.TextBox();
+            this.tBestIteration = new System.Windows.Forms.TextBox();
             this.pIterationProgressBar = new System.Windows.Forms.ProgressBar();
             this.tTimeDisplay = new System.Windows.Forms.TextBox();
             this.tNumberOfIteration = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label19 = new System.Windows.Forms.Label();
             this.tOptimalerPfad = new System.Windows.Forms.TextBox();
+            this.lOptimalerPfad = new System.Windows.Forms.Label();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabController.SuspendLayout();
             this.tabParameter.SuspendLayout();
@@ -375,8 +375,8 @@ namespace WindowsFormsApplication1
             this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "Verdunstungsfaktor ρ :";
-            this.toolTip1.SetToolTip(this.label8, "Gibt an in Prozent wie viel Pheromon auf jeder Strecke nach \r\neiner Iteration ver" +
-        "dunstes, z.B. 0,005 bedeutet 0,5%");
+            this.toolTip1.SetToolTip(this.label8, "Gibt an wie viel Prozent Pheromon auf jeder Strecke nach \r\neiner Iteration verdun" +
+                    "stet, z.B. 0,005 bedeutet 0,5%");
             // 
             // labelHeuristic
             // 
@@ -976,26 +976,6 @@ namespace WindowsFormsApplication1
             this.tØIteration.TabIndex = 0;
             this.tØIteration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tØGlobal
-            // 
-            this.tØGlobal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tØGlobal.Location = new System.Drawing.Point(126, 33);
-            this.tØGlobal.Name = "tØGlobal";
-            this.tØGlobal.ReadOnly = true;
-            this.tØGlobal.Size = new System.Drawing.Size(72, 20);
-            this.tØGlobal.TabIndex = 1;
-            this.tØGlobal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tBestIteration
-            // 
-            this.tBestIteration.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBestIteration.Location = new System.Drawing.Point(50, 59);
-            this.tBestIteration.Name = "tBestIteration";
-            this.tBestIteration.ReadOnly = true;
-            this.tBestIteration.Size = new System.Drawing.Size(70, 20);
-            this.tBestIteration.TabIndex = 2;
-            this.tBestIteration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // tBestGlobal
             // 
             this.tBestGlobal.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1058,6 +1038,26 @@ namespace WindowsFormsApplication1
             this.label12.Text = "Beste";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tØGlobal
+            // 
+            this.tØGlobal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tØGlobal.Location = new System.Drawing.Point(126, 33);
+            this.tØGlobal.Name = "tØGlobal";
+            this.tØGlobal.ReadOnly = true;
+            this.tØGlobal.Size = new System.Drawing.Size(72, 20);
+            this.tØGlobal.TabIndex = 1;
+            this.tØGlobal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tBestIteration
+            // 
+            this.tBestIteration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tBestIteration.Location = new System.Drawing.Point(50, 59);
+            this.tBestIteration.Name = "tBestIteration";
+            this.tBestIteration.ReadOnly = true;
+            this.tBestIteration.Size = new System.Drawing.Size(70, 20);
+            this.tBestIteration.TabIndex = 2;
+            this.tBestIteration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // pIterationProgressBar
             // 
             this.pIterationProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -1100,7 +1100,7 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.tOptimalerPfad, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label19, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lOptimalerPfad, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(848, 560);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -1109,17 +1109,6 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel2.Size = new System.Drawing.Size(157, 48);
             this.tableLayoutPanel2.TabIndex = 8;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(40, 5);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(76, 13);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Optimaler Pfad";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tOptimalerPfad
             // 
@@ -1130,6 +1119,18 @@ namespace WindowsFormsApplication1
             this.tOptimalerPfad.Size = new System.Drawing.Size(148, 20);
             this.tOptimalerPfad.TabIndex = 8;
             this.tOptimalerPfad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lOptimalerPfad
+            // 
+            this.lOptimalerPfad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lOptimalerPfad.AutoSize = true;
+            this.lOptimalerPfad.Location = new System.Drawing.Point(40, 5);
+            this.lOptimalerPfad.Name = "lOptimalerPfad";
+            this.lOptimalerPfad.Size = new System.Drawing.Size(76, 13);
+            this.lOptimalerPfad.TabIndex = 0;
+            this.lOptimalerPfad.Text = "Optimaler Pfad";
+            this.lOptimalerPfad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.lOptimalerPfad, "Nicht bei allen TSP\'s vorhanden");
             // 
             // mRenderWindow
             // 
@@ -1289,7 +1290,7 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.NumericUpDown numericUpDownPheromoneUpdate;
         public System.Windows.Forms.TextBox tOptimalerPfad;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lOptimalerPfad;
         private System.Windows.Forms.NumericUpDown numericUpDownInitialPheromone;
     }
 }
