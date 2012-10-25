@@ -136,10 +136,9 @@ namespace WindowsFormsApplication1
             this.tTimeDisplay = new System.Windows.Forms.TextBox();
             this.tNumberOfIteration = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lOptimalerPfad = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tOptimalerPfad = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.lOptimalerPfad = new System.Windows.Forms.Label();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabController.SuspendLayout();
             this.tabParameter.SuspendLayout();
@@ -377,7 +376,7 @@ namespace WindowsFormsApplication1
             this.label8.TabIndex = 9;
             this.label8.Text = "Verdunstungsfaktor ρ :";
             this.toolTip1.SetToolTip(this.label8, "Gibt an wie viel Prozent Pheromon auf jeder Strecke nach \r\neiner Iteration verdun" +
-                    "stet, z.B. 0,005 bedeutet 0,5%");
+        "stet, z.B. 0,005 bedeutet 0,5%");
             // 
             // labelHeuristic
             // 
@@ -1094,6 +1093,18 @@ namespace WindowsFormsApplication1
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // lOptimalerPfad
+            // 
+            this.lOptimalerPfad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lOptimalerPfad.AutoSize = true;
+            this.lOptimalerPfad.Location = new System.Drawing.Point(40, 5);
+            this.lOptimalerPfad.Name = "lOptimalerPfad";
+            this.lOptimalerPfad.Size = new System.Drawing.Size(76, 13);
+            this.lOptimalerPfad.TabIndex = 0;
+            this.lOptimalerPfad.Text = "Optimaler Pfad";
+            this.lOptimalerPfad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip1.SetToolTip(this.lOptimalerPfad, "Nicht bei allen TSP\'s vorhanden");
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1120,29 +1131,6 @@ namespace WindowsFormsApplication1
             this.tOptimalerPfad.Size = new System.Drawing.Size(148, 20);
             this.tOptimalerPfad.TabIndex = 8;
             this.tOptimalerPfad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(40, 5);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(76, 13);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Optimaler Pfad";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lOptimalerPfad
-            // 
-            this.lOptimalerPfad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lOptimalerPfad.AutoSize = true;
-            this.lOptimalerPfad.Location = new System.Drawing.Point(40, 5);
-            this.lOptimalerPfad.Name = "lOptimalerPfad";
-            this.lOptimalerPfad.Size = new System.Drawing.Size(76, 13);
-            this.lOptimalerPfad.TabIndex = 0;
-            this.lOptimalerPfad.Text = "Optimaler Pfad";
-            this.lOptimalerPfad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.lOptimalerPfad, "Nicht bei allen TSP\'s vorhanden");
             // 
             // mRenderWindow
             // 
