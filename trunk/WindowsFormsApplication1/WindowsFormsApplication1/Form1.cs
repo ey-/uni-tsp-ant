@@ -265,7 +265,7 @@ namespace WindowsFormsApplication1
 
             if (((mAntAlgorithmThread == null) || (mAntAlgorithmThread.IsAlive == false)) && (button_Start.Text == BUTTON_START_TEXT_START))
             {
-                CAntAlgorithm antAlgorithm = new CAntAlgorithm(mRenderWindow);
+                CAntAlgorithm antAlgorithm = new CAntAlgorithm(mRenderWindow, tNumberOfIteration);
                 mAntAlgorithmThread = new Thread(antAlgorithm.startAlgorithm);
                 mAntAlgorithmThread.Name = "AntAlgorithmThread";
                 mAntAlgorithmThread.Priority = ThreadPriority.Normal;
