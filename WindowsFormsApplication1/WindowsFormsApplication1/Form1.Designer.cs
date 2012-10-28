@@ -582,7 +582,7 @@ namespace WindowsFormsApplication1
             this.tRandomYKoordinate.Name = "tRandomYKoordinate";
             this.tRandomYKoordinate.Size = new System.Drawing.Size(122, 20);
             this.tRandomYKoordinate.TabIndex = 7;
-            this.tRandomYKoordinate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tRandomYKoordinate_KeyDown);
+            this.tRandomYKoordinate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberOnlyChangeHandler);
             // 
             // tRandomXKoordinate
             // 
@@ -590,7 +590,7 @@ namespace WindowsFormsApplication1
             this.tRandomXKoordinate.Name = "tRandomXKoordinate";
             this.tRandomXKoordinate.Size = new System.Drawing.Size(122, 20);
             this.tRandomXKoordinate.TabIndex = 6;
-            this.tRandomXKoordinate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tRandomXKoordinate_KeyDown);
+            this.tRandomXKoordinate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberOnlyChangeHandler);
             // 
             // tRandomKnoten
             // 
@@ -599,7 +599,7 @@ namespace WindowsFormsApplication1
             this.tRandomKnoten.Name = "tRandomKnoten";
             this.tRandomKnoten.Size = new System.Drawing.Size(122, 20);
             this.tRandomKnoten.TabIndex = 5;
-            this.tRandomKnoten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tRandomKnoten_KeyDown);
+            this.tRandomKnoten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberOnlyChangeHandler);
             // 
             // gBCursorAction
             // 
@@ -1129,7 +1129,6 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(157, 48);
             this.tableLayoutPanel2.TabIndex = 8;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // tOptimalerPfad
             // 

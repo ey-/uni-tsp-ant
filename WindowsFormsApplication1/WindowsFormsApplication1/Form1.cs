@@ -17,6 +17,12 @@ namespace WindowsFormsApplication1
         public delegate void delegateRefreshStatistic();
         public delegateRefreshStatistic refreshDelegateStatistic;
 
+#if DEBUG
+        protected const string MANUAL_FILE_PATH = "/../../../../Manual.pdf";
+#else
+        protected const string MANUAL_FILE_PATH = "/Manual.pdf";
+#endif
+
         private const string BUTTON_START_TEXT_START = "Starten";
         private const string BUTTON_START_TEXT_STOP = "STOP";
 
@@ -57,7 +63,6 @@ namespace WindowsFormsApplication1
 
         private void Application_Idle(Object sender, EventArgs e)
         {
-
             if (((mLastFileOpenerThread != null) && (mLastFileOpenerThread.IsAlive)) || ((mAntAlgorithmThread != null) && (mAntAlgorithmThread.IsAlive)))
             {
                 setEditFunctions(false);
@@ -66,9 +71,7 @@ namespace WindowsFormsApplication1
             {
                 setEditFunctions(true);
                 button_Start.Text = BUTTON_START_TEXT_START;
-            }
-
-                       
+            }  
         }
 
         private void setEditFunctions(bool all)
@@ -239,7 +242,6 @@ namespace WindowsFormsApplication1
 
         private void button_Start_Click(object sender, EventArgs e)
         {
-            
             CAntAlgorithmParameters.getInstance().numberAnts = Convert.ToInt32(uAntsQuantity.Value);
             CAntAlgorithmParameters.getInstance().numberMaxIterations = Convert.ToInt32(uQuantityIterations.Value);
             CAntAlgorithmParameters.getInstance().pheromoneParameter = pheromonValue;
@@ -330,27 +332,10 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void tRandomKnoten_KeyDown(object sender, KeyEventArgs e)
+        private void numberOnlyChangeHandler(object sender, KeyEventArgs e)
         {
             if (!(('0' <= e.KeyValue && e.KeyValue <= '9') || e.KeyCode < Keys.Help) || e.KeyCode == Keys.Space)
             {
-                e.SuppressKeyPress = true;
-            }
-        }
-
-        private void tRandomXKoordinate_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!(('0' <= e.KeyValue && e.KeyValue <= '9') || e.KeyCode < Keys.Help) || e.KeyCode == Keys.Space)
-            {
-                e.SuppressKeyPress = true;
-            }
-        }
-
-        private void tRandomYKoordinate_KeyDown(object sender, KeyEventArgs e)
-        {
-           
-            if (!(('0' <= e.KeyValue && e.KeyValue <= '9') || e.KeyCode < Keys.Help) || e.KeyCode == Keys.Space)
-            {                
                 e.SuppressKeyPress = true;
             }
         }
@@ -366,18 +351,29 @@ namespace WindowsFormsApplication1
             mRenderWindow.Refresh();
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void openManual(object sender, EventArgs e)
         {
-#if DEBUG
-            System.Diagnostics.Process.Start(@"../../../../Manual.pdf");
-#else
-            System.Diagnostics.Process.Start(@"Manual.pdf");
-#endif
+            // zuerst den Pfad zu unserer Exe ermitteln
+            FileInfo executableFileInfo = new FileInfo(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string executablePath = executableFileInfo.DirectoryName;
+
+            // testen ob die Hilfedatei vorhanden ist
+            FileInfo manualFileInfo = new FileInfo(executablePath + MANUAL_FILE_PATH);
+            if (manualFileInfo.Exists == false)
+            {
+                MessageBox.Show("Fehler beim öffnen der Hilfe. Offenbar wurde die Hilfedatei gelöscht.", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Versuchen die Datei von Windows öffnen zu lassen
+            try
+            {
+                System.Diagnostics.Process.Start(executablePath + MANUAL_FILE_PATH);
+            }
+            catch 
+            {
+                MessageBox.Show("Es ist ein unbekannter Fehler beim öffnen der Hilfe aufgetreten.");
+            }
         }
 
     }
