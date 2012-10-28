@@ -210,7 +210,7 @@ namespace WindowsFormsApplication1
             this.cStoppLoesung.TabIndex = 16;
             this.cStoppLoesung.Text = "Lösung gefunden";
             this.toolTip1.SetToolTip(this.cStoppLoesung, "Bei setzen des Hakens\r\nin das Kontrollkästchen stoppt der\r\nAlgorithmus sobald die" +
-                    " optimale Lösung \r\ngefunden wurde");
+        " optimale Lösung \r\ngefunden wurde");
             this.cStoppLoesung.UseVisualStyleBackColor = true;
             // 
             // cStopSchwellenwert
@@ -222,7 +222,7 @@ namespace WindowsFormsApplication1
             this.cStopSchwellenwert.TabIndex = 15;
             this.cStopSchwellenwert.Text = "Schwellenwert für die\r\nLänge der Strecke erreicht";
             this.toolTip1.SetToolTip(this.cStopSchwellenwert, "Mit diesem Stoppkriterium kann man\r\neinen Schwellenwert definieren bei dem\r\nder A" +
-                    "lgorithmus aufhört zu laufen sobald\r\ndieser Wert unterschritten wurde");
+        "lgorithmus aufhört zu laufen sobald\r\ndieser Wert unterschritten wurde");
             this.cStopSchwellenwert.UseVisualStyleBackColor = true;
             this.cStopSchwellenwert.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
@@ -254,7 +254,7 @@ namespace WindowsFormsApplication1
             this.label4.TabIndex = 8;
             this.label4.Text = "Stopkriterium:";
             this.toolTip1.SetToolTip(this.label4, "Alle Stoppkriterien sind logisch ODER verknüpft,\r\ndas bedeutet sobald einer der\r\n" +
-                    "Kriterien erreicht wurde wird das\r\nProgramm gestoppt");
+        "Kriterien erreicht wurde wird das\r\nProgramm gestoppt");
             // 
             // groupBoxAntsAlgorithym
             // 
@@ -334,7 +334,7 @@ namespace WindowsFormsApplication1
             this.label10.TabIndex = 15;
             this.label10.Text = "heuristischer Parameter\r\nfür Pheromon-Update Q :";
             this.toolTip1.SetToolTip(this.label10, "Gibt an wie viel Pheromon von der Ameisen hinterlassen wird wenn sie eine\r\nStreck" +
-                    "e abgelaufen ist, Werte sind absolut min. 0 max. 100");
+        "e abgelaufen ist, Werte sind absolut min. 0 max. 100");
             // 
             // label9
             // 
@@ -345,7 +345,7 @@ namespace WindowsFormsApplication1
             this.label9.TabIndex = 12;
             this.label9.Text = "initiale Pheromon-Werte τ :";
             this.toolTip1.SetToolTip(this.label9, "Gibt an wie viel Pheromon initial pro Strecke verteilt wird,\r\n initial bedeutet h" +
-                    "ier vor der ersten Iteration");
+        "ier vor der ersten Iteration");
             // 
             // labelEvaporation
             // 
@@ -376,7 +376,7 @@ namespace WindowsFormsApplication1
             this.label8.TabIndex = 9;
             this.label8.Text = "Verdunstungsfaktor ρ :";
             this.toolTip1.SetToolTip(this.label8, "Gibt an wie viel Prozent Pheromon auf jeder Strecke nach \r\neiner Iteration verdun" +
-                    "stet, z.B. 0,005 bedeutet 0,5%");
+        "stet, z.B. 0,005 bedeutet 0,5%");
             // 
             // labelHeuristic
             // 
@@ -407,7 +407,7 @@ namespace WindowsFormsApplication1
             this.label7.TabIndex = 6;
             this.label7.Text = "heuristischer Parameter\r\nfür die lokale Information β :";
             this.toolTip1.SetToolTip(this.label7, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nStreckenlä" +
-                    "nge für alle möglichen Strecken berücksichtigt");
+        "nge für alle möglichen Strecken berücksichtigt");
             // 
             // labelPheremon
             // 
@@ -440,7 +440,7 @@ namespace WindowsFormsApplication1
             this.label6.TabIndex = 3;
             this.label6.Text = "Pheromon Parameter α :";
             this.toolTip1.SetToolTip(this.label6, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nPheromon W" +
-                    "erte auf den möglichen Strecken berücksichtigt");
+        "erte auf den möglichen Strecken berücksichtigt");
             // 
             // uQuantityIterations
             // 
@@ -468,7 +468,7 @@ namespace WindowsFormsApplication1
             this.label3.TabIndex = 5;
             this.label3.Text = "Iterationen:";
             this.toolTip1.SetToolTip(this.label3, "Wenn die angegebene Anzahl von Iterationen\r\ndurchgelaufen ist, wird der Algorithm" +
-                    "us gestoppt");
+        "us gestoppt");
             // 
             // uAntsQuantity
             // 
@@ -714,7 +714,7 @@ namespace WindowsFormsApplication1
             this.lStreckeLocalInfo.TabIndex = 5;
             this.lStreckeLocalInfo.Text = "Strecke Local Info";
             this.toolTip1.SetToolTip(this.lStreckeLocalInfo, "Zeigt die Länge an für einen Durchlauf des TSP bei sehr \r\nstarker Berücksichtigun" +
-                    "g der lokalen Information\r\n");
+        "g der lokalen Information\r\n");
             // 
             // lStreckePheromon
             // 
@@ -726,7 +726,7 @@ namespace WindowsFormsApplication1
             this.lStreckePheromon.TabIndex = 4;
             this.lStreckePheromon.Text = "Strecke Pheromon";
             this.toolTip1.SetToolTip(this.lStreckePheromon, "Zeigt die Länge an für einen Durchlauf des TSP bei \r\nsehr starker Pheromon Berück" +
-                    "sichtigung");
+        "sichtigung");
             // 
             // tStreckeLocalInfo
             // 
@@ -993,9 +993,9 @@ namespace WindowsFormsApplication1
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(50, 0);
             this.label2.Name = "label2";
@@ -1007,9 +1007,9 @@ namespace WindowsFormsApplication1
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(126, 0);
             this.label5.Name = "label5";
@@ -1021,9 +1021,9 @@ namespace WindowsFormsApplication1
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 30);
             this.label11.Name = "label11";
@@ -1035,9 +1035,9 @@ namespace WindowsFormsApplication1
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 54);
             this.label12.Name = "label12";
@@ -1069,11 +1069,11 @@ namespace WindowsFormsApplication1
             // 
             // pIterationProgressBar
             // 
-            this.pIterationProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.pIterationProgressBar.Location = new System.Drawing.Point(122, 472);
+            this.pIterationProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pIterationProgressBar.Location = new System.Drawing.Point(119, 472);
             this.pIterationProgressBar.Name = "pIterationProgressBar";
-            this.pIterationProgressBar.Size = new System.Drawing.Size(817, 20);
+            this.pIterationProgressBar.Size = new System.Drawing.Size(794, 20);
             this.pIterationProgressBar.TabIndex = 5;
             // 
             // tTimeDisplay
@@ -1082,16 +1082,16 @@ namespace WindowsFormsApplication1
             this.tTimeDisplay.Location = new System.Drawing.Point(10, 472);
             this.tTimeDisplay.Name = "tTimeDisplay";
             this.tTimeDisplay.ReadOnly = true;
-            this.tTimeDisplay.Size = new System.Drawing.Size(112, 20);
+            this.tTimeDisplay.Size = new System.Drawing.Size(103, 20);
             this.tTimeDisplay.TabIndex = 6;
             // 
             // tNumberOfIteration
             // 
             this.tNumberOfIteration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tNumberOfIteration.Location = new System.Drawing.Point(942, 472);
+            this.tNumberOfIteration.Location = new System.Drawing.Point(919, 472);
             this.tNumberOfIteration.Name = "tNumberOfIteration";
             this.tNumberOfIteration.ReadOnly = true;
-            this.tNumberOfIteration.Size = new System.Drawing.Size(60, 20);
+            this.tNumberOfIteration.Size = new System.Drawing.Size(83, 20);
             this.tNumberOfIteration.TabIndex = 7;
             // 
             // toolTip1
@@ -1143,9 +1143,9 @@ namespace WindowsFormsApplication1
             // mRenderWindow
             // 
             this.mRenderWindow.AccumBits = ((byte)(0));
-            this.mRenderWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.mRenderWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mRenderWindow.AutoCheckErrors = false;
             this.mRenderWindow.AutoFinish = false;
             this.mRenderWindow.AutoMakeCurrent = true;

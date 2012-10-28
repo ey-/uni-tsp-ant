@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
@@ -12,6 +13,7 @@ namespace WindowsFormsApplication1
 
         private CAnt[] arrayOfAnts = new CAnt[CAntAlgorithmParameters.getInstance().numberAnts];
         private RenderWindow mRenderWindow;
+        private TextBox mItertationsTextbox;
 
         private CConnectionList mConnectionList = CConnectionList.getInstance();
         private CAntAlgorithmParameters mAlgorithmParam = CAntAlgorithmParameters.getInstance();
@@ -23,9 +25,10 @@ namespace WindowsFormsApplication1
         private float mEvaporationFactor = 0f;
         private CTour mOptTour = null;
         
-        public CAntAlgorithm(RenderWindow renderWindow)
+        public CAntAlgorithm(RenderWindow renderWindow, TextBox iterationTextbox)
         {
             mRenderWindow = renderWindow;
+            mItertationsTextbox = iterationTextbox;
 
             mMaxIterations = mAlgorithmParam.numberMaxIterations;
             mPheromoneParam = mAlgorithmParam.pheromoneParameter;
@@ -94,6 +97,11 @@ namespace WindowsFormsApplication1
                 CIterationList.getInstance().refreshStatisticNumbers();
                 mRenderWindow.Invoke(mRenderWindow.refreshDelegate);
                 CProgressManager.stepDone();
+
+                mItertationsTextbox.Invoke(new Action(delegate()
+                    {
+                       mItertationsTextbox.Text = (iteration +1) + "/" + mMaxIterations;
+                    }));
 
                 Debug.WriteLine("Iteration done: " + (iteration + 1));
             }
