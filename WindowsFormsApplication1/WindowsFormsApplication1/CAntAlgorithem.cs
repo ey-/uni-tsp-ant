@@ -44,6 +44,11 @@ namespace WindowsFormsApplication1
 
             mConnectionList.SetInitialPheromone(mInitialPheromone);
 
+            mItertationsTextbox.Invoke(new Action(delegate()
+            {
+                mItertationsTextbox.Text = "0/" + mMaxIterations;
+            }));
+
             DateTime startTime = DateTime.Now;
 
             for (var iteration = 0; iteration < mMaxIterations; iteration++)

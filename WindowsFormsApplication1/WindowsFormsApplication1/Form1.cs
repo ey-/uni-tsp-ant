@@ -34,6 +34,7 @@ namespace WindowsFormsApplication1
 
         protected Thread mLastFileOpenerThread = null;
         protected Thread mAntAlgorithmThread = null;
+        protected Thread mTimerThread = null;
         
 
         public Form1()
@@ -101,6 +102,11 @@ namespace WindowsFormsApplication1
             {
                 //mLastFileOpenerThread.Suspend();
                 mLastFileOpenerThread.Abort();
+            }
+
+            if ((mTimerThread != null) && (mTimerThread.IsAlive == true))
+            {
+                mTimerThread.Abort();
             }
 
             Application.Exit();
@@ -189,8 +195,8 @@ namespace WindowsFormsApplication1
                     CAntAlgorithmParameters.getInstance().optTour = null;
                 }
             }
-            catch (ThreadAbortException )
-            { 
+            catch (ThreadAbortException)
+            {
                 // wir machen nichts .. das ist nur zum verhindern das eine Meldung angezeigt wird
             }
             catch (CInsufficientMemoryException exception)
@@ -213,11 +219,29 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(exception.Message, "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 CAntAlgorithmParameters.getInstance().optTour = null;
             }
+            finally
+            {
+                // stream wieder schließen
+                myResult.Close();
+            }
 
             // Schaltfläche der Stoppkriterien, Lösung gefunden, (de)aktivieren
             this.Invoke(new Action(setStopCriteriaSolutionFound));
 
-            myResult.Close();
+            // Länge der optimalen Tour anzeigen
+            tOptimalerPfad.Invoke(new Action(delegate()
+            {
+                if (CAntAlgorithmParameters.getInstance().optTour != null)
+                {
+                    tOptimalerPfad.Text = CAntAlgorithmParameters.getInstance().optTour.getTourLength().ToString();
+                }
+                else
+                {
+                    tOptimalerPfad.Text = "";
+                }
+            }));
+
+            // neu Rendern            
             mRenderWindow.Invoke(new Action(delegate()
             {
                 mRenderWindow.initViewPort();
@@ -270,6 +294,11 @@ namespace WindowsFormsApplication1
                 mAntAlgorithmThread.Name = "AntAlgorithmThread";
                 mAntAlgorithmThread.Priority = ThreadPriority.Normal;
                 mAntAlgorithmThread.Start();
+
+                mTimerThread = new Thread(this.timerThread);
+                mTimerThread.Name = "TimerThread";
+                mTimerThread.Priority = ThreadPriority.Lowest;
+                mTimerThread.Start();
             }
             
             if (button_Start.Text == BUTTON_START_TEXT_START)
@@ -281,6 +310,25 @@ namespace WindowsFormsApplication1
                 button_Start.Text = BUTTON_START_TEXT_START;
             }
 
+        }
+
+
+        /// <summary>
+        /// Threadmethode zur Anzeige der Vergangenen Zeit zur Ermittlung des Optimalen Pfades
+        /// </summary>
+        void timerThread()
+        {
+            DateTime startTime = DateTime.Now;
+
+            while ((mAntAlgorithmThread != null) && (mAntAlgorithmThread.IsAlive == true))
+            {
+                TimeSpan duration = DateTime.Now - startTime;
+                tTimeDisplay.Invoke(new Action(delegate()
+                {
+                    tTimeDisplay.Text = duration.Hours.ToString("00") + ":" + duration.Minutes.ToString("00") + ":" +
+                        duration.Seconds.ToString("00") + ":" + duration.Milliseconds;
+                }));
+            }
         }
 
 
