@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
 #if DEBUG
         protected const string MANUAL_FILE_PATH = "/../../../../Manual.pdf";
 #else
-        protected const string MANUAL_FILE_PATH = "/Manual.pdf";
+        protected const string MANUAL_FILE_PATH = "/../Manual.pdf";
 #endif
 
         private const string BUTTON_START_TEXT_START = "Starten";
@@ -276,7 +276,11 @@ namespace WindowsFormsApplication1
             antAlgorithmParameters.evaporationFactor = evaporationValue;
             antAlgorithmParameters.bBestTourStop = cStoppLoesung.Checked;
             antAlgorithmParameters.bLimitStop = cStopSchwellenwert.Checked;
-            antAlgorithmParameters.iLimitStop = Convert.ToInt32(tThreshold.Text); 
+            antAlgorithmParameters.iLimitStop = 0;
+            if (antAlgorithmParameters.bLimitStop == true)
+            {
+                antAlgorithmParameters.iLimitStop = Convert.ToInt32(tThreshold.Text);
+            }
             //MessageBox.Show("Ants: " + CAntAlgorithmParameters.getInstance().numberAnts + "\n" + CAntAlgorithmParameters.getInstance().numberMaxIterations + "\n" + CAntAlgorithmParameters.getInstance().pheromoneParameter + " \n" + "usw usw");
 
             if (!(mAntAlgorithmThread == null) && (mAntAlgorithmThread.IsAlive == true) && (button_Start.Text == BUTTON_START_TEXT_STOP))
