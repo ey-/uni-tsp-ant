@@ -27,9 +27,21 @@ namespace WindowsFormsApplication1
         /// <exception cref="Exception">Fehler wenn nicht genug Speicher zur Verfügung steht</exception>
         public static void fitMemory(int numPoints)
         {
-            PerformanceCounter freeMemory = new PerformanceCounter("Memory", "Available Bytes");
+            PerformanceCounter freeMemory = null;
             long byteAvailable = freeMemory.RawValue;
             long bytesNeeded = 0;
+
+            try
+            {
+                freeMemory = new PerformanceCounter("Memory", "Available Bytes");
+                byteAvailable = freeMemory.RawValue;
+            }
+            catch
+            {
+                // wenn ein Fehler auftritt lassen wir ihn einfach machen ... 
+                // dann steht das halt nicht mehr in unserer Macht
+                return;
+            }
 
             bytesNeeded += bytePerPoint * numPoints;
             bytesNeeded += bytePerPointListEntry * numPoints;
