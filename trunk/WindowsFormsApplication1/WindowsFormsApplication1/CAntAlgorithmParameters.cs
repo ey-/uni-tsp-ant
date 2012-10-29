@@ -20,6 +20,11 @@ namespace WindowsFormsApplication1
         public float localInformation = START_LOCAL_INFORMATION_PARAMETER;
         public int numberAnts = 100;
         public int numberMaxIterations = 100;
+
+        public bool bBestTourStop = false;
+        public bool bLimitStop = false;
+        public int iLimitStop = 0;
+
         public CTour optTour = null;
 
         protected static CAntAlgorithmParameters mInstance = new CAntAlgorithmParameters();

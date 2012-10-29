@@ -266,13 +266,17 @@ namespace WindowsFormsApplication1
 
         private void button_Start_Click(object sender, EventArgs e)
         {
-            CAntAlgorithmParameters.getInstance().numberAnts = Convert.ToInt32(uAntsQuantity.Value);
-            CAntAlgorithmParameters.getInstance().numberMaxIterations = Convert.ToInt32(uQuantityIterations.Value);
-            CAntAlgorithmParameters.getInstance().pheromoneParameter = pheromonValue;
-            CAntAlgorithmParameters.getInstance().pheromoneUpdate = heuristicPheromonUpdateValue;
-            CAntAlgorithmParameters.getInstance().initialPheromone = initialPheromonValue;
-            CAntAlgorithmParameters.getInstance().localInformation = heuristicValue;
-            CAntAlgorithmParameters.getInstance().evaporationFactor = evaporationValue;
+            CAntAlgorithmParameters antAlgorithmParameters = CAntAlgorithmParameters.getInstance();
+            antAlgorithmParameters.numberAnts = Convert.ToInt32(uAntsQuantity.Value);
+            antAlgorithmParameters.numberMaxIterations = Convert.ToInt32(uQuantityIterations.Value);
+            antAlgorithmParameters.pheromoneParameter = pheromonValue;
+            antAlgorithmParameters.pheromoneUpdate = heuristicPheromonUpdateValue;
+            antAlgorithmParameters.initialPheromone = initialPheromonValue;
+            antAlgorithmParameters.localInformation = heuristicValue;
+            antAlgorithmParameters.evaporationFactor = evaporationValue;
+            antAlgorithmParameters.bBestTourStop = cStoppLoesung.Checked;
+            antAlgorithmParameters.bLimitStop = cStopSchwellenwert.Checked;
+            antAlgorithmParameters.iLimitStop = Convert.ToInt32(tThreshold.Text); 
             //MessageBox.Show("Ants: " + CAntAlgorithmParameters.getInstance().numberAnts + "\n" + CAntAlgorithmParameters.getInstance().numberMaxIterations + "\n" + CAntAlgorithmParameters.getInstance().pheromoneParameter + " \n" + "usw usw");
 
             if (!(mAntAlgorithmThread == null) && (mAntAlgorithmThread.IsAlive == true) && (button_Start.Text == BUTTON_START_TEXT_STOP))

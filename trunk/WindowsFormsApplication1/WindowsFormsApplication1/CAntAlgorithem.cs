@@ -51,23 +51,11 @@ namespace WindowsFormsApplication1
 
             DateTime startTime = DateTime.Now;
 
-            for (var iteration = 0; iteration < mMaxIterations; iteration++)
+            int iteration = 0;
+            bool bStopAlgorithm = false;
+            while ((iteration < mMaxIterations) && (bStopAlgorithm == false))
             {
                 NewIteration();
-
-                // haben wir eine bessere Lösung als die Optimale Lösung gefunden?
-                // dann können wir abbrechen
-                /*if (optTour != null) 
-                {
-                    CTour bestGlobalTour = CIterationList.getInstance().getBestGlobalTour();
-                    if (bestGlobalTour != null)
-                    {
-                        if ((optTour.getTourLength() <= bestGlobalTour.getTourLength()))
-                        {
-                            break;
-                        }
-                    }
-                }*/
 
                 // Pheromon-Update
                 //--------------------------------
@@ -109,9 +97,44 @@ namespace WindowsFormsApplication1
                     }));
 
                 Debug.WriteLine("Iteration done: " + (iteration + 1));
+
+
+                // Stopkriterien testen
+                bStopAlgorithm = checkStopCriteria();
+
+                // Iterationszähler erhöhen
+                iteration++;
             }
 
             Debug.WriteLine("Dauer: " + (DateTime.Now - startTime).TotalSeconds + " sek");
+        }
+
+        private bool checkStopCriteria()
+        {
+            CTour bestGlobalTour = CIterationList.getInstance().getBestGlobalTour();
+
+            // haben wir eine bessere Lösung als die Optimale Lösung gefunden?
+            // dann können wir abbrechen
+            if (mOptTour != null)
+            {
+                if (bestGlobalTour != null)
+                {
+                    if ((bestGlobalTour.getTourLength() <= mOptTour.getTourLength()) && (mAlgorithmParam.bBestTourStop == true))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            // Haben wir den Schwellenwert unterschritten?
+            if (bestGlobalTour != null)
+            {
+                if ((bestGlobalTour.getTourLength() <= mAlgorithmParam.iLimitStop) && (mAlgorithmParam.bLimitStop == true))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public CTSPPoint decisionNextPoint(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
