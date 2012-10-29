@@ -462,6 +462,13 @@ namespace WindowsFormsApplication1
                 i++;
             }
 
+            // prüfen ob die Tour ein Kreis ist (erstes == letztes Element)
+            if (optTour.getPoint(0) != optTour.getPoint(optTour.getListLength() - 1))
+            {
+                // Nein, also den Kreis herstellen
+                optTour.addPoint(optTour.getPoint(0));
+            }
+
             // Tour abspeichern
             CAntAlgorithmParameters.getInstance().optTour = optTour;
 
@@ -535,16 +542,6 @@ namespace WindowsFormsApplication1
 
             clearedSplitList.CopyTo(output);
             return output;
-            /*
-            int j = 0;
-            while (j < 3)       //wir brauchen nur 3 Werte, Rest wird ignoriert
-            {
-                if (actualLineSplit[j] == "")
-                {
-                    moveStringArray(actualLineSplit, j); // verschiebe das Array um 1 nach Links wenn ein Leerzeichen enthalten ist.
-                }
-                j++;
-            }*/
         }
 
         private void moveStringArray(string[] actualLineSplit, int j)

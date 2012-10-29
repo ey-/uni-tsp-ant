@@ -1084,6 +1084,8 @@ namespace WindowsFormsApplication1
             this.tTimeDisplay.ReadOnly = true;
             this.tTimeDisplay.Size = new System.Drawing.Size(103, 20);
             this.tTimeDisplay.TabIndex = 6;
+            this.tTimeDisplay.Text = "00:00:00:000";
+            this.tTimeDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tNumberOfIteration
             // 
@@ -1093,6 +1095,8 @@ namespace WindowsFormsApplication1
             this.tNumberOfIteration.ReadOnly = true;
             this.tNumberOfIteration.Size = new System.Drawing.Size(83, 20);
             this.tNumberOfIteration.TabIndex = 7;
+            this.tNumberOfIteration.Text = "0/100";
+            this.tNumberOfIteration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // toolTip1
             // 
