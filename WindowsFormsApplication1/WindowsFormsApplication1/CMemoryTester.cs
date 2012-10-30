@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
         public static void fitMemory(int numPoints)
         {
             PerformanceCounter freeMemory = null;
-            long byteAvailable = freeMemory.RawValue;
+            long byteAvailable = 0;
             long bytesNeeded = 0;
 
             try
