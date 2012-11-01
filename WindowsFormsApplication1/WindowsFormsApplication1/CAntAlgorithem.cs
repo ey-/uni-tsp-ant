@@ -137,7 +137,7 @@ namespace WindowsFormsApplication1
             return false;
         }
 
-        public CTSPPoint decisionNextPoint(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
+        public CTSPPoint decisionNextPoint(CTSPPoint currentPoint, CTSPPoint startPoint, CTSPPointList listOfPointsToTravel)
         {
             // Formel:
             //          (t ij) ^ alpha * (n ij) ^ beta
@@ -149,7 +149,7 @@ namespace WindowsFormsApplication1
             // l = ein Punkt von den noch zu Besuchenden Punkten
 
             // zuerst berechnen wir mal den Divisor der Formel, da dieser einmal pro Bewegung berechnet werden muss
-            double sumFactorOfPossibleConnections = calculateSumFactorOfPossibleConnections(currentPoint, listOfPointsToTravel);
+            double sumFactorOfPossibleConnections = calculateSumFactorOfPossibleConnections(currentPoint, startPoint, listOfPointsToTravel);
             
             // jetzt berechnen wir die probability p von allen Verbindungen und bestimmen die beste
             double bestProbability = 0;
@@ -181,7 +181,7 @@ namespace WindowsFormsApplication1
 
         // Entspricht in der Formel:
         // Sum l( (t il) ^ alpha * (n il) ^ beta )
-        private double calculateSumFactorOfPossibleConnections(CTSPPoint currentPoint, CTSPPointList listOfPointsToTravel)
+        private double calculateSumFactorOfPossibleConnections(CTSPPoint currentPoint, CTSPPoint startPoint, CTSPPointList listOfPointsToTravel)
         {
             double sumFactorOfPossibleConnections = 0;
             foreach (CTSPPoint possiblePoint in listOfPointsToTravel)
@@ -193,6 +193,19 @@ namespace WindowsFormsApplication1
 
                 sumFactorOfPossibleConnections += n_il * t_il;
             }
+
+            // wir müssen natürlich auch den Weg zurück zum Startpunkt beachten, der darf aber nicht in der 
+            // Liste der noch zu besuchenden Punkte stehen.
+            // Daher müssen wir diesen nochmal explizit am ende einbeziehen
+            CConnection startConnection = mConnectionList.getConnection(startPoint, currentPoint);
+            if (startConnection != null)
+            {
+                double start_n_il = calculateLocalInformation(startConnection);
+                double start_t_il = calculatePheromoneTrail(startConnection);
+
+                sumFactorOfPossibleConnections += start_n_il * start_t_il;
+            }
+
             return sumFactorOfPossibleConnections;
         }
 
@@ -232,7 +245,7 @@ namespace WindowsFormsApplication1
             // Ameisen laufen lassen
             for (var i = 0; i < CTSPPointList.getInstance().length(); i++)
             {
-                CTSPPoint nextPoint = decisionNextPoint(ant.CurrentPoint, ant.PointsToVisit);
+                CTSPPoint nextPoint = decisionNextPoint(ant.CurrentPoint, ant.GetTour().getPoint(0), ant.PointsToVisit);
 
                 if (nextPoint == null)
                     nextPoint = ant.GetTour().getPoint(0);
