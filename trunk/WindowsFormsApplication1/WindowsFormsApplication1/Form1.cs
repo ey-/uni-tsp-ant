@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
 #if DEBUG
         protected const string MANUAL_FILE_PATH = "/../../../../Manual.pdf";
 #else
-        protected const string MANUAL_FILE_PATH = "/../Manual.pdf";
+        protected const string MANUAL_FILE_PATH = "/Manual.pdf";
 #endif
 
         private const string BUTTON_START_TEXT_START = "Starten";
