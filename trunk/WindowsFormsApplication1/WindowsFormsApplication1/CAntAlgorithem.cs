@@ -57,6 +57,14 @@ namespace WindowsFormsApplication1
             {
                 NewIteration();
 
+                // Evaporation (verdunstung)
+                //--------------------------------
+                // Dazu iterieren wir durch alle Verbindungen und lassen das Pheromon verdunsten
+                foreach (CConnection connection in mConnectionList)
+                {
+                    connection.evaporate(mEvaporationFactor);
+                }
+
                 // Pheromon-Update
                 //--------------------------------
                 // Dazu durch alle Touren von allen Ameisen nachgehen und für jede Verbindung die 
@@ -77,15 +85,6 @@ namespace WindowsFormsApplication1
                         tourConnection.addPheromone(mPhermomoneUpdate);
                     }
                 }
-
-                // Evaporation (verdunstung)
-                //--------------------------------
-                // Dazu iterieren wir durch alle Verbindungen und lassen das Pheromon verdunsten
-                foreach (CConnection connection in mConnectionList)
-                {
-                    connection.evaporate(mEvaporationFactor);
-                }
-
 
                 CIterationList.getInstance().refreshStatisticNumbers();
                 mRenderWindow.Invoke(mRenderWindow.refreshDelegate);
