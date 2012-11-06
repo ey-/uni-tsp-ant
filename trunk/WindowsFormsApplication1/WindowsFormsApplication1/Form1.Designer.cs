@@ -79,81 +79,81 @@ namespace WindowsFormsApplication1
             this.tNumberOfIteration = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.lOptimalerPfad = new System.Windows.Forms.Label();
+            this.cBallConnection = new System.Windows.Forms.CheckBox();
+            this.cBoptPath = new System.Windows.Forms.CheckBox();
+            this.cBbestPathOfIteration = new System.Windows.Forms.CheckBox();
+            this.cBbestPathOfAllIteration = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cStopSchwellenwert = new System.Windows.Forms.CheckBox();
+            this.cStoppLoesung = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tOptimalerPfad = new System.Windows.Forms.TextBox();
             this.mRenderWindow = new WindowsFormsApplication1.RenderWindow();
             this.tabVisibility = new System.Windows.Forms.TabPage();
             this.drawingOptions = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.cBallConnection = new System.Windows.Forms.CheckBox();
-            this.cBoptPath = new System.Windows.Forms.CheckBox();
-            this.cBbestPathOfIteration = new System.Windows.Forms.CheckBox();
-            this.cBbestPathOfAllIteration = new System.Windows.Forms.CheckBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabEditieren = new System.Windows.Forms.TabPage();
-            this.gBCursorAction = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.rCursorNothing = new System.Windows.Forms.RadioButton();
-            this.rCursorAdd = new System.Windows.Forms.RadioButton();
-            this.rCursorDelete = new System.Windows.Forms.RadioButton();
-            this.rCursorShift = new System.Windows.Forms.RadioButton();
             this.gBRandomTSP = new System.Windows.Forms.GroupBox();
-            this.tRandomKnoten = new System.Windows.Forms.TextBox();
-            this.tRandomXKoordinate = new System.Windows.Forms.TextBox();
-            this.tRandomYKoordinate = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.bRandomCreate = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tRandomYKoordinate = new System.Windows.Forms.TextBox();
+            this.tRandomXKoordinate = new System.Windows.Forms.TextBox();
+            this.tRandomKnoten = new System.Windows.Forms.TextBox();
+            this.gBCursorAction = new System.Windows.Forms.GroupBox();
+            this.rCursorShift = new System.Windows.Forms.RadioButton();
+            this.rCursorDelete = new System.Windows.Forms.RadioButton();
+            this.rCursorAdd = new System.Windows.Forms.RadioButton();
+            this.rCursorNothing = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabParameter = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.uAntsQuantity = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.uQuantityIterations = new System.Windows.Forms.NumericUpDown();
-            this.groupBoxAntsAlgorithym = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.trackBarPheromon = new System.Windows.Forms.TrackBar();
-            this.labelPheremon = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.trackBarheuristic = new System.Windows.Forms.TrackBar();
-            this.labelHeuristic = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.trackBarEvaporation = new System.Windows.Forms.TrackBar();
-            this.labelEvaporation = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDownInitialPheromone = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownPheromoneUpdate = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelThreshold = new System.Windows.Forms.Label();
             this.tThreshold = new System.Windows.Forms.TextBox();
-            this.cStopSchwellenwert = new System.Windows.Forms.CheckBox();
-            this.cStoppLoesung = new System.Windows.Forms.CheckBox();
+            this.labelThreshold = new System.Windows.Forms.Label();
+            this.groupBoxAntsAlgorithym = new System.Windows.Forms.GroupBox();
+            this.numericUpDownPheromoneUpdate = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownInitialPheromone = new System.Windows.Forms.NumericUpDown();
+            this.labelEvaporation = new System.Windows.Forms.Label();
+            this.trackBarEvaporation = new System.Windows.Forms.TrackBar();
+            this.labelHeuristic = new System.Windows.Forms.Label();
+            this.trackBarheuristic = new System.Windows.Forms.TrackBar();
+            this.labelPheremon = new System.Windows.Forms.Label();
+            this.trackBarPheromon = new System.Windows.Forms.TrackBar();
+            this.uQuantityIterations = new System.Windows.Forms.NumericUpDown();
+            this.uAntsQuantity = new System.Windows.Forms.NumericUpDown();
             this.tabController = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabVisibility.SuspendLayout();
             this.drawingOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabEditieren.SuspendLayout();
-            this.gBCursorAction.SuspendLayout();
             this.gBRandomTSP.SuspendLayout();
+            this.gBCursorAction.SuspendLayout();
             this.tabParameter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).BeginInit();
             this.groupBoxAntsAlgorithym.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPheromon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarheuristic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarEvaporation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInitialPheromone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPheromoneUpdate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInitialPheromone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarEvaporation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarheuristic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPheromon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).BeginInit();
             this.tabController.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -399,6 +399,211 @@ namespace WindowsFormsApplication1
             this.lOptimalerPfad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.lOptimalerPfad, "Nicht bei allen TSP\'s vorhanden");
             // 
+            // cBallConnection
+            // 
+            this.cBallConnection.AutoSize = true;
+            this.cBallConnection.Checked = true;
+            this.cBallConnection.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBallConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBallConnection.Location = new System.Drawing.Point(24, 56);
+            this.cBallConnection.Name = "cBallConnection";
+            this.cBallConnection.Size = new System.Drawing.Size(191, 17);
+            this.cBallConnection.TabIndex = 5;
+            this.cBallConnection.Text = "Verbindung zwischen den Punkten";
+            this.toolTip1.SetToolTip(this.cBallConnection, "Zeigt in Abhänigkeit der Menge an Pheromon die Strecken zwischen den Knoten");
+            this.cBallConnection.UseVisualStyleBackColor = true;
+            this.cBallConnection.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
+            // 
+            // cBoptPath
+            // 
+            this.cBoptPath.AutoSize = true;
+            this.cBoptPath.Checked = true;
+            this.cBoptPath.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBoptPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoptPath.Location = new System.Drawing.Point(24, 73);
+            this.cBoptPath.Name = "cBoptPath";
+            this.cBoptPath.Size = new System.Drawing.Size(95, 17);
+            this.cBoptPath.TabIndex = 6;
+            this.cBoptPath.Text = "Optimaler Pfad";
+            this.toolTip1.SetToolTip(this.cBoptPath, "Zeigt den optimalen Pfad an, falls dieser vorhanden ist");
+            this.cBoptPath.UseVisualStyleBackColor = true;
+            this.cBoptPath.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
+            // 
+            // cBbestPathOfIteration
+            // 
+            this.cBbestPathOfIteration.AutoSize = true;
+            this.cBbestPathOfIteration.Checked = true;
+            this.cBbestPathOfIteration.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBbestPathOfIteration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBbestPathOfIteration.Location = new System.Drawing.Point(24, 88);
+            this.cBbestPathOfIteration.Name = "cBbestPathOfIteration";
+            this.cBbestPathOfIteration.Size = new System.Drawing.Size(140, 17);
+            this.cBbestPathOfIteration.TabIndex = 7;
+            this.cBbestPathOfIteration.Text = "Bester Pfad der Iteration";
+            this.toolTip1.SetToolTip(this.cBbestPathOfIteration, "Zeigt den besten Pfad der momentanen Iteration an");
+            this.cBbestPathOfIteration.UseVisualStyleBackColor = true;
+            this.cBbestPathOfIteration.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
+            // 
+            // cBbestPathOfAllIteration
+            // 
+            this.cBbestPathOfAllIteration.AutoSize = true;
+            this.cBbestPathOfAllIteration.Checked = true;
+            this.cBbestPathOfAllIteration.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBbestPathOfAllIteration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBbestPathOfAllIteration.Location = new System.Drawing.Point(24, 105);
+            this.cBbestPathOfAllIteration.Name = "cBbestPathOfAllIteration";
+            this.cBbestPathOfAllIteration.Size = new System.Drawing.Size(178, 17);
+            this.cBbestPathOfAllIteration.TabIndex = 8;
+            this.cBbestPathOfAllIteration.Text = "Bester Pfad aus alles Iterationen";
+            this.toolTip1.SetToolTip(this.cBbestPathOfAllIteration, "Zeigt den bis jetzt besten gefundenen Pfad an");
+            this.cBbestPathOfAllIteration.UseVisualStyleBackColor = true;
+            this.cBbestPathOfAllIteration.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(17, 52);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 13);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Anzahl der Knoten";
+            this.toolTip1.SetToolTip(this.label14, "Anzahl der Städte die das neue TSP haben soll");
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(17, 77);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(94, 13);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Max. X Koordinate";
+            this.toolTip1.SetToolTip(this.label15, "Gibt die Längeneinheiten der horizontalen Achse an");
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(17, 102);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 13);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Max. Y Koordinate";
+            this.toolTip1.SetToolTip(this.label16, "Gibt die Längeneinheiten der vertikalen Achse an");
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Ameisen:";
+            this.toolTip1.SetToolTip(this.label1, "Anzahl der Ameisen die pro Iteration über das TSP-Problem laufen");
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(108, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Iterationen:";
+            this.toolTip1.SetToolTip(this.label3, "Wenn die angegebene Anzahl von Iterationen\r\ndurchgelaufen ist, wird der Algorithm" +
+        "us gestoppt");
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(6, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(122, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Pheromon Parameter α :";
+            this.toolTip1.SetToolTip(this.label6, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nPheromon W" +
+        "erte auf den möglichen Strecken berücksichtigt");
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 55);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 26);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "heuristischer Parameter\r\nfür die lokale Information β :";
+            this.toolTip1.SetToolTip(this.label7, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nStreckenlä" +
+        "nge für alle möglichen Strecken berücksichtigt");
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 101);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(114, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Verdunstungsfaktor ρ :";
+            this.toolTip1.SetToolTip(this.label8, "Gibt an wie viel Prozent Pheromon auf jeder Strecke nach \r\neiner Iteration verdun" +
+        "stet, z.B. 0,005 bedeutet 0,5%");
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(492, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(134, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "initiale Pheromon-Werte τ :";
+            this.toolTip1.SetToolTip(this.label9, "Gibt an wie viel Pheromon initial pro Strecke verteilt wird,\r\n initial bedeutet h" +
+        "ier vor der ersten Iteration");
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(494, 55);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 26);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "heuristischer Parameter\r\nfür Pheromon-Update Q :";
+            this.toolTip1.SetToolTip(this.label10, "Gibt an wie viel Pheromon von der Ameisen hinterlassen wird wenn sie eine\r\nStreck" +
+        "e abgelaufen ist, Werte sind absolut min. 0 max. 100");
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(232, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Stopkriterium:";
+            this.toolTip1.SetToolTip(this.label4, "Alle Stoppkriterien sind logisch ODER verknüpft,\r\ndas bedeutet sobald einer der\r\n" +
+        "Kriterien erreicht wurde wird das\r\nProgramm gestoppt");
+            // 
+            // cStopSchwellenwert
+            // 
+            this.cStopSchwellenwert.AutoSize = true;
+            this.cStopSchwellenwert.Location = new System.Drawing.Point(419, 5);
+            this.cStopSchwellenwert.Name = "cStopSchwellenwert";
+            this.cStopSchwellenwert.Size = new System.Drawing.Size(152, 30);
+            this.cStopSchwellenwert.TabIndex = 15;
+            this.cStopSchwellenwert.Text = "Schwellenwert für die\r\nLänge der Strecke erreicht";
+            this.toolTip1.SetToolTip(this.cStopSchwellenwert, "Mit diesem Stoppkriterium kann man\r\neinen Schwellenwert definieren bei dem\r\nder A" +
+        "lgorithmus aufhört zu laufen sobald\r\ndieser Wert unterschritten wurde");
+            this.cStopSchwellenwert.UseVisualStyleBackColor = true;
+            this.cStopSchwellenwert.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // cStoppLoesung
+            // 
+            this.cStoppLoesung.AutoSize = true;
+            this.cStoppLoesung.Enabled = false;
+            this.cStoppLoesung.Location = new System.Drawing.Point(309, 12);
+            this.cStoppLoesung.Name = "cStoppLoesung";
+            this.cStoppLoesung.Size = new System.Drawing.Size(109, 17);
+            this.cStoppLoesung.TabIndex = 16;
+            this.cStoppLoesung.Text = "Lösung gefunden";
+            this.toolTip1.SetToolTip(this.cStoppLoesung, "Bei setzen des Hakens\r\nin das Kontrollkästchen stoppt der\r\nAlgorithmus sobald die" +
+        " optimale Lösung \r\ngefunden wurde");
+            this.cStoppLoesung.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -472,25 +677,15 @@ namespace WindowsFormsApplication1
             this.drawingOptions.TabStop = false;
             this.drawingOptions.Text = "Anzeigeoptionen";
             // 
-            // pictureBox1
+            // pictureBox4
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 59);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(12, 12);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Blue;
-            this.pictureBox2.Location = new System.Drawing.Point(7, 75);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(12, 12);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.pictureBox4.BackColor = System.Drawing.Color.Red;
+            this.pictureBox4.Location = new System.Drawing.Point(7, 107);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(12, 12);
+            this.pictureBox4.TabIndex = 4;
+            this.pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -502,75 +697,25 @@ namespace WindowsFormsApplication1
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             // 
-            // pictureBox4
+            // pictureBox2
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Red;
-            this.pictureBox4.Location = new System.Drawing.Point(7, 107);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(12, 12);
-            this.pictureBox4.TabIndex = 4;
-            this.pictureBox4.TabStop = false;
+            this.pictureBox2.BackColor = System.Drawing.Color.Blue;
+            this.pictureBox2.Location = new System.Drawing.Point(7, 75);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(12, 12);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
             // 
-            // cBallConnection
+            // pictureBox1
             // 
-            this.cBallConnection.AutoSize = true;
-            this.cBallConnection.Checked = true;
-            this.cBallConnection.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cBallConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBallConnection.Location = new System.Drawing.Point(24, 56);
-            this.cBallConnection.Name = "cBallConnection";
-            this.cBallConnection.Size = new System.Drawing.Size(191, 17);
-            this.cBallConnection.TabIndex = 5;
-            this.cBallConnection.Text = "Verbindung zwischen den Punkten";
-            this.toolTip1.SetToolTip(this.cBallConnection, "Zeigt in Abhänigkeit der Menge an Pheromon die Strecken zwischen den Knoten");
-            this.cBallConnection.UseVisualStyleBackColor = true;
-            this.cBallConnection.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
-            // 
-            // cBoptPath
-            // 
-            this.cBoptPath.AutoSize = true;
-            this.cBoptPath.Checked = true;
-            this.cBoptPath.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cBoptPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoptPath.Location = new System.Drawing.Point(24, 73);
-            this.cBoptPath.Name = "cBoptPath";
-            this.cBoptPath.Size = new System.Drawing.Size(95, 17);
-            this.cBoptPath.TabIndex = 6;
-            this.cBoptPath.Text = "Optimaler Pfad";
-            this.toolTip1.SetToolTip(this.cBoptPath, "Zeigt den optimalen Pfad an, falls dieser vorhanden ist");
-            this.cBoptPath.UseVisualStyleBackColor = true;
-            this.cBoptPath.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
-            // 
-            // cBbestPathOfIteration
-            // 
-            this.cBbestPathOfIteration.AutoSize = true;
-            this.cBbestPathOfIteration.Checked = true;
-            this.cBbestPathOfIteration.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cBbestPathOfIteration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBbestPathOfIteration.Location = new System.Drawing.Point(24, 88);
-            this.cBbestPathOfIteration.Name = "cBbestPathOfIteration";
-            this.cBbestPathOfIteration.Size = new System.Drawing.Size(140, 17);
-            this.cBbestPathOfIteration.TabIndex = 7;
-            this.cBbestPathOfIteration.Text = "Bester Pfad der Iteration";
-            this.toolTip1.SetToolTip(this.cBbestPathOfIteration, "Zeigt den besten Pfad der momentanen Iteration an");
-            this.cBbestPathOfIteration.UseVisualStyleBackColor = true;
-            this.cBbestPathOfIteration.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
-            // 
-            // cBbestPathOfAllIteration
-            // 
-            this.cBbestPathOfAllIteration.AutoSize = true;
-            this.cBbestPathOfAllIteration.Checked = true;
-            this.cBbestPathOfAllIteration.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cBbestPathOfAllIteration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBbestPathOfAllIteration.Location = new System.Drawing.Point(24, 105);
-            this.cBbestPathOfAllIteration.Name = "cBbestPathOfAllIteration";
-            this.cBbestPathOfAllIteration.Size = new System.Drawing.Size(178, 17);
-            this.cBbestPathOfAllIteration.TabIndex = 8;
-            this.cBbestPathOfAllIteration.Text = "Bester Pfad aus alles Iterationen";
-            this.toolTip1.SetToolTip(this.cBbestPathOfAllIteration, "Zeigt den bis jetzt besten gefundenen Pfad an");
-            this.cBbestPathOfAllIteration.UseVisualStyleBackColor = true;
-            this.cBbestPathOfAllIteration.CheckedChanged += new System.EventHandler(this.drawSettings_CheckedChanged);
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 59);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(12, 12);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // tabEditieren
             // 
@@ -583,76 +728,6 @@ namespace WindowsFormsApplication1
             this.tabEditieren.TabIndex = 3;
             this.tabEditieren.Text = "Editieren";
             this.tabEditieren.UseVisualStyleBackColor = true;
-            // 
-            // gBCursorAction
-            // 
-            this.gBCursorAction.Controls.Add(this.rCursorShift);
-            this.gBCursorAction.Controls.Add(this.rCursorDelete);
-            this.gBCursorAction.Controls.Add(this.rCursorAdd);
-            this.gBCursorAction.Controls.Add(this.rCursorNothing);
-            this.gBCursorAction.Controls.Add(this.label13);
-            this.gBCursorAction.Location = new System.Drawing.Point(15, 15);
-            this.gBCursorAction.Name = "gBCursorAction";
-            this.gBCursorAction.Size = new System.Drawing.Size(173, 152);
-            this.gBCursorAction.TabIndex = 13;
-            this.gBCursorAction.TabStop = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(27, 11);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(95, 16);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Cursoraktion";
-            // 
-            // rCursorNothing
-            // 
-            this.rCursorNothing.AutoSize = true;
-            this.rCursorNothing.Checked = true;
-            this.rCursorNothing.Location = new System.Drawing.Point(22, 46);
-            this.rCursorNothing.Name = "rCursorNothing";
-            this.rCursorNothing.Size = new System.Drawing.Size(53, 17);
-            this.rCursorNothing.TabIndex = 0;
-            this.rCursorNothing.TabStop = true;
-            this.rCursorNothing.Text = "nichts";
-            this.rCursorNothing.UseMnemonic = false;
-            this.rCursorNothing.UseVisualStyleBackColor = true;
-            this.rCursorNothing.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
-            // 
-            // rCursorAdd
-            // 
-            this.rCursorAdd.AutoSize = true;
-            this.rCursorAdd.Location = new System.Drawing.Point(22, 71);
-            this.rCursorAdd.Name = "rCursorAdd";
-            this.rCursorAdd.Size = new System.Drawing.Size(114, 17);
-            this.rCursorAdd.TabIndex = 1;
-            this.rCursorAdd.Text = "Knoten hinzufügen";
-            this.rCursorAdd.UseVisualStyleBackColor = true;
-            this.rCursorAdd.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
-            // 
-            // rCursorDelete
-            // 
-            this.rCursorDelete.AutoSize = true;
-            this.rCursorDelete.Location = new System.Drawing.Point(22, 96);
-            this.rCursorDelete.Name = "rCursorDelete";
-            this.rCursorDelete.Size = new System.Drawing.Size(99, 17);
-            this.rCursorDelete.TabIndex = 2;
-            this.rCursorDelete.Text = "Knoten löschen";
-            this.rCursorDelete.UseVisualStyleBackColor = true;
-            this.rCursorDelete.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
-            // 
-            // rCursorShift
-            // 
-            this.rCursorShift.AutoSize = true;
-            this.rCursorShift.Location = new System.Drawing.Point(22, 121);
-            this.rCursorShift.Name = "rCursorShift";
-            this.rCursorShift.Size = new System.Drawing.Size(120, 17);
-            this.rCursorShift.TabIndex = 3;
-            this.rCursorShift.Text = "Knoten verschieben";
-            this.rCursorShift.UseVisualStyleBackColor = true;
-            this.rCursorShift.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
             // 
             // gBRandomTSP
             // 
@@ -670,60 +745,16 @@ namespace WindowsFormsApplication1
             this.gBRandomTSP.TabIndex = 14;
             this.gBRandomTSP.TabStop = false;
             // 
-            // tRandomKnoten
+            // bRandomCreate
             // 
-            this.tRandomKnoten.Location = new System.Drawing.Point(117, 49);
-            this.tRandomKnoten.MaxLength = 5;
-            this.tRandomKnoten.Name = "tRandomKnoten";
-            this.tRandomKnoten.Size = new System.Drawing.Size(122, 20);
-            this.tRandomKnoten.TabIndex = 5;
-            this.tRandomKnoten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberOnlyChangeHandler);
-            // 
-            // tRandomXKoordinate
-            // 
-            this.tRandomXKoordinate.Location = new System.Drawing.Point(117, 74);
-            this.tRandomXKoordinate.Name = "tRandomXKoordinate";
-            this.tRandomXKoordinate.Size = new System.Drawing.Size(122, 20);
-            this.tRandomXKoordinate.TabIndex = 6;
-            this.tRandomXKoordinate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberOnlyChangeHandler);
-            // 
-            // tRandomYKoordinate
-            // 
-            this.tRandomYKoordinate.Location = new System.Drawing.Point(117, 99);
-            this.tRandomYKoordinate.Name = "tRandomYKoordinate";
-            this.tRandomYKoordinate.Size = new System.Drawing.Size(122, 20);
-            this.tRandomYKoordinate.TabIndex = 7;
-            this.tRandomYKoordinate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberOnlyChangeHandler);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(17, 52);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 13);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Anzahl der Knoten";
-            this.toolTip1.SetToolTip(this.label14, "Anzahl der Städte die das neue TSP haben soll");
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(17, 77);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(94, 13);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Max. X Koordinate";
-            this.toolTip1.SetToolTip(this.label15, "Gibt die Längeneinheiten der horizontalen Achse an");
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(17, 102);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 13);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "Max. Y Koordinate";
-            this.toolTip1.SetToolTip(this.label16, "Gibt die Längeneinheiten der vertikalen Achse an");
+            this.bRandomCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bRandomCreate.Location = new System.Drawing.Point(17, 124);
+            this.bRandomCreate.Name = "bRandomCreate";
+            this.bRandomCreate.Size = new System.Drawing.Size(224, 20);
+            this.bRandomCreate.TabIndex = 12;
+            this.bRandomCreate.Text = "TSP erstellen";
+            this.bRandomCreate.UseVisualStyleBackColor = true;
+            this.bRandomCreate.Click += new System.EventHandler(this.bRandomCreate_Click);
             // 
             // label17
             // 
@@ -735,16 +766,100 @@ namespace WindowsFormsApplication1
             this.label17.TabIndex = 11;
             this.label17.Text = "Zufälliges TSP erstellen";
             // 
-            // bRandomCreate
+            // tRandomYKoordinate
             // 
-            this.bRandomCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bRandomCreate.Location = new System.Drawing.Point(17, 124);
-            this.bRandomCreate.Name = "bRandomCreate";
-            this.bRandomCreate.Size = new System.Drawing.Size(224, 20);
-            this.bRandomCreate.TabIndex = 12;
-            this.bRandomCreate.Text = "TSP erstellen";
-            this.bRandomCreate.UseVisualStyleBackColor = true;
-            this.bRandomCreate.Click += new System.EventHandler(this.bRandomCreate_Click);
+            this.tRandomYKoordinate.Location = new System.Drawing.Point(117, 99);
+            this.tRandomYKoordinate.Name = "tRandomYKoordinate";
+            this.tRandomYKoordinate.Size = new System.Drawing.Size(122, 20);
+            this.tRandomYKoordinate.TabIndex = 7;
+            this.tRandomYKoordinate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberOnlyChangeHandler);
+            // 
+            // tRandomXKoordinate
+            // 
+            this.tRandomXKoordinate.Location = new System.Drawing.Point(117, 74);
+            this.tRandomXKoordinate.Name = "tRandomXKoordinate";
+            this.tRandomXKoordinate.Size = new System.Drawing.Size(122, 20);
+            this.tRandomXKoordinate.TabIndex = 6;
+            this.tRandomXKoordinate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberOnlyChangeHandler);
+            // 
+            // tRandomKnoten
+            // 
+            this.tRandomKnoten.Location = new System.Drawing.Point(117, 49);
+            this.tRandomKnoten.MaxLength = 5;
+            this.tRandomKnoten.Name = "tRandomKnoten";
+            this.tRandomKnoten.Size = new System.Drawing.Size(122, 20);
+            this.tRandomKnoten.TabIndex = 5;
+            this.tRandomKnoten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberOnlyChangeHandler);
+            // 
+            // gBCursorAction
+            // 
+            this.gBCursorAction.Controls.Add(this.rCursorShift);
+            this.gBCursorAction.Controls.Add(this.rCursorDelete);
+            this.gBCursorAction.Controls.Add(this.rCursorAdd);
+            this.gBCursorAction.Controls.Add(this.rCursorNothing);
+            this.gBCursorAction.Controls.Add(this.label13);
+            this.gBCursorAction.Location = new System.Drawing.Point(15, 15);
+            this.gBCursorAction.Name = "gBCursorAction";
+            this.gBCursorAction.Size = new System.Drawing.Size(173, 152);
+            this.gBCursorAction.TabIndex = 13;
+            this.gBCursorAction.TabStop = false;
+            // 
+            // rCursorShift
+            // 
+            this.rCursorShift.AutoSize = true;
+            this.rCursorShift.Location = new System.Drawing.Point(22, 121);
+            this.rCursorShift.Name = "rCursorShift";
+            this.rCursorShift.Size = new System.Drawing.Size(120, 17);
+            this.rCursorShift.TabIndex = 3;
+            this.rCursorShift.Text = "Knoten verschieben";
+            this.rCursorShift.UseVisualStyleBackColor = true;
+            this.rCursorShift.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
+            // 
+            // rCursorDelete
+            // 
+            this.rCursorDelete.AutoSize = true;
+            this.rCursorDelete.Location = new System.Drawing.Point(22, 96);
+            this.rCursorDelete.Name = "rCursorDelete";
+            this.rCursorDelete.Size = new System.Drawing.Size(99, 17);
+            this.rCursorDelete.TabIndex = 2;
+            this.rCursorDelete.Text = "Knoten löschen";
+            this.rCursorDelete.UseVisualStyleBackColor = true;
+            this.rCursorDelete.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
+            // 
+            // rCursorAdd
+            // 
+            this.rCursorAdd.AutoSize = true;
+            this.rCursorAdd.Location = new System.Drawing.Point(22, 71);
+            this.rCursorAdd.Name = "rCursorAdd";
+            this.rCursorAdd.Size = new System.Drawing.Size(114, 17);
+            this.rCursorAdd.TabIndex = 1;
+            this.rCursorAdd.Text = "Knoten hinzufügen";
+            this.rCursorAdd.UseVisualStyleBackColor = true;
+            this.rCursorAdd.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
+            // 
+            // rCursorNothing
+            // 
+            this.rCursorNothing.AutoSize = true;
+            this.rCursorNothing.Checked = true;
+            this.rCursorNothing.Location = new System.Drawing.Point(22, 46);
+            this.rCursorNothing.Name = "rCursorNothing";
+            this.rCursorNothing.Size = new System.Drawing.Size(53, 17);
+            this.rCursorNothing.TabIndex = 0;
+            this.rCursorNothing.TabStop = true;
+            this.rCursorNothing.Text = "nichts";
+            this.rCursorNothing.UseMnemonic = false;
+            this.rCursorNothing.UseVisualStyleBackColor = true;
+            this.rCursorNothing.CheckedChanged += new System.EventHandler(this.rCursor_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(27, 11);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(95, 16);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Cursoraktion";
             // 
             // tabParameter
             // 
@@ -767,60 +882,24 @@ namespace WindowsFormsApplication1
             this.tabParameter.Text = "Parameter";
             this.tabParameter.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // tThreshold
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Ameisen:";
-            this.toolTip1.SetToolTip(this.label1, "Anzahl der Ameisen die pro Iteration über das TSP-Problem laufen");
+            this.tThreshold.Location = new System.Drawing.Point(647, 12);
+            this.tThreshold.Name = "tThreshold";
+            this.tThreshold.Size = new System.Drawing.Size(55, 20);
+            this.tThreshold.TabIndex = 11;
+            this.tThreshold.Visible = false;
+            this.tThreshold.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
-            // uAntsQuantity
+            // labelThreshold
             // 
-            this.uAntsQuantity.Location = new System.Drawing.Point(58, 12);
-            this.uAntsQuantity.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.uAntsQuantity.Name = "uAntsQuantity";
-            this.uAntsQuantity.Size = new System.Drawing.Size(44, 20);
-            this.uAntsQuantity.TabIndex = 2;
-            this.uAntsQuantity.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(108, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Iterationen:";
-            this.toolTip1.SetToolTip(this.label3, "Wenn die angegebene Anzahl von Iterationen\r\ndurchgelaufen ist, wird der Algorithm" +
-        "us gestoppt");
-            // 
-            // uQuantityIterations
-            // 
-            this.uQuantityIterations.Location = new System.Drawing.Point(171, 12);
-            this.uQuantityIterations.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.uQuantityIterations.Name = "uQuantityIterations";
-            this.uQuantityIterations.Size = new System.Drawing.Size(43, 20);
-            this.uQuantityIterations.TabIndex = 6;
-            this.uQuantityIterations.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            this.labelThreshold.AutoSize = true;
+            this.labelThreshold.Location = new System.Drawing.Point(568, 16);
+            this.labelThreshold.Name = "labelThreshold";
+            this.labelThreshold.Size = new System.Drawing.Size(79, 13);
+            this.labelThreshold.TabIndex = 10;
+            this.labelThreshold.Text = "Schwellenwert:";
+            this.labelThreshold.Visible = false;
             // 
             // groupBoxAntsAlgorithym
             // 
@@ -843,146 +922,6 @@ namespace WindowsFormsApplication1
             this.groupBoxAntsAlgorithym.TabIndex = 7;
             this.groupBoxAntsAlgorithym.TabStop = false;
             this.groupBoxAntsAlgorithym.Text = "Ameisenalgorithmus";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(6, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Pheromon Parameter α :";
-            this.toolTip1.SetToolTip(this.label6, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nPheromon W" +
-        "erte auf den möglichen Strecken berücksichtigt");
-            // 
-            // trackBarPheromon
-            // 
-            this.trackBarPheromon.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBarPheromon.Location = new System.Drawing.Point(204, 9);
-            this.trackBarPheromon.Maximum = 1000;
-            this.trackBarPheromon.Name = "trackBarPheromon";
-            this.trackBarPheromon.Size = new System.Drawing.Size(238, 45);
-            this.trackBarPheromon.TabIndex = 4;
-            this.trackBarPheromon.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPheromon.Scroll += new System.EventHandler(this.algorithmParameterChanged);
-            // 
-            // labelPheremon
-            // 
-            this.labelPheremon.AutoSize = true;
-            this.labelPheremon.Location = new System.Drawing.Point(171, 21);
-            this.labelPheremon.Name = "labelPheremon";
-            this.labelPheremon.Size = new System.Drawing.Size(13, 13);
-            this.labelPheremon.TabIndex = 5;
-            this.labelPheremon.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 55);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 26);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "heuristischer Parameter\r\nfür die lokale Information β :";
-            this.toolTip1.SetToolTip(this.label7, "Gibt an zu wie vielen Teilen die Ameise beim Entscheidungsprozess die\r\nStreckenlä" +
-        "nge für alle möglichen Strecken berücksichtigt");
-            // 
-            // trackBarheuristic
-            // 
-            this.trackBarheuristic.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBarheuristic.Location = new System.Drawing.Point(204, 48);
-            this.trackBarheuristic.Maximum = 1000;
-            this.trackBarheuristic.Name = "trackBarheuristic";
-            this.trackBarheuristic.Size = new System.Drawing.Size(238, 45);
-            this.trackBarheuristic.TabIndex = 7;
-            this.trackBarheuristic.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarheuristic.Scroll += new System.EventHandler(this.algorithmParameterChanged);
-            // 
-            // labelHeuristic
-            // 
-            this.labelHeuristic.AutoSize = true;
-            this.labelHeuristic.Location = new System.Drawing.Point(171, 60);
-            this.labelHeuristic.Name = "labelHeuristic";
-            this.labelHeuristic.Size = new System.Drawing.Size(13, 13);
-            this.labelHeuristic.TabIndex = 8;
-            this.labelHeuristic.Text = "0";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 101);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(114, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Verdunstungsfaktor ρ :";
-            this.toolTip1.SetToolTip(this.label8, "Gibt an wie viel Prozent Pheromon auf jeder Strecke nach \r\neiner Iteration verdun" +
-        "stet, z.B. 0,005 bedeutet 0,5%");
-            // 
-            // trackBarEvaporation
-            // 
-            this.trackBarEvaporation.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBarEvaporation.Location = new System.Drawing.Point(205, 89);
-            this.trackBarEvaporation.Maximum = 1000;
-            this.trackBarEvaporation.Name = "trackBarEvaporation";
-            this.trackBarEvaporation.Size = new System.Drawing.Size(238, 45);
-            this.trackBarEvaporation.TabIndex = 10;
-            this.trackBarEvaporation.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarEvaporation.Scroll += new System.EventHandler(this.algorithmParameterChanged);
-            // 
-            // labelEvaporation
-            // 
-            this.labelEvaporation.AutoSize = true;
-            this.labelEvaporation.Location = new System.Drawing.Point(172, 101);
-            this.labelEvaporation.Name = "labelEvaporation";
-            this.labelEvaporation.Size = new System.Drawing.Size(13, 13);
-            this.labelEvaporation.TabIndex = 11;
-            this.labelEvaporation.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(492, 21);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(134, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "initiale Pheromon-Werte τ :";
-            this.toolTip1.SetToolTip(this.label9, "Gibt an wie viel Pheromon initial pro Strecke verteilt wird,\r\n initial bedeutet h" +
-        "ier vor der ersten Iteration");
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(494, 55);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(125, 26);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "heuristischer Parameter\r\nfür Pheromon-Update Q :";
-            this.toolTip1.SetToolTip(this.label10, "Gibt an wie viel Pheromon von der Ameisen hinterlassen wird wenn sie eine\r\nStreck" +
-        "e abgelaufen ist, Werte sind absolut min. 0 max. 100");
-            // 
-            // numericUpDownInitialPheromone
-            // 
-            this.numericUpDownInitialPheromone.DecimalPlaces = 3;
-            this.numericUpDownInitialPheromone.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownInitialPheromone.Location = new System.Drawing.Point(649, 18);
-            this.numericUpDownInitialPheromone.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numericUpDownInitialPheromone.Name = "numericUpDownInitialPheromone";
-            this.numericUpDownInitialPheromone.Size = new System.Drawing.Size(77, 20);
-            this.numericUpDownInitialPheromone.TabIndex = 17;
-            this.numericUpDownInitialPheromone.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             // 
             // numericUpDownPheromoneUpdate
             // 
@@ -1008,61 +947,122 @@ namespace WindowsFormsApplication1
             0});
             this.numericUpDownPheromoneUpdate.ValueChanged += new System.EventHandler(this.algorithmParameterChanged);
             // 
-            // label4
+            // numericUpDownInitialPheromone
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(232, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Stopkriterium:";
-            this.toolTip1.SetToolTip(this.label4, "Alle Stoppkriterien sind logisch ODER verknüpft,\r\ndas bedeutet sobald einer der\r\n" +
-        "Kriterien erreicht wurde wird das\r\nProgramm gestoppt");
+            this.numericUpDownInitialPheromone.DecimalPlaces = 3;
+            this.numericUpDownInitialPheromone.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownInitialPheromone.Location = new System.Drawing.Point(649, 18);
+            this.numericUpDownInitialPheromone.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownInitialPheromone.Name = "numericUpDownInitialPheromone";
+            this.numericUpDownInitialPheromone.Size = new System.Drawing.Size(77, 20);
+            this.numericUpDownInitialPheromone.TabIndex = 17;
+            this.numericUpDownInitialPheromone.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
-            // labelThreshold
+            // labelEvaporation
             // 
-            this.labelThreshold.AutoSize = true;
-            this.labelThreshold.Location = new System.Drawing.Point(568, 16);
-            this.labelThreshold.Name = "labelThreshold";
-            this.labelThreshold.Size = new System.Drawing.Size(79, 13);
-            this.labelThreshold.TabIndex = 10;
-            this.labelThreshold.Text = "Schwellenwert:";
-            this.labelThreshold.Visible = false;
+            this.labelEvaporation.AutoSize = true;
+            this.labelEvaporation.Location = new System.Drawing.Point(172, 101);
+            this.labelEvaporation.Name = "labelEvaporation";
+            this.labelEvaporation.Size = new System.Drawing.Size(13, 13);
+            this.labelEvaporation.TabIndex = 11;
+            this.labelEvaporation.Text = "0";
             // 
-            // tThreshold
+            // trackBarEvaporation
             // 
-            this.tThreshold.Location = new System.Drawing.Point(647, 12);
-            this.tThreshold.Name = "tThreshold";
-            this.tThreshold.Size = new System.Drawing.Size(55, 20);
-            this.tThreshold.TabIndex = 11;
-            this.tThreshold.Visible = false;
-            this.tThreshold.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+            this.trackBarEvaporation.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trackBarEvaporation.Location = new System.Drawing.Point(205, 89);
+            this.trackBarEvaporation.Maximum = 1000;
+            this.trackBarEvaporation.Name = "trackBarEvaporation";
+            this.trackBarEvaporation.Size = new System.Drawing.Size(238, 45);
+            this.trackBarEvaporation.TabIndex = 10;
+            this.trackBarEvaporation.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarEvaporation.Scroll += new System.EventHandler(this.algorithmParameterChanged);
             // 
-            // cStopSchwellenwert
+            // labelHeuristic
             // 
-            this.cStopSchwellenwert.AutoSize = true;
-            this.cStopSchwellenwert.Location = new System.Drawing.Point(419, 5);
-            this.cStopSchwellenwert.Name = "cStopSchwellenwert";
-            this.cStopSchwellenwert.Size = new System.Drawing.Size(152, 30);
-            this.cStopSchwellenwert.TabIndex = 15;
-            this.cStopSchwellenwert.Text = "Schwellenwert für die\r\nLänge der Strecke erreicht";
-            this.toolTip1.SetToolTip(this.cStopSchwellenwert, "Mit diesem Stoppkriterium kann man\r\neinen Schwellenwert definieren bei dem\r\nder A" +
-        "lgorithmus aufhört zu laufen sobald\r\ndieser Wert unterschritten wurde");
-            this.cStopSchwellenwert.UseVisualStyleBackColor = true;
-            this.cStopSchwellenwert.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.labelHeuristic.AutoSize = true;
+            this.labelHeuristic.Location = new System.Drawing.Point(171, 60);
+            this.labelHeuristic.Name = "labelHeuristic";
+            this.labelHeuristic.Size = new System.Drawing.Size(13, 13);
+            this.labelHeuristic.TabIndex = 8;
+            this.labelHeuristic.Text = "0";
             // 
-            // cStoppLoesung
+            // trackBarheuristic
             // 
-            this.cStoppLoesung.AutoSize = true;
-            this.cStoppLoesung.Enabled = false;
-            this.cStoppLoesung.Location = new System.Drawing.Point(309, 12);
-            this.cStoppLoesung.Name = "cStoppLoesung";
-            this.cStoppLoesung.Size = new System.Drawing.Size(109, 17);
-            this.cStoppLoesung.TabIndex = 16;
-            this.cStoppLoesung.Text = "Lösung gefunden";
-            this.toolTip1.SetToolTip(this.cStoppLoesung, "Bei setzen des Hakens\r\nin das Kontrollkästchen stoppt der\r\nAlgorithmus sobald die" +
-        " optimale Lösung \r\ngefunden wurde");
-            this.cStoppLoesung.UseVisualStyleBackColor = true;
+            this.trackBarheuristic.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trackBarheuristic.Location = new System.Drawing.Point(204, 48);
+            this.trackBarheuristic.Maximum = 1000;
+            this.trackBarheuristic.Name = "trackBarheuristic";
+            this.trackBarheuristic.Size = new System.Drawing.Size(238, 45);
+            this.trackBarheuristic.TabIndex = 7;
+            this.trackBarheuristic.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarheuristic.Scroll += new System.EventHandler(this.algorithmParameterChanged);
+            // 
+            // labelPheremon
+            // 
+            this.labelPheremon.AutoSize = true;
+            this.labelPheremon.Location = new System.Drawing.Point(171, 21);
+            this.labelPheremon.Name = "labelPheremon";
+            this.labelPheremon.Size = new System.Drawing.Size(13, 13);
+            this.labelPheremon.TabIndex = 5;
+            this.labelPheremon.Text = "0";
+            // 
+            // trackBarPheromon
+            // 
+            this.trackBarPheromon.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trackBarPheromon.Location = new System.Drawing.Point(204, 9);
+            this.trackBarPheromon.Maximum = 1000;
+            this.trackBarPheromon.Name = "trackBarPheromon";
+            this.trackBarPheromon.Size = new System.Drawing.Size(238, 45);
+            this.trackBarPheromon.TabIndex = 4;
+            this.trackBarPheromon.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPheromon.Scroll += new System.EventHandler(this.algorithmParameterChanged);
+            // 
+            // uQuantityIterations
+            // 
+            this.uQuantityIterations.Location = new System.Drawing.Point(171, 12);
+            this.uQuantityIterations.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.uQuantityIterations.Name = "uQuantityIterations";
+            this.uQuantityIterations.Size = new System.Drawing.Size(43, 20);
+            this.uQuantityIterations.TabIndex = 6;
+            this.uQuantityIterations.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // uAntsQuantity
+            // 
+            this.uAntsQuantity.Location = new System.Drawing.Point(58, 12);
+            this.uAntsQuantity.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.uAntsQuantity.Name = "uAntsQuantity";
+            this.uAntsQuantity.Size = new System.Drawing.Size(44, 20);
+            this.uAntsQuantity.TabIndex = 2;
+            this.uAntsQuantity.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // tabController
             // 
@@ -1106,26 +1106,26 @@ namespace WindowsFormsApplication1
             this.tabVisibility.ResumeLayout(false);
             this.drawingOptions.ResumeLayout(false);
             this.drawingOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabEditieren.ResumeLayout(false);
-            this.gBCursorAction.ResumeLayout(false);
-            this.gBCursorAction.PerformLayout();
             this.gBRandomTSP.ResumeLayout(false);
             this.gBRandomTSP.PerformLayout();
+            this.gBCursorAction.ResumeLayout(false);
+            this.gBCursorAction.PerformLayout();
             this.tabParameter.ResumeLayout(false);
             this.tabParameter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).EndInit();
             this.groupBoxAntsAlgorithym.ResumeLayout(false);
             this.groupBoxAntsAlgorithym.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPheromon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarheuristic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarEvaporation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInitialPheromone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPheromoneUpdate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInitialPheromone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarEvaporation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarheuristic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPheromon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uQuantityIterations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uAntsQuantity)).EndInit();
             this.tabController.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
